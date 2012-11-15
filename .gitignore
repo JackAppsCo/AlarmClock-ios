@@ -1,0 +1,17 @@
+.DS_Store
+profile
+*.swp
+*~.nib
+build
+*.xcclassmodel/*
+*.pbxuser
+*.perspective
+*.perspectivev3
+*.mode1v3
+*.mode2v3
+xcuserdata
+*.xcuserdatad
+*.svn
+svn/*
+project.xcworkspace/
+AdHoc/*
