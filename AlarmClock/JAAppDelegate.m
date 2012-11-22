@@ -7,7 +7,6 @@
 //
 
 #import "JAAppDelegate.h"
-
 #import "JAViewController.h"
 
 @implementation JAAppDelegate
@@ -33,6 +32,8 @@
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    
+    [self scheduleNotifications];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -48,6 +49,42 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+
+- (void)scheduleNotifications {
+    
+    for (JAAlarm *thisAlarm in [JAAlarm savedAlarms]) {
+        //for (NSString *day in thisAlarm.repeatDays) {
+            
+            NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
+            NSDateComponents *dateComps = [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit  fromDate:[NSDate date]];
+        
+            [dateComps setHour:thisAlarm.timeComponents.hour];
+            [dateComps setMinute:thisAlarm.timeComponents.minute];
+            NSDate *itemDate = [calendar dateFromComponents:dateComps];
+            
+            UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+            if (localNotif == nil)
+                return;
+            
+            localNotif.fireDate = itemDate;
+            localNotif.timeZone = [NSTimeZone defaultTimeZone];
+            localNotif.repeatInterval = NSWeekCalendarUnit;
+            localNotif.alertBody = thisAlarm.name;
+            localNotif.alertAction = NSLocalizedString(@"View Details", nil);
+            
+            NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:[[thisAlarm.sound.soundFilename componentsSeparatedByString:@"."] objectAtIndex:0]
+                                                                      ofType:[[thisAlarm.sound.soundFilename componentsSeparatedByString:@"."] objectAtIndex:1]];
+            //localNotif.soundName = soundFilePath;
+        localNotif.soundName = UILocalNotificationDefaultSoundName;
+        
+            NSDictionary *infoDict = [NSDictionary dictionaryWithObject:thisAlarm.alarmID forKey:@"alarmID"];
+            localNotif.userInfo = infoDict;
+            
+            [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
+        //}
+    }
 }
 
 @end

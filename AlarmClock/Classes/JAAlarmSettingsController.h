@@ -8,12 +8,19 @@
 
 #import <UIKit/UIKit.h>
 #import "JAAlarm.h"
+#import "JASoundSelectorTableViewController.h"
 
-@interface JAAlarmSettingsController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+
+@interface JAAlarmSettingsController : UIViewController <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, JASoundSelectorTableViewControllerDelegate>
+{
+    BOOL pressedCancel;
+}
 
 @property (nonatomic, retain) JAAlarm *alarm;
 @property (nonatomic, retain) UITableView *tableView;
 @property (nonatomic, retain) UIDatePicker *datePicker;
+@property (strong, nonatomic) UISwitch *enableSwitch;
+@property (strong, nonatomic) UITextField *nameField;
 
 - (id)initWithAlarm:(JAAlarm*)anAlarm;
 

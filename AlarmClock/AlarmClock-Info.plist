@@ -14,15 +14,15 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
-				<string>AlarmClockIcon57.png</string>
-				<string>AlarmClockIcon114.png</string>
+				<string>AlarmClockIcon3_57.png</string>
+				<string>AlarmClockIcon3_114.png</string>
 			</array>
 			<key>UIPrerenderedIcon</key>
 			<true/>
 		</dict>
 	</dict>
 	<key>CFBundleIdentifier</key>
-	<string>com.jackapps.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>com.jackapps.alarm</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>

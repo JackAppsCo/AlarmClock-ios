@@ -36,6 +36,8 @@
 */
 - (id)initWithDelegate:(id<MKClockDelegate>)theDelegate;
 
+- (void)timerFireMethod:(NSTimer *)theTimer;
+
 ///------------------------------------
 /// @name Contorlling the Clock
 ///------------------------------------

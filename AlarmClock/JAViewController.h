@@ -7,19 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MKClock.h"
+#import "ClockManager.h"
 #import "MKWeatherRequest.h"
+#import <AVFoundation/AVFoundation.h>
 
-@interface JAViewController : UIViewController <MKClockDelegate, MKWeatherRequestDelegate>
+@interface JAViewController : UIViewController <MKClockDelegate, MKWeatherRequestDelegate, UIAlertViewDelegate>
 {
     CGPoint startLocation;
     NSMutableArray *_myAlarms;
     NSDateComponents *_timeComponents;
     NSCalendar *_gregorian;
     BOOL _alarmsOn;
+    JAAlarm *_currentAlarm;
+    MPMusicPlayerController *_musicPlayer;
 }
 
-@property (nonatomic, retain) MKClock *clock;
+@property (strong, nonatomic) AVAudioPlayer *aPlayer;
+@property (nonatomic, retain) ClockManager *clock;
 @property (nonatomic, retain) MKWeatherRequest *weatherRequest;
 
 @property (nonatomic, retain) UIView *dimView;

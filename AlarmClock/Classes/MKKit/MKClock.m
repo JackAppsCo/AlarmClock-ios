@@ -10,8 +10,6 @@
 
 @interface MKClock ()
 
-- (void)timerFireMethod:(NSTimer *)theTimer;
-
 @end
 
 

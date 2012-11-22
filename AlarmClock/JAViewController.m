@@ -10,25 +10,32 @@
 #import "JAAlarmListViewController.h"
 #import "JAAlarm.h"
 
+
 #define WEATHER_API_KEY @"c74edf0183141706121311"
 
 @interface JAViewController ()
 - (void) settingsButtonPressed:(id)sender;
 - (void) dismissSettingsController:(id)sender;
-- (void) handleUpSwipeGesture:(UIGestureRecognizer*)gesture;
-- (void) handleDownSwipeGesture:(UIGestureRecognizer*)gesture;
+- (void)    panGesture:(UIPanGestureRecognizer *)sender;
+- (void) handleAlarmNotification:(NSNotification*)notification;
 @end
 
 @implementation JAViewController
 
-@synthesize clock = _clock, tabBarController = _tabBarController, weatherRequest = _weatherRequest, dimView = _dimView;
+@synthesize clock = _clock, tabBarController = _tabBarController, weatherRequest = _weatherRequest, dimView = _dimView, aPlayer;
 
-- (id) init
+- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    if ((self = [super init])) {
+    if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
+        
+        //initialize and start the shared instance of MKClock
+        [[ClockManager instance] delegate];
+        [[ClockManager instance] setDelegate:self];
+        [[ClockManager instance] start];
         
         _gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
         _timeComponents = [[NSDateComponents alloc] init];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleAlarmNotification:) name:@"alarmTriggered" object:nil];
         
     }
     
@@ -44,8 +51,6 @@
     _alarmsOn = YES;
     
     //init clock
-    _clock = [[MKClock alloc] initWithDelegate:self];
-    [_clock start];
     
     //alarm settings
     JAAlarmListViewController *_alarmSettingsController = [[JAAlarmListViewController alloc] init];
@@ -95,7 +100,64 @@
         [_myAlarms addObjectsFromArray:[JAAlarm savedAlarms]];
     }
     
+}
+
+- (void) handleAlarmNotification:(NSNotification *)notification
+{
+    NSLog(@"ALARM TRIGGERED: \n%@", [notification object], nil);
     
+    _currentAlarm = [notification object];
+    
+    //create the fileURL obejct
+    NSURL *fileURL;
+    
+    if (_currentAlarm.sound.collection) {
+        //fileURL = [[_currentAlarm.sound.collection.items objectAtIndex:0] valueForProperty:MPMediaItemPropertyAssetURL];
+        
+        if (!_musicPlayer) {
+            _musicPlayer = [MPMusicPlayerController applicationMusicPlayer];
+            [_musicPlayer setShuffleMode: MPMusicShuffleModeOff];
+            [_musicPlayer setRepeatMode: MPMusicRepeatModeNone];
+        }
+        
+        [_musicPlayer setQueueWithItemCollection:_currentAlarm.sound.collection];
+        [_musicPlayer play];
+        
+        if (_currentAlarm.sound.soundFilename.length <= 0) {
+            fileURL = [[NSURL alloc] initFileURLWithPath:[JASound defaultSound].soundFilename];
+        }
+        else
+            fileURL = [[NSURL alloc] initWithString:_currentAlarm.sound.soundFilename];
+    }
+    else {
+        
+        NSString *soundFilePath;
+        if ([_currentAlarm.sound.soundFilename rangeOfString:@".caf"].location == NSNotFound) {
+            soundFilePath = [[NSBundle mainBundle] pathForResource:[[_currentAlarm.sound.soundFilename componentsSeparatedByString:@"."] objectAtIndex:0]
+                                                            ofType:[[_currentAlarm.sound.soundFilename componentsSeparatedByString:@"."] objectAtIndex:1]];
+        }
+        else {
+            soundFilePath = _currentAlarm.sound.soundFilename;
+        }
+        
+        fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
+        
+        NSError *err;
+        AVAudioPlayer *player = [[AVAudioPlayer alloc] initWithContentsOfURL: fileURL
+                                                                       error:&err];
+        
+        if (err)
+            NSLog(@"ERR: %@", err);
+        
+        self.aPlayer = player;
+        [self.aPlayer setNumberOfLoops:-1];
+        [self.aPlayer play];
+    }
+    
+    
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:_currentAlarm.name message:@"Your alarm went off" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:@"Snooze", nil];
+    [alert show];
     
 }
 
@@ -138,6 +200,12 @@
 }
 
 
+#pragma mark - Handle Rotation
+- (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+    return YES;
+}
+
 #pragma mark - MKCLock Delegate
 - (void)clock:(MKClock *)clock didSetNewString:(NSString *)theString
 {
@@ -146,7 +214,7 @@
     self.clockLabel.text = [formatter stringFromDate:[NSDate date]];
     
     //check alarms
-    if (_alarmsOn) {
+    /*if (_alarmsOn) {
         
         _timeComponents = [_gregorian components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:[NSDate date]];
         
@@ -159,8 +227,9 @@
             }
         }
         
-    }
+    }*/
 }
+
 
 - (void)clockDidStart:(MKClock *)clock
 {
@@ -180,6 +249,23 @@
         NSDictionary *weatherDict = [data objectAtIndex:1];
         self.currentTempLabel.text = [NSString stringWithFormat:@"%0.0f˚F", [[weatherDict objectForKey:WEATHER_TEMP_F] floatValue], nil];
     }
+}
+
+#pragma mark - UIAlertViewDelegate 
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    if (buttonIndex == 0) {
+        //do nothing
+    }
+    else {
+        [ClockManager snoozeAlarm:_currentAlarm];
+    }
+    
+    if (_musicPlayer.playbackState == MPMusicPlaybackStatePlaying)
+        [_musicPlayer stop];
+    else
+        [self.aPlayer stop];
+    
 }
 
 @end

@@ -12,6 +12,7 @@
 @interface JAAlarmListViewController ()
 - (void) addAlarm;
 - (void) closeSettings;
+- (void) enableToggled:(id)sender;
 @end
 
 @implementation JAAlarmListViewController
@@ -24,8 +25,7 @@
     if (self) {
         // Custom initialization
         UIBarButtonItem *addAlarmButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addAlarm)];
-        UIBarButtonItem *editAlarmButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:nil action:nil];
-        NSArray *rightButtons = [[NSArray alloc] initWithObjects:editAlarmButton, addAlarmButton, nil];
+        NSArray *rightButtons = [[NSArray alloc] initWithObjects:addAlarmButton, nil];
         [self.navigationItem setRightBarButtonItems:rightButtons];
         
         _alarms = [JAAlarm savedAlarms];
@@ -44,17 +44,33 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    _alarms = [JAAlarm savedAlarms];
+    
+    [self.tableView reloadData];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+- (void) enableToggled:(id)sender
+{
+    JAAlarm *thisAlarm = [_alarms objectAtIndex:[(UISwitch*)sender tag]];
+    [thisAlarm setEnabled:[(UISwitch*)sender isOn]];
+    [JAAlarm saveAlarm:thisAlarm];
+    _alarms = [JAAlarm savedAlarms];
+    [self.tableView reloadData];
+}
+
 - (void) closeSettings
 {
-    _alarms = [JAAlarm savedAlarms];
     
-    [self.tableView reloadData];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -90,7 +106,7 @@
     
     if (!cell) {
         
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
         
     }
     
@@ -99,33 +115,45 @@
     [formatter setDateFormat:@"h:mm a"];
     
     JAAlarm *thisAlarm = [_alarms objectAtIndex:indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%i:%02i%@", (thisAlarm.timeComponents.hour > 12) ? thisAlarm.timeComponents.hour - 12 : (thisAlarm.timeComponents.hour == 0) ? 12 : thisAlarm.timeComponents.hour, thisAlarm.timeComponents.minute, (thisAlarm.timeComponents.hour > 12) ? @"pm" : @"am", nil];
+    cell.textLabel.text = thisAlarm.name;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%i:%02i%@", (thisAlarm.timeComponents.hour > 12) ? thisAlarm.timeComponents.hour - 12 : (thisAlarm.timeComponents.hour == 0) ? 12 : thisAlarm.timeComponents.hour, thisAlarm.timeComponents.minute, (thisAlarm.timeComponents.hour > 12) ? @"pm" : @"am", nil];
+    
+    
+    UISwitch *enabledSwitch = [[UISwitch alloc] init];
+    [enabledSwitch setOn:[thisAlarm enabled]];
+    [enabledSwitch setTag:indexPath.row];
+    [enabledSwitch addTarget:self action:@selector(enableToggled:) forControlEvents:UIControlEventValueChanged];
+    [cell setAccessoryView: enabledSwitch];
+    
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
 }
 
-/*
+
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
 
-/*
+
+
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
         // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+        [JAAlarm removeAlarm:[_alarms objectAtIndex:indexPath.row]];
+        _alarms = [JAAlarm savedAlarms];
+        [self.tableView reloadData];
+        
+
+    }
 }
-*/
+
 
 /*
 // Override to support rearranging the table view.
@@ -148,12 +176,18 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
+    JAAlarmSettingsController *newAlarmController =[[JAAlarmSettingsController alloc] initWithAlarm:[_alarms objectAtIndex:indexPath.row]];
+    newAlarmController.title = newAlarmController.alarm.name;
+    UIBarButtonItem *closeButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self.navigationController action:@selector(popViewControllerAnimated:)];
+    [closeButton setTitle:@"Save"];
+    [newAlarmController.navigationItem setBackBarButtonItem:closeButton];
+    [newAlarmController setHidesBottomBarWhenPushed:YES];
+
+    
+    
      // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+     [self.navigationController pushViewController:newAlarmController animated:YES];
+     
 }
 
 @end

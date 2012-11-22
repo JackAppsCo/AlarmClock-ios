@@ -7,34 +7,58 @@
 //
 
 #import "JAAlarmSettingsController.h"
+#import "JARepeatTableViewController.h"
 
 @interface JAAlarmSettingsController ()
-- (void)dateChanged:(id)sender;
-
+- (void)saveAlarm:(id)sender;
+- (void)cancelEdit:(id)sender;
 @end
 
 @implementation JAAlarmSettingsController
 
-@synthesize alarm = _alarm, tableView = _tableView, datePicker = _datePicker;
+@synthesize alarm = _alarm, tableView = _tableView, datePicker = _datePicker, enableSwitch = _enableSwitch, nameField = _nameField;
 
 - (id)initWithAlarm:(JAAlarm*)anAlarm
 {
     self = [super init];
     if (self) {
-        // Custom initialization
-        if (anAlarm)
+        
+        pressedCancel = NO;
+        
+        //init date
+        NSDate *now;
+        
+        if (anAlarm) {
             _alarm = anAlarm;
+        }
         else {
             _alarm = [[JAAlarm alloc] init];
             _alarm.alarmID = [NSNumber numberWithInt:-1];
+            _alarm.enabled = YES;
+            _alarm.repeatDays = [[NSArray alloc] init];
+            _alarm.sound = [JASound defaultSound];
+            _alarm.name = @"Alarm";
             
-            NSDate *now = [NSDate dateWithTimeIntervalSinceNow:(60 * 10)];
+            //time comps
+            now = [NSDate dateWithTimeIntervalSinceNow:(60 * 10)];
             NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
             NSDateComponents *timeComponents = [gregorian components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:now];
             [timeComponents setSecond:0];
-            
             _alarm.timeComponents = timeComponents;
+
         }
+        
+        [self setEnableSwitch:[[UISwitch alloc] init]];
+        [self.enableSwitch setOn:self.alarm.enabled];
+        
+        
+        [self setNameField:[[UITextField alloc] init]];
+        self.nameField.frame = CGRectMake(0, 0, 200.0, 23.0);
+        [self.nameField setTextAlignment:NSTextAlignmentRight];
+        self.nameField.returnKeyType = UIReturnKeyDone;
+        self.nameField.delegate = self;
+        self.nameField.text = _alarm.name;
+        self.nameField.textColor = [UIColor darkTextColor];
         
     }
     return self;
@@ -43,28 +67,50 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+        
     _datePicker = [[UIDatePicker alloc] init];
-    [_datePicker setDate:[NSDate dateWithTimeInterval:(60 * 10) sinceDate:[NSDate date]]];
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    [_datePicker setDate:[gregorian dateFromComponents:_alarm.timeComponents]];
     [_datePicker setDatePickerMode:UIDatePickerModeTime];
     [_datePicker setAutoresizingMask:UIViewAutoresizingFlexibleTopMargin];
+    
     [_datePicker addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged];
     [_datePicker setFrame:CGRectOffset(_datePicker.frame, 0, self.view.frame.size.height - _datePicker.frame.size.height)];
     
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - _datePicker.frame.size.height - self.navigationController.navigationBar.frame.size.height) style:UITableViewStyleGrouped];
-    _tableView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin;
+    _tableView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
     [_tableView setDataSource:self];
     [_tableView setDelegate:self];
     [self.view addSubview:_tableView];
     [self.view addSubview:_datePicker];    
  
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    //if this is a new alarm set the buttons
+    if (self.navigationController.viewControllers.count == 1) {
+
+        [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStyleDone target:self action:@selector(dismissModalViewControllerAnimated:)]];
+    
+        [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelEdit:)]];
+    }
+    
+    
 }
 
-- (void)viewWillDisappear:(BOOL)animated
+- (void)cancelEdit:(id)sender
 {
-    [JAAlarm saveAlarm:self.alarm];
+    pressedCancel = YES;
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+
+    if (!pressedCancel)
+    {
+        self.alarm.enabled = self.enableSwitch.on;
+        self.alarm.name = self.nameField.text;
+        [JAAlarm saveAlarm:self.alarm];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -104,7 +150,7 @@
 {
 
     // Return the number of rows in the section.
-    return 1;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -115,9 +161,33 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
     }
     
-    // Configure the cell...
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%i:%02i%@", (_alarm.timeComponents.hour > 12) ? _alarm.timeComponents.hour - 12 : (_alarm.timeComponents.hour == 0) ? 12 : _alarm.timeComponents.hour, _alarm.timeComponents.minute, (_alarm.timeComponents.hour > 12) ? @"pm" : @"am", nil];
-    cell.textLabel.text = @"Time";
+    
+    //figure out which cell
+    switch (indexPath.row) {
+        case 0:
+            cell.textLabel.text = @"Name";
+            cell.accessoryView = self.nameField;
+            break;
+        case 1:
+            cell.textLabel.text = @"Time";
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%i:%02i%@", (_alarm.timeComponents.hour > 12) ? _alarm.timeComponents.hour - 12 : (_alarm.timeComponents.hour == 0) ? 12 : _alarm.timeComponents.hour, _alarm.timeComponents.minute, (_alarm.timeComponents.hour > 12) ? @"pm" : @"am", nil];
+            break;
+        case 2:
+            cell.textLabel.text = @"Enabled";
+            cell.accessoryView = self.enableSwitch;
+            break;
+        case 3:
+            cell.textLabel.text = @"Repeat";
+            cell.detailTextLabel.text = [JAAlarm labelForDays:self.alarm.repeatDays];
+            break;
+        case 4:
+            cell.textLabel.text = @"Sound";
+            cell.detailTextLabel.text = self.alarm.sound.name;
+            break;
+            
+        default:
+            break;
+    }
     
     return cell;
 }
@@ -165,13 +235,67 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    JARepeatTableViewController *repeatTableController = [[JARepeatTableViewController alloc] initWithAlarm:self.alarm];
+    [repeatTableController setDelegate:self];
+    
+    //figure out which cell
+    switch (indexPath.row) {
+        case 0:
+            [self.nameField becomeFirstResponder];
+            break;
+        case 1:
+            [self.nameField resignFirstResponder];
+            break;
+        case 2:
+            break;
+        case 3:
+            [self.navigationController pushViewController:repeatTableController animated:YES];
+            break;
+        case 4:
+        {
+            JASoundSelectorTableViewController *controller = [[JASoundSelectorTableViewController alloc] initWithDelegate:self sound:self.alarm.sound];
+            [self.navigationController pushViewController:controller animated:YES];
+            
+            break;
+        }
+            
+        default:
+            break;
+    }
 }
+
+#pragma mark - Text Field Delegate
+
+- (BOOL) textFieldShouldReturn:(UITextField *)textField
+{
+    [self.nameField resignFirstResponder];
+    self.alarm.name = textField.text;
+    return YES;
+}
+
+#pragma mark - Sound Delegate
+- (void) soundSelectorTableViewController:(JASoundSelectorTableViewController *)controller choseSound:(JASound *)sound
+{
+    if (sound) {
+        [self.alarm setSound:sound];
+    }
+    
+    [self.tableView reloadData];
+    
+}
+
+#pragma mark - Repeat Delegate
+- (void) repeatTableViewController:(JARepeatTableViewController *)controller choseDays:(NSArray *)days
+{
+    if (days) {
+        [self.alarm setRepeatDays:days];
+    }
+    
+    [self.tableView reloadData];
+    
+}
+
 
 @end
