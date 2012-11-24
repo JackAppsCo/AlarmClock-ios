@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C91512AD166067D800295189 /* JAClockSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C91512AB166067D800295189 /* JAClockSettingsViewController.m */; };
+		C91512AE166067D800295189 /* JAClockSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C91512AC166067D800295189 /* JAClockSettingsViewController.xib */; };
 		C91F88441658493F004F0943 /* AlarmClockIcon3_114.png in Resources */ = {isa = PBXBuildFile; fileRef = C91F88421658493F004F0943 /* AlarmClockIcon3_114.png */; };
 		C91F88451658493F004F0943 /* AlarmClockIcon3_57.png in Resources */ = {isa = PBXBuildFile; fileRef = C91F88431658493F004F0943 /* AlarmClockIcon3_57.png */; };
 		C9284971165331A500B4CF8E /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9284970165331A500B4CF8E /* SwipeView.m */; };
@@ -45,6 +47,13 @@
 		C9A0E45A1654A4DA000BB045 /* AlarmClockIcon114.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A0E4581654A4DA000BB045 /* AlarmClockIcon114.png */; };
 		C9A0E45C1654A4E9000BB045 /* AlarmClockIcon57.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A0E45B1654A4E9000BB045 /* AlarmClockIcon57.png */; };
 		C9A0E45E1654A4EE000BB045 /* AlarmClockIcon114.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A0E45D1654A4EE000BB045 /* AlarmClockIcon114.png */; };
+		C9A2BBF3165F19A600F09634 /* JADisplaySettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A2BBF2165F19A600F09634 /* JADisplaySettingsController.m */; };
+		C9A2BBF6165F19D500F09634 /* JASettings.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A2BBF5165F19D500F09634 /* JASettings.m */; };
+		C9A2BBFB165F235A00F09634 /* JABackgroundPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A2BBF9165F235A00F09634 /* JABackgroundPickerViewController.m */; };
+		C9A2BBFC165F235A00F09634 /* JABackgroundPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9A2BBFA165F235A00F09634 /* JABackgroundPickerViewController.xib */; };
+		C9A2BBFF165F26A800F09634 /* backgroundsList.plist in Resources */ = {isa = PBXBuildFile; fileRef = C9A2BBFE165F26A800F09634 /* backgroundsList.plist */; };
+		C9A2BC02165F27E600F09634 /* beach.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A2BC00165F27E600F09634 /* beach.png */; };
+		C9A2BC03165F27E600F09634 /* chalkboard.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A2BC01165F27E600F09634 /* chalkboard.png */; };
 		C9E6404716528B7500A388C6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E6404616528B7500A388C6 /* UIKit.framework */; };
 		C9E6404916528B7500A388C6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E6404816528B7500A388C6 /* Foundation.framework */; };
 		C9E6404B16528B7500A388C6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E6404A16528B7500A388C6 /* CoreGraphics.framework */; };
@@ -65,6 +74,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C91512AA166067D800295189 /* JAClockSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JAClockSettingsViewController.h; path = Classes/JAClockSettingsViewController.h; sourceTree = "<group>"; };
+		C91512AB166067D800295189 /* JAClockSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JAClockSettingsViewController.m; path = Classes/JAClockSettingsViewController.m; sourceTree = "<group>"; };
+		C91512AC166067D800295189 /* JAClockSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JAClockSettingsViewController.xib; path = Classes/JAClockSettingsViewController.xib; sourceTree = "<group>"; };
 		C91F88421658493F004F0943 /* AlarmClockIcon3_114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AlarmClockIcon3_114.png; sourceTree = "<group>"; };
 		C91F88431658493F004F0943 /* AlarmClockIcon3_57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AlarmClockIcon3_57.png; sourceTree = "<group>"; };
 		C928496F165331A500B4CF8E /* SwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeView.h; sourceTree = "<group>"; };
@@ -112,6 +124,16 @@
 		C9A0E4581654A4DA000BB045 /* AlarmClockIcon114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AlarmClockIcon114.png; sourceTree = "<group>"; };
 		C9A0E45B1654A4E9000BB045 /* AlarmClockIcon57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AlarmClockIcon57.png; sourceTree = "<group>"; };
 		C9A0E45D1654A4EE000BB045 /* AlarmClockIcon114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AlarmClockIcon114.png; sourceTree = "<group>"; };
+		C9A2BBF1165F19A600F09634 /* JADisplaySettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JADisplaySettingsController.h; path = Classes/JADisplaySettingsController.h; sourceTree = "<group>"; };
+		C9A2BBF2165F19A600F09634 /* JADisplaySettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JADisplaySettingsController.m; path = Classes/JADisplaySettingsController.m; sourceTree = "<group>"; };
+		C9A2BBF4165F19D500F09634 /* JASettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JASettings.h; path = Utilities/JASettings.h; sourceTree = "<group>"; };
+		C9A2BBF5165F19D500F09634 /* JASettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JASettings.m; path = Utilities/JASettings.m; sourceTree = "<group>"; };
+		C9A2BBF8165F235A00F09634 /* JABackgroundPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JABackgroundPickerViewController.h; path = Classes/JABackgroundPickerViewController.h; sourceTree = "<group>"; };
+		C9A2BBF9165F235A00F09634 /* JABackgroundPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JABackgroundPickerViewController.m; path = Classes/JABackgroundPickerViewController.m; sourceTree = "<group>"; };
+		C9A2BBFA165F235A00F09634 /* JABackgroundPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JABackgroundPickerViewController.xib; path = Classes/JABackgroundPickerViewController.xib; sourceTree = "<group>"; };
+		C9A2BBFE165F26A800F09634 /* backgroundsList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = backgroundsList.plist; sourceTree = "<group>"; };
+		C9A2BC00165F27E600F09634 /* beach.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beach.png; path = Images/beach.png; sourceTree = "<group>"; };
+		C9A2BC01165F27E600F09634 /* chalkboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = chalkboard.png; path = Images/chalkboard.png; sourceTree = "<group>"; };
 		C9E6404216528B7500A388C6 /* AlarmClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlarmClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9E6404616528B7500A388C6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C9E6404816528B7500A388C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -222,12 +244,45 @@
 			isa = PBXGroup;
 			children = (
 				C95BDD8F165D711D005AEEFC /* BlackBG.png */,
+				C9A2BC00165F27E600F09634 /* beach.png */,
+				C9A2BC01165F27E600F09634 /* chalkboard.png */,
 				C9A0E4571654A4DA000BB045 /* AlarmClockIcon57.png */,
 				C91F88421658493F004F0943 /* AlarmClockIcon3_114.png */,
 				C91F88431658493F004F0943 /* AlarmClockIcon3_57.png */,
 				C9A0E4581654A4DA000BB045 /* AlarmClockIcon114.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		C9A2BBEF165F197100F09634 /* Display Settings */ = {
+			isa = PBXGroup;
+			children = (
+				C9A2BBF7165F210F00F09634 /* Background Picker */,
+				C9A2BBF1165F19A600F09634 /* JADisplaySettingsController.h */,
+				C9A2BBF2165F19A600F09634 /* JADisplaySettingsController.m */,
+				C91512AA166067D800295189 /* JAClockSettingsViewController.h */,
+				C91512AB166067D800295189 /* JAClockSettingsViewController.m */,
+				C91512AC166067D800295189 /* JAClockSettingsViewController.xib */,
+			);
+			name = "Display Settings";
+			sourceTree = "<group>";
+		};
+		C9A2BBF7165F210F00F09634 /* Background Picker */ = {
+			isa = PBXGroup;
+			children = (
+				C9A2BBF8165F235A00F09634 /* JABackgroundPickerViewController.h */,
+				C9A2BBF9165F235A00F09634 /* JABackgroundPickerViewController.m */,
+				C9A2BBFA165F235A00F09634 /* JABackgroundPickerViewController.xib */,
+			);
+			name = "Background Picker";
+			sourceTree = "<group>";
+		};
+		C9A2BBFD165F267800F09634 /* Backgrounds */ = {
+			isa = PBXGroup;
+			children = (
+				C9A2BBFE165F26A800F09634 /* backgroundsList.plist */,
+			);
+			name = Backgrounds;
 			sourceTree = "<group>";
 		};
 		C9E6403716528B7500A388C6 = {
@@ -269,9 +324,9 @@
 		C9E6404C16528B7500A388C6 /* AlarmClock */ = {
 			isa = PBXGroup;
 			children = (
-				C98895C31657F4770072EC6E /* Sounds */,
-				C9A0E4551654A4D0000BB045 /* Images */,
 				C9E6406916528B7C00A388C6 /* Classes */,
+				C9A0E4551654A4D0000BB045 /* Images */,
+				C98895C31657F4770072EC6E /* Sounds */,
 				C9E6404D16528B7500A388C6 /* Supporting Files */,
 			);
 			path = AlarmClock;
@@ -280,6 +335,7 @@
 		C9E6404D16528B7500A388C6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C9A2BBFD165F267800F09634 /* Backgrounds */,
 				C9E6404E16528B7500A388C6 /* AlarmClock-Info.plist */,
 				C9E6404F16528B7500A388C6 /* InfoPlist.strings */,
 				C9E6405216528B7500A388C6 /* main.m */,
@@ -294,6 +350,7 @@
 		C9E6406916528B7C00A388C6 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C9A2BBEF165F197100F09634 /* Display Settings */,
 				C9349E12165A858D0058D6EB /* Clock Management */,
 				C98895BA1657EEB20072EC6E /* Sound Selector */,
 				C9E641991652A8AA00A388C6 /* Models */,
@@ -315,6 +372,8 @@
 			children = (
 				C9E6418D1652966600A388C6 /* MKKit */,
 				C9E6406B16528C2000A388C6 /* MKWeather */,
+				C9A2BBF4165F19D500F09634 /* JASettings.h */,
+				C9A2BBF5165F19D500F09634 /* JASettings.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -450,6 +509,11 @@
 				C95BDCE6165C8DD7005AEEFC /* Submarine.wav in Resources */,
 				C95BDCE7165C8DD7005AEEFC /* Techy.wav in Resources */,
 				C95BDD90165D711D005AEEFC /* BlackBG.png in Resources */,
+				C9A2BBFC165F235A00F09634 /* JABackgroundPickerViewController.xib in Resources */,
+				C9A2BBFF165F26A800F09634 /* backgroundsList.plist in Resources */,
+				C9A2BC02165F27E600F09634 /* beach.png in Resources */,
+				C9A2BC03165F27E600F09634 /* chalkboard.png in Resources */,
+				C91512AE166067D800295189 /* JAClockSettingsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,6 +541,10 @@
 				C9889619165804F20072EC6E /* VoiceRecordViewController.m in Sources */,
 				C9349E16165A85D40058D6EB /* ClockManager.m in Sources */,
 				C95BDD95165DBFDA005AEEFC /* JARepeatTableViewController.m in Sources */,
+				C9A2BBF3165F19A600F09634 /* JADisplaySettingsController.m in Sources */,
+				C9A2BBF6165F19D500F09634 /* JASettings.m in Sources */,
+				C9A2BBFB165F235A00F09634 /* JABackgroundPickerViewController.m in Sources */,
+				C91512AD166067D800295189 /* JAClockSettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,7 +9,8 @@
 #import "JAViewController.h"
 #import "JAAlarmListViewController.h"
 #import "JAAlarm.h"
-
+#import "JASettings.h"
+#import "JAClockSettingsViewController.h"
 
 #define WEATHER_API_KEY @"c74edf0183141706121311"
 
@@ -23,6 +24,7 @@
 @implementation JAViewController
 
 @synthesize clock = _clock, tabBarController = _tabBarController, weatherRequest = _weatherRequest, dimView = _dimView, aPlayer;
+
 
 - (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -56,16 +58,24 @@
     JAAlarmListViewController *_alarmSettingsController = [[JAAlarmListViewController alloc] init];
     [_alarmSettingsController setTitle:@"Alarms"];
     [_alarmSettingsController setTabBarItem:[[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFeatured tag:0]];
-    UIBarButtonItem *doneAlarmButton = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStyleDone target:self action:@selector(dismissSettingsController:)];
+    UIBarButtonItem *doneAlarmButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(dismissSettingsController:)];
     [_alarmSettingsController.navigationItem setLeftBarButtonItem:doneAlarmButton];
     
     
+    //display settings    
+    JAClockSettingsViewController *_displaySettingsController = [[JAClockSettingsViewController alloc] initWithNibName:@"JAClockSettingsViewController" bundle:[NSBundle mainBundle]];
+    [_displaySettingsController setTitle:@"Display"];
+    [_displaySettingsController setTabBarItem:[[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFavorites tag:1]];
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(dismissSettingsController:)];
+    [_displaySettingsController.navigationItem setLeftBarButtonItem:doneButton];
+    
     //navigation controllers
     UINavigationController *alarmNavController = [[UINavigationController alloc] initWithRootViewController:_alarmSettingsController];
+    UINavigationController *displayNavController = [[UINavigationController alloc] initWithRootViewController:_displaySettingsController];
     
     //tab bar
     _tabBarController = [[UITabBarController alloc] init];
-    [_tabBarController setViewControllers:[NSArray arrayWithObject:alarmNavController]];
+    [_tabBarController setViewControllers:[NSArray arrayWithObjects:alarmNavController, displayNavController, nil]];
     
     //weather request
     _weatherRequest = [[MKWeatherRequest alloc] initWithCoordinate:CLLocationCoordinate2DMake(38.906029,-77.043475) APIKey:WEATHER_API_KEY delegate:self];
@@ -100,11 +110,27 @@
         [_myAlarms addObjectsFromArray:[JAAlarm savedAlarms]];
     }
     
+    //setup bg image
+    [self.bgImageView setImage:[JASettings backgroundImage]];
+    
+    //clock color
+    self.clockLabel.textColor = [JASettings clockColor];
+    
+    //setup seconds
+    if (!_formatter)
+        _formatter = [[NSDateFormatter alloc] init];
+    
+    if ([JASettings showSeconds])
+        [_formatter setDateFormat:@"h:mm:ss"];
+    else
+        [_formatter setDateFormat:@"h:mm"];
+    
+    self.clockLabel.text = [_formatter stringFromDate:[NSDate date]];
+    
 }
 
 - (void) handleAlarmNotification:(NSNotification *)notification
 {
-    NSLog(@"ALARM TRIGGERED: \n%@", [notification object], nil);
     
     _currentAlarm = [notification object];
     
@@ -112,7 +138,6 @@
     NSURL *fileURL;
     
     if (_currentAlarm.sound.collection) {
-        //fileURL = [[_currentAlarm.sound.collection.items objectAtIndex:0] valueForProperty:MPMediaItemPropertyAssetURL];
         
         if (!_musicPlayer) {
             _musicPlayer = [MPMusicPlayerController applicationMusicPlayer];
@@ -209,9 +234,15 @@
 #pragma mark - MKCLock Delegate
 - (void)clock:(MKClock *)clock didSetNewString:(NSString *)theString
 {
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"hh:mm:ss"];
-    self.clockLabel.text = [formatter stringFromDate:[NSDate date]];
+    if (!_formatter)
+        _formatter = [[NSDateFormatter alloc] init];
+    
+    if ([JASettings showSeconds])
+        [_formatter setDateFormat:@"h:mm:ss"];
+    else
+        [_formatter setDateFormat:@"h:mm"];
+    
+    self.clockLabel.text = [_formatter stringFromDate:[NSDate date]];
     
     //check alarms
     /*if (_alarmsOn) {
@@ -268,4 +299,8 @@
     
 }
 
+- (void)viewDidUnload {
+    [self setBgImageView:nil];
+    [super viewDidUnload];
+}
 @end

@@ -39,6 +39,11 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    
+    
+    //cancel all notificaitons
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+     
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -52,10 +57,12 @@
 }
 
 
+//schedule notificaitons
 - (void)scheduleNotifications {
     
     for (JAAlarm *thisAlarm in [JAAlarm savedAlarms]) {
-        //for (NSString *day in thisAlarm.repeatDays) {
+        
+        for (NSString *day in thisAlarm.repeatDays) {
             
             NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
             NSDateComponents *dateComps = [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit  fromDate:[NSDate date]];
@@ -76,14 +83,15 @@
             
             NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:[[thisAlarm.sound.soundFilename componentsSeparatedByString:@"."] objectAtIndex:0]
                                                                       ofType:[[thisAlarm.sound.soundFilename componentsSeparatedByString:@"."] objectAtIndex:1]];
+            
             //localNotif.soundName = soundFilePath;
-        localNotif.soundName = UILocalNotificationDefaultSoundName;
+            localNotif.soundName = UILocalNotificationDefaultSoundName;
         
             NSDictionary *infoDict = [NSDictionary dictionaryWithObject:thisAlarm.alarmID forKey:@"alarmID"];
             localNotif.userInfo = infoDict;
             
             [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
-        //}
+        }
     }
 }
 

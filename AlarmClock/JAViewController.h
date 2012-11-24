@@ -16,6 +16,7 @@
     CGPoint startLocation;
     NSMutableArray *_myAlarms;
     NSDateComponents *_timeComponents;
+    NSDateFormatter *_formatter;
     NSCalendar *_gregorian;
     BOOL _alarmsOn;
     JAAlarm *_currentAlarm;
@@ -27,6 +28,7 @@
 @property (nonatomic, retain) MKWeatherRequest *weatherRequest;
 
 @property (nonatomic, retain) UIView *dimView;
+@property (weak, nonatomic) IBOutlet UIImageView *bgImageView;
 @property (weak, nonatomic) IBOutlet UIButton *settingsButton;
 @property (weak, nonatomic) IBOutlet UILabel *clockLabel;
 @property (weak, nonatomic) IBOutlet UILabel *currentTempLabel;
