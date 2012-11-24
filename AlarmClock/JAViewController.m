@@ -17,8 +17,9 @@
 @interface JAViewController ()
 - (void) settingsButtonPressed:(id)sender;
 - (void) dismissSettingsController:(id)sender;
-- (void)    panGesture:(UIPanGestureRecognizer *)sender;
+- (void) panGesture:(UIPanGestureRecognizer *)sender;
 - (void) handleAlarmNotification:(NSNotification*)notification;
+- (void) stopSleepTimer;
 @end
 
 @implementation JAViewController
@@ -97,6 +98,11 @@
     
 }
 
+- (void)viewDidUnload {
+    [self setBgImageView:nil];
+    [super viewDidUnload];
+}
+
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -127,7 +133,46 @@
     
     self.clockLabel.text = [_formatter stringFromDate:[NSDate date]];
     
+    
 }
+
+
+- (IBAction)sleepButtonPressed:(id)sender {
+    
+    NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:[[[JASound defaultSound].soundFilename componentsSeparatedByString:@"."] objectAtIndex:0]
+                                                              ofType:[[[JASound defaultSound].soundFilename componentsSeparatedByString:@"."] objectAtIndex:1]];
+    NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
+    //NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:[JASound defaultSound].soundFilename];
+    NSError *err;
+    AVAudioPlayer *player = [[AVAudioPlayer alloc] initWithContentsOfURL: fileURL
+                                                                   error:&err];
+    
+    if (err)
+        NSLog(@"ERR: %@", err);
+    
+    sleepTimeLeft = 30.0f;
+    
+    self.aPlayer = player;
+    self.aPlayer.delegate = self;
+    self.aPlayer.volume = sleepVolume = 1.0f;
+    [self.aPlayer setNumberOfLoops:0];
+    [self.aPlayer play];
+    
+    sleepTimer = [[NSTimer alloc] initWithFireDate:[NSDate dateWithTimeInterval:30 sinceDate:[NSDate date]] interval:0 target:self selector:@selector(stopSleepTimer) userInfo:nil repeats:NO];
+    [[NSRunLoop mainRunLoop] addTimer:sleepTimer forMode:NSDefaultRunLoopMode];
+
+    
+}
+
+- (void) stopSleepTimer
+{
+    if (self.aPlayer.playing) {
+        [self.aPlayer stop];
+    }
+
+    sleepTimer = nil;
+}
+
 
 - (void) handleAlarmNotification:(NSNotification *)notification
 {
@@ -175,6 +220,8 @@
             NSLog(@"ERR: %@", err);
         
         self.aPlayer = player;
+        self.aPlayer.delegate = nil;
+        self.aPlayer.volume = 1.0f;
         [self.aPlayer setNumberOfLoops:-1];
         [self.aPlayer play];
     }
@@ -243,22 +290,11 @@
         [_formatter setDateFormat:@"h:mm"];
     
     self.clockLabel.text = [_formatter stringFromDate:[NSDate date]];
-    
-    //check alarms
-    /*if (_alarmsOn) {
-        
-        _timeComponents = [_gregorian components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:[NSDate date]];
-        
-        NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-        NSDateComponents *timeComponents = [gregorian components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:[NSDate date]];
-        
-        for (JAAlarm *alarm in _myAlarms) {
-            if (timeComponents.minute == alarm.timeComponents.minute && timeComponents.hour == alarm.timeComponents.hour) {
-                self.view.backgroundColor = [UIColor whiteColor];
-            }
-        }
-        
-    }*/
+
+    if (sleepTimer) {
+        sleepTimeLeft -= 1.0f;
+        self.aPlayer.volume = sleepVolume = sleepTimeLeft / 30.0f;
+    }
 }
 
 
@@ -299,8 +335,12 @@
     
 }
 
-- (void)viewDidUnload {
-    [self setBgImageView:nil];
-    [super viewDidUnload];
+
+
+
+#pragma mark - AVAudioPlayer Delegate
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
+{
+    
 }
 @end

@@ -11,7 +11,7 @@
 #import "MKWeatherRequest.h"
 #import <AVFoundation/AVFoundation.h>
 
-@interface JAViewController : UIViewController <MKClockDelegate, MKWeatherRequestDelegate, UIAlertViewDelegate>
+@interface JAViewController : UIViewController <MKClockDelegate, MKWeatherRequestDelegate, UIAlertViewDelegate, AVAudioPlayerDelegate>
 {
     CGPoint startLocation;
     NSMutableArray *_myAlarms;
@@ -21,6 +21,9 @@
     BOOL _alarmsOn;
     JAAlarm *_currentAlarm;
     MPMusicPlayerController *_musicPlayer;
+    float sleepVolume;
+    float sleepTimeLeft;
+    NSTimer *sleepTimer;
 }
 
 @property (strong, nonatomic) AVAudioPlayer *aPlayer;
@@ -33,5 +36,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *clockLabel;
 @property (weak, nonatomic) IBOutlet UILabel *currentTempLabel;
 @property (nonatomic, retain) UITabBarController *tabBarController;
+
+- (IBAction)sleepButtonPressed:(id)sender;
 
 @end
