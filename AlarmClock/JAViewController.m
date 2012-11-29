@@ -306,17 +306,17 @@
 - (void) willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
     if (UIInterfaceOrientationIsPortrait(toInterfaceOrientation)) {
-        self.clockLabel.frame = CGRectMake(20, 50, 280, self.view.frame.size.height - 100);
+        self.clockLabel.frame = CGRectMake(20, 50, self.view.frame.size.width - 40, self.view.frame.size.height - 100);
         self.clockLabel.font = [UIFont fontWithName:@"Cochin-Bold" size:110];
-        self.dateLabel.frame = CGRectMake(48, self.clockLabel.frame.origin.y + self.clockLabel.frame.size.height - 140, 225, 29);
+        self.dateLabel.frame = CGRectMake(20, self.clockLabel.center.y + 40, self.view.frame.size.width - 40, 29);
         self.dateLabel.font = [UIFont fontWithName:@"Cochin" size:23];
         
     }
     
     if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
-        self.clockLabel.frame = CGRectMake(20, 50, 440, self.view.frame.size.width - 100);
+        self.clockLabel.frame = CGRectMake(20, 50, self.view.frame.size.height - 40, self.view.frame.size.width - 100);
         self.clockLabel.font = [UIFont fontWithName:@"Cochin-Bold" size:150];
-        self.dateLabel.frame = CGRectMake(20, self.clockLabel.frame.origin.y + self.clockLabel.frame.size.height - 50, 440, 29);
+        self.dateLabel.frame = CGRectMake(20, self.clockLabel.center.y + 60, self.view.frame.size.height - 40, 29);
         self.dateLabel.font = [UIFont fontWithName:@"Cochin" size:23];
         
     }

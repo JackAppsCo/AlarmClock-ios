@@ -24,16 +24,25 @@
     
     [self.saveButton setTarget:self];
     [self.saveButton setAction:@selector(saveSound:)];
+    [self.cancelButton setTarget:self];
+    [self.cancelButton setAction:@selector(cancelButtonPressed:)];
 }
 
 - (void) handleTimer
 {
-	progressView.progress += .07;
+	progressView.progress += .0066;
 	if(progressView.progress == 1.0)
 	{
-		[timer invalidate];
+        if ([timer isValid])
+            [timer invalidate];
 		lblStatusMsg.text = @"Stopped";
 	}
+}
+
+- (void) cancelButtonPressed:(id)sender
+{
+    [self stopRecording];
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 - (void)saveSound:(id)sender
@@ -84,7 +93,7 @@
 	//NSDate *now = [NSDate dateWithTimeIntervalSinceNow:0];
 //	NSString *caldate = [now description];
 //	recorderFilePath = [[NSString stringWithFormat:@"%@/%@.caf", DOCUMENTS_FOLDER, caldate] retain];
-	recorderFilePath = [[NSString stringWithFormat:@"%@/MySound.caf", DOCUMENTS_FOLDER] retain];
+	recorderFilePath = [[NSString stringWithFormat:@"%@/%@", DOCUMENTS_FOLDER, self.nameField.text] retain];
 	
 	NSLog(@"recorderFilePath: %@",recorderFilePath);
 	
@@ -133,18 +142,22 @@
 	}
 	
 	// start recording
-	[recorder recordForDuration:(NSTimeInterval) 2];
+	[recorder recordForDuration:(NSTimeInterval) 30];
 	
 	lblStatusMsg.text = @"Recording...";
 	progressView.progress = 0.0;
 	timer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(handleTimer) userInfo:nil repeats:YES];
+    
+    self.stopButton.enabled = YES;
+    self.startButton.enabled = NO;
 }
 
 - (IBAction) stopRecording
 {
 	[recorder stop];
 	
-	[timer invalidate];
+	if ([timer isValid])
+        [timer invalidate];
 	lblStatusMsg.text = @"Stopped";
 	progressView.progress = 1.0;
 	
@@ -171,7 +184,7 @@
 - (IBAction)playSound
 {
 	if(!recorderFilePath)
-		recorderFilePath = [[NSString stringWithFormat:@"%@/MySound.caf", DOCUMENTS_FOLDER] retain];
+		recorderFilePath = [[NSString stringWithFormat:@"%@/%@", DOCUMENTS_FOLDER, self.nameField.text] retain];
 	
 	//NSLog(@"Playing sound from Path: %@",recorderFilePath);
 	
@@ -193,9 +206,12 @@
 - (void)audioRecorderDidFinishRecording:(AVAudioRecorder *) aRecorder successfully:(BOOL)flag
 {
 	NSLog (@"audioRecorderDidFinishRecording:successfully:");
-	[timer invalidate];
+	if ([timer isValid])
+        [timer invalidate];
 	lblStatusMsg.text = @"Stopped";
 	progressView.progress = 1.0;
+    self.stopButton.enabled = NO;
+    self.startButton.enabled = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -206,6 +222,9 @@
 }
 
 - (void)viewDidUnload {
+    [self setPlayButton:nil];
+    [self setStopButton:nil];
+    [self setStartButton:nil];
     [self setCancelButton:nil];
     [self setSaveButton:nil];
 	// Release any retained subviews of the main view.
@@ -235,9 +254,11 @@
     
     if (self.nameField.text.length > 0) {
         self.saveButton.enabled = YES;
+        self.stopButton.enabled = YES;
     }
     else {
         self.saveButton.enabled = NO;
+        self.stopButton.enabled = NO;
     }
     
     return YES;

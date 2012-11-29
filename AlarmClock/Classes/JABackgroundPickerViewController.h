@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JABackgroundPickerViewController : UIViewController
+@interface JABackgroundPickerViewController : UIViewController <UIImagePickerControllerDelegate, UIActionSheetDelegate>
 
 @property (strong, nonatomic) UIImageView *customImage;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) NSArray *backgroundList;
+@property (strong, nonatomic) NSString *customImageURL;
 
 @end

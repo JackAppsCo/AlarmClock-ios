@@ -11,6 +11,7 @@
 #import "JASettings.h"
 
 @interface JABackgroundPickerViewController ()
+- (void) customImageTapped:(id)sender;
 
 @end
 
@@ -47,10 +48,15 @@
     }
 }
 
+- (void) customImageTapped:(id)sender {
+    UIActionSheet *imageActionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take a photo", @"Camera roll", nil];
+    [imageActionSheet showInView:self.view];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    self.title = @"Background";
     // Do any additional setup after loading the view from its nib.
     
    
@@ -100,12 +106,32 @@
         NSString *customName = @"Custom";
         NSString *bgFilename = @"plus.png";
         
-        UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectInset(currentFrame, 5, 10)];
-        [img setImage:[UIImage imageNamed:bgFilename]];
-        [img setClipsToBounds:YES];
-        [img setContentMode:UIViewContentModeScaleAspectFill];
+        //check to see if there's already been an image chosen
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsPath = [paths objectAtIndex:0]; //Get the docs directory
+        NSString *filePath = [documentsPath stringByAppendingPathComponent:@"customBG.png"]; //Add the file name]
+        NSData *pngData = [NSData dataWithContentsOfFile:filePath];
         
-        UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(img.frame.origin.x, img.frame.origin.y + img.frame.size.height + 10, img.frame.size.width, 45.0f)];
+        //setup custom image
+        self.customImage = [[UIImageView alloc] initWithFrame:CGRectInset(currentFrame, 5, 10)];
+        [self.customImage setClipsToBounds:YES];
+        [self.customImage setContentMode:UIViewContentModeScaleAspectFill];
+        
+        //user custom if if found
+        if (pngData) {
+            [self.customImage setImage:[UIImage imageWithData:pngData]];
+            [self setCustomImageURL:@"custom"];
+        }
+        else {
+            [self.customImage setImage:[UIImage imageNamed:bgFilename]];
+        }
+        
+        UIButton *plusButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [plusButton setFrame:self.customImage.frame];
+        [plusButton addTarget:self action:@selector(customImageTapped:) forControlEvents:UIControlEventTouchUpInside];
+        
+        
+        UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(self.customImage.frame.origin.x, self.customImage.frame.origin.y + self.customImage.frame.size.height + 10, self.customImage.frame.size.width, 45.0f)];
         [lbl setBackgroundColor:[UIColor clearColor]];
         [lbl setTextAlignment:NSTextAlignmentCenter];
         [lbl setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:19.0f]];
@@ -114,8 +140,9 @@
         [lbl setShadowColor:[UIColor darkTextColor]];
         [lbl setText:customName];
         
-        [self.scrollView addSubview:img];
+        [self.scrollView addSubview:self.customImage];
         [self.scrollView addSubview:lbl];
+        [self.scrollView addSubview:plusButton];
         
         [self setSelectedBG:[JASettings backgroundImageName]];
         
@@ -133,5 +160,65 @@
 - (void)viewDidUnload {
     [self setScrollView:nil];
     [super viewDidUnload];
+    
 }
+
+
+#pragma mark - UIImagePickerControllerDelegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    //dismiss the picker view
+    [self dismissModalViewControllerAnimated:YES];
+    
+    // Get the image from the result
+    self.customImageURL = @"custom";
+    [self.customImage setImage:[info valueForKey:@"UIImagePickerControllerOriginalImage"]];
+    
+    NSData *pngData = UIImagePNGRepresentation(self.customImage.image);
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsPath = [paths objectAtIndex:0]; //Get the docs directory
+    NSString *filePath = [documentsPath stringByAppendingPathComponent:@"customBG.png"]; //Add the file name
+    [pngData writeToFile:filePath atomically:YES]; //Write the file
+    
+    //[self reload];
+    
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo {
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+#pragma mark - UIActionSheet Methods
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    
+    switch (buttonIndex) {
+            
+        case 0:
+        {
+            UIImagePickerController *imgPicker = [[UIImagePickerController alloc] init];
+            imgPicker.delegate = self;
+            imgPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+            [self presentModalViewController:imgPicker animated:YES];
+            break;
+        }
+        case 1:
+        {
+            UIImagePickerController *imgPicker = [[UIImagePickerController alloc] init];
+            imgPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            imgPicker.delegate = self;
+            [self presentModalViewController:imgPicker animated:YES];
+            break;
+        }
+        default:
+            break;
+    }
+}
+
 @end

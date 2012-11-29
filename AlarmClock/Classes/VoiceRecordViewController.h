@@ -26,12 +26,16 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *saveButton, *cancelButton;
 @property (strong, nonatomic) IBOutlet UITextField *nameField;
 @property (strong, nonatomic) NSString *recorderFilePath;
+@property (strong, nonatomic) IBOutlet UIButton *startButton;
+@property (strong, nonatomic) IBOutlet UIButton *stopButton;
+@property (strong, nonatomic) IBOutlet UIButton *playButton;
 
 - (IBAction) startRecording;
 - (IBAction) stopRecording;
 - (IBAction)playSound;
 - (void) handleTimer;
 - (void) saveSound:(id)sender;
+- (void) cancelButtonPressed:(id)sender;
 
 @end
 

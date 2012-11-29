@@ -80,8 +80,16 @@
         
         float offset = _backgroundPicker.scrollView.contentOffset.x;
         int page = offset / _backgroundPicker.scrollView.frame.size.width;
-        [JASettings setBackgroundImage:[[_backgroundPicker.backgroundList objectAtIndex:page] objectForKey:@"filename"]];
-        [JASettings setBackgroundImageName:[[_backgroundPicker.backgroundList objectAtIndex:page] objectForKey:@"name"]];
+        if (page >= _backgroundPicker.backgroundList.count) {
+            if (_backgroundPicker.customImageURL.length > 0) {
+                [JASettings setBackgroundImage:_backgroundPicker.customImageURL];
+                [JASettings setBackgroundImageName:@"Custom"];
+            }
+        }
+        else {
+            [JASettings setBackgroundImage:[[_backgroundPicker.backgroundList objectAtIndex:page] objectForKey:@"filename"]];
+            [JASettings setBackgroundImageName:[[_backgroundPicker.backgroundList objectAtIndex:page] objectForKey:@"name"]];
+        }
         
     }
     

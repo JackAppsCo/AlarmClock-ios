@@ -17,11 +17,14 @@
 @interface JASoundSelectorTableViewController : UITableViewController <MPMediaPickerControllerDelegate>
 {
     SystemSoundID soundID;
+    NSString *_currentlyPlayingFilename;
 }
 
 - (id)initWithDelegate:(id <JASoundSelectorTableViewControllerDelegate>)theDelegate;
 - (id)initWithDelegate:(id <JASoundSelectorTableViewControllerDelegate>)theDelegate sound:(JASound*)aSound;
 
+
+@property (strong, nonatomic) AVAudioPlayer *aPlayer;
 @property (strong, nonatomic) NSArray *soundList;
 @property (strong, nonatomic) id <JASoundSelectorTableViewControllerDelegate> delegate;
 @property (strong, nonatomic) JASound *selectedSound;

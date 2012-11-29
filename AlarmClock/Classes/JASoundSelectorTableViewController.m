@@ -29,6 +29,8 @@
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
         
+        _currentlyPlayingFilename = @"";
+        
         [self setDelegate:theDelegate];
         
         //setup the dictionary from Settings.plist
@@ -46,7 +48,9 @@
         else {
             [self setSelectedSound:aSound];
         }
-            
+        
+        self.aPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:nil
+                                               error:nil];
         
     }
     return self;
@@ -72,6 +76,19 @@
 }
 
 
+- (UIButton *) makeDetailDisclosureButtonWithImage:(NSString*)image
+{
+    UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
+    [button setFrame:CGRectMake(0, 0, [UIImage imageNamed:image].size.width, button.imageView.image.size.height)];
+    [button addTarget: self
+               action: @selector(accessoryButtonTapped:withEvent:)
+     forControlEvents: UIControlEventTouchUpInside];
+    
+    return (button);
+}
+
+
 #pragma mark - Rotate  Methods
 - (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
 {
@@ -82,6 +99,7 @@
 {
     return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown;
 }
+
 
 #pragma mark - Table view data source
 
@@ -108,46 +126,74 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+        
     }
     
     if (indexPath.section == 0) {
         // Configure the cell...
         cell.textLabel.text = [(NSDictionary*)[soundList objectAtIndex:indexPath.row] objectForKey:@"name"];
+        cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
         
-        if ([[(NSDictionary*)[soundList objectAtIndex:indexPath.row] objectForKey:@"filename"] isEqualToString:self.selectedSound.soundFilename]) {
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        if ([[(NSDictionary*)[soundList objectAtIndex:indexPath.row] objectForKey:@"filename"] isEqualToString:_currentlyPlayingFilename]) {
+            [cell setAccessoryView:[self makeDetailDisclosureButtonWithImage:@"stopButton.png"]];
         }
         else {
-            cell.accessoryType = UITableViewCellAccessoryNone;
+            [cell setAccessoryView:[self makeDetailDisclosureButtonWithImage:@"playButton.png"]];
+        }
+        
+        if ([[(NSDictionary*)[soundList objectAtIndex:indexPath.row] objectForKey:@"filename"] isEqualToString:self.selectedSound.soundFilename]) {
+            cell.imageView.image = [UIImage imageNamed:@"plus"];
+        }
+        else {
+            cell.imageView.image = nil;
         }
     }
     else if (indexPath.section == 1) {
         if (indexPath.row == 0) {
             cell.textLabel.text = @"Record A New Sound";
+            cell.accessoryType = UITableViewCellAccessoryNone;
         }
         else {
             cell.textLabel.text = [(JASound*)[[JASound savedSounds] objectAtIndex:(indexPath.row - 1)] name];
-            
-            if ([[(JASound*)[[JASound savedSounds] objectAtIndex:(indexPath.row - 1)] soundFilename] isEqualToString:self.selectedSound.soundFilename]) {
-                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+
+            if ([[(JASound*)[[JASound savedSounds] objectAtIndex:(indexPath.row - 1)] soundFilename] isEqualToString:_currentlyPlayingFilename]) {
+                [cell setAccessoryView:[self makeDetailDisclosureButtonWithImage:@"stopButton.png"]];
             }
             else {
-                cell.accessoryType = UITableViewCellAccessoryNone;
+                [cell setAccessoryView:[self makeDetailDisclosureButtonWithImage:@"playButton.png"]];
+            }
+            
+            if ([[(JASound*)[[JASound savedSounds] objectAtIndex:(indexPath.row - 1)] soundFilename] isEqualToString:self.selectedSound.soundFilename]) {
+                cell.imageView.image = [UIImage imageNamed:@"plus"];
+            }
+            else {
+                cell.imageView.image = nil;
             }
         }
     }
     else {
         if (self.selectedSound.collection) {
             cell.textLabel.text = [[self.selectedSound.collection.items objectAtIndex:0] valueForProperty:MPMediaItemPropertyTitle];
+            cell.accessoryView = nil;
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         }
         else {
             cell.textLabel.text = @"Choose From Library";
+            cell.accessoryView = nil;
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
     }
     
     return cell;
+}
+
+- (void) accessoryButtonTapped: (UIControl *) button withEvent: (UIEvent *) event
+{
+    NSIndexPath * indexPath = [self.tableView indexPathForRowAtPoint: [[[event touchesForView: button] anyObject] locationInView: self.tableView]];
+    if ( indexPath == nil )
+        return;
+    
+    [self.tableView.delegate tableView: self.tableView accessoryButtonTappedForRowWithIndexPath: indexPath];
 }
 
 /*
@@ -191,6 +237,68 @@
 
 #pragma mark - Table view delegate
 
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    
+    //check to see if it was a stop button
+    if (self.aPlayer.playing) {
+        
+        if (indexPath.section == 0) {
+            
+            if ([[(NSDictionary*)[soundList objectAtIndex:indexPath.row] objectForKey:@"filename"] isEqualToString:_currentlyPlayingFilename]) {
+                [self.aPlayer stop];
+                _currentlyPlayingFilename = @"";
+                [self.tableView reloadData];
+                return;
+            }
+            
+        }
+        else if (indexPath.section == 1 && indexPath.row != 0) {
+            
+            if ([[(JASound*)[[JASound savedSounds] objectAtIndex:(indexPath.row - 1)] soundFilename] isEqualToString:_currentlyPlayingFilename]) {
+                [self.aPlayer stop];
+                _currentlyPlayingFilename = @"";
+                [self.tableView reloadData];
+                return;
+            }
+        }
+        
+    }
+    
+    NSString *filename, *soundFilePath;
+    NSURL *fileURL;
+    if (indexPath.section == 0) {
+        _currentlyPlayingFilename = filename = [(NSDictionary*)[soundList objectAtIndex:indexPath.row] objectForKey:@"filename"];
+    }
+    else if (indexPath.section == 1 && indexPath.row != 0) {
+        _currentlyPlayingFilename = filename = [(JASound*)[[JASound savedSounds] objectAtIndex:(indexPath.row - 1)] soundFilename];
+    }
+    
+    if ([filename rangeOfString:@".caf"].location == NSNotFound) {
+        soundFilePath = [[NSBundle mainBundle] pathForResource:[[filename componentsSeparatedByString:@"."] objectAtIndex:0]
+                                                        ofType:[[filename componentsSeparatedByString:@"."] objectAtIndex:1]];
+    }
+    else {
+        soundFilePath = filename;
+    }
+    
+    fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
+    
+    NSError *err;
+    AVAudioPlayer *player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL
+                                                                   error:&err];
+    
+    if (err)
+        NSLog(@"ERR: %@", err);
+    
+    self.aPlayer = player;
+    self.aPlayer.delegate = nil;
+    self.aPlayer.volume = 1.0f;
+    [self.aPlayer setNumberOfLoops:-1];
+    [self.aPlayer play];
+    [self.tableView reloadData];
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -202,8 +310,8 @@
         if (indexPath.row == 0) {
             VoiceRecordViewController *recorder = [[VoiceRecordViewController alloc] initWithNibName:@"VoiceRecordViewController" bundle:[NSBundle mainBundle]];
             [self presentModalViewController:recorder animated:YES];
-            [recorder.cancelButton setTarget:self];
-            [recorder.cancelButton setAction:@selector(dismissModalViewControllerAnimated:)];
+            //[recorder.cancelButton setTarget:self];
+            //[recorder.cancelButton setAction:@selector(dismissModalViewControllerAnimated:)];
         }
         else {
             

@@ -7,6 +7,8 @@
 //
 
 #import "JASettings.h"
+#import <AssetsLibrary/AssetsLibrary.h>
+
 
 static JASettings *sharedInstance = nil;
 
@@ -32,10 +34,22 @@ static JASettings *sharedInstance = nil;
 + (UIImage *)backgroundImage
 {
     UIImage *image = [UIImage imageNamed:@"BlackBG"];
-    
+
     //check for bg image
     if ([[NSUserDefaults standardUserDefaults] objectForKey:BG_KEY]) {
-        image = [UIImage imageNamed:[[NSUserDefaults standardUserDefaults] objectForKey:BG_KEY]];
+        if ([[[NSUserDefaults standardUserDefaults] objectForKey:BG_KEY] rangeOfString:@"custom"].location != NSNotFound) {
+            
+            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            NSString *documentsPath = [paths objectAtIndex:0]; //Get the docs directory
+            NSString *filePath = [documentsPath stringByAppendingPathComponent:@"customBG.png"]; //Add the file name
+            NSData *pngData = [NSData dataWithContentsOfFile:filePath];
+            image = [UIImage imageWithData:pngData];
+
+            
+        }
+        else {
+            image = [UIImage imageNamed:[[NSUserDefaults standardUserDefaults] objectForKey:BG_KEY]];
+        }
     }
     
     return image;

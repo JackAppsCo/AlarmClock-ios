@@ -128,6 +128,7 @@
         UIImageView *whiteBG = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height)];
         [whiteBG setImage:[UIImage imageNamed:@"alarmRowBG.png"]];
         cell.backgroundView = whiteBG;
+        cell.detailTextLabel.backgroundColor = [UIColor clearColor];
         
     }
     
