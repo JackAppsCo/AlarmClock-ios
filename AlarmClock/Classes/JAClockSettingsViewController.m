@@ -8,11 +8,11 @@
 
 #import "JAClockSettingsViewController.h"
 #import <QuartzCore/QuartzCore.h>
-#import "JABackgroundPickerViewController.h"
 #import "JASettings.h"
 
 @interface JAClockSettingsViewController ()
 - (void) secondsSwitchChanged:(id)sender;
+- (void) dateSwitchChanged:(id)sender;
 @end
 
 @implementation JAClockSettingsViewController
@@ -63,6 +63,11 @@
         [self.showSecondsSwitch setOn:[JASettings showSeconds]];
         [self.showSecondsSwitch addTarget:self action:@selector(secondsSwitchChanged:) forControlEvents:UIControlEventValueChanged];
         
+        //date switch
+        [self setShowDateSwitch:[[UISwitch alloc] init]];
+        [self.showDateSwitch setOn:[JASettings showDate]];
+        [self.showDateSwitch addTarget:self action:@selector(dateSwitchChanged:) forControlEvents:UIControlEventValueChanged];
+        
     }
     return self;
 }
@@ -71,8 +76,18 @@
 {
     [super viewWillAppear:animated];
     
+    if (_backgroundPicker) {
+        
+        float offset = _backgroundPicker.scrollView.contentOffset.x;
+        int page = offset / _backgroundPicker.scrollView.frame.size.width;
+        [JASettings setBackgroundImage:[[_backgroundPicker.backgroundList objectAtIndex:page] objectForKey:@"filename"]];
+        [JASettings setBackgroundImageName:[[_backgroundPicker.backgroundList objectAtIndex:page] objectForKey:@"name"]];
+        
+    }
+    
     [self.bgImageView setImage:[JASettings backgroundImage]];
     self.timeLabel.textColor = [JASettings clockColor];
+    [self.tableView reloadData];
     
 }
 
@@ -106,6 +121,13 @@
     
 }
 
+- (void) dateSwitchChanged:(id)sender
+{
+    
+    [JASettings setShowDate:[(UISwitch*)sender isOn]];
+    
+}
+
 - (void) raisePicker
 {
     [UIView animateWithDuration:0.3f
@@ -128,13 +150,27 @@
                      completion:^(BOOL finished) {
                          
                      }];
+    
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }
 
+#pragma mark - Rotate  Methods
+- (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+    return UIInterfaceOrientationIsPortrait(toInterfaceOrientation);
+}
+
+- (NSUInteger) supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown;
+}
+
+
 #pragma mark - Table view data source
-//- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    return (indexPath.row == 0) ? 45.0f : 1000.0f;
-//}
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 45.0f;
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -145,7 +181,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 3;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -155,8 +191,8 @@
     
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
-        UIView *whiteBG = [[UIView alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height)];
-        [whiteBG setBackgroundColor:[UIColor whiteColor]];
+        UIImageView *whiteBG = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height)];
+        [whiteBG setImage:[UIImage imageNamed:@"rowBG.png"]];
         cell.backgroundView = whiteBG;
         
     }
@@ -172,7 +208,8 @@
         
         cell.textLabel.text = @"Background Image";
         cell.detailTextLabel.text = [JASettings backgroundImageName];
-        cell.accessoryView = UITableViewCellAccessoryNone;
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
         
     }
     else if (indexPath.row == 1) {
@@ -180,13 +217,34 @@
         
         cell.textLabel.text = @"Clock Text Color";
         cell.detailTextLabel.text = [JASettings clockColorName];
-        cell.accessoryView = UITableViewCellAccessoryNone;
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
         
     }
     else if (indexPath.row == 2) {
         [cell.layer setShadowColor:[UIColor clearColor].CGColor];
+        
         cell.textLabel.text = @"Show Seconds";
         cell.accessoryView = self.showSecondsSwitch;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;        
+    }
+    else if (indexPath.row == 3) {
+        [cell.layer setShadowColor:[UIColor clearColor].CGColor];
+        
+        cell.textLabel.text = @"Show Date";
+        cell.accessoryView = self.showDateSwitch;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+    else {
+        [cell.layer setShadowColor:[UIColor clearColor].CGColor];
+        
+        cell.textLabel.text = @"";
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        UIView *whiteBG = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width, 500.0f)];
+        [whiteBG setBackgroundColor:[UIColor whiteColor]];
+        [cell addSubview:whiteBG];
         
     }
     
@@ -240,9 +298,29 @@
     switch (indexPath.row) {
         case 0:
         {
-            _selectedPicker = indexPath.row;
+            if(!_backgroundPicker) {
+                
+                _backgroundPicker = [[JABackgroundPickerViewController alloc] initWithNibName:@"JABackgroundPickerViewController" bundle:[NSBundle mainBundle]];
+                [_backgroundPicker setHidesBottomBarWhenPushed:YES];
+             
+            }
+            
+            
+            
+            [self.navigationController pushViewController:_backgroundPicker animated:YES];
+            
+            /*_selectedPicker = indexPath.row;
             [self.pickerView reloadAllComponents];
-            [self raisePicker];
+            
+            int selectedIndex = 0;
+            for (NSDictionary *bg in _bgList) {
+                if ([[bg objectForKey:@"name"] isEqualToString:[JASettings backgroundImageName]])
+                    break;
+                else
+                    selectedIndex += 1;
+            }
+            [self.pickerView selectRow:selectedIndex inComponent:0 animated:NO];
+            [self raisePicker];*/
             
             break;
         }
@@ -251,6 +329,15 @@
             
             _selectedPicker = indexPath.row;
             [self.pickerView reloadAllComponents];
+            
+            int selectedIndex = 0;
+            for (NSDictionary *color in _fontColorList) {
+                if ([[color objectForKey:@"name"] isEqualToString:[JASettings clockColorName]])
+                    break;
+                else
+                    selectedIndex += 1;
+            }
+            [self.pickerView selectRow:selectedIndex inComponent:0 animated:NO];
             [self raisePicker];
             
             break;

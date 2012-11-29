@@ -10,6 +10,7 @@
 
 @interface JABackgroundPickerViewController : UIViewController
 
+@property (strong, nonatomic) UIImageView *customImage;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) NSArray *backgroundList;
 

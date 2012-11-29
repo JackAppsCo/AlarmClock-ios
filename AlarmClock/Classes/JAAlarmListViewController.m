@@ -24,6 +24,8 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        
         UIBarButtonItem *addAlarmButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addAlarm)];
         NSArray *rightButtons = [[NSArray alloc] initWithObjects:addAlarmButton, nil];
         [self.navigationItem setRightBarButtonItems:rightButtons];
@@ -85,7 +87,23 @@
     
 }
 
+#pragma mark - Rotate  Methods
+- (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+    return UIInterfaceOrientationIsPortrait(toInterfaceOrientation);
+}
+
+- (NSUInteger) supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown;
+}
+
 #pragma mark - Table view data source
+
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 50.0f;
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -107,6 +125,9 @@
     if (!cell) {
         
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        UIImageView *whiteBG = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height)];
+        [whiteBG setImage:[UIImage imageNamed:@"alarmRowBG.png"]];
+        cell.backgroundView = whiteBG;
         
     }
     

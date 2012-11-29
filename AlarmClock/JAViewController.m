@@ -40,6 +40,10 @@
         _timeComponents = [[NSDateComponents alloc] init];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleAlarmNotification:) name:@"alarmTriggered" object:nil];
         
+        NSError *err = nil;
+        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&err];
+        [[AVAudioSession sharedInstance] setActive:YES error:&err];
+        
     }
     
     return self;
@@ -90,7 +94,8 @@
     [self.view addGestureRecognizer:panGesture];
  
     //init dimview
-    _dimView = [[UIView alloc] initWithFrame:CGRectInset(self.view.frame, 0, 0)];
+    _dimView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1200, 1200)];
+    _dimView.autoresizesSubviews = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     _dimView.userInteractionEnabled = NO;
     _dimView.backgroundColor = [UIColor blackColor];
     _dimView.alpha = 0.0f;
@@ -100,6 +105,7 @@
 
 - (void)viewDidUnload {
     [self setBgImageView:nil];
+    [self setDateLabel:nil];
     [super viewDidUnload];
 }
 
@@ -121,6 +127,8 @@
     
     //clock color
     self.clockLabel.textColor = [JASettings clockColor];
+    self.dateLabel.textColor = [JASettings clockColor];
+    self.currentTempLabel.textColor = [JASettings clockColor];
     
     //setup seconds
     if (!_formatter)
@@ -133,14 +141,29 @@
     
     self.clockLabel.text = [_formatter stringFromDate:[NSDate date]];
     
+    if ([JASettings showDate]) {
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"eee MMM dd, yyyy"];
+        self.dateLabel.text = [dateFormatter stringFromDate:[NSDate date]];
+    }
+    else {
+        self.dateLabel.text = @"";
+    }
+    
     
 }
 
 
 - (IBAction)sleepButtonPressed:(id)sender {
     
-    NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:[[[JASound defaultSound].soundFilename componentsSeparatedByString:@"."] objectAtIndex:0]
-                                                              ofType:[[[JASound defaultSound].soundFilename componentsSeparatedByString:@"."] objectAtIndex:1]];
+    if (self.aPlayer.playing) {
+        [self.aPlayer stop];
+        sleepTimer = nil;
+        return;
+    }
+    
+    
+    NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"Beach" ofType:@"wav"];
     NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
     //NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:[JASound defaultSound].soundFilename];
     NSError *err;
@@ -150,15 +173,17 @@
     if (err)
         NSLog(@"ERR: %@", err);
     
-    sleepTimeLeft = 30.0f;
+    sleepTimeLeft = 300.0f;
+    
+
     
     self.aPlayer = player;
     self.aPlayer.delegate = self;
     self.aPlayer.volume = sleepVolume = 1.0f;
-    [self.aPlayer setNumberOfLoops:0];
+    [self.aPlayer setNumberOfLoops:-1];
     [self.aPlayer play];
     
-    sleepTimer = [[NSTimer alloc] initWithFireDate:[NSDate dateWithTimeInterval:30 sinceDate:[NSDate date]] interval:0 target:self selector:@selector(stopSleepTimer) userInfo:nil repeats:NO];
+    sleepTimer = [[NSTimer alloc] initWithFireDate:[NSDate dateWithTimeInterval:300 sinceDate:[NSDate date]] interval:0 target:self selector:@selector(stopSleepTimer) userInfo:nil repeats:NO];
     [[NSRunLoop mainRunLoop] addTimer:sleepTimer forMode:NSDefaultRunLoopMode];
 
     
@@ -278,6 +303,25 @@
     return YES;
 }
 
+- (void) willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    if (UIInterfaceOrientationIsPortrait(toInterfaceOrientation)) {
+        self.clockLabel.frame = CGRectMake(20, 50, 280, self.view.frame.size.height - 100);
+        self.clockLabel.font = [UIFont fontWithName:@"Cochin-Bold" size:110];
+        self.dateLabel.frame = CGRectMake(48, self.clockLabel.frame.origin.y + self.clockLabel.frame.size.height - 140, 225, 29);
+        self.dateLabel.font = [UIFont fontWithName:@"Cochin" size:23];
+        
+    }
+    
+    if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
+        self.clockLabel.frame = CGRectMake(20, 50, 440, self.view.frame.size.width - 100);
+        self.clockLabel.font = [UIFont fontWithName:@"Cochin-Bold" size:150];
+        self.dateLabel.frame = CGRectMake(20, self.clockLabel.frame.origin.y + self.clockLabel.frame.size.height - 50, 440, 29);
+        self.dateLabel.font = [UIFont fontWithName:@"Cochin" size:23];
+        
+    }
+}
+
 #pragma mark - MKCLock Delegate
 - (void)clock:(MKClock *)clock didSetNewString:(NSString *)theString
 {
@@ -290,10 +334,21 @@
         [_formatter setDateFormat:@"h:mm"];
     
     self.clockLabel.text = [_formatter stringFromDate:[NSDate date]];
-
+    
+    //change the date if needed
+    if ([JASettings showDate]) {
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"eee MMM dd, yyyy"];
+        self.dateLabel.text = [dateFormatter stringFromDate:[NSDate date]];
+    }
+    else {
+        self.dateLabel.text = @"";
+    }
+    
+    
     if (sleepTimer) {
         sleepTimeLeft -= 1.0f;
-        self.aPlayer.volume = sleepVolume = sleepTimeLeft / 30.0f;
+        self.aPlayer.volume = sleepVolume = sleepTimeLeft / 300.0f;
     }
 }
 

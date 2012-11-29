@@ -15,6 +15,7 @@ static JASettings *sharedInstance = nil;
 #define COLOR_KEY @"clockColor"
 #define COLOR_NAME_KEY @"clockColorName"
 #define SECONDS_KEY @"showSeconds"
+#define DATE_KEY @"showDate"
 
 @implementation JASettings
 
@@ -132,6 +133,26 @@ static JASettings *sharedInstance = nil;
 {
 
     [[NSUserDefaults standardUserDefaults] setBool:show forKey:SECONDS_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+}
+
++ (BOOL) showDate
+{
+    BOOL showDate = NO;
+    
+    //check for bg image name
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:DATE_KEY]) {
+        showDate = [[NSUserDefaults standardUserDefaults] boolForKey:DATE_KEY];
+    }
+    
+    return showDate;
+}
+
++ (void) setShowDate:(BOOL)show
+{
+    
+    [[NSUserDefaults standardUserDefaults] setBool:show forKey:DATE_KEY];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
 }

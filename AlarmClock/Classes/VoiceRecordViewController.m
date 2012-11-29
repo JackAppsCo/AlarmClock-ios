@@ -217,6 +217,17 @@
     [super dealloc];
 }
 
+#pragma mark - Rotate  Methods
+- (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+    return UIInterfaceOrientationIsPortrait(toInterfaceOrientation);
+}
+
+- (NSUInteger) supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown;
+}
+
 #pragma mark - UITextField Delegate
 - (BOOL) textFieldShouldReturn:(UITextField *)textField
 {

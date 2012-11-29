@@ -36,6 +36,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *clockLabel;
 @property (weak, nonatomic) IBOutlet UILabel *currentTempLabel;
 @property (nonatomic, retain) UITabBarController *tabBarController;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
 - (IBAction)sleepButtonPressed:(id)sender;
 

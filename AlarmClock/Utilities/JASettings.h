@@ -23,5 +23,7 @@
 + (void) setClockColorName:(NSString*)cColorName;
 + (BOOL) showSeconds;
 + (void) setShowSeconds:(BOOL)show;
++ (BOOL) showDate;
++ (void) setShowDate:(BOOL)show;
 
 @end

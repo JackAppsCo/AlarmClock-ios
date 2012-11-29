@@ -7,18 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JABackgroundPickerViewController.h"
 
 @interface JAClockSettingsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
 {
     NSArray *_bgList, *_fontColorList;
     int _selectedPicker;
     NSDateFormatter *_dateFormatter;
+    JABackgroundPickerViewController *_backgroundPicker;
 }
 
 @property (strong, nonatomic) UIPickerView *pickerView;
 @property (weak, nonatomic) IBOutlet UIImageView *bgImageView;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) UISwitch *showSecondsSwitch;
+@property (strong, nonatomic) UISwitch *showSecondsSwitch, *showDateSwitch;
 
 @end

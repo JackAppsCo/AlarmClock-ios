@@ -9,6 +9,25 @@
 #import "JAAppDelegate.h"
 #import "JAViewController.h"
 
+@implementation UITabBarController (Rotation)
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    /*if ([self.selectedViewController isKindOfClass:[UINavigationController class]]) {
+        UIViewController *rootController = [((UINavigationController *)self.selectedViewController).viewControllers objectAtIndex:0];
+        return [rootController shouldAutorotateToInterfaceOrientation:interfaceOrientation];
+    }
+    return [self.selectedViewController shouldAutorotateToInterfaceOrientation:interfaceOrientation];*/
+    return UIInterfaceOrientationIsPortrait(interfaceOrientation);
+}
+
+- (NSUInteger) supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown;
+}
+
+@end
+
 @implementation JAAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -59,10 +78,10 @@
 
 //schedule notificaitons
 - (void)scheduleNotifications {
-    
+    BOOL test = NO;
     for (JAAlarm *thisAlarm in [JAAlarm savedAlarms]) {
-        
-        for (NSString *day in thisAlarm.repeatDays) {
+        if (thisAlarm.enabled) {
+        //for (NSString *day in thisAlarm.repeatDays) {
             
             NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
             NSDateComponents *dateComps = [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit  fromDate:[NSDate date]];
@@ -83,9 +102,8 @@
             
             NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:[[thisAlarm.sound.soundFilename componentsSeparatedByString:@"."] objectAtIndex:0]
                                                                       ofType:[[thisAlarm.sound.soundFilename componentsSeparatedByString:@"."] objectAtIndex:1]];
-            
-            //localNotif.soundName = soundFilePath;
-            localNotif.soundName = UILocalNotificationDefaultSoundName;
+
+        localNotif.soundName = thisAlarm.sound.soundFilename;
         
             NSDictionary *infoDict = [NSDictionary dictionaryWithObject:thisAlarm.alarmID forKey:@"alarmID"];
             localNotif.userInfo = infoDict;
@@ -93,6 +111,7 @@
             [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
         }
     }
+    //}
 }
 
 @end
