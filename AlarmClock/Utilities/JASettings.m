@@ -18,6 +18,7 @@ static JASettings *sharedInstance = nil;
 #define COLOR_NAME_KEY @"clockColorName"
 #define SECONDS_KEY @"showSeconds"
 #define DATE_KEY @"showDate"
+#define FARENHEIT_KEY @"farenheight"
 
 @implementation JASettings
 
@@ -169,6 +170,24 @@ static JASettings *sharedInstance = nil;
     [[NSUserDefaults standardUserDefaults] setBool:show forKey:DATE_KEY];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
+}
+
++ (BOOL) farenheit
+{
+    BOOL far = NO;
+    
+    //check for bg image name
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:FARENHEIT_KEY]) {
+        far = [[NSUserDefaults standardUserDefaults] boolForKey:FARENHEIT_KEY];
+    }
+    
+    return far;
+}
+
++ (void) setFarenheit:(BOOL)farenheit
+{
+    [[NSUserDefaults standardUserDefaults] setBool:farenheit forKey:FARENHEIT_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 #pragma mark - Class Methods

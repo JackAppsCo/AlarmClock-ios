@@ -35,6 +35,7 @@
 		C93A02281666DAE800E1A273 /* stopButton.png in Resources */ = {isa = PBXBuildFile; fileRef = C93A02241666DAE800E1A273 /* stopButton.png */; };
 		C93A02291666DAE800E1A273 /* stopButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C93A02251666DAE800E1A273 /* stopButton@2x.png */; };
 		C93A022A1666DAE800E1A273 /* playButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C93A02261666DAE800E1A273 /* playButton@2x.png */; };
+		C93A02361666F84300E1A273 /* JAMiscSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C93A02341666F84300E1A273 /* JAMiscSettingsViewController.m */; };
 		C93AC1281665B1F70065798B /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = C93AC1271665B1F70065798B /* plus.png */; };
 		C93AC1331665BD1F0065798B /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C93AC1321665BD1F0065798B /* AssetsLibrary.framework */; };
 		C95BDD90165D711D005AEEFC /* BlackBG.png in Resources */ = {isa = PBXBuildFile; fileRef = C95BDD8F165D711D005AEEFC /* BlackBG.png */; };
@@ -118,6 +119,8 @@
 		C93A02241666DAE800E1A273 /* stopButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stopButton.png; sourceTree = "<group>"; };
 		C93A02251666DAE800E1A273 /* stopButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stopButton@2x.png"; sourceTree = "<group>"; };
 		C93A02261666DAE800E1A273 /* playButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playButton@2x.png"; sourceTree = "<group>"; };
+		C93A02331666F84300E1A273 /* JAMiscSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JAMiscSettingsViewController.h; path = Classes/JAMiscSettingsViewController.h; sourceTree = "<group>"; };
+		C93A02341666F84300E1A273 /* JAMiscSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JAMiscSettingsViewController.m; path = Classes/JAMiscSettingsViewController.m; sourceTree = "<group>"; };
 		C93AC1271665B1F70065798B /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = plus.png; path = Images/plus.png; sourceTree = "<group>"; };
 		C93AC1321665BD1F0065798B /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		C95BDD8F165D711D005AEEFC /* BlackBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BlackBG.png; path = Images/BlackBG.png; sourceTree = "<group>"; };
@@ -226,6 +229,15 @@
 			name = "Clock Management";
 			sourceTree = "<group>";
 		};
+		C93A02311666F81100E1A273 /* MiscSettings */ = {
+			isa = PBXGroup;
+			children = (
+				C93A02331666F84300E1A273 /* JAMiscSettingsViewController.h */,
+				C93A02341666F84300E1A273 /* JAMiscSettingsViewController.m */,
+			);
+			name = MiscSettings;
+			sourceTree = "<group>";
+		};
 		C95BDD92165DBF3D005AEEFC /* Repeat Selector */ = {
 			isa = PBXGroup;
 			children = (
@@ -325,7 +337,6 @@
 		C9E6403716528B7500A388C6 = {
 			isa = PBXGroup;
 			children = (
-				C93AC1321665BD1F0065798B /* AssetsLibrary.framework */,
 				C9A0E45D1654A4EE000BB045 /* AlarmClockIcon114.png */,
 				C9A0E45B1654A4E9000BB045 /* AlarmClockIcon57.png */,
 				C9E6404C16528B7500A388C6 /* AlarmClock */,
@@ -345,6 +356,7 @@
 		C9E6404516528B7500A388C6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C93AC1321665BD1F0065798B /* AssetsLibrary.framework */,
 				C95BDD9A165E7F85005AEEFC /* MediaPlayer.framework */,
 				C988961A165805250072EC6E /* AVFoundation.framework */,
 				C98895E41657FCC70072EC6E /* QuartzCore.framework */,
@@ -388,6 +400,7 @@
 		C9E6406916528B7C00A388C6 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C93A02311666F81100E1A273 /* MiscSettings */,
 				C9A2BBEF165F197100F09634 /* Display Settings */,
 				C9349E12165A858D0058D6EB /* Clock Management */,
 				C98895BA1657EEB20072EC6E /* Sound Selector */,
@@ -592,6 +605,7 @@
 				C9A2BBF6165F19D500F09634 /* JASettings.m in Sources */,
 				C9A2BBFB165F235A00F09634 /* JABackgroundPickerViewController.m in Sources */,
 				C91512AD166067D800295189 /* JAClockSettingsViewController.m in Sources */,
+				C93A02361666F84300E1A273 /* JAMiscSettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

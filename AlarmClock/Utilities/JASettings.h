@@ -25,5 +25,7 @@
 + (void) setShowSeconds:(BOOL)show;
 + (BOOL) showDate;
 + (void) setShowDate:(BOOL)show;
++ (BOOL) farenheit;
++ (void) setFarenheit:(BOOL)farenheit;
 
 @end
