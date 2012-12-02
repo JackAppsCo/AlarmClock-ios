@@ -27,5 +27,8 @@
 + (void) setShowDate:(BOOL)show;
 + (BOOL) farenheit;
 + (void) setFarenheit:(BOOL)farenheit;
++ (BOOL) alarmsEnabled;
++ (void) setAlarmsEnabled:(BOOL)enabled;
+
 
 @end

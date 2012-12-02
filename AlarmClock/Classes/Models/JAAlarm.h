@@ -15,7 +15,7 @@
 
 @property NSDateComponents *timeComponents;
 @property NSDate *lastFireDate;
-@property NSNumber *alarmID;
+@property NSNumber *alarmID, *snoozeTime;
 @property NSString *name;
 @property BOOL *enabled;
 @property JASound *sound;
@@ -24,7 +24,7 @@
 + (void) saveAlarm:(JAAlarm*)theAlarm;
 + (void) removeAlarm:(JAAlarm*)theAlarm;
 + (NSArray*) savedAlarms;
-
++ (int)numberOfEnabledAlarms;
 
 //check if alarm should trigger today
 //TODO

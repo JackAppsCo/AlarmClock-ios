@@ -11,6 +11,7 @@
 #import "JAAlarm.h"
 #import "JASettings.h"
 #import "JAClockSettingsViewController.h"
+#import "JAMiscSettingsViewController.h"
 
 #define WEATHER_API_KEY @"c74edf0183141706121311"
 
@@ -62,7 +63,7 @@
     //alarm settings
     JAAlarmListViewController *_alarmSettingsController = [[JAAlarmListViewController alloc] init];
     [_alarmSettingsController setTitle:@"Alarms"];
-    [_alarmSettingsController setTabBarItem:[[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFeatured tag:0]];
+    [_alarmSettingsController setTabBarItem:[[UITabBarItem alloc] initWithTitle:@"Alarms" image:[UIImage imageNamed:@""] tag:0]];
     UIBarButtonItem *doneAlarmButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(dismissSettingsController:)];
     [_alarmSettingsController.navigationItem setLeftBarButtonItem:doneAlarmButton];
     
@@ -70,21 +71,29 @@
     //display settings    
     JAClockSettingsViewController *_displaySettingsController = [[JAClockSettingsViewController alloc] initWithNibName:@"JAClockSettingsViewController" bundle:[NSBundle mainBundle]];
     [_displaySettingsController setTitle:@"Display"];
-    [_displaySettingsController setTabBarItem:[[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFavorites tag:1]];
+    [_displaySettingsController setTabBarItem:[[UITabBarItem alloc] initWithTitle:@"Display" image:[UIImage imageNamed:@""] tag:1]];
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(dismissSettingsController:)];
     [_displaySettingsController.navigationItem setLeftBarButtonItem:doneButton];
+    
+    //misc settings
+    JAMiscSettingsViewController *_miscSettingsController = [[JAMiscSettingsViewController alloc] init];
+    [_miscSettingsController setTitle:@"Settings"];
+    [_miscSettingsController setTabBarItem:[[UITabBarItem alloc] initWithTitle:@"Misc" image:[UIImage imageNamed:@""] tag:2]];
+    UIBarButtonItem *doneMiscButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(dismissSettingsController:)];
+    [_miscSettingsController.navigationItem setLeftBarButtonItem:doneMiscButton];
     
     //navigation controllers
     UINavigationController *alarmNavController = [[UINavigationController alloc] initWithRootViewController:_alarmSettingsController];
     UINavigationController *displayNavController = [[UINavigationController alloc] initWithRootViewController:_displaySettingsController];
+    UINavigationController *settingsNavController = [[UINavigationController alloc] initWithRootViewController:_miscSettingsController];
     
     //tab bar
     _tabBarController = [[UITabBarController alloc] init];
-    [_tabBarController setViewControllers:[NSArray arrayWithObjects:alarmNavController, displayNavController, nil]];
+    [_tabBarController setViewControllers:[NSArray arrayWithObjects:alarmNavController, displayNavController, settingsNavController, nil]];
     
     //weather request
     _weatherRequest = [[MKWeatherRequest alloc] initWithCoordinate:CLLocationCoordinate2DMake(38.906029,-77.043475) APIKey:WEATHER_API_KEY delegate:self];
-    [_weatherRequest currentWeather];
+    [_weatherRequest weatherForcast];
     
     //settings button
     [self.settingsButton addTarget:self action:@selector(settingsButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -101,17 +110,47 @@
     _dimView.alpha = 0.0f;
     [self.view addSubview:_dimView];
     
+    //setup clock label frame and font
+    self.clockLabel.frame = CGRectMake(20, 50, self.view.frame.size.width - 40, self.view.frame.size.height - 100);
+    self.clockLabel.font = [UIFont fontWithName:@"Gotham Black" size:([JASettings showSeconds]) ? 55 : 85];
+    self.dateLabel.frame = CGRectMake(20, self.clockLabel.center.y + 40, self.view.frame.size.width - 40, 29);
+    self.dateLabel.font = [UIFont fontWithName:@"Cochin" size:23];
+    
+}
+
+- (void) setAlarmIcon
+{
+    if (![JASettings alarmsEnabled]) {
+        [self.alarmButton setBackgroundImage:[UIImage imageNamed:@"alarmOffIcon.png"] forState:UIControlStateNormal];
+        return;
+    }
+    
+    if ([JAAlarm numberOfEnabledAlarms] <= 0) {
+        [self.alarmButton setHidden:YES];
+    }
+    else if ([JAAlarm numberOfEnabledAlarms] <= 6) {
+        [self.alarmButton setBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat:@"fullAlarmIcon%i.png", [JAAlarm numberOfEnabledAlarms]]] forState:UIControlStateNormal];
+    }
+    else {
+        [self.alarmButton setBackgroundImage:[UIImage imageNamed:@"fullAlarmIcon.png"] forState:UIControlStateNormal];
+    }
+    
 }
 
 - (void)viewDidUnload {
     [self setBgImageView:nil];
     [self setDateLabel:nil];
+    [self setAlarmButton:nil];
+    [self setLowTempLabel:nil];
+    [self setHighTempLabel:nil];
     [super viewDidUnload];
 }
 
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [self setAlarmIcon];
     
     //grab alarms
     if (!_myAlarms) {
@@ -134,10 +173,14 @@
     if (!_formatter)
         _formatter = [[NSDateFormatter alloc] init];
     
-    if ([JASettings showSeconds])
+    if ([JASettings showSeconds]) {
         [_formatter setDateFormat:@"h:mm:ss"];
-    else
+        [self.clockLabel setTextAlignment:UITextAlignmentLeft];
+    }
+    else {
         [_formatter setDateFormat:@"h:mm"];
+        [self.clockLabel setTextAlignment:UITextAlignmentCenter];
+    }
     
     self.clockLabel.text = [_formatter stringFromDate:[NSDate date]];
     
@@ -149,6 +192,9 @@
     else {
         self.dateLabel.text = @"";
     }
+    
+    //setup the weather labels
+    [self setupWeather];
     
     
 }
@@ -189,6 +235,14 @@
     
 }
 
+- (IBAction)alarmButtonPressed:(id)sender {
+
+    [JASettings setAlarmsEnabled:![JASettings alarmsEnabled]];
+    
+    [self setAlarmIcon];
+    
+}
+
 - (void) stopSleepTimer
 {
     if (self.aPlayer.playing) {
@@ -201,6 +255,10 @@
 
 - (void) handleAlarmNotification:(NSNotification *)notification
 {
+    
+    //dont do anything if alarms are disabled
+    if (![JASettings alarmsEnabled])
+        return;
     
     _currentAlarm = [notification object];
     
@@ -307,7 +365,7 @@
 {
     if (UIInterfaceOrientationIsPortrait(toInterfaceOrientation)) {
         self.clockLabel.frame = CGRectMake(20, 50, self.view.frame.size.width - 40, self.view.frame.size.height - 100);
-        self.clockLabel.font = [UIFont fontWithName:@"Cochin-Bold" size:110];
+        self.clockLabel.font = [UIFont fontWithName:@"Gotham Black" size:([JASettings showSeconds]) ? 55 : 85];
         self.dateLabel.frame = CGRectMake(20, self.clockLabel.center.y + 40, self.view.frame.size.width - 40, 29);
         self.dateLabel.font = [UIFont fontWithName:@"Cochin" size:23];
         
@@ -315,7 +373,7 @@
     
     if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
         self.clockLabel.frame = CGRectMake(20, 50, self.view.frame.size.height - 40, self.view.frame.size.width - 100);
-        self.clockLabel.font = [UIFont fontWithName:@"Cochin-Bold" size:150];
+        self.clockLabel.font = [UIFont fontWithName:@"Gotham Black" size:([JASettings showSeconds]) ? 87 : 110];
         self.dateLabel.frame = CGRectMake(20, self.clockLabel.center.y + 60, self.view.frame.size.height - 40, 29);
         self.dateLabel.font = [UIFont fontWithName:@"Cochin" size:23];
         
@@ -367,13 +425,27 @@
 #pragma mark - MKWeatherRequest Delegate
 - (void)weatherData:(NSArray *)data fromRequest:(MKWeatherRequest *)request
 {
-    if (data.count > 1) {
-        NSDictionary *weatherDict = [data objectAtIndex:1];
-        self.currentTempLabel.text = [NSString stringWithFormat:@"%0.0f˚F", [[weatherDict objectForKey:WEATHER_TEMP_F] floatValue], nil];
+    _weatherData = [[NSArray alloc] initWithArray:data];
+    
+    [self setupWeather];
+    
+}
+
+- (void) setupWeather
+{
+    if (_weatherData.count > 1) {
+        NSDictionary *weatherDict = [_weatherData objectAtIndex:1];
+        self.currentTempLabel.text = [NSString stringWithFormat:@"%0.0f˚", [[weatherDict objectForKey:([JASettings farenheit]) ? WEATHER_TEMP_F : WEATHER_TEMP_C] floatValue], nil];
+    }
+    
+    if (_weatherData.count > 2) {
+        NSDictionary *weatherDict = [_weatherData objectAtIndex:2];
+        self.highTempLabel.text = [NSString stringWithFormat:@"Hi: %0.0f˚", [[weatherDict objectForKey:([JASettings farenheit]) ? WEATHER_FORCAST_TEMP_MAX_F : WEATHER_FORCAST_TEMP_MAX_C] floatValue], nil];
+        self.lowTempLabel.text = [NSString stringWithFormat:@"Low: %0.0f˚", [[weatherDict objectForKey:([JASettings farenheit]) ? WEATHER_FORCAST_TEMP_MIN_F : WEATHER_FORCAST_TEMP_MIN_C] floatValue], nil];
     }
 }
 
-#pragma mark - UIAlertViewDelegate 
+#pragma mark - UIAlertViewDelegate
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     
     if (buttonIndex == 0) {

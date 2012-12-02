@@ -19,6 +19,7 @@ static JASettings *sharedInstance = nil;
 #define SECONDS_KEY @"showSeconds"
 #define DATE_KEY @"showDate"
 #define FARENHEIT_KEY @"farenheight"
+#define ALARMS_ENABLED_KEY @"alarmsEnabled"
 
 @implementation JASettings
 
@@ -141,7 +142,7 @@ static JASettings *sharedInstance = nil;
         showSeconds = [[NSUserDefaults standardUserDefaults] boolForKey:SECONDS_KEY];
     }
     
-    return showSeconds;
+    return [[NSUserDefaults standardUserDefaults] boolForKey:SECONDS_KEY];
 }
 
 + (void) setShowSeconds:(BOOL)show
@@ -161,7 +162,7 @@ static JASettings *sharedInstance = nil;
         showDate = [[NSUserDefaults standardUserDefaults] boolForKey:DATE_KEY];
     }
     
-    return showDate;
+    return [[NSUserDefaults standardUserDefaults] boolForKey:DATE_KEY];
 }
 
 + (void) setShowDate:(BOOL)show
@@ -181,12 +182,30 @@ static JASettings *sharedInstance = nil;
         far = [[NSUserDefaults standardUserDefaults] boolForKey:FARENHEIT_KEY];
     }
     
-    return far;
+    return [[NSUserDefaults standardUserDefaults] boolForKey:FARENHEIT_KEY];
 }
 
 + (void) setFarenheit:(BOOL)farenheit
 {
     [[NSUserDefaults standardUserDefaults] setBool:farenheit forKey:FARENHEIT_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (BOOL) alarmsEnabled
+{
+    BOOL en = YES;
+    
+    //check for bg image name
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:ALARMS_ENABLED_KEY]) {
+        en = [[NSUserDefaults standardUserDefaults] boolForKey:ALARMS_ENABLED_KEY];
+    }
+    
+    return [[NSUserDefaults standardUserDefaults] boolForKey:ALARMS_ENABLED_KEY];
+}
+
++ (void) setAlarmsEnabled:(BOOL)enabled
+{
+    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:ALARMS_ENABLED_KEY];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 

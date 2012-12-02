@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C911EF3E166BDBCE0081A0FF /* Gotham-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C911EF3D166BDBCE0081A0FF /* Gotham-Black.ttf */; };
 		C91512AD166067D800295189 /* JAClockSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C91512AB166067D800295189 /* JAClockSettingsViewController.m */; };
 		C91512AE166067D800295189 /* JAClockSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C91512AC166067D800295189 /* JAClockSettingsViewController.xib */; };
 		C91F88441658493F004F0943 /* AlarmClockIcon3_114.png in Resources */ = {isa = PBXBuildFile; fileRef = C91F88421658493F004F0943 /* AlarmClockIcon3_114.png */; };
@@ -41,6 +42,26 @@
 		C95BDD90165D711D005AEEFC /* BlackBG.png in Resources */ = {isa = PBXBuildFile; fileRef = C95BDD8F165D711D005AEEFC /* BlackBG.png */; };
 		C95BDD95165DBFDA005AEEFC /* JARepeatTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C95BDD94165DBFDA005AEEFC /* JARepeatTableViewController.m */; };
 		C95BDD9B165E7F86005AEEFC /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C95BDD9A165E7F85005AEEFC /* MediaPlayer.framework */; };
+		C95D701916695B3300A9FD03 /* fullAlarmIcon1.png in Resources */ = {isa = PBXBuildFile; fileRef = C95D700516695B3300A9FD03 /* fullAlarmIcon1.png */; };
+		C95D701A16695B3300A9FD03 /* fullAlarmIcon2.png in Resources */ = {isa = PBXBuildFile; fileRef = C95D700616695B3300A9FD03 /* fullAlarmIcon2.png */; };
+		C95D701B16695B3300A9FD03 /* fullAlarmIcon3.png in Resources */ = {isa = PBXBuildFile; fileRef = C95D700716695B3300A9FD03 /* fullAlarmIcon3.png */; };
+		C95D701C16695B3300A9FD03 /* fullAlarmIcon4.png in Resources */ = {isa = PBXBuildFile; fileRef = C95D700816695B3300A9FD03 /* fullAlarmIcon4.png */; };
+		C95D701D16695B3300A9FD03 /* fullAlarmIcon5.png in Resources */ = {isa = PBXBuildFile; fileRef = C95D700916695B3300A9FD03 /* fullAlarmIcon5.png */; };
+		C95D701E16695B3300A9FD03 /* fullAlarmIcon6.png in Resources */ = {isa = PBXBuildFile; fileRef = C95D700A16695B3300A9FD03 /* fullAlarmIcon6.png */; };
+		C95D701F16695B3300A9FD03 /* fullAlarmIcon6@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C95D700B16695B3300A9FD03 /* fullAlarmIcon6@2x.png */; };
+		C95D702016695B3300A9FD03 /* fullAlarmIcon5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C95D700C16695B3300A9FD03 /* fullAlarmIcon5@2x.png */; };
+		C95D702116695B3300A9FD03 /* fullAlarmIcon4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C95D700D16695B3300A9FD03 /* fullAlarmIcon4@2x.png */; };
+		C95D702216695B3300A9FD03 /* fullAlarmIcon3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C95D700E16695B3300A9FD03 /* fullAlarmIcon3@2x.png */; };
+		C95D702316695B3300A9FD03 /* fullAlarmIcon1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C95D700F16695B3300A9FD03 /* fullAlarmIcon1@2x.png */; };
+		C95D702416695B3300A9FD03 /* fullAlarmIcon2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C95D701016695B3300A9FD03 /* fullAlarmIcon2@2x.png */; };
+		C95D702516695B3300A9FD03 /* alarmOffIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = C95D701116695B3300A9FD03 /* alarmOffIcon.png */; };
+		C95D702616695B3300A9FD03 /* alarmOffIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C95D701216695B3300A9FD03 /* alarmOffIcon@2x.png */; };
+		C95D702716695B3300A9FD03 /* fullAlarmIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C95D701316695B3300A9FD03 /* fullAlarmIcon@2x.png */; };
+		C95D702816695B3300A9FD03 /* fullAlarmIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = C95D701416695B3300A9FD03 /* fullAlarmIcon.png */; };
+		C95D702916695B3300A9FD03 /* SettingsIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = C95D701516695B3300A9FD03 /* SettingsIcon.png */; };
+		C95D702A16695B3300A9FD03 /* SettingsIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C95D701616695B3300A9FD03 /* SettingsIcon@2x.png */; };
+		C95D702B16695B3300A9FD03 /* snoozeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = C95D701716695B3300A9FD03 /* snoozeIcon.png */; };
+		C95D702C16695B3300A9FD03 /* snoozeIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C95D701816695B3300A9FD03 /* snoozeIcon@2x.png */; };
 		C96BCE95166510AA0002450C /* BlackBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C96BCE92166510AA0002450C /* BlackBG@2x.png */; };
 		C96BCE96166510AA0002450C /* chalkboard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C96BCE93166510AA0002450C /* chalkboard@2x.png */; };
 		C96BCE97166510AA0002450C /* beach@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C96BCE94166510AA0002450C /* beach@2x.png */; };
@@ -85,6 +106,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C911EF3D166BDBCE0081A0FF /* Gotham-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Black.ttf"; sourceTree = "<group>"; };
 		C91512AA166067D800295189 /* JAClockSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JAClockSettingsViewController.h; path = Classes/JAClockSettingsViewController.h; sourceTree = "<group>"; };
 		C91512AB166067D800295189 /* JAClockSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JAClockSettingsViewController.m; path = Classes/JAClockSettingsViewController.m; sourceTree = "<group>"; };
 		C91512AC166067D800295189 /* JAClockSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JAClockSettingsViewController.xib; path = Classes/JAClockSettingsViewController.xib; sourceTree = "<group>"; };
@@ -127,6 +149,26 @@
 		C95BDD93165DBFDA005AEEFC /* JARepeatTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JARepeatTableViewController.h; path = Classes/JARepeatTableViewController.h; sourceTree = "<group>"; };
 		C95BDD94165DBFDA005AEEFC /* JARepeatTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JARepeatTableViewController.m; path = Classes/JARepeatTableViewController.m; sourceTree = "<group>"; };
 		C95BDD9A165E7F85005AEEFC /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		C95D700516695B3300A9FD03 /* fullAlarmIcon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fullAlarmIcon1.png; path = Images/HomeScreen/fullAlarmIcon1.png; sourceTree = "<group>"; };
+		C95D700616695B3300A9FD03 /* fullAlarmIcon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fullAlarmIcon2.png; path = Images/HomeScreen/fullAlarmIcon2.png; sourceTree = "<group>"; };
+		C95D700716695B3300A9FD03 /* fullAlarmIcon3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fullAlarmIcon3.png; path = Images/HomeScreen/fullAlarmIcon3.png; sourceTree = "<group>"; };
+		C95D700816695B3300A9FD03 /* fullAlarmIcon4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fullAlarmIcon4.png; path = Images/HomeScreen/fullAlarmIcon4.png; sourceTree = "<group>"; };
+		C95D700916695B3300A9FD03 /* fullAlarmIcon5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fullAlarmIcon5.png; path = Images/HomeScreen/fullAlarmIcon5.png; sourceTree = "<group>"; };
+		C95D700A16695B3300A9FD03 /* fullAlarmIcon6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fullAlarmIcon6.png; path = Images/HomeScreen/fullAlarmIcon6.png; sourceTree = "<group>"; };
+		C95D700B16695B3300A9FD03 /* fullAlarmIcon6@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fullAlarmIcon6@2x.png"; path = "Images/HomeScreen/fullAlarmIcon6@2x.png"; sourceTree = "<group>"; };
+		C95D700C16695B3300A9FD03 /* fullAlarmIcon5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fullAlarmIcon5@2x.png"; path = "Images/HomeScreen/fullAlarmIcon5@2x.png"; sourceTree = "<group>"; };
+		C95D700D16695B3300A9FD03 /* fullAlarmIcon4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fullAlarmIcon4@2x.png"; path = "Images/HomeScreen/fullAlarmIcon4@2x.png"; sourceTree = "<group>"; };
+		C95D700E16695B3300A9FD03 /* fullAlarmIcon3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fullAlarmIcon3@2x.png"; path = "Images/HomeScreen/fullAlarmIcon3@2x.png"; sourceTree = "<group>"; };
+		C95D700F16695B3300A9FD03 /* fullAlarmIcon1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fullAlarmIcon1@2x.png"; path = "Images/HomeScreen/fullAlarmIcon1@2x.png"; sourceTree = "<group>"; };
+		C95D701016695B3300A9FD03 /* fullAlarmIcon2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fullAlarmIcon2@2x.png"; path = "Images/HomeScreen/fullAlarmIcon2@2x.png"; sourceTree = "<group>"; };
+		C95D701116695B3300A9FD03 /* alarmOffIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = alarmOffIcon.png; path = Images/HomeScreen/alarmOffIcon.png; sourceTree = "<group>"; };
+		C95D701216695B3300A9FD03 /* alarmOffIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "alarmOffIcon@2x.png"; path = "Images/HomeScreen/alarmOffIcon@2x.png"; sourceTree = "<group>"; };
+		C95D701316695B3300A9FD03 /* fullAlarmIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fullAlarmIcon@2x.png"; path = "Images/HomeScreen/fullAlarmIcon@2x.png"; sourceTree = "<group>"; };
+		C95D701416695B3300A9FD03 /* fullAlarmIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fullAlarmIcon.png; path = Images/HomeScreen/fullAlarmIcon.png; sourceTree = "<group>"; };
+		C95D701516695B3300A9FD03 /* SettingsIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SettingsIcon.png; path = Images/HomeScreen/SettingsIcon.png; sourceTree = "<group>"; };
+		C95D701616695B3300A9FD03 /* SettingsIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "SettingsIcon@2x.png"; path = "Images/HomeScreen/SettingsIcon@2x.png"; sourceTree = "<group>"; };
+		C95D701716695B3300A9FD03 /* snoozeIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = snoozeIcon.png; path = Images/HomeScreen/snoozeIcon.png; sourceTree = "<group>"; };
+		C95D701816695B3300A9FD03 /* snoozeIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "snoozeIcon@2x.png"; path = "Images/HomeScreen/snoozeIcon@2x.png"; sourceTree = "<group>"; };
 		C96BCE92166510AA0002450C /* BlackBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BlackBG@2x.png"; path = "Images/BlackBG@2x.png"; sourceTree = "<group>"; };
 		C96BCE93166510AA0002450C /* chalkboard@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "chalkboard@2x.png"; path = "Images/chalkboard@2x.png"; sourceTree = "<group>"; };
 		C96BCE94166510AA0002450C /* beach@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "beach@2x.png"; path = "Images/beach@2x.png"; sourceTree = "<group>"; };
@@ -211,6 +253,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C911EF3B166BDB910081A0FF /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				C911EF3D166BDBCE0081A0FF /* Gotham-Black.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		C92EF00D1662C98C00274FBB /* Sleep Sounds */ = {
 			isa = PBXGroup;
 			children = (
@@ -245,6 +295,33 @@
 				C95BDD94165DBFDA005AEEFC /* JARepeatTableViewController.m */,
 			);
 			name = "Repeat Selector";
+			sourceTree = "<group>";
+		};
+		C95D700316695B1D00A9FD03 /* HomeScreenIcons */ = {
+			isa = PBXGroup;
+			children = (
+				C95D700516695B3300A9FD03 /* fullAlarmIcon1.png */,
+				C95D700616695B3300A9FD03 /* fullAlarmIcon2.png */,
+				C95D700716695B3300A9FD03 /* fullAlarmIcon3.png */,
+				C95D700816695B3300A9FD03 /* fullAlarmIcon4.png */,
+				C95D700916695B3300A9FD03 /* fullAlarmIcon5.png */,
+				C95D700A16695B3300A9FD03 /* fullAlarmIcon6.png */,
+				C95D700B16695B3300A9FD03 /* fullAlarmIcon6@2x.png */,
+				C95D700C16695B3300A9FD03 /* fullAlarmIcon5@2x.png */,
+				C95D700D16695B3300A9FD03 /* fullAlarmIcon4@2x.png */,
+				C95D700E16695B3300A9FD03 /* fullAlarmIcon3@2x.png */,
+				C95D700F16695B3300A9FD03 /* fullAlarmIcon1@2x.png */,
+				C95D701016695B3300A9FD03 /* fullAlarmIcon2@2x.png */,
+				C95D701116695B3300A9FD03 /* alarmOffIcon.png */,
+				C95D701216695B3300A9FD03 /* alarmOffIcon@2x.png */,
+				C95D701316695B3300A9FD03 /* fullAlarmIcon@2x.png */,
+				C95D701416695B3300A9FD03 /* fullAlarmIcon.png */,
+				C95D701516695B3300A9FD03 /* SettingsIcon.png */,
+				C95D701616695B3300A9FD03 /* SettingsIcon@2x.png */,
+				C95D701716695B3300A9FD03 /* snoozeIcon.png */,
+				C95D701816695B3300A9FD03 /* snoozeIcon@2x.png */,
+			);
+			name = HomeScreenIcons;
 			sourceTree = "<group>";
 		};
 		C98895BA1657EEB20072EC6E /* Sound Selector */ = {
@@ -282,6 +359,7 @@
 		C9A0E4551654A4D0000BB045 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C95D700316695B1D00A9FD03 /* HomeScreenIcons */,
 				C93A02231666DAE800E1A273 /* playButton.png */,
 				C93A02241666DAE800E1A273 /* stopButton.png */,
 				C93A02251666DAE800E1A273 /* stopButton@2x.png */,
@@ -374,6 +452,7 @@
 		C9E6404C16528B7500A388C6 /* AlarmClock */ = {
 			isa = PBXGroup;
 			children = (
+				C911EF3B166BDB910081A0FF /* Fonts */,
 				C9E6406916528B7C00A388C6 /* Classes */,
 				C9A0E4551654A4D0000BB045 /* Images */,
 				C98895C31657F4770072EC6E /* Sounds */,
@@ -575,6 +654,27 @@
 				C93A02281666DAE800E1A273 /* stopButton.png in Resources */,
 				C93A02291666DAE800E1A273 /* stopButton@2x.png in Resources */,
 				C93A022A1666DAE800E1A273 /* playButton@2x.png in Resources */,
+				C95D701916695B3300A9FD03 /* fullAlarmIcon1.png in Resources */,
+				C95D701A16695B3300A9FD03 /* fullAlarmIcon2.png in Resources */,
+				C95D701B16695B3300A9FD03 /* fullAlarmIcon3.png in Resources */,
+				C95D701C16695B3300A9FD03 /* fullAlarmIcon4.png in Resources */,
+				C95D701D16695B3300A9FD03 /* fullAlarmIcon5.png in Resources */,
+				C95D701E16695B3300A9FD03 /* fullAlarmIcon6.png in Resources */,
+				C95D701F16695B3300A9FD03 /* fullAlarmIcon6@2x.png in Resources */,
+				C95D702016695B3300A9FD03 /* fullAlarmIcon5@2x.png in Resources */,
+				C95D702116695B3300A9FD03 /* fullAlarmIcon4@2x.png in Resources */,
+				C95D702216695B3300A9FD03 /* fullAlarmIcon3@2x.png in Resources */,
+				C95D702316695B3300A9FD03 /* fullAlarmIcon1@2x.png in Resources */,
+				C95D702416695B3300A9FD03 /* fullAlarmIcon2@2x.png in Resources */,
+				C95D702516695B3300A9FD03 /* alarmOffIcon.png in Resources */,
+				C95D702616695B3300A9FD03 /* alarmOffIcon@2x.png in Resources */,
+				C95D702716695B3300A9FD03 /* fullAlarmIcon@2x.png in Resources */,
+				C95D702816695B3300A9FD03 /* fullAlarmIcon.png in Resources */,
+				C95D702916695B3300A9FD03 /* SettingsIcon.png in Resources */,
+				C95D702A16695B3300A9FD03 /* SettingsIcon@2x.png in Resources */,
+				C95D702B16695B3300A9FD03 /* snoozeIcon.png in Resources */,
+				C95D702C16695B3300A9FD03 /* snoozeIcon@2x.png in Resources */,
+				C911EF3E166BDBCE0081A0FF /* Gotham-Black.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

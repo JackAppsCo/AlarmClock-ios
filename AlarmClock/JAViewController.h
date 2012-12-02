@@ -19,11 +19,13 @@
     NSDateFormatter *_formatter;
     NSCalendar *_gregorian;
     BOOL _alarmsOn;
+    NSArray *_weatherData;
     JAAlarm *_currentAlarm;
     MPMusicPlayerController *_musicPlayer;
     float sleepVolume;
     float sleepTimeLeft;
     NSTimer *sleepTimer;
+    BOOL alarmEnabled;
 }
 
 
@@ -36,9 +38,13 @@
 @property (weak, nonatomic) IBOutlet UIButton *settingsButton;
 @property (weak, nonatomic) IBOutlet UILabel *clockLabel;
 @property (weak, nonatomic) IBOutlet UILabel *currentTempLabel;
+@property (weak, nonatomic) IBOutlet UILabel *lowTempLabel;
+@property (weak, nonatomic) IBOutlet UILabel *highTempLabel;
 @property (nonatomic, retain) UITabBarController *tabBarController;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UIButton *alarmButton;
 
 - (IBAction)sleepButtonPressed:(id)sender;
+- (IBAction)alarmButtonPressed:(id)sender;
 
 @end

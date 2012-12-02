@@ -56,5 +56,9 @@
 	<array>
 		<string>audio</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Gotham-Black.ttf</string>
+	</array>
 </dict>
 </plist>

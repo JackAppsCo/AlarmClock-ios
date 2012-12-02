@@ -9,6 +9,7 @@
 #import "JAAlarmSettingsController.h"
 #import "JARepeatTableViewController.h"
 
+
 @interface JAAlarmSettingsController ()
 - (void)saveAlarm:(id)sender;
 - (void)cancelEdit:(id)sender;
@@ -16,7 +17,7 @@
 
 @implementation JAAlarmSettingsController
 
-@synthesize alarm = _alarm, tableView = _tableView, datePicker = _datePicker, enableSwitch = _enableSwitch, nameField = _nameField;
+@synthesize alarm = _alarm, tableView = _tableView, datePicker = _datePicker, enableSwitch = _enableSwitch, nameField = _nameField, snoozeField = _snoozeField;
 
 - (id)initWithAlarm:(JAAlarm*)anAlarm
 {
@@ -38,6 +39,7 @@
             _alarm.repeatDays = [[NSArray alloc] init];
             _alarm.sound = [JASound defaultSound];
             _alarm.name = @"Alarm";
+            _alarm.snoozeTime = [NSNumber numberWithInt:10];
             
             //time comps
             now = [NSDate dateWithTimeIntervalSinceNow:(60 * 10)];
@@ -59,6 +61,15 @@
         self.nameField.delegate = self;
         self.nameField.text = _alarm.name;
         self.nameField.textColor = [UIColor darkTextColor];
+        
+        [self setSnoozeField:[[UITextField alloc] init]];
+        self.snoozeField.frame = CGRectMake(0, 0, 150.0, 23.0);
+        [self.snoozeField setTextAlignment:NSTextAlignmentRight];
+        self.snoozeField.returnKeyType = UIReturnKeyDone;
+        self.snoozeField.keyboardType = UIKeyboardTypeNumberPad;
+        self.snoozeField.delegate = self;
+        self.snoozeField.text = [NSString stringWithFormat:@"%i", [_alarm.snoozeTime intValue], nil];
+        self.snoozeField.textColor = [UIColor darkTextColor];
         
     }
     return self;
@@ -109,6 +120,9 @@
     {
         self.alarm.enabled = self.enableSwitch.on;
         self.alarm.name = self.nameField.text;
+        NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+        [f setNumberStyle:NSNumberFormatterDecimalStyle];
+        self.alarm.snoozeTime = [f numberFromString:self.snoozeField.text];
         [JAAlarm saveAlarm:self.alarm];
     }
 }
@@ -162,7 +176,7 @@
 {
 
     // Return the number of rows in the section.
-    return 5;
+    return 6;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -195,6 +209,10 @@
         case 4:
             cell.textLabel.text = @"Sound";
             cell.detailTextLabel.text = self.alarm.sound.name;
+            break;
+        case 5:
+            cell.textLabel.text = @"Snooze (mins)";
+            cell.accessoryView = self.snoozeField;
             break;
             
         default:
@@ -256,9 +274,11 @@
     switch (indexPath.row) {
         case 0:
             [self.nameField becomeFirstResponder];
+            [self.snoozeField resignFirstResponder];
             break;
         case 1:
             [self.nameField resignFirstResponder];
+            [self.snoozeField resignFirstResponder];
             break;
         case 2:
             break;
@@ -272,6 +292,12 @@
             
             break;
         }
+        case 5:
+        {
+            [self.nameField resignFirstResponder];
+            [self.snoozeField becomeFirstResponder];
+            break;
+        }
             
         default:
             break;
@@ -282,8 +308,14 @@
 
 - (BOOL) textFieldShouldReturn:(UITextField *)textField
 {
-    [self.nameField resignFirstResponder];
-    self.alarm.name = textField.text;
+    if (textField == _nameField) {
+        [self.nameField resignFirstResponder];
+        self.alarm.name = textField.text;
+    }
+    else if (textField == _snoozeField) {
+        [self.snoozeField resignFirstResponder];
+        self.snoozeField.text = [NSString stringWithFormat:@"%i", [_alarm.snoozeTime intValue], nil];
+    }
     return YES;
 }
 

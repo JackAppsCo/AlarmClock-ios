@@ -9,7 +9,7 @@
 #import "JAAlarm.h"
 
 @implementation JAAlarm
-@synthesize timeComponents = _timeComponents, alarmID = _alarmID, lastFireDate = _lastFireDate, repeatDays = _repeatDays, enabled = _enabled, sound = _sound;;
+@synthesize timeComponents = _timeComponents, alarmID = _alarmID, lastFireDate = _lastFireDate, repeatDays = _repeatDays, enabled = _enabled, sound = _sound, snoozeTime = _snoozeTime;
 
 - (void) encodeWithCoder:(NSCoder *)encoder {
     [encoder encodeObject:_timeComponents forKey:@"alarmDate"];
@@ -19,6 +19,7 @@
     [encoder encodeBool:_enabled forKey:@"alarmEnabled"];
     [encoder encodeObject:_repeatDays forKey:@"alarmRepeatDays"];
     [encoder encodeObject:_sound forKey:@"alarmSound"];
+    [encoder encodeObject:_snoozeTime forKey:@"snoozeTime"];
 }
 
 - (id)initWithCoder:(NSCoder *)coder {
@@ -32,6 +33,7 @@
         [self setEnabled:[coder decodeBoolForKey:@"alarmEnabled"]];
         [self setRepeatDays:[coder decodeObjectForKey:@"alarmRepeatDays"]];
         [self setSound:[coder decodeObjectForKey:@"alarmSound"]];
+        [self setSnoozeTime:[coder decodeObjectForKey:@"snoozeTime"]];
         
 	}
     return self;
@@ -39,6 +41,16 @@
 
 
 #pragma mark - Class Methods
+
++ (int)numberOfEnabledAlarms
+{
+    int count = 0;
+    for (JAAlarm *thisAlarm in [JAAlarm savedAlarms]) {
+        count += ([thisAlarm enabled]) ? 1 : 0;
+    }
+    
+    return count;
+}
 
 + (void) saveAlarm:(JAAlarm*)theAlarm
 {

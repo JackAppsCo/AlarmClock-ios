@@ -88,7 +88,7 @@ static BOOL APIError = NO;
 	self.type = MKWeatherRequestTypeForcast;
 	APIError = NO;
 	
-	NSString *url = [[NSString alloc] initWithFormat:@"%@?%@&%@&cc=no&fx=yes&format=xml&includeLocation=yes&num_of_days=5", baseURL, _APIKey, _location];
+	NSString *url = [[NSString alloc] initWithFormat:@"%@?%@&%@&cc=yes&fx=yes&format=xml&includeLocation=yes&num_of_days=5", baseURL, _APIKey, _location];
 	NSString *codedURL = [url stringByReplacingOccurrencesOfString:@" " withString:@"+"];
 	NSURL *theURL = [NSURL URLWithString:codedURL];
 	

@@ -10,6 +10,6 @@
 
 @interface JAMiscSettingsViewController : UITableViewController
 
-@property (strong, nonatomic) UISwitch *weatherSwitch;
+@property (strong, nonatomic) UISegmentedControl *weatherSwitch;
 
 @end

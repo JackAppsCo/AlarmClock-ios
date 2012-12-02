@@ -19,12 +19,13 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
         
-        [self setWeatherSwitch:[[UISwitch alloc] init]];
-        [self.weatherSwitch setOnImage:[UIImage imageNamed:@"stopButton.png"]];
-        [self.weatherSwitch setOffImage:[UIImage imageNamed:@"playButton.png"]];
-        [self.weatherSwitch setOn:[JASettings farenheit]];
+        [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+        
+        // Weather switch
+        [self setWeatherSwitch:[[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Farenheight", @"Celsius", nil]]];
+        [self.weatherSwitch setSegmentedControlStyle:UISegmentedControlStyleBar];
+        [self.weatherSwitch setSelectedSegmentIndex:([JASettings farenheit]) ? 0 : 1];
         [self.weatherSwitch addTarget:self action:@selector(weatherSwitchChanged:) forControlEvents:UIControlEventValueChanged];
         
     }
@@ -50,23 +51,28 @@
 
 - (void)weatherSwitchChanged:(id)sender
 {
-    
+    [JASettings setFarenheit:([self.weatherSwitch selectedSegmentIndex] == 0) ? YES : NO];
 }
 
 #pragma mark - Table view data source
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 45.0f;
+}
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
+
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
+
     // Return the number of rows in the section.
-    return 0;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -75,9 +81,36 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        UIImageView *whiteBG = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height)];
+        [whiteBG setImage:[UIImage imageNamed:@"rowBG.png"]];
+        cell.backgroundView = whiteBG;
     }
     
     // Configure the cell...
+    // Configure the cell...
+    
+    
+    if (indexPath.row == 0) {
+        
+        cell.textLabel.text = @"Weather";
+        cell.accessoryView = self.weatherSwitch;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+    }
+    else if (indexPath.row == 1) {
+
+        
+    }
+    else if (indexPath.row == 2) {
+
+    }
+    else if (indexPath.row == 3) {
+
+    }
+    else {
+        
+        
+    }
     
     return cell;
 }
