@@ -21,6 +21,7 @@
 - (void) panGesture:(UIPanGestureRecognizer *)sender;
 - (void) handleAlarmNotification:(NSNotification*)notification;
 - (void) stopSleepTimer;
+- (void) showAdBanner:(BOOL)show;
 @end
 
 @implementation JAViewController
@@ -44,6 +45,9 @@
         NSError *err = nil;
         [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&err];
         [[AVAudioSession sharedInstance] setActive:YES error:&err];
+        
+        //iad setup
+        self.adBanner.requiredContentSizeIdentifiers = [NSSet setWithObjects:ADBannerContentSizeIdentifierPortrait, ADBannerContentSizeIdentifierLandscape, nil];
         
     }
     
@@ -112,7 +116,7 @@
     
     //setup clock label frame and font
     self.clockLabel.frame = CGRectMake(20, 50, self.view.frame.size.width - 40, self.view.frame.size.height - 100);
-    self.clockLabel.font = [UIFont fontWithName:@"Gotham Black" size:([JASettings showSeconds]) ? 55 : 85];
+    self.clockLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:([JASettings showSeconds]) ? 55 : 85];
     self.dateLabel.frame = CGRectMake(20, self.clockLabel.center.y + 40, self.view.frame.size.width - 40, 29);
     self.dateLabel.font = [UIFont fontWithName:@"Cochin" size:23];
     
@@ -130,9 +134,11 @@
     }
     else if ([JAAlarm numberOfEnabledAlarms] <= 6) {
         [self.alarmButton setBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat:@"fullAlarmIcon%i.png", [JAAlarm numberOfEnabledAlarms]]] forState:UIControlStateNormal];
+        [self.alarmButton setHidden:NO];
     }
     else {
         [self.alarmButton setBackgroundImage:[UIImage imageNamed:@"fullAlarmIcon.png"] forState:UIControlStateNormal];
+        [self.alarmButton setHidden:NO];
     }
     
 }
@@ -143,6 +149,8 @@
     [self setAlarmButton:nil];
     [self setLowTempLabel:nil];
     [self setHighTempLabel:nil];
+    [self setMainView:nil];
+    [self setAdBanner:nil];
     [super viewDidUnload];
 }
 
@@ -167,7 +175,6 @@
     //clock color
     self.clockLabel.textColor = [JASettings clockColor];
     self.dateLabel.textColor = [JASettings clockColor];
-    self.currentTempLabel.textColor = [JASettings clockColor];
     
     //setup seconds
     if (!_formatter)
@@ -175,11 +182,9 @@
     
     if ([JASettings showSeconds]) {
         [_formatter setDateFormat:@"h:mm:ss"];
-        [self.clockLabel setTextAlignment:UITextAlignmentLeft];
     }
     else {
         [_formatter setDateFormat:@"h:mm"];
-        [self.clockLabel setTextAlignment:UITextAlignmentCenter];
     }
     
     self.clockLabel.text = [_formatter stringFromDate:[NSDate date]];
@@ -195,6 +200,13 @@
     
     //setup the weather labels
     [self setupWeather];
+    
+    //clock font size
+    if (self.adBanner.currentContentSizeIdentifier == ADBannerContentSizeIdentifierPortrait)
+        self.clockLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:([JASettings showSeconds]) ? 55 : 85];
+    else
+        self.clockLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:([JASettings showSeconds]) ? 87 : 110];
+
     
     
 }
@@ -364,20 +376,51 @@
 - (void) willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
     if (UIInterfaceOrientationIsPortrait(toInterfaceOrientation)) {
-        self.clockLabel.frame = CGRectMake(20, 50, self.view.frame.size.width - 40, self.view.frame.size.height - 100);
-        self.clockLabel.font = [UIFont fontWithName:@"Gotham Black" size:([JASettings showSeconds]) ? 55 : 85];
-        self.dateLabel.frame = CGRectMake(20, self.clockLabel.center.y + 40, self.view.frame.size.width - 40, 29);
-        self.dateLabel.font = [UIFont fontWithName:@"Cochin" size:23];
+
+        self.clockLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:([JASettings showSeconds]) ? 55 : 85];
+//        
+//        NSString *zerosString;
+//        float zeroCorrection = 0;
+//        if ([JASettings showSeconds]) {
+//            zerosString = (self.clockLabel.text.length > 7) ? @"14:44:44" : @"4:44:44";
+//            zeroCorrection = 4;
+//        }
+//        else {
+//            zerosString = (self.clockLabel.text.length > 7) ? @"14:44 " : @"4:44 ";
+//        }
+        
+        CGSize timeSize = [self.clockLabel.text sizeWithFont:self.clockLabel.font];
+        
+        self.clockLabel.frame = CGRectMake(0, roundf((self.mainView.frame.size.height - timeSize.height) / 2.0), self.mainView.frame.size.width, timeSize.height);
+        self.dateLabel.frame = CGRectMake(00, self.clockLabel.center.y + 40, self.mainView.frame.size.width, 29);
+        
         
     }
     
     if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
-        self.clockLabel.frame = CGRectMake(20, 50, self.view.frame.size.height - 40, self.view.frame.size.width - 100);
-        self.clockLabel.font = [UIFont fontWithName:@"Gotham Black" size:([JASettings showSeconds]) ? 87 : 110];
-        self.dateLabel.frame = CGRectMake(20, self.clockLabel.center.y + 60, self.view.frame.size.height - 40, 29);
-        self.dateLabel.font = [UIFont fontWithName:@"Cochin" size:23];
+        
+        self.clockLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:([JASettings showSeconds]) ? 87 : 110];
+        
+        NSString *zerosString;
+        float zeroCorrection = 0;
+        if ([JASettings showSeconds]) {
+            zerosString = (self.clockLabel.text.length > 7) ? @"14:44:44" : @"4:44:44";
+            zeroCorrection = 4;
+        }
+        else {
+            zerosString = (self.clockLabel.text.length > 7) ? @"14:44 " : @"4:44 ";
+        }
+        
+        //fidn label size
+        CGSize timeSize = [zerosString sizeWithFont:self.clockLabel.font];
+        
+        self.clockLabel.frame = CGRectMake(0, roundf((self.mainView.frame.size.height - timeSize.height) / 2.0), self.mainView.frame.size.width, timeSize.height);
+        self.dateLabel.frame = CGRectMake(00, self.clockLabel.center.y + 40, self.mainView.frame.size.width, 29);
         
     }
+    
+    //switch the ad banner layout
+    self.adBanner.currentContentSizeIdentifier = (UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) ? ADBannerContentSizeIdentifierLandscape : ADBannerContentSizeIdentifierPortrait;
 }
 
 #pragma mark - MKCLock Delegate
@@ -470,4 +513,36 @@
 {
     
 }
+
+#pragma mark - iAd Delegate
+- (void)bannerViewWillLoadAd:(ADBannerView *)banner
+{
+    [self showAdBanner:YES];
+}
+
+- (void)bannerViewDidLoadAd:(ADBannerView *)banner
+{
+    
+}
+
+- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
+{
+    [self showAdBanner:NO];
+}
+
+- (void) showAdBanner:(BOOL)show
+{
+
+    [UIView animateWithDuration:0.3 animations:^{
+    
+        if (show) {
+            self.mainView.frame = CGRectMake(self.mainView.frame.origin.x, self.mainView.frame.origin.y, self.mainView.frame.size.width, self.view.frame.size.height - self.adBanner.frame.size.height);
+        }
+        else {
+            self.mainView.frame = CGRectMake(self.mainView.frame.origin.x, self.mainView.frame.origin.y, self.mainView.frame.size.width, self.view.frame.size.height);
+        }
+    }];
+    
+}
+
 @end

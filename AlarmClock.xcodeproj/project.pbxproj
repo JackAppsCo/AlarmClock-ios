@@ -86,6 +86,7 @@
 		C9A2BBFF165F26A800F09634 /* backgroundsList.plist in Resources */ = {isa = PBXBuildFile; fileRef = C9A2BBFE165F26A800F09634 /* backgroundsList.plist */; };
 		C9A2BC02165F27E600F09634 /* beach.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A2BC00165F27E600F09634 /* beach.png */; };
 		C9A2BC03165F27E600F09634 /* chalkboard.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A2BC01165F27E600F09634 /* chalkboard.png */; };
+		C9B2FC89166CF08A0037E588 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2FC88166CF08A0037E588 /* iAd.framework */; };
 		C9E6404716528B7500A388C6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E6404616528B7500A388C6 /* UIKit.framework */; };
 		C9E6404916528B7500A388C6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E6404816528B7500A388C6 /* Foundation.framework */; };
 		C9E6404B16528B7500A388C6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E6404A16528B7500A388C6 /* CoreGraphics.framework */; };
@@ -198,6 +199,7 @@
 		C9A2BBFE165F26A800F09634 /* backgroundsList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = backgroundsList.plist; sourceTree = "<group>"; };
 		C9A2BC00165F27E600F09634 /* beach.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beach.png; path = Images/beach.png; sourceTree = "<group>"; };
 		C9A2BC01165F27E600F09634 /* chalkboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = chalkboard.png; path = Images/chalkboard.png; sourceTree = "<group>"; };
+		C9B2FC88166CF08A0037E588 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		C9E6404216528B7500A388C6 /* AlarmClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlarmClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9E6404616528B7500A388C6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C9E6404816528B7500A388C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -236,6 +238,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9B2FC89166CF08A0037E588 /* iAd.framework in Frameworks */,
 				C93AC1331665BD1F0065798B /* AssetsLibrary.framework in Frameworks */,
 				C95BDD9B165E7F86005AEEFC /* MediaPlayer.framework in Frameworks */,
 				C988961B165805250072EC6E /* AVFoundation.framework in Frameworks */,
@@ -434,6 +437,7 @@
 		C9E6404516528B7500A388C6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C9B2FC88166CF08A0037E588 /* iAd.framework */,
 				C93AC1321665BD1F0065798B /* AssetsLibrary.framework */,
 				C95BDD9A165E7F85005AEEFC /* MediaPlayer.framework */,
 				C988961A165805250072EC6E /* AVFoundation.framework */,

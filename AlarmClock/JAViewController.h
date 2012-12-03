@@ -10,8 +10,9 @@
 #import "ClockManager.h"
 #import "MKWeatherRequest.h"
 #import <AVFoundation/AVFoundation.h>
+#import <iAd/iAd.h>
 
-@interface JAViewController : UIViewController <MKClockDelegate, MKWeatherRequestDelegate, UIAlertViewDelegate, AVAudioPlayerDelegate>
+@interface JAViewController : UIViewController <ADBannerViewDelegate, MKClockDelegate, MKWeatherRequestDelegate, UIAlertViewDelegate, AVAudioPlayerDelegate>
 {
     CGPoint startLocation;
     NSMutableArray *_myAlarms;
@@ -33,6 +34,7 @@
 @property (nonatomic, retain) ClockManager *clock;
 @property (nonatomic, retain) MKWeatherRequest *weatherRequest;
 
+@property (weak, nonatomic) IBOutlet UIView *mainView;
 @property (nonatomic, retain) UIView *dimView;
 @property (weak, nonatomic) IBOutlet UIImageView *bgImageView;
 @property (weak, nonatomic) IBOutlet UIButton *settingsButton;
@@ -43,6 +45,7 @@
 @property (nonatomic, retain) UITabBarController *tabBarController;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UIButton *alarmButton;
+@property (weak, nonatomic) IBOutlet ADBannerView *adBanner;
 
 - (IBAction)sleepButtonPressed:(id)sender;
 - (IBAction)alarmButtonPressed:(id)sender;
