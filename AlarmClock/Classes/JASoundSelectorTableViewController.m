@@ -152,6 +152,7 @@
         if (indexPath.row == 0) {
             cell.textLabel.text = @"Record A New Sound";
             cell.accessoryType = UITableViewCellAccessoryNone;
+            cell.accessoryView = nil;
         }
         else {
             cell.textLabel.text = [(JASound*)[[JASound savedSounds] objectAtIndex:(indexPath.row - 1)] name];
