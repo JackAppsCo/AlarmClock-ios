@@ -66,24 +66,24 @@
     
     //alarm settings
     JAAlarmListViewController *_alarmSettingsController = [[JAAlarmListViewController alloc] init];
-    [_alarmSettingsController setTitle:@"Alarms"];
-    [_alarmSettingsController setTabBarItem:[[UITabBarItem alloc] initWithTitle:@"Alarms" image:[UIImage imageNamed:@""] tag:0]];
-    UIBarButtonItem *doneAlarmButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(dismissSettingsController:)];
+    [_alarmSettingsController setTitle:NSLocalizedString(@"Alarms", nil)];
+    [_alarmSettingsController setTabBarItem:[[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Alarms", nil) image:[UIImage imageNamed:@"tabIconAlarms.png"] tag:0]];
+    UIBarButtonItem *doneAlarmButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", nil) style:UIBarButtonItemStyleDone target:self action:@selector(dismissSettingsController:)];
     [_alarmSettingsController.navigationItem setLeftBarButtonItem:doneAlarmButton];
     
     
     //display settings    
     JAClockSettingsViewController *_displaySettingsController = [[JAClockSettingsViewController alloc] initWithNibName:@"JAClockSettingsViewController" bundle:[NSBundle mainBundle]];
-    [_displaySettingsController setTitle:@"Display"];
-    [_displaySettingsController setTabBarItem:[[UITabBarItem alloc] initWithTitle:@"Display" image:[UIImage imageNamed:@""] tag:1]];
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(dismissSettingsController:)];
+    [_displaySettingsController setTitle:NSLocalizedString(@"Display", nil)];
+    [_displaySettingsController setTabBarItem:[[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Display", nil) image:[UIImage imageNamed:@"tabIconDisplay.png"] tag:1]];
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", nil) style:UIBarButtonItemStyleDone target:self action:@selector(dismissSettingsController:)];
     [_displaySettingsController.navigationItem setLeftBarButtonItem:doneButton];
     
     //misc settings
     JAMiscSettingsViewController *_miscSettingsController = [[JAMiscSettingsViewController alloc] init];
-    [_miscSettingsController setTitle:@"Settings"];
-    [_miscSettingsController setTabBarItem:[[UITabBarItem alloc] initWithTitle:@"Misc" image:[UIImage imageNamed:@""] tag:2]];
-    UIBarButtonItem *doneMiscButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(dismissSettingsController:)];
+    [_miscSettingsController setTitle:NSLocalizedString(@"Settings", nil)];
+    [_miscSettingsController setTabBarItem:[[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Misc", nil) image:[UIImage imageNamed:@"tabIconSettings.png"] tag:2]];
+    UIBarButtonItem *doneMiscButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", nil) style:UIBarButtonItemStyleDone target:self action:@selector(dismissSettingsController:)];
     [_miscSettingsController.navigationItem setLeftBarButtonItem:doneMiscButton];
     
     //navigation controllers

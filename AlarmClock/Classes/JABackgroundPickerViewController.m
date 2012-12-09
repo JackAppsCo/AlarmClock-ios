@@ -131,6 +131,12 @@
             [self.customImage setImage:[UIImage imageNamed:bgFilename]];
         }
         
+        UIButton *done = [UIButton buttonWithType:UIButtonTypeCustom];
+        CGRect btnFrame = CGRectInset(self.customImage.frame, 0, 25.0);
+        btnFrame.origin.y = 0;
+        [done setFrame:btnFrame];
+        [done addTarget:self action:@selector(doneButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        
         UIButton *plusButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [plusButton setFrame:CGRectMake(self.customImage.frame.origin.x, self.customImage.frame.origin.y + self.customImage.frame.size.height - 50, self.customImage.frame.size.width, 50)];
         [plusButton addTarget:self action:@selector(customImageTapped:) forControlEvents:UIControlEventTouchUpInside];
@@ -156,6 +162,7 @@
         [self.scrollView addSubview:self.customImage];
         [self.scrollView addSubview:lbl];
         [self.scrollView addSubview:plusButton];
+        [self.scrollView addSubview:done];
         
 
         

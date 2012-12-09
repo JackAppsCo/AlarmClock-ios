@@ -8,6 +8,8 @@
 
 #import "JAMiscSettingsViewController.h"
 #import "JASettings.h"
+#import "JASound.h"
+#import "JASettings.h"
 
 @interface JAMiscSettingsViewController ()
 - (void)weatherSwitchChanged:(id)sender;
@@ -15,18 +17,40 @@
 
 @implementation JAMiscSettingsViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)init
 {
-    self = [super initWithStyle:style];
+    self = [super init];
     if (self) {
         
+        //setup tableview
+        [self setTableView:[[UITableView alloc] initWithFrame:CGRectInset(self.view.frame, 0, 0)]];
+        [self.tableView setDelegate:self];
+        [self.tableView setDataSource:self];
         [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+        [self.view addSubview:self.tableView];
         
         // Weather switch
         [self setWeatherSwitch:[[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Farenheight", @"Celsius", nil]]];
         [self.weatherSwitch setSegmentedControlStyle:UISegmentedControlStyleBar];
         [self.weatherSwitch setSelectedSegmentIndex:([JASettings farenheit]) ? 0 : 1];
         [self.weatherSwitch addTarget:self action:@selector(weatherSwitchChanged:) forControlEvents:UIControlEventValueChanged];
+        
+        //set picker and sound
+        _selectedPicker = 0;
+        _selectedSound = 0;
+        _selectedTime = [JASettings sleepLength];
+        
+        //setup the dictionary from Settings.plist
+		NSString *soundsLocation = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"soundsList.plist"];
+		NSDictionary *soundsDict = [[NSDictionary alloc] initWithContentsOfFile:soundsLocation];
+        [self setSounds:[soundsDict objectForKey:@"sounds"]];
+        
+        //setup picker
+        [self setPickerView:[[UIPickerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 220)]];
+        [self.view addSubview:self.pickerView];
+        [self.pickerView setDelegate:self];
+        [self.pickerView setShowsSelectionIndicator:YES];
+        [self.pickerView setDataSource:self];
         
     }
     return self;
@@ -96,25 +120,16 @@
         if (indexPath.row == 0) {
             
             cell.textLabel.text = @"Length (mins)";
-            
-            if (!self.sleepLengthField) {
-                [self setSleepLengthField:[[UITextField alloc] initWithFrame:CGRectMake(0, 0, 100, 35)]];
-                [self.sleepLengthField setTextAlignment:NSTextAlignmentRight];
-                [self.sleepLengthField setDelegate:self];
-                [self.sleepLengthField setText:@"10"];
-                [self.sleepLengthField setKeyboardAppearance:UIKeyboardTypeNumberPad];
-                [self.sleepLengthField setReturnKeyType:UIReturnKeyDone];
-            }
-            
-            cell.accessoryView = self.sleepLengthField;
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%i minutes", _selectedTime, nil];
+            cell.accessoryType = UITableViewCellAccessoryNone;
             cell.selectionStyle = UITableViewCellSelectionStyleBlue;
             
         }
         else if (indexPath.row == 1) {
             
             cell.textLabel.text = @"Sleep Sound";
-            cell.detailTextLabel.text = @"xxxx";
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.detailTextLabel.text = [[self.sounds objectAtIndex:_selectedSound] objectForKey:@"name"];
+            cell.accessoryType = UITableViewCellAccessoryNone;
             cell.selectionStyle = UITableViewCellSelectionStyleBlue;
         }
     }
@@ -170,23 +185,93 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath.section == 0) {
+    
+        _selectedPicker = indexPath.row;
+        
+        if (indexPath.row == 0) {
+            [self.pickerView selectRow:_selectedTime inComponent:0 animated:NO];
+            [self raisePicker];
+        }
+        else {
+            [self.pickerView selectRow:_selectedSound inComponent:0 animated:NO];
+            [self raisePicker];
+        }
+    }
+    
+    
 }
 
-#pragma mark UITextFieldDelegate 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {return YES;}
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
+
+- (void) raisePicker
 {
-    [self.sleepLengthField resignFirstResponder];
-    return YES;
+    [UIView animateWithDuration:0.3f
+                     animations:^{
+                         self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width, self.view.frame.size.height - self.pickerView.frame.size.height);
+                         self.pickerView.frame = CGRectMake(0, self.view.frame.size.height - self.pickerView.frame.size.height, self.pickerView.frame.size.width, self.pickerView.frame.size.height);
+                     }
+                     completion:^(BOOL finished) {
+                         
+                     }];
 }
 
+- (void) lowerPicker
+{
+    [UIView animateWithDuration:0.3f
+                     animations:^{
+                         self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width, self.view.frame.size.height);
+                         self.pickerView.frame = CGRectMake(0, self.view.frame.size.height, self.pickerView.frame.size.width, self.pickerView.frame.size.height);
+                     }
+                     completion:^(BOOL finished) {
+                         
+                     }];
+    
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+}
+
+
+#pragma mark - PickerView Delegate
+- (int) pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    if (_selectedPicker == 0)
+        return 120;
+    else
+        return self.sounds.count;
+}
+
+- (int) numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+- (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    if (_selectedPicker == 0)
+        return [NSString stringWithFormat:@"%i mins", row + 1];
+    else
+        return [[self.sounds objectAtIndex:row] objectForKey:@"name"];
+}
+
+- (void) pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    if (_selectedPicker == 0) {
+        
+        _selectedTime = row + 1;
+        
+        [JASettings setSleepLength:_selectedTime];
+        
+    }
+    else {
+        
+        _selectedSound = row;
+        
+    }
+    
+    [self.tableView reloadData];
+    [self lowerPicker];
+}
 
 @end

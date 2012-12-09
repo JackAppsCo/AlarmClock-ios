@@ -29,6 +29,8 @@
 + (void) setFarenheit:(BOOL)farenheit;
 + (BOOL) alarmsEnabled;
 + (void) setAlarmsEnabled:(BOOL)enabled;
++ (int) sleepLength;
++ (void) setSleepLength:(int)length;
 
 
 @end
