@@ -69,6 +69,31 @@
     return localSounds;
 }
 
++ (void) removeSound:(JASound*)theSound
+{
+    if (!theSound)
+        return;
+    
+    //grab current saved alarms
+    NSMutableArray *sounds = [[NSMutableArray alloc] initWithArray:[JASound savedSounds]];
+    
+    //check for existing alarm
+    int currentIndex = 0;
+    for (JASound *thisSound in sounds) {
+        if ([thisSound.soundFilename isEqualToString:theSound.soundFilename]) {
+            currentIndex = [sounds indexOfObject:thisSound];
+            break;
+        }
+    }
+    
+    [sounds removeObjectAtIndex:currentIndex];
+    
+    //save current alarms
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSData *yourArrayAsData = [NSKeyedArchiver archivedDataWithRootObject:sounds];
+    [ud setObject:yourArrayAsData forKey:@"savedSounds"];
+}
+
 + (JASound*)defaultSound
 {
     JASound *defaultSound = [[JASound alloc] init];

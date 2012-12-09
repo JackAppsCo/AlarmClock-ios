@@ -14,5 +14,8 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) NSArray *backgroundList;
 @property (strong, nonatomic) NSString *customImageURL;
+@property (strong, nonatomic) IBOutlet UIButton *doneButton;
+
+- (IBAction)doneButtonPressed:(id)sender;
 
 @end

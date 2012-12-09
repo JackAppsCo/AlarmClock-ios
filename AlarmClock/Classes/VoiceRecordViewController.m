@@ -16,16 +16,26 @@
 
 @synthesize recorderFilePath;
 
-- (void)viewDidLoad 
+- (void)viewDidLoad
 {
 	[super viewDidLoad];
-	lblStatusMsg.text = @"Stopped";
+    self.title = @"Record"; 
+	lblStatusMsg.text = @"Ready";
 	progressView.progress = 0.0;
+    _soundRecorded = NO;
     
-    [self.saveButton setTarget:self];
-    [self.saveButton setAction:@selector(saveSound:)];
-    [self.cancelButton setTarget:self];
-    [self.cancelButton setAction:@selector(cancelButtonPressed:)];
+    //setup buttons
+    [self.saveButton addTarget:self action:@selector(saveSound:) forControlEvents:UIControlEventTouchUpInside];
+    [self.redoButton addTarget:self action:@selector(rerecordPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
+    //make text field first responder
+    [self.nameField becomeFirstResponder];
+}
+
+- (void) rerecordPressed:(id)sender
+{
+    _soundRecorded = NO;
+    [self setupView];
 }
 
 - (void) handleTimer
@@ -39,10 +49,77 @@
 	}
 }
 
-- (void) cancelButtonPressed:(id)sender
+- (void)setupView
 {
-    [self stopRecording];
-    [self dismissModalViewControllerAnimated:YES];
+    [UIView animateWithDuration:0.15f
+                     animations:^{
+                         
+                         //enable and disable buttons
+                         if (self.nameField.text.length > 0) {
+                             self.startButton.enabled = YES;
+                             [self.recordIconImageview setHighlighted:YES];
+                         }
+                         else {
+                             [self.recordIconImageview setHighlighted:NO];
+                         }
+                         
+                         if (_soundRecorded) {
+                             self.playButton.enabled = YES;
+                             self.saveButton.enabled = YES;
+                             self.redoButton.enabled = YES;
+                             self.startButton.enabled = YES;
+                             
+                         }
+                         else {
+                             self.playButton.enabled = NO;
+                             self.saveButton.enabled = NO;
+                             self.redoButton.enabled = NO;
+                             
+                         }
+                         
+                         //update the rec button
+                         if (recorder.isRecording) {
+                             [self.startButton setTitle:@"Stop" forState:UIControlStateNormal];
+                             [self.startButton removeTarget:self action:@selector(startRecording) forControlEvents:UIControlEventTouchUpInside];
+                             [self.startButton addTarget:self action:@selector(stopRecording) forControlEvents:UIControlEventTouchUpInside];
+                         }
+                         else if (_soundRecorded) {
+                             [self.startButton setTitle:@"Play" forState:UIControlStateNormal];
+                             [self.startButton removeTarget:self action:@selector(stopRecording) forControlEvents:UIControlEventTouchUpInside];
+                             [self.startButton addTarget:self action:@selector(playSound) forControlEvents:UIControlEventTouchUpInside];
+                         }
+                         else {
+                             [self.startButton setTitle:@"Start Recording" forState:UIControlStateNormal];
+                             [self.startButton removeTarget:self action:@selector(playSound) forControlEvents:UIControlEventTouchUpInside];
+                             [self.startButton addTarget:self action:@selector(startRecording) forControlEvents:UIControlEventTouchUpInside];
+                             [lblStatusMsg setText:@"Ready"];
+                             [progressView setProgress:0.0f];
+                         }
+                         
+                         self.arrowImageView.alpha = 0.0;
+                         
+                     }
+                     completion:^(BOOL finished) {
+                         
+                         //move arrow
+                         if (self.nameField.isFirstResponder) {
+                             self.arrowImageView.center = CGPointMake(self.arrowImageView.center.x, self.nameField.center.y);
+                         }
+                         else if (self.nameField.text.length > 0 && !_soundRecorded) {
+                             self.arrowImageView.center = CGPointMake(self.arrowImageView.center.x, self.startButton.center.y);
+                         }
+                         else {
+                             self.arrowImageView.center = CGPointMake(self.arrowImageView.center.x, self.saveButton.center.y);
+                         }
+                         
+                         [UIView animateWithDuration:0.15
+                                          animations:^{
+                                              
+                                              self.arrowImageView.alpha = 1.0f;
+                                        
+                                          }];
+                         
+                     }];
 }
 
 - (void)saveSound:(id)sender
@@ -52,11 +129,11 @@
     newSound.soundFilename = recorderFilePath;
     [JASound saveSound:newSound];
     
-    [self dismissModalViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction) startRecording
-{	
+{
 	AVAudioSession *audioSession = [AVAudioSession sharedInstance];
 	NSError *err = nil;
 	[audioSession setCategory :AVAudioSessionCategoryPlayAndRecord error:&err];
@@ -75,7 +152,7 @@
 	
 	// We can use kAudioFormatAppleIMA4 (4:1 compression) or kAudioFormatLinearPCM for nocompression
 	[recordSetting setValue :[NSNumber numberWithInt:kAudioFormatAppleIMA4] forKey:AVFormatIDKey];
-
+    
 	// We can use 44100, 32000, 24000, 16000 or 12000 depending on sound quality
 	[recordSetting setValue:[NSNumber numberWithFloat:16000.0] forKey:AVSampleRateKey];
 	
@@ -91,9 +168,9 @@
 	
 	// Create a new dated file
 	//NSDate *now = [NSDate dateWithTimeIntervalSinceNow:0];
-//	NSString *caldate = [now description];
-//	recorderFilePath = [[NSString stringWithFormat:@"%@/%@.caf", DOCUMENTS_FOLDER, caldate] retain];
-	recorderFilePath = [[NSString stringWithFormat:@"%@/%@", DOCUMENTS_FOLDER, self.nameField.text] retain];
+    //	NSString *caldate = [now description];
+    //	recorderFilePath = [[NSString stringWithFormat:@"%@/%@.caf", DOCUMENTS_FOLDER, caldate] retain];
+	recorderFilePath = [[NSString stringWithFormat:@"%@/%@.caf", DOCUMENTS_FOLDER, self.nameField.text] retain];
 	
 	NSLog(@"recorderFilePath: %@",recorderFilePath);
 	
@@ -137,7 +214,7 @@
 						 cancelButtonTitle:@"OK"
 						 otherButtonTitles:nil];
         [cantRecordAlert show];
-        [cantRecordAlert release]; 
+        [cantRecordAlert release];
         return;
 	}
 	
@@ -148,35 +225,34 @@
 	progressView.progress = 0.0;
 	timer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(handleTimer) userInfo:nil repeats:YES];
     
-    self.stopButton.enabled = YES;
-    self.startButton.enabled = NO;
+    [self setupView];
 }
 
 - (IBAction) stopRecording
 {
 	[recorder stop];
 	
-	if ([timer isValid])
-        [timer invalidate];
+    //	if ([timer isValid])
+    //        [timer invalidate];
 	lblStatusMsg.text = @"Stopped";
 	progressView.progress = 1.0;
 	
 	//NSURL *url = [NSURL fileURLWithPath: recorderFilePath];
-//	NSError *err = nil;
-//	NSData *audioData = [NSData dataWithContentsOfFile:[url path] options: 0 error:&err];
-//	if(!audioData)
-//        NSLog(@"audio data: %@ %d %@", [err domain], [err code], [[err userInfo] description]);
-//	[editedObject setValue:[NSData dataWithContentsOfURL:url] forKey:@"editedFieldKey"];       
-//	
-//	//[recorder deleteRecording];
-//	
-//	
-//	NSFileManager *fm = [NSFileManager defaultManager];
-//	
-//	err = nil;
-//	[fm removeItemAtPath:[url path] error:&err];
-//	if(err)
-//        NSLog(@"File Manager: %@ %d %@", [err domain], [err code], [[err userInfo] description]);
+    //	NSError *err = nil;
+    //	NSData *audioData = [NSData dataWithContentsOfFile:[url path] options: 0 error:&err];
+    //	if(!audioData)
+    //        NSLog(@"audio data: %@ %d %@", [err domain], [err code], [[err userInfo] description]);
+    //	[editedObject setValue:[NSData dataWithContentsOfURL:url] forKey:@"editedFieldKey"];
+    //
+    //	//[recorder deleteRecording];
+    //
+    //
+    //	NSFileManager *fm = [NSFileManager defaultManager];
+    //
+    //	err = nil;
+    //	[fm removeItemAtPath:[url path] error:&err];
+    //	if(err)
+    //        NSLog(@"File Manager: %@ %d %@", [err domain], [err code], [[err userInfo] description]);
 	
 	
 }
@@ -201,17 +277,23 @@
 	
 	//Use audio services to play the sound
 	AudioServicesPlaySystemSound(soundID);
+    
+    [self setupView];
 }
 
 - (void)audioRecorderDidFinishRecording:(AVAudioRecorder *) aRecorder successfully:(BOOL)flag
 {
-	NSLog (@"audioRecorderDidFinishRecording:successfully:");
-	if ([timer isValid])
+	NSLog (@"audioRecorderDidFinishRecording:successfully:%i", flag);
+	if (timer && [timer isValid])
         [timer invalidate];
-	lblStatusMsg.text = @"Stopped";
 	progressView.progress = 1.0;
-    self.stopButton.enabled = NO;
-    self.startButton.enabled = YES;
+    
+    
+    _soundRecorded = YES;
+    
+    [self setupView];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -222,10 +304,12 @@
 }
 
 - (void)viewDidUnload {
+    [self setRecordIconImageview:nil];
+    [self setArrowImageView:nil];
+    [self setRedoButton:nil];
+    [self setSaveButton:nil];
     [self setPlayButton:nil];
-    [self setStopButton:nil];
     [self setStartButton:nil];
-    [self setCancelButton:nil];
     [self setSaveButton:nil];
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
@@ -252,14 +336,7 @@
 {
     [self.nameField resignFirstResponder];
     
-    if (self.nameField.text.length > 0) {
-        self.saveButton.enabled = YES;
-        self.stopButton.enabled = YES;
-    }
-    else {
-        self.saveButton.enabled = NO;
-        self.stopButton.enabled = NO;
-    }
+    [self setupView];
     
     return YES;
 }

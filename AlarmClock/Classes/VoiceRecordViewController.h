@@ -15,6 +15,8 @@
 	IBOutlet UIProgressView *progressView;
 	IBOutlet UILabel *lblStatusMsg;
 	
+    BOOL _soundRecorded;
+    
 	NSMutableDictionary *recordSetting;
 	NSMutableDictionary *editedObject;
 	AVAudioRecorder *recorder;
@@ -23,19 +25,20 @@
 	NSTimer *timer;
 }
 
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *saveButton, *cancelButton;
+@property (strong, nonatomic) IBOutlet UIImageView *recordIconImageview;
 @property (strong, nonatomic) IBOutlet UITextField *nameField;
 @property (strong, nonatomic) NSString *recorderFilePath;
 @property (strong, nonatomic) IBOutlet UIButton *startButton;
-@property (strong, nonatomic) IBOutlet UIButton *stopButton;
 @property (strong, nonatomic) IBOutlet UIButton *playButton;
+@property (strong, nonatomic) IBOutlet UIButton *saveButton;
+@property (strong, nonatomic) IBOutlet UIButton *redoButton;
+@property (strong, nonatomic) IBOutlet UIImageView *arrowImageView;
 
 - (IBAction) startRecording;
 - (IBAction) stopRecording;
 - (IBAction)playSound;
 - (void) handleTimer;
 - (void) saveSound:(id)sender;
-- (void) cancelButtonPressed:(id)sender;
-
+- (void) rerecordPressed:(id)sender;
 @end
 

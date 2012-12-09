@@ -60,19 +60,23 @@
     return 45.0f;
 }
 
+- (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return (section == 0) ? @"Sleep Sound" : @"Weather";
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
 
     // Return the number of sections.
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 
     // Return the number of rows in the section.
-    return 1;
+    return (section == 0) ? 2 : 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -80,36 +84,44 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
         UIImageView *whiteBG = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height)];
         [whiteBG setImage:[UIImage imageNamed:@"rowBG.png"]];
         cell.backgroundView = whiteBG;
     }
     
     // Configure the cell...
-    // Configure the cell...
     
-    
-    if (indexPath.row == 0) {
-        
-        cell.textLabel.text = @"Weather";
-        cell.accessoryView = self.weatherSwitch;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
-    }
-    else if (indexPath.row == 1) {
-
-        
-    }
-    else if (indexPath.row == 2) {
-
-    }
-    else if (indexPath.row == 3) {
-
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            
+            cell.textLabel.text = @"Length (mins)";
+            
+            if (!self.sleepLengthField) {
+                [self setSleepLengthField:[[UITextField alloc] initWithFrame:CGRectMake(0, 0, 100, 35)]];
+                [self.sleepLengthField setTextAlignment:NSTextAlignmentRight];
+                [self.sleepLengthField setDelegate:self];
+                [self.sleepLengthField setText:@"10"];
+                [self.sleepLengthField setKeyboardAppearance:UIKeyboardTypeNumberPad];
+                [self.sleepLengthField setReturnKeyType:UIReturnKeyDone];
+            }
+            
+            cell.accessoryView = self.sleepLengthField;
+            cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+            
+        }
+        else if (indexPath.row == 1) {
+            
+            cell.textLabel.text = @"Sleep Sound";
+            cell.detailTextLabel.text = @"xxxx";
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+        }
     }
     else {
-        
-        
+        cell.textLabel.text = @"Scale";
+        cell.accessoryView = self.weatherSwitch;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
     return cell;
@@ -166,5 +178,15 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
 }
+
+#pragma mark UITextFieldDelegate 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {return YES;}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self.sleepLengthField resignFirstResponder];
+    return YES;
+}
+
 
 @end

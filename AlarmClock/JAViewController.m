@@ -378,16 +378,6 @@
     if (UIInterfaceOrientationIsPortrait(toInterfaceOrientation)) {
 
         self.clockLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:([JASettings showSeconds]) ? 55 : 85];
-//        
-//        NSString *zerosString;
-//        float zeroCorrection = 0;
-//        if ([JASettings showSeconds]) {
-//            zerosString = (self.clockLabel.text.length > 7) ? @"14:44:44" : @"4:44:44";
-//            zeroCorrection = 4;
-//        }
-//        else {
-//            zerosString = (self.clockLabel.text.length > 7) ? @"14:44 " : @"4:44 ";
-//        }
         
         CGSize timeSize = [self.clockLabel.text sizeWithFont:self.clockLabel.font];
         
@@ -536,10 +526,10 @@
     [UIView animateWithDuration:0.3 animations:^{
     
         if (show) {
-            self.mainView.frame = CGRectMake(self.mainView.frame.origin.x, self.mainView.frame.origin.y, self.mainView.frame.size.width, self.view.frame.size.height - self.adBanner.frame.size.height);
+            self.mainView.frame = CGRectMake(self.mainView.frame.origin.x, self.mainView.frame.origin.y, self.mainView.frame.size.width, self.adBanner.frame.origin.y);
         }
         else {
-            self.mainView.frame = CGRectMake(self.mainView.frame.origin.x, self.mainView.frame.origin.y, self.mainView.frame.size.width, self.view.frame.size.height);
+            self.mainView.frame = CGRectMake(self.mainView.frame.origin.x, self.mainView.frame.origin.y, self.mainView.frame.size.width, self.adBanner.frame.origin.y + self.adBanner.frame.size.height);
         }
     }];
     

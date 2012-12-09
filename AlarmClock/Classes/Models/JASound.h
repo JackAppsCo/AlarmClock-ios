@@ -18,5 +18,6 @@
 + (void) saveSound:(JASound*)theSound;
 + (NSArray*) savedSounds;
 + (JASound*) defaultSound;
++ (void) removeSound:(JASound*)theSound;
 
 @end

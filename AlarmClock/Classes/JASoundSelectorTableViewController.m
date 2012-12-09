@@ -49,8 +49,10 @@
             [self setSelectedSound:aSound];
         }
         
-        self.aPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:nil
-                                               error:nil];
+        self.aPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:self.selectedSound.soundFilename]
+                                                              error:nil];
+        [self.aPlayer prepareToPlay];
+        
         
     }
     return self;
@@ -65,7 +67,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     self.title = @"Alarm Sound";
 }
 
@@ -134,18 +136,20 @@
         cell.textLabel.text = [(NSDictionary*)[soundList objectAtIndex:indexPath.row] objectForKey:@"name"];
         cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
         
-        if ([[(NSDictionary*)[soundList objectAtIndex:indexPath.row] objectForKey:@"filename"] isEqualToString:_currentlyPlayingFilename]) {
-            [cell setAccessoryView:[self makeDetailDisclosureButtonWithImage:@"stopButton.png"]];
-        }
-        else {
-            [cell setAccessoryView:[self makeDetailDisclosureButtonWithImage:@"playButton.png"]];
-        }
+        /*if ([[(NSDictionary*)[soundList objectAtIndex:indexPath.row] objectForKey:@"filename"] isEqualToString:_currentlyPlayingFilename]) {
+         [cell setAccessoryView:[self makeDetailDisclosureButtonWithImage:@"stopButton.png"]];
+         }
+         else {
+         [cell setAccessoryView:[self makeDetailDisclosureButtonWithImage:@"playButton.png"]];
+         }*/
         
         if ([[(NSDictionary*)[soundList objectAtIndex:indexPath.row] objectForKey:@"filename"] isEqualToString:self.selectedSound.soundFilename]) {
-            cell.imageView.image = [UIImage imageNamed:@"plus"];
+            //cell.imageView.image = [UIImage imageNamed:@"plus"];
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
         }
         else {
-            cell.imageView.image = nil;
+            //cell.imageView.image = nil;
+            cell.accessoryType = UITableViewCellAccessoryNone;
         }
     }
     else if (indexPath.section == 1) {
@@ -156,19 +160,21 @@
         }
         else {
             cell.textLabel.text = [(JASound*)[[JASound savedSounds] objectAtIndex:(indexPath.row - 1)] name];
-
-            if ([[(JASound*)[[JASound savedSounds] objectAtIndex:(indexPath.row - 1)] soundFilename] isEqualToString:_currentlyPlayingFilename]) {
-                [cell setAccessoryView:[self makeDetailDisclosureButtonWithImage:@"stopButton.png"]];
-            }
-            else {
-                [cell setAccessoryView:[self makeDetailDisclosureButtonWithImage:@"playButton.png"]];
-            }
+            
+            /*if ([[(JASound*)[[JASound savedSounds] objectAtIndex:(indexPath.row - 1)] soundFilename] isEqualToString:_currentlyPlayingFilename]) {
+             [cell setAccessoryView:[self makeDetailDisclosureButtonWithImage:@"stopButton.png"]];
+             }
+             else {
+             [cell setAccessoryView:[self makeDetailDisclosureButtonWithImage:@"playButton.png"]];
+             }*/
             
             if ([[(JASound*)[[JASound savedSounds] objectAtIndex:(indexPath.row - 1)] soundFilename] isEqualToString:self.selectedSound.soundFilename]) {
-                cell.imageView.image = [UIImage imageNamed:@"plus"];
+                //cell.imageView.image = [UIImage imageNamed:@"plus"];
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
             }
             else {
-                cell.imageView.image = nil;
+                //cell.imageView.image = nil;
+                cell.accessoryType = UITableViewCellAccessoryNone;
             }
         }
     }
@@ -198,43 +204,43 @@
 }
 
 /*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
 
 /*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ if (editingStyle == UITableViewCellEditingStyleDelete) {
+ // Delete the row from the data source
+ [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+ }
+ else if (editingStyle == UITableViewCellEditingStyleInsert) {
+ // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+ }
+ }
+ */
 
 /*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+ {
+ }
+ */
 
 /*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
 
 #pragma mark - Table view delegate
 
@@ -310,15 +316,13 @@
         
         if (indexPath.row == 0) {
             VoiceRecordViewController *recorder = [[VoiceRecordViewController alloc] initWithNibName:@"VoiceRecordViewController" bundle:[NSBundle mainBundle]];
-            [self presentModalViewController:recorder animated:YES];
-            //[recorder.cancelButton setTarget:self];
-            //[recorder.cancelButton setAction:@selector(dismissModalViewControllerAnimated:)];
+            [self.navigationController pushViewController:recorder animated:YES];
         }
         else {
             
             [self setSelectedSound:(JASound*)[[JASound savedSounds] objectAtIndex:(indexPath.row - 1)]];
             
-            newSound = [[JASound savedSounds] objectAtIndex:(indexPath.row - 1)];            
+            newSound = [[JASound savedSounds] objectAtIndex:(indexPath.row - 1)];
             
         }
         
@@ -339,9 +343,70 @@
     if (newSound && self.delegate && [(id)self.delegate respondsToSelector:@selector(soundSelectorTableViewController:choseSound:)]) {
         [self.delegate soundSelectorTableViewController:self choseSound:newSound];
     }
+    
+    
+    
+    //preview sound
+    if (indexPath.section == 0 || (indexPath.section == 1 && indexPath.row != 0)) {
+        
+        NSString *filename, *soundFilePath;
+        NSURL *fileURL;
+        if (indexPath.section == 0) {
+            _currentlyPlayingFilename = filename = [(NSDictionary*)[soundList objectAtIndex:indexPath.row] objectForKey:@"filename"];
+        }
+        else if (indexPath.section == 1 && indexPath.row != 0) {
+            _currentlyPlayingFilename = filename = [(JASound*)[[JASound savedSounds] objectAtIndex:(indexPath.row - 1)] soundFilename];
+        }
+        
+        if ([filename rangeOfString:@".caf"].location == NSNotFound) {
+            soundFilePath = [[NSBundle mainBundle] pathForResource:[[filename componentsSeparatedByString:@"."] objectAtIndex:0]
+                                                            ofType:[[filename componentsSeparatedByString:@"."] objectAtIndex:1]];
+        }
+        else {
+            soundFilePath = filename;
+        }
+        
+        fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
+        
+        NSError *err;
+        AVAudioPlayer *player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL
+                                                                       error:&err];
+        
+        if (err)
+            NSLog(@"ERR: %@", err);
+        
+        self.aPlayer = player;
+        self.aPlayer.delegate = nil;
+        self.aPlayer.volume = 1.0f;
+        [self.aPlayer setNumberOfLoops:0];
+        [self.aPlayer play];
+    }
+}
+
+// Override to support conditional editing of the table view.
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Return NO if you do not want the specified item to be editable.
+    return (indexPath.section == 1 && indexPath.row != 0) ? YES : NO;
 }
 
 
+
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+        // Delete the row from the data source
+        [JASound removeSound:[[JASound savedSounds] objectAtIndex:(indexPath.row - 1)]];
+        [self.tableView reloadData];
+        
+        
+    }
+}
+
+
+#pragma mark - Media Picker
 // Configures and displays the media item picker.
 - (IBAction) showMediaPicker: (id) sender {
     
@@ -358,7 +423,7 @@
 
 // Responds to the user tapping Done after choosing music.
 - (void) mediaPicker: (MPMediaPickerController *) mediaPicker didPickMediaItems: (MPMediaItemCollection *) mediaItemCollection {
-
+    
     if (mediaItemCollection.count > 0) {
         
         JASound *newSound = [[JASound alloc] init];
@@ -376,7 +441,7 @@
     
     [self.tableView reloadData];
 	[self dismissModalViewControllerAnimated: YES];
-
+    
     
 	[[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleBlackOpaque animated:YES];
 }

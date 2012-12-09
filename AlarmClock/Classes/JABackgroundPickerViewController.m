@@ -24,9 +24,6 @@
         // Custom initialization
         //setup the dictionary from Settings.plist
 
-            
-        
-            
         
     }
     return self;
@@ -84,6 +81,7 @@
             
             UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectInset(currentFrame, 5, 10)];
             [img setImage:[UIImage imageNamed:bgFilename]];
+            //[img setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@Sample.png", [bgFilename stringByReplacingOccurrencesOfString:@".png" withString:@""], nil]]];
             [img setClipsToBounds:YES];
             [img setContentMode:UIViewContentModeScaleAspectFill];
             
@@ -96,15 +94,20 @@
             [lbl setShadowColor:[UIColor darkTextColor]];
             [lbl setText:bgName];
             
+            UIButton *done = [UIButton buttonWithType:UIButtonTypeCustom];
+            [done setFrame:CGRectInset(img.frame, 0, 0)];
+            [done addTarget:self action:@selector(doneButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+            
             [self.scrollView addSubview:img];
             [self.scrollView addSubview:lbl];
+            [self.scrollView addSubview:done];
             
             currentFrame = CGRectOffset(currentFrame, currentFrame.size.width, 0);
             
         }
         
         NSString *customName = @"Custom";
-        NSString *bgFilename = @"plus.png";
+        NSString *bgFilename = @"";
         
         //check to see if there's already been an image chosen
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -116,6 +119,8 @@
         self.customImage = [[UIImageView alloc] initWithFrame:CGRectInset(currentFrame, 5, 10)];
         [self.customImage setClipsToBounds:YES];
         [self.customImage setContentMode:UIViewContentModeScaleAspectFill];
+        [self.customImage.layer setBorderColor:[UIColor whiteColor].CGColor];
+        [self.customImage.layer setBorderWidth:3.0f];
         
         //user custom if if found
         if (pngData) {
@@ -127,9 +132,17 @@
         }
         
         UIButton *plusButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [plusButton setFrame:self.customImage.frame];
+        [plusButton setFrame:CGRectMake(self.customImage.frame.origin.x, self.customImage.frame.origin.y + self.customImage.frame.size.height - 50, self.customImage.frame.size.width, 50)];
         [plusButton addTarget:self action:@selector(customImageTapped:) forControlEvents:UIControlEventTouchUpInside];
-        
+        [plusButton setImage:[UIImage imageNamed:@"customBGIcon.png"] forState:UIControlStateNormal];
+        [plusButton setTitle:@"Custom Image" forState:UIControlStateNormal];
+        [plusButton setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.75]];
+        [plusButton.layer setBorderColor:[UIColor whiteColor].CGColor];
+        [plusButton.layer setBorderWidth:3.0f];
+        [plusButton setTitleColor:[UIColor colorWithRed:68.0/255.0 green:68.0/255.0 blue:68.0/255.0 alpha:1.0] forState:UIControlStateNormal];
+        [plusButton setTitleColor:[UIColor colorWithRed:38.0/255.0 green:38.0/255.0 blue:38.0/255.0 alpha:1.0] forState:UIControlStateHighlighted];
+        [plusButton setImageEdgeInsets:UIEdgeInsetsMake(0, -50, 0, 0)];
+        [plusButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:18]];
         
         UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(self.customImage.frame.origin.x, self.customImage.frame.origin.y + self.customImage.frame.size.height + 10, self.customImage.frame.size.width, 45.0f)];
         [lbl setBackgroundColor:[UIColor clearColor]];
@@ -143,6 +156,8 @@
         [self.scrollView addSubview:self.customImage];
         [self.scrollView addSubview:lbl];
         [self.scrollView addSubview:plusButton];
+        
+
         
         [self setSelectedBG:[JASettings backgroundImageName]];
         
@@ -159,6 +174,7 @@
 
 - (void)viewDidUnload {
     [self setScrollView:nil];
+    [self setDoneButton:nil];
     [super viewDidUnload];
     
 }
@@ -221,4 +237,7 @@
     }
 }
 
+- (IBAction)doneButtonPressed:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 @end

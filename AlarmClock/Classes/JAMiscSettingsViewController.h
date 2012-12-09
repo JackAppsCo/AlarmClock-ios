@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JAMiscSettingsViewController : UITableViewController
+@interface JAMiscSettingsViewController : UITableViewController <UITextFieldDelegate>
 
 @property (strong, nonatomic) UISegmentedControl *weatherSwitch;
+@property (strong, nonatomic) UITextField *sleepLengthField;
 
 @end
