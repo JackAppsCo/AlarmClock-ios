@@ -286,7 +286,7 @@ static BOOL APIError = NO;
 		if (!weatherDict) {
 			weatherDict = [[NSMutableDictionary alloc] initWithCapacity:15];
 		}
-	} else if ([elementName isEqualToString:@"weather"]) {
+	} else if ([elementName isEqualToString:NSLocalizedString(@"Weather", nil)]) {
 		if (!weatherDict) {
 			weatherDict = [[NSMutableDictionary alloc] initWithCapacity:15];
 		}
@@ -324,7 +324,7 @@ static BOOL APIError = NO;
 		
 		[weatherDict release];
 		weatherDict = nil;
-	} else if ([elementName isEqualToString:@"weather"]) {
+	} else if ([elementName isEqualToString:NSLocalizedString(@"Weather", nil)]) {
 		[weatherData addObject:weatherDict];
 		
 		[weatherDict release];

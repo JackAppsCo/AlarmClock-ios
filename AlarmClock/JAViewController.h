@@ -26,7 +26,7 @@
     float sleepVolume;
     float sleepTimeLeft;
     NSTimer *sleepTimer;
-    BOOL alarmEnabled;
+    BOOL alarmEnabled, _shineEnabled;
 }
 
 

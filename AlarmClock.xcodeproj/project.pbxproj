@@ -140,6 +140,8 @@
 		C9FD4EFD16752764007B4A38 /* tabIconSettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4EF516752764007B4A38 /* tabIconSettings@2x.png */; };
 		C9FD4EFE16752764007B4A38 /* tabIconSleep@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4EF616752764007B4A38 /* tabIconSleep@2x.png */; };
 		C9FD4F00167527A1007B4A38 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4EFF167527A1007B4A38 /* Localizable.strings */; };
+		C9FD4F081675866E007B4A38 /* Thunderstorm.wav in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4F071675866E007B4A38 /* Thunderstorm.wav */; };
+		C9FD4F0A1675871A007B4A38 /* sleepSoundsList.plist in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4F091675871A007B4A38 /* sleepSoundsList.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -303,6 +305,8 @@
 		C9FD4EF516752764007B4A38 /* tabIconSettings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tabIconSettings@2x.png"; path = "Images/tabIconSettings@2x.png"; sourceTree = "<group>"; };
 		C9FD4EF616752764007B4A38 /* tabIconSleep@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tabIconSleep@2x.png"; path = "Images/tabIconSleep@2x.png"; sourceTree = "<group>"; };
 		C9FD4EFF167527A1007B4A38 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		C9FD4F071675866E007B4A38 /* Thunderstorm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Thunderstorm.wav; sourceTree = "<group>"; };
+		C9FD4F091675871A007B4A38 /* sleepSoundsList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sleepSoundsList.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -339,6 +343,8 @@
 		C92EF00D1662C98C00274FBB /* Sleep Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				C9FD4F091675871A007B4A38 /* sleepSoundsList.plist */,
+				C9FD4F071675866E007B4A38 /* Thunderstorm.wav */,
 				C99DF1261662D0620085E55D /* Beach.wav */,
 			);
 			name = "Sleep Sounds";
@@ -848,6 +854,8 @@
 				C9FD4EFD16752764007B4A38 /* tabIconSettings@2x.png in Resources */,
 				C9FD4EFE16752764007B4A38 /* tabIconSleep@2x.png in Resources */,
 				C9FD4F00167527A1007B4A38 /* Localizable.strings in Resources */,
+				C9FD4F081675866E007B4A38 /* Thunderstorm.wav in Resources */,
+				C9FD4F0A1675871A007B4A38 /* sleepSoundsList.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

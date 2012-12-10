@@ -20,6 +20,7 @@
 - (void) dismissSettingsController:(id)sender;
 - (void) panGesture:(UIPanGestureRecognizer *)sender;
 - (void) handleAlarmNotification:(NSNotification*)notification;
+- (void) handleShineNotification:(NSNotification*)notification;
 - (void) stopSleepTimer;
 - (void) showAdBanner:(BOOL)show;
 @end
@@ -41,6 +42,7 @@
         _gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
         _timeComponents = [[NSDateComponents alloc] init];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleAlarmNotification:) name:@"alarmTriggered" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleShineNotification:) name:@"shineTriggered" object:nil];
         
         NSError *err = nil;
         [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&err];
@@ -49,6 +51,8 @@
         //iad setup
         self.adBanner.requiredContentSizeIdentifiers = [NSSet setWithObjects:ADBannerContentSizeIdentifierPortrait, ADBannerContentSizeIdentifierLandscape, nil];
         
+        //init flags
+        _shineEnabled = NO;
     }
     
     return self;
@@ -220,10 +224,10 @@
         return;
     }
     
-    
-    NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"Beach" ofType:@"wav"];
+    NSString *soundFilename = [[JASettings sleepSound] objectForKey:@"filename"];
+    NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:[[soundFilename componentsSeparatedByString:@"."] objectAtIndex:0] ofType:[[soundFilename componentsSeparatedByString:@"."] objectAtIndex:1]];
     NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
-    //NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:[JASound defaultSound].soundFilename];
+
     NSError *err;
     AVAudioPlayer *player = [[AVAudioPlayer alloc] initWithContentsOfURL: fileURL
                                                                    error:&err];
@@ -231,7 +235,7 @@
     if (err)
         NSLog(@"ERR: %@", err);
     
-    sleepTimeLeft = 300.0f;
+    sleepTimeLeft = [JASettings sleepLength];
     
 
     
@@ -241,7 +245,7 @@
     [self.aPlayer setNumberOfLoops:-1];
     [self.aPlayer play];
     
-    sleepTimer = [[NSTimer alloc] initWithFireDate:[NSDate dateWithTimeInterval:300 sinceDate:[NSDate date]] interval:0 target:self selector:@selector(stopSleepTimer) userInfo:nil repeats:NO];
+    sleepTimer = [[NSTimer alloc] initWithFireDate:[NSDate dateWithTimeInterval:[JASettings sleepLength] sinceDate:[NSDate date]] interval:0 target:self selector:@selector(stopSleepTimer) userInfo:nil repeats:NO];
     [[NSRunLoop mainRunLoop] addTimer:sleepTimer forMode:NSDefaultRunLoopMode];
 
     
@@ -328,6 +332,14 @@
     
 }
 
+- (void) handleShineNotification:(NSNotification*)notification
+{
+    [self.dimView setBackgroundColor:[UIColor whiteColor]];
+    [self.dimView setAlpha:0.0f];
+    
+    _shineEnabled = YES;
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -347,6 +359,9 @@
 
 // handle gestures
 - (void)panGesture:(UIPanGestureRecognizer *)sender {
+    
+    self.dimView.backgroundColor = [UIColor blackColor];
+    
     if (sender.state == UIGestureRecognizerStateBegan) {
         startLocation = [sender locationInView:self.view];
     }
@@ -439,7 +454,11 @@
     
     if (sleepTimer) {
         sleepTimeLeft -= 1.0f;
-        self.aPlayer.volume = sleepVolume = sleepTimeLeft / 300.0f;
+        self.aPlayer.volume = sleepVolume = sleepTimeLeft / [JASettings sleepLength];
+    }
+    
+    if (_shineEnabled) {
+        self.dimView.alpha = self.dimView.alpha + (1.0 / 1800.0);
     }
 }
 

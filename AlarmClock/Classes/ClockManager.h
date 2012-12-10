@@ -15,6 +15,7 @@
 
 @property (strong, nonatomic) NSMutableArray *snoozeAlarms;
 
++ (BOOL)shouldStartShineForComponents:(NSDateComponents*)shineComps atComponents:(NSDateComponents*)atComps;
 + (ClockManager *)instance;
 + (void) snoozeAlarm:(JAAlarm*)anAlarm;
 

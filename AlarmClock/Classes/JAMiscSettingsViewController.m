@@ -41,7 +41,7 @@
         _selectedTime = [JASettings sleepLength];
         
         //setup the dictionary from Settings.plist
-		NSString *soundsLocation = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"soundsList.plist"];
+		NSString *soundsLocation = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"sleepSoundsList.plist"];
 		NSDictionary *soundsDict = [[NSDictionary alloc] initWithContentsOfFile:soundsLocation];
         [self setSounds:[soundsDict objectForKey:@"sounds"]];
         
@@ -86,7 +86,7 @@
 
 - (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return (section == 0) ? @"Sleep Sound" : @"Weather";
+    return (section == 0) ? NSLocalizedString(@"Sleep Sound", nil) : NSLocalizedString(@"Weather", nil);
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -119,7 +119,7 @@
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             
-            cell.textLabel.text = @"Length (mins)";
+            cell.textLabel.text = @"Length";
             cell.detailTextLabel.text = [NSString stringWithFormat:@"%i minutes", _selectedTime, nil];
             cell.accessoryType = UITableViewCellAccessoryNone;
             cell.selectionStyle = UITableViewCellSelectionStyleBlue;
@@ -127,7 +127,7 @@
         }
         else if (indexPath.row == 1) {
             
-            cell.textLabel.text = @"Sleep Sound";
+            cell.textLabel.text = NSLocalizedString(@"Sleep Sound", nil);
             cell.detailTextLabel.text = [[self.sounds objectAtIndex:_selectedSound] objectForKey:@"name"];
             cell.accessoryType = UITableViewCellAccessoryNone;
             cell.selectionStyle = UITableViewCellSelectionStyleBlue;
@@ -192,10 +192,12 @@
         _selectedPicker = indexPath.row;
         
         if (indexPath.row == 0) {
+            [self.pickerView reloadAllComponents];
             [self.pickerView selectRow:_selectedTime inComponent:0 animated:NO];
             [self raisePicker];
         }
         else {
+            [self.pickerView reloadAllComponents];
             [self.pickerView selectRow:_selectedSound inComponent:0 animated:NO];
             [self raisePicker];
         }
@@ -266,6 +268,7 @@
     }
     else {
         
+        [JASettings setSleepSound:[self.sounds objectAtIndex:row]];
         _selectedSound = row;
         
     }

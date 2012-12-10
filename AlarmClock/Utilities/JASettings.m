@@ -21,6 +21,8 @@ static JASettings *sharedInstance = nil;
 #define FARENHEIT_KEY @"farenheight"
 #define ALARMS_ENABLED_KEY @"alarmsEnabled"
 #define SLEEP_LENGTH_KEY @"sleepLength"
+#define SLEEP_SOUND_KEY @"sleepSound"
+#define SHINE_KEY @"riseAndShine"
 
 #define CLOCK_COLORS [NSArray arrayWithObjects:[[NSDictionary alloc] initWithObjectsAndKeys:[UIColor whiteColor], @"color", @"White", @"name", nil], [[NSDictionary alloc] initWithObjectsAndKeys:[UIColor blackColor], @"color", @"Black", @"name", nil], [[NSDictionary alloc] initWithObjectsAndKeys:[UIColor yellowColor], @"color", @"Yellow", @"name", nil], [[NSDictionary alloc] initWithObjectsAndKeys:[UIColor colorWithRed:141.0/255.0 green:192.0/255.0 blue:236.0/255.0 alpha:1.0], @"color", @"Light Blue", @"name", nil], [[NSDictionary alloc] initWithObjectsAndKeys:[UIColor colorWithRed:7.0/255.0 green:47.0/255.0 blue:81.0/255.0 alpha:1.0], @"color", @"Blue", @"name", nil], [[NSDictionary alloc] initWithObjectsAndKeys:[UIColor colorWithRed:255.0/255.0 green:162.0/255.0 blue:0.0/255.0 alpha:1.0], @"color", @"Orange", @"name", nil], [[NSDictionary alloc] initWithObjectsAndKeys:[UIColor colorWithRed:53.0/255.0 green:123.0/255.0 blue:53.0/255.0 alpha:1.0], @"color", @"Green", @"name", nil], nil]
 
@@ -225,13 +227,42 @@ static JASettings *sharedInstance = nil;
         len = [[NSUserDefaults standardUserDefaults] integerForKey:SLEEP_LENGTH_KEY];
     }
     
-    return [[NSUserDefaults standardUserDefaults] integerForKey:SLEEP_LENGTH_KEY];
+    return len;
 }
 
 + (void) setSleepLength:(int)length
 {
     [[NSUserDefaults standardUserDefaults] setInteger:length forKey:SLEEP_LENGTH_KEY];
     [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (NSDictionary *)sleepSound
+{
+    NSDictionary * sound = [[NSDictionary alloc] initWithObjectsAndKeys:@"", @"", @"", @"", nil];
+    
+    //check for bg image name
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:SLEEP_SOUND_KEY]) {
+        sound = [[NSUserDefaults standardUserDefaults] objectForKey:SLEEP_SOUND_KEY];
+    }
+    
+    return sound;
+}
+
++ (void) setSleepSound:(NSDictionary*)sleepSound
+{
+    [[NSUserDefaults standardUserDefaults] setObject:sleepSound forKey:SLEEP_SOUND_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (void) setShine:(BOOL)shine
+{
+    [[NSUserDefaults standardUserDefaults] setBool:shine forKey:SHINE_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (BOOL) shine
+{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:SHINE_KEY];
 }
 
 #pragma mark - Class Methods

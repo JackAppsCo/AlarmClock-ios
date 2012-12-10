@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>sounds</key>
+	<array>
+		<dict>
+			<key>name</key>
+			<string>Beach</string>
+			<key>filename</key>
+			<string>Beach.wav</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Thunderstorm</string>
+			<key>filename</key>
+			<string>Thunderstorm.wav</string>
+		</dict>
+	</array>
+</dict>
+</plist>

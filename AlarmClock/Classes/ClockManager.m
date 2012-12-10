@@ -7,7 +7,7 @@
 //
 
 #import "ClockManager.h"
-
+#import "JASettings.h"
 
 
 static ClockManager *sharedInstance = nil;
@@ -40,7 +40,10 @@ static ClockManager *sharedInstance = nil;
     if (timeComponents.second == 0) {
         
         for (JAAlarm *alarm in [JAAlarm savedAlarms]) {
-            if (alarm.enabled && timeComponents.minute == alarm.timeComponents.minute && timeComponents.hour == alarm.timeComponents.hour) {
+            if (alarm.enabled && [ClockManager shouldStartShineForComponents:alarm.timeComponents atComponents:timeComponents]) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"shineTriggered" object:alarm];
+            }
+            else if (alarm.enabled && timeComponents.minute == alarm.timeComponents.minute && timeComponents.hour == alarm.timeComponents.hour) {
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"alarmTriggered" object:alarm];
             }
         }
@@ -55,6 +58,28 @@ static ClockManager *sharedInstance = nil;
         
     }
     
+}
+
+
++ (BOOL)shouldStartShineForComponents:(NSDateComponents*)shineComps atComponents:(NSDateComponents*)atComps
+{
+    NSCalendar *cal = [NSCalendar currentCalendar];
+    
+    NSDate *shineDate;
+    if (shineComps.hour == 0 && shineComps.minute < 30) {
+        shineDate = [cal dateByAddingComponents:shineComps toDate:[NSDate dateWithTimeInterval:(60 * 60 * 24) sinceDate:[NSDate date]] options:0];
+    }
+    else {
+        shineDate = [cal dateByAddingComponents:shineComps toDate:[NSDate date] options:0];
+    }
+    
+    NSDate *atDate = [cal dateByAddingComponents:atComps toDate:[NSDate date] options:0];
+    
+    //get abs value of time interval
+    int seconds = [shineDate timeIntervalSinceDate:atDate];
+    seconds = abs(seconds);
+    
+    return (seconds >= 1770 && seconds < 1830);
 }
 
 

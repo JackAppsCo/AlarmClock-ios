@@ -31,6 +31,9 @@
 + (void) setAlarmsEnabled:(BOOL)enabled;
 + (int) sleepLength;
 + (void) setSleepLength:(int)length;
-
++ (NSDictionary *)sleepSound;
++ (void) setSleepSound:(NSDictionary*)sleepSound;
++ (void) setShine:(BOOL)shine;
++ (BOOL) shine;
 
 @end
