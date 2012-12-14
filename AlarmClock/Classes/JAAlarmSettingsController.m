@@ -17,7 +17,7 @@
 
 @implementation JAAlarmSettingsController
 
-@synthesize alarm = _alarm, tableView = _tableView, datePicker = _datePicker, enableSwitch = _enableSwitch, nameField = _nameField, snoozeField = _snoozeField;
+@synthesize alarm = _alarm, tableView = _tableView, datePicker = _datePicker, enableSwitch = _enableSwitch, gradualSwitch = _gradualSwitch, nameField = _nameField, snoozeField = _snoozeField;
 
 - (id)initWithAlarm:(JAAlarm*)anAlarm
 {
@@ -36,6 +36,7 @@
             _alarm = [[JAAlarm alloc] init];
             _alarm.alarmID = [NSNumber numberWithInt:-1];
             _alarm.enabled = YES;
+            _alarm.gradualSound = YES;
             _alarm.repeatDays = [[NSArray alloc] init];
             _alarm.sound = [JASound defaultSound];
             _alarm.name = @"Alarm";
@@ -53,6 +54,8 @@
         [self setEnableSwitch:[[UISwitch alloc] init]];
         [self.enableSwitch setOn:self.alarm.enabled];
         
+        [self setGradualSwitch:[[UISwitch alloc] init]];
+        [self.gradualSwitch setOn:self.alarm.gradualSound];
         
         [self setNameField:[[UITextField alloc] init]];
         self.nameField.frame = CGRectMake(0, 0, 200.0, 23.0);
@@ -119,6 +122,7 @@
     if (!pressedCancel)
     {
         self.alarm.enabled = self.enableSwitch.on;
+        self.alarm.gradualSound = self.gradualSwitch.on;
         self.alarm.name = self.nameField.text;
         NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
         [f setNumberStyle:NSNumberFormatterDecimalStyle];
@@ -176,7 +180,7 @@
 {
 
     // Return the number of rows in the section.
-    return 6;
+    return 7;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -211,6 +215,10 @@
             cell.detailTextLabel.text = self.alarm.sound.name;
             break;
         case 5:
+            cell.textLabel.text = @"Gradual Alarm";
+            cell.accessoryView = self.gradualSwitch;
+            break;
+        case 6:
             cell.textLabel.text = @"Snooze (mins)";
             cell.accessoryView = self.snoozeField;
             break;
@@ -293,6 +301,8 @@
             break;
         }
         case 5:
+            break;
+        case 6:
         {
             [self.nameField resignFirstResponder];
             [self.snoozeField becomeFirstResponder];

@@ -9,7 +9,7 @@
 #import "JAAlarm.h"
 
 @implementation JAAlarm
-@synthesize timeComponents = _timeComponents, alarmID = _alarmID, lastFireDate = _lastFireDate, repeatDays = _repeatDays, enabled = _enabled, sound = _sound, snoozeTime = _snoozeTime;
+@synthesize timeComponents = _timeComponents, alarmID = _alarmID, lastFireDate = _lastFireDate, repeatDays = _repeatDays, enabled = _enabled, sound = _sound, snoozeTime = _snoozeTime, gradualSound = _gradualSound;
 
 - (void) encodeWithCoder:(NSCoder *)encoder {
     [encoder encodeObject:_timeComponents forKey:@"alarmDate"];
@@ -17,6 +17,7 @@
     [encoder encodeObject:_lastFireDate forKey:@"lastFireDate"];
     [encoder encodeObject:_name forKey:@"alarmName"];
     [encoder encodeBool:_enabled forKey:@"alarmEnabled"];
+    [encoder encodeBool:_gradualSound forKey:@"gradualSound"];
     [encoder encodeObject:_repeatDays forKey:@"alarmRepeatDays"];
     [encoder encodeObject:_sound forKey:@"alarmSound"];
     [encoder encodeObject:_snoozeTime forKey:@"snoozeTime"];
@@ -31,6 +32,7 @@
         [self setLastFireDate:[coder decodeObjectForKey:@"lastFireDate"]];
         [self setName:[coder decodeObjectForKey:@"alarmName"]];
         [self setEnabled:[coder decodeBoolForKey:@"alarmEnabled"]];
+        [self setGradualSound:[coder decodeBoolForKey:@"gradualSound"]];
         [self setRepeatDays:[coder decodeObjectForKey:@"alarmRepeatDays"]];
         [self setSound:[coder decodeObjectForKey:@"alarmSound"]];
         [self setSnoozeTime:[coder decodeObjectForKey:@"snoozeTime"]];
@@ -221,6 +223,7 @@
     desc = [NSString stringWithFormat:@"%@ lastFireDate:%@;", desc, self.lastFireDate, nil];
     desc = [NSString stringWithFormat:@"%@ sound:%@;", desc, self.sound, nil];
     desc = [NSString stringWithFormat:@"%@ Enabled:%@;", desc, (self.enabled) ? @"YES" : @"NO", nil];
+    desc = [NSString stringWithFormat:@"%@ Gradual Sound:%@;", desc, (self.gradualSound) ? @"YES" : @"NO", nil];
     desc = [NSString stringWithFormat:@"%@ Repeat Days:%@;", desc, self.repeatDays, nil];
     return desc;
     

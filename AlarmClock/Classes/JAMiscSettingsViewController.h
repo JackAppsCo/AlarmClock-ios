@@ -18,5 +18,6 @@
 @property (strong, nonatomic) UIPickerView *pickerView;
 @property (strong, nonatomic) NSArray *sounds;
 @property (strong, nonatomic) UITableView *tableView;
+@property (strong, nonatomic) UISwitch *shineSwitch;
 
 @end

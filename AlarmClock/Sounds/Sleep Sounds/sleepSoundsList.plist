@@ -8,13 +8,13 @@
 			<key>name</key>
 			<string>Beach</string>
 			<key>filename</key>
-			<string>Beach.wav</string>
+			<string>Beach.m4a</string>
 		</dict>
 		<dict>
 			<key>name</key>
 			<string>Thunderstorm</string>
 			<key>filename</key>
-			<string>Thunderstorm.wav</string>
+			<string>Thunderstorm.m4a</string>
 		</dict>
 	</array>
 </dict>

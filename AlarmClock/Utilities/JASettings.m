@@ -8,7 +8,7 @@
 
 #import "JASettings.h"
 #import <AssetsLibrary/AssetsLibrary.h>
-
+#import "UIImage+fixOrientation.h"
 
 static JASettings *sharedInstance = nil;
 
@@ -58,7 +58,7 @@ static JASettings *sharedInstance = nil;
         }
     }
     
-    return image;
+    return [image  normalizedImage];
 }
 
 + (void) setBackgroundImage:(NSString*)image

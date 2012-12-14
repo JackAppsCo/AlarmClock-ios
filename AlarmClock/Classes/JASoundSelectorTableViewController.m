@@ -42,7 +42,7 @@
         if (!aSound) {
             JASound *newSound = [[JASound alloc] init];
             [newSound setName:@"Alarm"];
-            [newSound setSoundFilename:@"alarm.mp3"];
+            [newSound setSoundFilename:@"Background__Alarm__cut.m4a"];
             [self setSelectedSound:newSound];
         }
         else {

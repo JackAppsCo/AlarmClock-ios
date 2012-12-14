@@ -13,6 +13,7 @@
 
 @interface JAMiscSettingsViewController ()
 - (void)weatherSwitchChanged:(id)sender;
+- (void)shineSwitchChanged:(id)sender;
 @end
 
 @implementation JAMiscSettingsViewController
@@ -45,12 +46,26 @@
 		NSDictionary *soundsDict = [[NSDictionary alloc] initWithContentsOfFile:soundsLocation];
         [self setSounds:[soundsDict objectForKey:@"sounds"]];
         
+        //check for preselected sound
+        NSDictionary *soundDict = [JASettings sleepSound];
+        for (NSDictionary *thisSound in self.sounds) {
+            if ([[soundDict objectForKey:@"name"] isEqualToString:[thisSound objectForKey:@"name"]]) {
+                _selectedSound = [self.sounds indexOfObject:thisSound];
+                break;
+            }
+        }
+        
         //setup picker
         [self setPickerView:[[UIPickerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 220)]];
         [self.view addSubview:self.pickerView];
         [self.pickerView setDelegate:self];
         [self.pickerView setShowsSelectionIndicator:YES];
         [self.pickerView setDataSource:self];
+        
+        //shine switch
+        [self setShineSwitch:[[UISwitch alloc] init]];
+        [self.shineSwitch setOn:[JASettings shine]];
+        [self.shineSwitch addTarget:self action:@selector(shineSwitchChanged:) forControlEvents:UIControlEventValueChanged];
         
     }
     return self;
@@ -78,6 +93,11 @@
     [JASettings setFarenheit:([self.weatherSwitch selectedSegmentIndex] == 0) ? YES : NO];
 }
 
+- (void)shineSwitchChanged:(id)sender
+{
+    [JASettings setShine:[self.shineSwitch isOn]];
+}
+
 #pragma mark - Table view data source
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -86,14 +106,14 @@
 
 - (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return (section == 0) ? NSLocalizedString(@"Sleep Sound", nil) : NSLocalizedString(@"Weather", nil);
+    return (section == 0) ? NSLocalizedString(@"Sleep Sound", nil) : (section == 1) ? NSLocalizedString(@"Weather", nil) : NSLocalizedString(@"Misc", nil);
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
 
     // Return the number of sections.
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -119,8 +139,8 @@
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             
-            cell.textLabel.text = @"Length";
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"%i minutes", _selectedTime, nil];
+            cell.textLabel.text = NSLocalizedString(@"Length", nil);
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%i %@", _selectedTime, NSLocalizedString(@"minutes", nil), nil];
             cell.accessoryType = UITableViewCellAccessoryNone;
             cell.selectionStyle = UITableViewCellSelectionStyleBlue;
             
@@ -133,11 +153,17 @@
             cell.selectionStyle = UITableViewCellSelectionStyleBlue;
         }
     }
-    else {
-        cell.textLabel.text = @"Scale";
+    else if (indexPath.section == 1) {
+        cell.textLabel.text = NSLocalizedString(@"Scale", nil);
         cell.accessoryView = self.weatherSwitch;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
+    else {
+        cell.textLabel.text = NSLocalizedString(@"Rise & Shine", nil);
+        cell.accessoryView = self.shineSwitch;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+    
     
     return cell;
 }

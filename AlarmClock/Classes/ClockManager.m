@@ -40,7 +40,7 @@ static ClockManager *sharedInstance = nil;
     if (timeComponents.second == 0) {
         
         for (JAAlarm *alarm in [JAAlarm savedAlarms]) {
-            if (alarm.enabled && [ClockManager shouldStartShineForComponents:alarm.timeComponents atComponents:timeComponents]) {
+            if (alarm.enabled && [JASettings shine] && [ClockManager shouldStartShineForComponents:alarm.timeComponents atComponents:timeComponents]) {
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"shineTriggered" object:alarm];
             }
             else if (alarm.enabled && timeComponents.minute == alarm.timeComponents.minute && timeComponents.hour == alarm.timeComponents.hour) {

@@ -17,7 +17,7 @@
 @property NSDate *lastFireDate;
 @property NSNumber *alarmID, *snoozeTime;
 @property NSString *name;
-@property BOOL *enabled;
+@property BOOL *enabled, *gradualSound;
 @property JASound *sound;
 @property NSArray *repeatDays;
 

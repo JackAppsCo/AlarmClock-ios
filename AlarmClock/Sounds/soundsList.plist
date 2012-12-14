@@ -8,67 +8,67 @@
 			<key>name</key>
 			<string>Air Raid</string>
 			<key>filename</key>
-			<string>Air Raid_cut.wav</string>
+			<string>Air Raid_cut.m4a</string>
 		</dict>
 		<dict>
 			<key>name</key>
 			<string>Alarm</string>
 			<key>filename</key>
-			<string>Background__Alarm__cut.wav</string>
+			<string>Background__Alarm__cut.m4a</string>
 		</dict>
 		<dict>
 			<key>name</key>
 			<string>British Ambulance</string>
 			<key>filename</key>
-			<string>British Ambulance_cut.wav</string>
+			<string>British Ambulance_cut.m4a</string>
 		</dict>
 		<dict>
 			<key>name</key>
 			<string>Burglar Alarm</string>
 			<key>filename</key>
-			<string>Burglar Alarm_cut.wav</string>
+			<string>Burglar Alarm_cut.m4a</string>
 		</dict>
 		<dict>
 			<key>name</key>
 			<string>Church Bell</string>
 			<key>filename</key>
-			<string>Church Bell_cut.wav</string>
+			<string>Church Bell_cut.m4a</string>
 		</dict>
 		<dict>
 			<key>name</key>
 			<string>Old School Clock</string>
 			<key>filename</key>
-			<string>Old School Clock_cut.wav</string>
+			<string>Old School Clock_cut.m4a</string>
 		</dict>
 		<dict>
 			<key>name</key>
 			<string>School Bell</string>
 			<key>filename</key>
-			<string>School Bell_cut.wav</string>
+			<string>School Bell_cut.m4a</string>
 		</dict>
 		<dict>
 			<key>name</key>
 			<string>Siren</string>
 			<key>filename</key>
-			<string>Siren_cut.wav</string>
+			<string>Siren_cut.m4a</string>
 		</dict>
 		<dict>
 			<key>name</key>
 			<string>Spaceship</string>
 			<key>filename</key>
-			<string>Spaceship_cut.wav</string>
+			<string>Spaceship_cut.m4a</string>
 		</dict>
 		<dict>
 			<key>name</key>
 			<string>Submarine</string>
 			<key>filename</key>
-			<string>Submarine_cut.wav</string>
+			<string>Submarine_cut.m4a</string>
 		</dict>
 		<dict>
 			<key>name</key>
 			<string>Techy</string>
 			<key>filename</key>
-			<string>Techy_cut.wav</string>
+			<string>Techy_cut.m4a</string>
 		</dict>
 	</array>
 </dict>

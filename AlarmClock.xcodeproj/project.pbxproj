@@ -12,6 +12,7 @@
 		C91512AE166067D800295189 /* JAClockSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C91512AC166067D800295189 /* JAClockSettingsViewController.xib */; };
 		C91F88441658493F004F0943 /* AlarmClockIcon3_114.png in Resources */ = {isa = PBXBuildFile; fileRef = C91F88421658493F004F0943 /* AlarmClockIcon3_114.png */; };
 		C91F88451658493F004F0943 /* AlarmClockIcon3_57.png in Resources */ = {isa = PBXBuildFile; fileRef = C91F88431658493F004F0943 /* AlarmClockIcon3_57.png */; };
+		C92783D11677853200CFEA8D /* UIImage+fixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = C92783D01677853200CFEA8D /* UIImage+fixOrientation.m */; };
 		C9284971165331A500B4CF8E /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9284970165331A500B4CF8E /* SwipeView.m */; };
 		C928497416533B7700B4CF8E /* JAAlarm.m in Sources */ = {isa = PBXBuildFile; fileRef = C928497316533B7700B4CF8E /* JAAlarm.m */; };
 		C9284992165341CD00B4CF8E /* JAAlarmListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9284991165341CD00B4CF8E /* JAAlarmListViewController.m */; };
@@ -20,17 +21,6 @@
 		C92EEFED16629BF100274FBB /* rowBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C92EEFEB16629BF100274FBB /* rowBG@2x.png */; };
 		C92EEFF016629D4B00274FBB /* alarmRowBG.png in Resources */ = {isa = PBXBuildFile; fileRef = C92EEFEE16629D4B00274FBB /* alarmRowBG.png */; };
 		C92EEFF116629D4B00274FBB /* alarmRowBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C92EEFEF16629D4B00274FBB /* alarmRowBG@2x.png */; };
-		C92EEFF71662A34000274FBB /* Air Raid_cut.wav in Resources */ = {isa = PBXBuildFile; fileRef = C92EEFF61662A34000274FBB /* Air Raid_cut.wav */; };
-		C92EEFFA1662A36900274FBB /* Background__Alarm__cut.wav in Resources */ = {isa = PBXBuildFile; fileRef = C92EEFF91662A36900274FBB /* Background__Alarm__cut.wav */; };
-		C92EF0041662A46800274FBB /* Techy_cut.wav in Resources */ = {isa = PBXBuildFile; fileRef = C92EEFFB1662A46800274FBB /* Techy_cut.wav */; };
-		C92EF0051662A46800274FBB /* Submarine_cut.wav in Resources */ = {isa = PBXBuildFile; fileRef = C92EEFFC1662A46800274FBB /* Submarine_cut.wav */; };
-		C92EF0061662A46800274FBB /* Spaceship_cut.wav in Resources */ = {isa = PBXBuildFile; fileRef = C92EEFFD1662A46800274FBB /* Spaceship_cut.wav */; };
-		C92EF0071662A46800274FBB /* Siren_cut.wav in Resources */ = {isa = PBXBuildFile; fileRef = C92EEFFE1662A46800274FBB /* Siren_cut.wav */; };
-		C92EF0081662A46800274FBB /* School Bell_cut.wav in Resources */ = {isa = PBXBuildFile; fileRef = C92EEFFF1662A46800274FBB /* School Bell_cut.wav */; };
-		C92EF0091662A46800274FBB /* Old School Clock_cut.wav in Resources */ = {isa = PBXBuildFile; fileRef = C92EF0001662A46800274FBB /* Old School Clock_cut.wav */; };
-		C92EF00A1662A46800274FBB /* Church Bell_cut.wav in Resources */ = {isa = PBXBuildFile; fileRef = C92EF0011662A46800274FBB /* Church Bell_cut.wav */; };
-		C92EF00B1662A46800274FBB /* Burglar Alarm_cut.wav in Resources */ = {isa = PBXBuildFile; fileRef = C92EF0021662A46800274FBB /* Burglar Alarm_cut.wav */; };
-		C92EF00C1662A46800274FBB /* British Ambulance_cut.wav in Resources */ = {isa = PBXBuildFile; fileRef = C92EF0031662A46800274FBB /* British Ambulance_cut.wav */; };
 		C9349E16165A85D40058D6EB /* ClockManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C9349E15165A85D40058D6EB /* ClockManager.m */; };
 		C93A02271666DAE800E1A273 /* playButton.png in Resources */ = {isa = PBXBuildFile; fileRef = C93A02231666DAE800E1A273 /* playButton.png */; };
 		C93A02281666DAE800E1A273 /* stopButton.png in Resources */ = {isa = PBXBuildFile; fileRef = C93A02241666DAE800E1A273 /* stopButton.png */; };
@@ -75,7 +65,6 @@
 		C9889619165804F20072EC6E /* VoiceRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9889618165804F20072EC6E /* VoiceRecordViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C988961B165805250072EC6E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C988961A165805250072EC6E /* AVFoundation.framework */; };
 		C988961D1658056E0072EC6E /* VoiceRecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C988961C1658056E0072EC6E /* VoiceRecordViewController.xib */; };
-		C99DF1311662D0620085E55D /* Beach.wav in Resources */ = {isa = PBXBuildFile; fileRef = C99DF1261662D0620085E55D /* Beach.wav */; };
 		C9A0E4591654A4DA000BB045 /* AlarmClockIcon57.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A0E4571654A4DA000BB045 /* AlarmClockIcon57.png */; };
 		C9A0E45A1654A4DA000BB045 /* AlarmClockIcon114.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A0E4581654A4DA000BB045 /* AlarmClockIcon114.png */; };
 		C9A0E45C1654A4E9000BB045 /* AlarmClockIcon57.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A0E45B1654A4E9000BB045 /* AlarmClockIcon57.png */; };
@@ -87,6 +76,19 @@
 		C9A2BC02165F27E600F09634 /* beach.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A2BC00165F27E600F09634 /* beach.png */; };
 		C9A2BC03165F27E600F09634 /* chalkboard.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A2BC01165F27E600F09634 /* chalkboard.png */; };
 		C9B2FC89166CF08A0037E588 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2FC88166CF08A0037E588 /* iAd.framework */; };
+		C9BA461B1677A395000EA053 /* Air Raid_cut.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C9BA46101677A395000EA053 /* Air Raid_cut.m4a */; };
+		C9BA461C1677A395000EA053 /* Background__Alarm__cut.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C9BA46111677A395000EA053 /* Background__Alarm__cut.m4a */; };
+		C9BA461D1677A395000EA053 /* British Ambulance_cut.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C9BA46121677A395000EA053 /* British Ambulance_cut.m4a */; };
+		C9BA461E1677A395000EA053 /* Burglar Alarm_cut.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C9BA46131677A395000EA053 /* Burglar Alarm_cut.m4a */; };
+		C9BA461F1677A395000EA053 /* Church Bell_cut.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C9BA46141677A395000EA053 /* Church Bell_cut.m4a */; };
+		C9BA46201677A395000EA053 /* Old School Clock_cut.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C9BA46151677A395000EA053 /* Old School Clock_cut.m4a */; };
+		C9BA46211677A395000EA053 /* School Bell_cut.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C9BA46161677A395000EA053 /* School Bell_cut.m4a */; };
+		C9BA46221677A395000EA053 /* Siren_cut.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C9BA46171677A395000EA053 /* Siren_cut.m4a */; };
+		C9BA46231677A395000EA053 /* Spaceship_cut.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C9BA46181677A395000EA053 /* Spaceship_cut.m4a */; };
+		C9BA46241677A395000EA053 /* Submarine_cut.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C9BA46191677A395000EA053 /* Submarine_cut.m4a */; };
+		C9BA46251677A395000EA053 /* Techy_cut.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C9BA461A1677A395000EA053 /* Techy_cut.m4a */; };
+		C9BA46291677A3AB000EA053 /* Beach.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C9BA46271677A3AB000EA053 /* Beach.m4a */; };
+		C9BA462A1677A3AB000EA053 /* Thunderstorm.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C9BA46281677A3AB000EA053 /* Thunderstorm.m4a */; };
 		C9E6404716528B7500A388C6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E6404616528B7500A388C6 /* UIKit.framework */; };
 		C9E6404916528B7500A388C6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E6404816528B7500A388C6 /* Foundation.framework */; };
 		C9E6404B16528B7500A388C6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E6404A16528B7500A388C6 /* CoreGraphics.framework */; };
@@ -140,7 +142,6 @@
 		C9FD4EFD16752764007B4A38 /* tabIconSettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4EF516752764007B4A38 /* tabIconSettings@2x.png */; };
 		C9FD4EFE16752764007B4A38 /* tabIconSleep@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4EF616752764007B4A38 /* tabIconSleep@2x.png */; };
 		C9FD4F00167527A1007B4A38 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4EFF167527A1007B4A38 /* Localizable.strings */; };
-		C9FD4F081675866E007B4A38 /* Thunderstorm.wav in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4F071675866E007B4A38 /* Thunderstorm.wav */; };
 		C9FD4F0A1675871A007B4A38 /* sleepSoundsList.plist in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4F091675871A007B4A38 /* sleepSoundsList.plist */; };
 /* End PBXBuildFile section */
 
@@ -151,6 +152,8 @@
 		C91512AC166067D800295189 /* JAClockSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JAClockSettingsViewController.xib; path = Classes/JAClockSettingsViewController.xib; sourceTree = "<group>"; };
 		C91F88421658493F004F0943 /* AlarmClockIcon3_114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AlarmClockIcon3_114.png; sourceTree = "<group>"; };
 		C91F88431658493F004F0943 /* AlarmClockIcon3_57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AlarmClockIcon3_57.png; sourceTree = "<group>"; };
+		C92783CF1677853200CFEA8D /* UIImage+fixOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+fixOrientation.h"; sourceTree = "<group>"; };
+		C92783D01677853200CFEA8D /* UIImage+fixOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+fixOrientation.m"; sourceTree = "<group>"; };
 		C928496F165331A500B4CF8E /* SwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeView.h; sourceTree = "<group>"; };
 		C9284970165331A500B4CF8E /* SwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeView.m; sourceTree = "<group>"; };
 		C928497216533B7700B4CF8E /* JAAlarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JAAlarm.h; path = Classes/Models/JAAlarm.h; sourceTree = "<group>"; };
@@ -163,17 +166,6 @@
 		C92EEFEB16629BF100274FBB /* rowBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "rowBG@2x.png"; path = "Images/rowBG@2x.png"; sourceTree = "<group>"; };
 		C92EEFEE16629D4B00274FBB /* alarmRowBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = alarmRowBG.png; path = Images/alarmRowBG.png; sourceTree = "<group>"; };
 		C92EEFEF16629D4B00274FBB /* alarmRowBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "alarmRowBG@2x.png"; path = "Images/alarmRowBG@2x.png"; sourceTree = "<group>"; };
-		C92EEFF61662A34000274FBB /* Air Raid_cut.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Air Raid_cut.wav"; path = "Sounds/Air Raid_cut.wav"; sourceTree = "<group>"; };
-		C92EEFF91662A36900274FBB /* Background__Alarm__cut.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Background__Alarm__cut.wav; path = Sounds/Background__Alarm__cut.wav; sourceTree = "<group>"; };
-		C92EEFFB1662A46800274FBB /* Techy_cut.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Techy_cut.wav; path = Sounds/Techy_cut.wav; sourceTree = "<group>"; };
-		C92EEFFC1662A46800274FBB /* Submarine_cut.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Submarine_cut.wav; path = Sounds/Submarine_cut.wav; sourceTree = "<group>"; };
-		C92EEFFD1662A46800274FBB /* Spaceship_cut.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Spaceship_cut.wav; path = Sounds/Spaceship_cut.wav; sourceTree = "<group>"; };
-		C92EEFFE1662A46800274FBB /* Siren_cut.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Siren_cut.wav; path = Sounds/Siren_cut.wav; sourceTree = "<group>"; };
-		C92EEFFF1662A46800274FBB /* School Bell_cut.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "School Bell_cut.wav"; path = "Sounds/School Bell_cut.wav"; sourceTree = "<group>"; };
-		C92EF0001662A46800274FBB /* Old School Clock_cut.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Old School Clock_cut.wav"; path = "Sounds/Old School Clock_cut.wav"; sourceTree = "<group>"; };
-		C92EF0011662A46800274FBB /* Church Bell_cut.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Church Bell_cut.wav"; path = "Sounds/Church Bell_cut.wav"; sourceTree = "<group>"; };
-		C92EF0021662A46800274FBB /* Burglar Alarm_cut.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "Burglar Alarm_cut.wav"; path = "Sounds/Burglar Alarm_cut.wav"; sourceTree = "<group>"; };
-		C92EF0031662A46800274FBB /* British Ambulance_cut.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "British Ambulance_cut.wav"; path = "Sounds/British Ambulance_cut.wav"; sourceTree = "<group>"; };
 		C9349E14165A85D40058D6EB /* ClockManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClockManager.h; path = Classes/ClockManager.h; sourceTree = "<group>"; };
 		C9349E15165A85D40058D6EB /* ClockManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClockManager.m; path = Classes/ClockManager.m; sourceTree = "<group>"; };
 		C93A02231666DAE800E1A273 /* playButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playButton.png; sourceTree = "<group>"; };
@@ -224,7 +216,6 @@
 		C9889618165804F20072EC6E /* VoiceRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VoiceRecordViewController.m; path = Classes/VoiceRecordViewController.m; sourceTree = "<group>"; };
 		C988961A165805250072EC6E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		C988961C1658056E0072EC6E /* VoiceRecordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VoiceRecordViewController.xib; path = Classes/VoiceRecordViewController.xib; sourceTree = "<group>"; };
-		C99DF1261662D0620085E55D /* Beach.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Beach.wav; sourceTree = "<group>"; };
 		C9A0E4571654A4DA000BB045 /* AlarmClockIcon57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AlarmClockIcon57.png; sourceTree = "<group>"; };
 		C9A0E4581654A4DA000BB045 /* AlarmClockIcon114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AlarmClockIcon114.png; sourceTree = "<group>"; };
 		C9A0E45B1654A4E9000BB045 /* AlarmClockIcon57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AlarmClockIcon57.png; sourceTree = "<group>"; };
@@ -238,6 +229,19 @@
 		C9A2BC00165F27E600F09634 /* beach.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beach.png; path = Images/beach.png; sourceTree = "<group>"; };
 		C9A2BC01165F27E600F09634 /* chalkboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = chalkboard.png; path = Images/chalkboard.png; sourceTree = "<group>"; };
 		C9B2FC88166CF08A0037E588 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		C9BA46101677A395000EA053 /* Air Raid_cut.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Air Raid_cut.m4a"; path = "Sounds/Air Raid_cut.m4a"; sourceTree = "<group>"; };
+		C9BA46111677A395000EA053 /* Background__Alarm__cut.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = Background__Alarm__cut.m4a; path = Sounds/Background__Alarm__cut.m4a; sourceTree = "<group>"; };
+		C9BA46121677A395000EA053 /* British Ambulance_cut.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "British Ambulance_cut.m4a"; path = "Sounds/British Ambulance_cut.m4a"; sourceTree = "<group>"; };
+		C9BA46131677A395000EA053 /* Burglar Alarm_cut.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Burglar Alarm_cut.m4a"; path = "Sounds/Burglar Alarm_cut.m4a"; sourceTree = "<group>"; };
+		C9BA46141677A395000EA053 /* Church Bell_cut.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Church Bell_cut.m4a"; path = "Sounds/Church Bell_cut.m4a"; sourceTree = "<group>"; };
+		C9BA46151677A395000EA053 /* Old School Clock_cut.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Old School Clock_cut.m4a"; path = "Sounds/Old School Clock_cut.m4a"; sourceTree = "<group>"; };
+		C9BA46161677A395000EA053 /* School Bell_cut.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "School Bell_cut.m4a"; path = "Sounds/School Bell_cut.m4a"; sourceTree = "<group>"; };
+		C9BA46171677A395000EA053 /* Siren_cut.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = Siren_cut.m4a; path = Sounds/Siren_cut.m4a; sourceTree = "<group>"; };
+		C9BA46181677A395000EA053 /* Spaceship_cut.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = Spaceship_cut.m4a; path = Sounds/Spaceship_cut.m4a; sourceTree = "<group>"; };
+		C9BA46191677A395000EA053 /* Submarine_cut.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = Submarine_cut.m4a; path = Sounds/Submarine_cut.m4a; sourceTree = "<group>"; };
+		C9BA461A1677A395000EA053 /* Techy_cut.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = Techy_cut.m4a; path = Sounds/Techy_cut.m4a; sourceTree = "<group>"; };
+		C9BA46271677A3AB000EA053 /* Beach.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Beach.m4a; sourceTree = "<group>"; };
+		C9BA46281677A3AB000EA053 /* Thunderstorm.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Thunderstorm.m4a; sourceTree = "<group>"; };
 		C9E6404216528B7500A388C6 /* AlarmClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlarmClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9E6404616528B7500A388C6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C9E6404816528B7500A388C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -305,7 +309,6 @@
 		C9FD4EF516752764007B4A38 /* tabIconSettings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tabIconSettings@2x.png"; path = "Images/tabIconSettings@2x.png"; sourceTree = "<group>"; };
 		C9FD4EF616752764007B4A38 /* tabIconSleep@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tabIconSleep@2x.png"; path = "Images/tabIconSleep@2x.png"; sourceTree = "<group>"; };
 		C9FD4EFF167527A1007B4A38 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
-		C9FD4F071675866E007B4A38 /* Thunderstorm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Thunderstorm.wav; sourceTree = "<group>"; };
 		C9FD4F091675871A007B4A38 /* sleepSoundsList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sleepSoundsList.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -343,9 +346,9 @@
 		C92EF00D1662C98C00274FBB /* Sleep Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				C9BA46271677A3AB000EA053 /* Beach.m4a */,
+				C9BA46281677A3AB000EA053 /* Thunderstorm.m4a */,
 				C9FD4F091675871A007B4A38 /* sleepSoundsList.plist */,
-				C9FD4F071675866E007B4A38 /* Thunderstorm.wav */,
-				C99DF1261662D0620085E55D /* Beach.wav */,
 			);
 			name = "Sleep Sounds";
 			path = "Sounds/Sleep Sounds";
@@ -420,18 +423,18 @@
 		C98895C31657F4770072EC6E /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				C9BA46101677A395000EA053 /* Air Raid_cut.m4a */,
+				C9BA46111677A395000EA053 /* Background__Alarm__cut.m4a */,
+				C9BA46121677A395000EA053 /* British Ambulance_cut.m4a */,
+				C9BA46131677A395000EA053 /* Burglar Alarm_cut.m4a */,
+				C9BA46141677A395000EA053 /* Church Bell_cut.m4a */,
+				C9BA46151677A395000EA053 /* Old School Clock_cut.m4a */,
+				C9BA46161677A395000EA053 /* School Bell_cut.m4a */,
+				C9BA46171677A395000EA053 /* Siren_cut.m4a */,
+				C9BA46181677A395000EA053 /* Spaceship_cut.m4a */,
+				C9BA46191677A395000EA053 /* Submarine_cut.m4a */,
+				C9BA461A1677A395000EA053 /* Techy_cut.m4a */,
 				C92EF00D1662C98C00274FBB /* Sleep Sounds */,
-				C92EEFFB1662A46800274FBB /* Techy_cut.wav */,
-				C92EEFFC1662A46800274FBB /* Submarine_cut.wav */,
-				C92EEFFD1662A46800274FBB /* Spaceship_cut.wav */,
-				C92EEFFE1662A46800274FBB /* Siren_cut.wav */,
-				C92EEFFF1662A46800274FBB /* School Bell_cut.wav */,
-				C92EF0001662A46800274FBB /* Old School Clock_cut.wav */,
-				C92EF0011662A46800274FBB /* Church Bell_cut.wav */,
-				C92EF0021662A46800274FBB /* Burglar Alarm_cut.wav */,
-				C92EF0031662A46800274FBB /* British Ambulance_cut.wav */,
-				C92EEFF61662A34000274FBB /* Air Raid_cut.wav */,
-				C92EEFF91662A36900274FBB /* Background__Alarm__cut.wav */,
 				C98895C81657F4B10072EC6E /* soundsList.plist */,
 			);
 			name = Sounds;
@@ -592,6 +595,8 @@
 				C9E6406B16528C2000A388C6 /* MKWeather */,
 				C9A2BBF4165F19D500F09634 /* JASettings.h */,
 				C9A2BBF5165F19D500F09634 /* JASettings.m */,
+				C92783CF1677853200CFEA8D /* UIImage+fixOrientation.h */,
+				C92783D01677853200CFEA8D /* UIImage+fixOrientation.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -777,18 +782,6 @@
 				C92EEFED16629BF100274FBB /* rowBG@2x.png in Resources */,
 				C92EEFF016629D4B00274FBB /* alarmRowBG.png in Resources */,
 				C92EEFF116629D4B00274FBB /* alarmRowBG@2x.png in Resources */,
-				C92EEFF71662A34000274FBB /* Air Raid_cut.wav in Resources */,
-				C92EEFFA1662A36900274FBB /* Background__Alarm__cut.wav in Resources */,
-				C92EF0041662A46800274FBB /* Techy_cut.wav in Resources */,
-				C92EF0051662A46800274FBB /* Submarine_cut.wav in Resources */,
-				C92EF0061662A46800274FBB /* Spaceship_cut.wav in Resources */,
-				C92EF0071662A46800274FBB /* Siren_cut.wav in Resources */,
-				C92EF0081662A46800274FBB /* School Bell_cut.wav in Resources */,
-				C92EF0091662A46800274FBB /* Old School Clock_cut.wav in Resources */,
-				C92EF00A1662A46800274FBB /* Church Bell_cut.wav in Resources */,
-				C92EF00B1662A46800274FBB /* Burglar Alarm_cut.wav in Resources */,
-				C92EF00C1662A46800274FBB /* British Ambulance_cut.wav in Resources */,
-				C99DF1311662D0620085E55D /* Beach.wav in Resources */,
 				C96BCE95166510AA0002450C /* BlackBG@2x.png in Resources */,
 				C96BCE96166510AA0002450C /* chalkboard@2x.png in Resources */,
 				C96BCE97166510AA0002450C /* beach@2x.png in Resources */,
@@ -854,8 +847,20 @@
 				C9FD4EFD16752764007B4A38 /* tabIconSettings@2x.png in Resources */,
 				C9FD4EFE16752764007B4A38 /* tabIconSleep@2x.png in Resources */,
 				C9FD4F00167527A1007B4A38 /* Localizable.strings in Resources */,
-				C9FD4F081675866E007B4A38 /* Thunderstorm.wav in Resources */,
 				C9FD4F0A1675871A007B4A38 /* sleepSoundsList.plist in Resources */,
+				C9BA461B1677A395000EA053 /* Air Raid_cut.m4a in Resources */,
+				C9BA461C1677A395000EA053 /* Background__Alarm__cut.m4a in Resources */,
+				C9BA461D1677A395000EA053 /* British Ambulance_cut.m4a in Resources */,
+				C9BA461E1677A395000EA053 /* Burglar Alarm_cut.m4a in Resources */,
+				C9BA461F1677A395000EA053 /* Church Bell_cut.m4a in Resources */,
+				C9BA46201677A395000EA053 /* Old School Clock_cut.m4a in Resources */,
+				C9BA46211677A395000EA053 /* School Bell_cut.m4a in Resources */,
+				C9BA46221677A395000EA053 /* Siren_cut.m4a in Resources */,
+				C9BA46231677A395000EA053 /* Spaceship_cut.m4a in Resources */,
+				C9BA46241677A395000EA053 /* Submarine_cut.m4a in Resources */,
+				C9BA46251677A395000EA053 /* Techy_cut.m4a in Resources */,
+				C9BA46291677A3AB000EA053 /* Beach.m4a in Resources */,
+				C9BA462A1677A3AB000EA053 /* Thunderstorm.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -887,6 +892,7 @@
 				C9A2BBFB165F235A00F09634 /* JABackgroundPickerViewController.m in Sources */,
 				C91512AD166067D800295189 /* JAClockSettingsViewController.m in Sources */,
 				C93A02361666F84300E1A273 /* JAMiscSettingsViewController.m in Sources */,
+				C92783D11677853200CFEA8D /* UIImage+fixOrientation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

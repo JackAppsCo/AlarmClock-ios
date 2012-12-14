@@ -23,6 +23,7 @@
 - (void) handleShineNotification:(NSNotification*)notification;
 - (void) stopSleepTimer;
 - (void) showAdBanner:(BOOL)show;
+- (void) disableShine:(id)sender;
 @end
 
 @implementation JAViewController
@@ -53,6 +54,9 @@
         
         //init flags
         _shineEnabled = NO;
+        _alarmEnabled = NO;
+
+        
     }
     
     return self;
@@ -124,6 +128,20 @@
     self.dateLabel.frame = CGRectMake(20, self.clockLabel.center.y + 40, self.view.frame.size.width - 40, 29);
     self.dateLabel.font = [UIFont fontWithName:@"Cochin" size:23];
     
+    //setup shine disbale button
+    _shineDisableButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_shineDisableButton addTarget:self action:@selector(disableShine:) forControlEvents:UIControlEventTouchUpInside];
+    [_shineDisableButton setBackgroundColor:[UIColor whiteColor]];
+    [_shineDisableButton setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
+    [_shineDisableButton setAlpha:0.0];
+    CGRect shineFrame = CGRectInset(self.view.frame, 0, 0);
+    shineFrame.origin.y = 0;
+    [_shineDisableButton setFrame:shineFrame];
+    [self.mainView addSubview:_shineDisableButton];
+    
+    
+    //bring clock label to front
+    [self.mainView bringSubviewToFront:self.clockLabel];
 }
 
 - (void) setAlarmIcon
@@ -235,7 +253,7 @@
     if (err)
         NSLog(@"ERR: %@", err);
     
-    sleepTimeLeft = [JASettings sleepLength];
+    sleepTimeLeft = ([JASettings sleepLength] * 60);
     
 
     
@@ -245,7 +263,7 @@
     [self.aPlayer setNumberOfLoops:-1];
     [self.aPlayer play];
     
-    sleepTimer = [[NSTimer alloc] initWithFireDate:[NSDate dateWithTimeInterval:[JASettings sleepLength] sinceDate:[NSDate date]] interval:0 target:self selector:@selector(stopSleepTimer) userInfo:nil repeats:NO];
+    sleepTimer = [[NSTimer alloc] initWithFireDate:[NSDate dateWithTimeInterval:([JASettings sleepLength] * 60) sinceDate:[NSDate date]] interval:0 target:self selector:@selector(stopSleepTimer) userInfo:nil repeats:NO];
     [[NSRunLoop mainRunLoop] addTimer:sleepTimer forMode:NSDefaultRunLoopMode];
 
     
@@ -269,6 +287,64 @@
 }
 
 
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (void) settingsButtonPressed:(id)sender
+{
+    [self presentViewController:_tabBarController animated:YES completion:nil];
+}
+
+//hides settings tab controller
+- (void) dismissSettingsController:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+// handle gestures
+- (void)panGesture:(UIPanGestureRecognizer *)sender {
+    
+    if (_shineEnabled) {
+        [self disableShine:nil];
+    }
+    
+    self.dimView.backgroundColor = [UIColor blackColor];
+    
+    if (sender.state == UIGestureRecognizerStateBegan) {
+        startLocation = [sender locationInView:self.view];
+    }
+    else if (sender.state == UIGestureRecognizerStateChanged) {
+        CGPoint stopLocation = [sender locationInView:self.view];
+        CGFloat dy = stopLocation.y - startLocation.y;
+        
+        if(dy > 15) {
+            _dimView.alpha += (_dimView.alpha < 1.0f) ? 0.05 : 0.0;
+            startLocation = stopLocation;
+        }
+        else if (dy < -15) {
+            _dimView.alpha -= (_dimView.alpha > 0.0f) ? 0.1 : 0.0;
+            startLocation = stopLocation;
+        }
+        
+    }
+}
+
+//stop shine feature
+- (void) disableShine:(id)sender
+{
+    _shineEnabled = NO;
+    _shineDisableButton.alpha = 0;
+    
+    if ([[[JASettings clockColorName] uppercaseString] isEqualToString:@"WHITE"]) {
+        [self.clockLabel setTextColor:[JASettings clockColor]];
+    }
+}
+
+#pragma mark - Handle Alarms
 - (void) handleAlarmNotification:(NSNotification *)notification
 {
     
@@ -290,13 +366,19 @@
         }
         
         [_musicPlayer setQueueWithItemCollection:_currentAlarm.sound.collection];
+        
+        if (_currentAlarm.gradualSound) {
+            _musicPlayer.volume = 0.0f;
+        }
+        else {
+            _musicPlayer.volume = 1.0f;
+        }
+        
         [_musicPlayer play];
         
-        if (_currentAlarm.sound.soundFilename.length <= 0) {
-            fileURL = [[NSURL alloc] initFileURLWithPath:[JASound defaultSound].soundFilename];
-        }
-        else
-            fileURL = [[NSURL alloc] initWithString:_currentAlarm.sound.soundFilename];
+        
+        
+        
     }
     else {
         
@@ -320,12 +402,17 @@
         
         self.aPlayer = player;
         self.aPlayer.delegate = nil;
-        self.aPlayer.volume = 1.0f;
+        if (_currentAlarm.gradualSound) {
+            self.aPlayer.volume = 0.0f;
+        }
+        else {
+            self.aPlayer.volume = 1.0f;
+        }
         [self.aPlayer setNumberOfLoops:-1];
         [self.aPlayer play];
     }
     
-    
+    _alarmEnabled = YES;
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:_currentAlarm.name message:@"Your alarm went off" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:@"Snooze", nil];
     [alert show];
@@ -334,53 +421,11 @@
 
 - (void) handleShineNotification:(NSNotification*)notification
 {
-    [self.dimView setBackgroundColor:[UIColor whiteColor]];
-    [self.dimView setAlpha:0.0f];
-    
-    _shineEnabled = YES;
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (void) settingsButtonPressed:(id)sender
-{
-    [self presentViewController:_tabBarController animated:YES completion:nil];
-}
-
-//hides settings tab controller
-- (void) dismissSettingsController:(id)sender
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-// handle gestures
-- (void)panGesture:(UIPanGestureRecognizer *)sender {
-    
-    self.dimView.backgroundColor = [UIColor blackColor];
-    
-    if (sender.state == UIGestureRecognizerStateBegan) {
-        startLocation = [sender locationInView:self.view];
-    }
-    else if (sender.state == UIGestureRecognizerStateChanged) {
-        CGPoint stopLocation = [sender locationInView:self.view];
-        CGFloat dy = stopLocation.y - startLocation.y;
-        
-        if(dy > 15) {
-            _dimView.alpha += (_dimView.alpha < 1.0f) ? 0.05 : 0.0;
-            startLocation = stopLocation;
-        }
-        else if (dy < -15) {
-            _dimView.alpha -= (_dimView.alpha > 0.0f) ? 0.1 : 0.0;
-            startLocation = stopLocation;
-        }
-        
+    if (!_shineEnabled) {
+        [_shineDisableButton setAlpha:0.0f];
+        _shineEnabled = YES;
     }
 }
-
 
 #pragma mark - Handle Rotation
 - (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
@@ -451,14 +496,31 @@
         self.dateLabel.text = @"";
     }
     
+    if (self.aPlayer.playing) {
+        
+    }
     
     if (sleepTimer) {
         sleepTimeLeft -= 1.0f;
-        self.aPlayer.volume = sleepVolume = sleepTimeLeft / [JASettings sleepLength];
+        self.aPlayer.volume = sleepVolume = sleepTimeLeft / ([JASettings sleepLength] * 60.0f);
     }
     
     if (_shineEnabled) {
-        self.dimView.alpha = self.dimView.alpha + (1.0 / 1800.0);
+        _shineDisableButton.alpha = _shineDisableButton.alpha + (1.0 / 1800.0);
+        
+        if ([[[JASettings clockColorName] uppercaseString] isEqualToString:@"WHITE"]) {
+            if (_shineDisableButton.alpha >= 0.5) {
+                [self.clockLabel setTextColor:[UIColor darkGrayColor]];
+            }
+        }
+    }
+    
+    if (_alarmEnabled) {
+        if (_musicPlayer.playbackState == MPMusicPlaybackStatePlaying && _musicPlayer.volume < 1.0)
+            _musicPlayer.volume = _musicPlayer.volume + .01;
+        else if (self.aPlayer.playing && self.aPlayer.volume < 1.0)
+            self.aPlayer.volume = self.aPlayer.volume + .01;
+
     }
 }
 
@@ -511,6 +573,8 @@
         [_musicPlayer stop];
     else
         [self.aPlayer stop];
+    
+    _alarmEnabled = NO;
     
 }
 
