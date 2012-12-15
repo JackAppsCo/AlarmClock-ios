@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#define CLOCK_COLORS [NSArray arrayWithObjects:[[NSDictionary alloc] initWithObjectsAndKeys:[UIColor whiteColor], @"color", @"White", @"name", nil], [[NSDictionary alloc] initWithObjectsAndKeys:[UIColor blackColor], @"color", @"Black", @"name", nil], [[NSDictionary alloc] initWithObjectsAndKeys:[UIColor colorWithRed:243.0/255.0 green:246.0/255.0 blue:113.0/255.0 alpha:1.0], @"color", @"Yellow", @"name", nil], [[NSDictionary alloc] initWithObjectsAndKeys:[UIColor colorWithRed:38.0/255.0 green:82.0/255.0 blue:163.0/255.0 alpha:1.0], @"color", @"Blue", @"name", nil], [[NSDictionary alloc] initWithObjectsAndKeys:[UIColor colorWithRed:143.0/255.0 green:82.0/255.0 blue:237/255.0 alpha:1.0], @"color", @"Purple", @"name", nil], [[NSDictionary alloc] initWithObjectsAndKeys:[UIColor colorWithRed:53.0/255.0 green:123.0/149.0 blue:58.0/255.0 alpha:1.0], @"color", @"Green", @"name", nil], nil]
+
 @interface JASettings : NSObject
 {
 }

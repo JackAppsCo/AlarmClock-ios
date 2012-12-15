@@ -24,7 +24,7 @@ static JASettings *sharedInstance = nil;
 #define SLEEP_SOUND_KEY @"sleepSound"
 #define SHINE_KEY @"riseAndShine"
 
-#define CLOCK_COLORS [NSArray arrayWithObjects:[[NSDictionary alloc] initWithObjectsAndKeys:[UIColor whiteColor], @"color", @"White", @"name", nil], [[NSDictionary alloc] initWithObjectsAndKeys:[UIColor blackColor], @"color", @"Black", @"name", nil], [[NSDictionary alloc] initWithObjectsAndKeys:[UIColor yellowColor], @"color", @"Yellow", @"name", nil], [[NSDictionary alloc] initWithObjectsAndKeys:[UIColor colorWithRed:141.0/255.0 green:192.0/255.0 blue:236.0/255.0 alpha:1.0], @"color", @"Light Blue", @"name", nil], [[NSDictionary alloc] initWithObjectsAndKeys:[UIColor colorWithRed:7.0/255.0 green:47.0/255.0 blue:81.0/255.0 alpha:1.0], @"color", @"Blue", @"name", nil], [[NSDictionary alloc] initWithObjectsAndKeys:[UIColor colorWithRed:255.0/255.0 green:162.0/255.0 blue:0.0/255.0 alpha:1.0], @"color", @"Orange", @"name", nil], [[NSDictionary alloc] initWithObjectsAndKeys:[UIColor colorWithRed:53.0/255.0 green:123.0/255.0 blue:53.0/255.0 alpha:1.0], @"color", @"Green", @"name", nil], nil]
+
 
 @implementation JASettings
 

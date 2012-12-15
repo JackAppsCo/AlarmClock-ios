@@ -77,7 +77,7 @@
 								<nil key="IBUIHighlightedColor"/>
 								<object class="NSColor" key="IBUIShadowColor">
 									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MC41MTYxMDMzMTYzIDAuNTE2MTAzMzE2MyAwLjUxNjEwMzMxNjMgMC42AA</bytes>
+									<bytes key="NSRGB">MC41MTYxMDMzMTYzIDAuNTE2MTAzMzE2MyAwLjUxNjEwMzMxNjMgMC40AA</bytes>
 								</object>
 								<string key="IBUIShadowOffset">{2, 2}</string>
 								<int key="IBUIBaselineAdjustment">0</int>

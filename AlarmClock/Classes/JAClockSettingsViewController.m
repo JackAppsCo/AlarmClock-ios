@@ -52,14 +52,14 @@
         _bgList = [bgsDict objectForKey:@"backgrounds"];
         
         //create colors array
-        _fontColorList = [[NSArray alloc]
+        /*_fontColorList = [[NSArray alloc]
                           initWithObjects:[[NSDictionary alloc] initWithObjectsAndKeys:[UIColor whiteColor], @"color", @"White", @"name", nil],
                           [[NSDictionary alloc] initWithObjectsAndKeys:[UIColor blackColor], @"color", @"Black", @"name", nil],
                           [[NSDictionary alloc] initWithObjectsAndKeys:[UIColor yellowColor], @"color", @"Yellow", @"name", nil],
                           [[NSDictionary alloc] initWithObjectsAndKeys:[UIColor colorWithRed:141.0/255.0 green:192.0/255.0 blue:236.0/255.0 alpha:1.0], @"color", @"Light Blue", @"name", nil],
                           [[NSDictionary alloc] initWithObjectsAndKeys:[UIColor colorWithRed:7.0/255.0 green:47.0/255.0 blue:81.0/255.0 alpha:1.0], @"color", @"Blue", @"name", nil],
                           [[NSDictionary alloc] initWithObjectsAndKeys:[UIColor colorWithRed:255.0/255.0 green:162.0/255.0 blue:0.0/255.0 alpha:1.0], @"color", @"Orange", @"name", nil],
-                          [[NSDictionary alloc] initWithObjectsAndKeys:[UIColor colorWithRed:53.0/255.0 green:123.0/255.0 blue:53.0/255.0 alpha:1.0], @"color", @"Green", @"name", nil], nil];
+                          [[NSDictionary alloc] initWithObjectsAndKeys:[UIColor colorWithRed:53.0/255.0 green:123.0/255.0 blue:53.0/255.0 alpha:1.0], @"color", @"Green", @"name", nil], nil];*/
         
         //secs switch
         [self setShowSecondsSwitch:[[UISwitch alloc] init]];
@@ -342,7 +342,7 @@
             [self.pickerView reloadAllComponents];
             
             int selectedIndex = 0;
-            for (NSDictionary *color in _fontColorList) {
+            for (NSDictionary *color in CLOCK_COLORS) {
                 if ([[color objectForKey:@"name"] isEqualToString:[JASettings clockColorName]])
                     break;
                 else
@@ -374,7 +374,7 @@
     if (_selectedPicker == 0)
         return _bgList.count;
     else
-        return _fontColorList.count;
+        return [CLOCK_COLORS count];
 }
 
 - (int) numberOfComponentsInPickerView:(UIPickerView *)pickerView
@@ -387,7 +387,7 @@
     if (_selectedPicker == 0)
         return [[_bgList objectAtIndex:row] objectForKey:@"name"];
     else
-        return [[_fontColorList objectAtIndex:row] objectForKey:@"name"];
+        return [[CLOCK_COLORS objectAtIndex:row] objectForKey:@"name"];
 }
 
 - (void) pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
@@ -402,8 +402,8 @@
         
     }
     else {
-        self.timeLabel.textColor = [[_fontColorList objectAtIndex:row] objectForKey:@"color"];
-        [JASettings setClockColorName:[[_fontColorList objectAtIndex:row] objectForKey:@"name"]];
+        self.timeLabel.textColor = [[CLOCK_COLORS objectAtIndex:row] objectForKey:@"color"];
+        [JASettings setClockColorName:[[CLOCK_COLORS objectAtIndex:row] objectForKey:@"name"]];
         
     }
     
