@@ -154,7 +154,7 @@
     }
     else if (indexPath.section == 1) {
         if (indexPath.row == 0) {
-            cell.textLabel.text = @"Record A New Sound";
+            cell.textLabel.text = NSLocalizedString(@"Record A New Sound", nil);
             cell.accessoryType = UITableViewCellAccessoryNone;
             cell.accessoryView = nil;
         }
@@ -185,7 +185,7 @@
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         }
         else {
-            cell.textLabel.text = @"Choose From Library";
+            cell.textLabel.text = NSLocalizedString(@"Choose From Library", nil);
             cell.accessoryView = nil;
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }

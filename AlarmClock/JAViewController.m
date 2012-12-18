@@ -12,6 +12,7 @@
 #import "JASettings.h"
 #import "JAClockSettingsViewController.h"
 #import "JAMiscSettingsViewController.h"
+#import "UIImage+fixOrientation.h"
 
 #define WEATHER_API_KEY @"c74edf0183141706121311"
 
@@ -24,6 +25,7 @@
 - (void) stopSleepTimer;
 - (void) showAdBanner:(BOOL)show;
 - (void) disableShine:(id)sender;
+- (void) layoutClockLabelForFrame:(CGRect)frame;
 @end
 
 @implementation JAViewController
@@ -139,6 +141,17 @@
     [_shineDisableButton setFrame:shineFrame];
     [self.mainView addSubview:_shineDisableButton];
     
+    //backdrop view
+    _backdropImageview = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"backdrop.png"] stretchableImageWithLeftCapWidth:45 topCapHeight:45]];
+    _backdropImageview.frame = CGRectInset(self.mainView.frame, 15.0, 0.0);
+    _backdropImageview.frame = CGRectMake(self.mainView.frame.origin.x, self.clockLabel.frame.origin.y - 10, self.mainView.frame.size.width, self.clockLabel.frame.size.height + 20);
+    _backdropImageview.hidden = ![JASettings showBackdrop];
+    [self.mainView addSubview:_backdropImageview];
+    [self.mainView insertSubview:_backdropImageview belowSubview:self.dateLabel];
+    
+    //setup clock labels
+    self.clockLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:([JASettings showSeconds]) ? 87 : 110];
+    [self layoutClockLabelForFrame:CGRectMake(15.0, 100.0, self.mainView.frame.size.width - 30.0, self.mainView.frame.size.height - 200.0)];
     
     //bring clock label to front
     [self.mainView bringSubviewToFront:self.clockLabel];
@@ -192,11 +205,14 @@
     }
     
     //setup bg image
-    [self.bgImageView setImage:[JASettings backgroundImage]];
+    [self.bgImageView setImage:[(UIImage*)[JASettings backgroundImage] fixOrientation]];
     
     //clock color
     self.clockLabel.textColor = [JASettings clockColor];
     self.dateLabel.textColor = [JASettings clockColor];
+    
+    //set backdrop
+    _backdropImageview.hidden = ![JASettings showBackdrop];
     
     //setup seconds
     if (!_formatter)
@@ -224,12 +240,19 @@
     [self setupWeather];
     
     //clock font size
-    if (self.adBanner.currentContentSizeIdentifier == ADBannerContentSizeIdentifierPortrait)
+    if (self.mainView.frame.size.width <= 320) {
+        
         self.clockLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:([JASettings showSeconds]) ? 55 : 85];
-    else
+        
+        [self layoutClockLabelForFrame:CGRectMake(15.0, 100.0, self.mainView.frame.size.width - 30.0, self.mainView.frame.size.height - 200.0)];
+    }
+    else {
+        
         self.clockLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:([JASettings showSeconds]) ? 87 : 110];
+        
+        [self layoutClockLabelForFrame:CGRectMake(75.0, 25.0, self.mainView.frame.size.width - 150.0, self.mainView.frame.size.height - 50.0)];
+    }
 
-    
     
 }
 
@@ -439,10 +462,7 @@
 
         self.clockLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:([JASettings showSeconds]) ? 55 : 85];
         
-        CGSize timeSize = [self.clockLabel.text sizeWithFont:self.clockLabel.font];
-        
-        self.clockLabel.frame = CGRectMake(0, roundf((self.mainView.frame.size.height - timeSize.height) / 2.0), self.mainView.frame.size.width, timeSize.height);
-        self.dateLabel.frame = CGRectMake(00, self.clockLabel.center.y + 40, self.mainView.frame.size.width, 29);
+        [self layoutClockLabelForFrame:CGRectMake(15.0, 100.0, self.mainView.frame.size.width - 30.0, self.mainView.frame.size.height - 200.0)];
         
         
     }
@@ -451,26 +471,40 @@
         
         self.clockLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:([JASettings showSeconds]) ? 87 : 110];
         
-        NSString *zerosString;
-        float zeroCorrection = 0;
-        if ([JASettings showSeconds]) {
-            zerosString = (self.clockLabel.text.length > 7) ? @"14:44:44" : @"4:44:44";
-            zeroCorrection = 4;
-        }
-        else {
-            zerosString = (self.clockLabel.text.length > 7) ? @"14:44 " : @"4:44 ";
-        }
-        
-        //fidn label size
-        CGSize timeSize = [zerosString sizeWithFont:self.clockLabel.font];
-        
-        self.clockLabel.frame = CGRectMake(0, roundf((self.mainView.frame.size.height - timeSize.height) / 2.0), self.mainView.frame.size.width, timeSize.height);
-        self.dateLabel.frame = CGRectMake(00, self.clockLabel.center.y + 40, self.mainView.frame.size.width, 29);
+        [self layoutClockLabelForFrame:CGRectMake(75.0, 25.0, self.mainView.frame.size.width - 150.0, self.mainView.frame.size.height - 50.0)];
         
     }
     
     //switch the ad banner layout
     self.adBanner.currentContentSizeIdentifier = (UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) ? ADBannerContentSizeIdentifierLandscape : ADBannerContentSizeIdentifierPortrait;
+}
+
+- (void) layoutClockLabelForFrame:(CGRect)frame
+{
+    
+    
+    CGRect insetFrame = CGRectInset(frame, 10.0, 10.0);
+    
+    CGFloat *fontSize = 0;
+    
+    CGSize clockSize = [self.clockLabel.text sizeWithFont:self.clockLabel.font minFontSize:self.clockLabel.minimumFontSize actualFontSize:fontSize forWidth:insetFrame.size.width lineBreakMode:NSLineBreakByClipping];
+    CGSize dateSize = [self.dateLabel.text sizeWithFont:self.dateLabel.font minFontSize:self.dateLabel.minimumFontSize actualFontSize:fontSize forWidth:insetFrame.size.width lineBreakMode:NSLineBreakByClipping];
+    
+    float dateAdjustment = ([JASettings showDate]) ? -dateSize.height : 0;
+    
+    CGRect clockFrame = CGRectInset(insetFrame, 0, roundf((insetFrame.size.height - clockSize.height) / 2));
+    clockFrame.origin.y += dateAdjustment;
+    CGRect dateFrame = CGRectMake(frame.origin.x, clockFrame.origin.y + clockFrame.size.height + 20, frame.size.width, dateSize.height);
+    dateFrame.origin.y += dateAdjustment;
+
+    
+    self.clockLabel.frame = clockFrame;
+    self.dateLabel.frame = dateFrame;
+    
+    CGRect totalFrame = CGRectMake(frame.origin.x, ([JASettings showDate]) ? clockFrame.origin.y - 5 : clockFrame.origin.y - 20, frame.size.width, dateFrame.origin.y + dateFrame.size.height - clockFrame.origin.y + 20);
+    _backdropImageview.frame = totalFrame;
+    
+    
 }
 
 #pragma mark - MKCLock Delegate
@@ -554,8 +588,8 @@
     
     if (_weatherData.count > 2) {
         NSDictionary *weatherDict = [_weatherData objectAtIndex:2];
-        self.highTempLabel.text = [NSString stringWithFormat:@"Hi: %0.0f˚", [[weatherDict objectForKey:([JASettings farenheit]) ? WEATHER_FORCAST_TEMP_MAX_F : WEATHER_FORCAST_TEMP_MAX_C] floatValue], nil];
-        self.lowTempLabel.text = [NSString stringWithFormat:@"Low: %0.0f˚", [[weatherDict objectForKey:([JASettings farenheit]) ? WEATHER_FORCAST_TEMP_MIN_F : WEATHER_FORCAST_TEMP_MIN_C] floatValue], nil];
+        self.highTempLabel.text = [NSString stringWithFormat:@"%@: %0.0f˚", NSLocalizedString(@"H", nil), [[weatherDict objectForKey:([JASettings farenheit]) ? WEATHER_FORCAST_TEMP_MAX_F : WEATHER_FORCAST_TEMP_MAX_C] floatValue], nil];
+        self.lowTempLabel.text = [NSString stringWithFormat:@"%@: %0.0f˚", NSLocalizedString(@"L", nil), [[weatherDict objectForKey:([JASettings farenheit]) ? WEATHER_FORCAST_TEMP_MIN_F : WEATHER_FORCAST_TEMP_MIN_C] floatValue], nil];
     }
 }
 

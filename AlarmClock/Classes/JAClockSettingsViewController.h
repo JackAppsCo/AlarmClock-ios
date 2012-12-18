@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *bgImageView;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) UISwitch *showSecondsSwitch, *showDateSwitch;
+@property (strong, nonatomic) UISwitch *showSecondsSwitch, *showDateSwitch, *backdropSwitch;
+@property (strong, nonatomic) IBOutlet UIImageView *backdropImageview;
 
 @end

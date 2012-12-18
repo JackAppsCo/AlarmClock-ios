@@ -9,6 +9,8 @@
 #import "JABackgroundPickerViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "JASettings.h"
+#import "UIImage+fixOrientation.h"
+
 
 @interface JABackgroundPickerViewController ()
 - (void) customImageTapped:(id)sender;
@@ -198,7 +200,7 @@
     self.customImageURL = @"custom";
     [self.customImage setImage:[info valueForKey:@"UIImagePickerControllerOriginalImage"]];
     
-    NSData *pngData = UIImagePNGRepresentation(self.customImage.image);
+    NSData *pngData = UIImagePNGRepresentation([self.customImage.image fixOrientation]);
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsPath = [paths objectAtIndex:0]; //Get the docs directory
     NSString *filePath = [documentsPath stringByAppendingPathComponent:@"customBG.png"]; //Add the file name

@@ -28,6 +28,7 @@
     NSTimer *sleepTimer;
     BOOL _alarmEnabled, _shineEnabled;
     UIButton *_shineDisableButton;
+    UIImageView *_backdropImageview;
 }
 
 

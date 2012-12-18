@@ -25,7 +25,7 @@
         
         self.alarm = theAlarm;
         self.repeatDays = [[NSMutableArray alloc] initWithArray:theAlarm.repeatDays];
-        self.title = @"Repeat";
+        self.title = NSLocalizedString(@"Repeat", nil);
         
     }
     return self;
@@ -93,19 +93,19 @@
     if (indexPath.section == 0) {
         switch (indexPath.row) {
             case 0:
-                cell.textLabel.text = @"Never";
+                cell.textLabel.text = NSLocalizedString(@"Never", nil);
                 cell.accessoryType = (self.alarm.repeatDays.count == 0) ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
                 break;
             case 1:
-                cell.textLabel.text = @"Everyday";
+                cell.textLabel.text = NSLocalizedString(@"Everyday", nil);
                 cell.accessoryType = (self.alarm.repeatDays.count == 7) ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
                 break;
             case 2:
-                cell.textLabel.text = @"Weekdays";
+                cell.textLabel.text = NSLocalizedString(@"Weekdays", nil);
                 cell.accessoryType = ([JAAlarm justWeekdays:self.alarm.repeatDays]) ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
                 break;
             case 3:
-                cell.textLabel.text = @"Weekends";
+                cell.textLabel.text = NSLocalizedString(@"Weekends", nil);
                 cell.accessoryType = ([JAAlarm justWeekends:self.alarm.repeatDays]) ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
                 break;
                 
@@ -117,25 +117,25 @@
     else {
         switch (indexPath.row) {
             case 0:
-                cell.textLabel.text = @"Monday";
+                cell.textLabel.text = NSLocalizedString(@"Tuesday", nil);
                 break;
             case 1:
-                cell.textLabel.text = @"Tuesday";
+                cell.textLabel.text = NSLocalizedString(@"Tuesday", nil);
                 break;
             case 2:
-                cell.textLabel.text = @"Wednesday";
+                cell.textLabel.text = NSLocalizedString(@"Wednesday", nil);
                 break;
             case 3:
-                cell.textLabel.text = @"Thursday";
+                cell.textLabel.text = NSLocalizedString(@"Thursday", nil);
                 break;
             case 4:
-                cell.textLabel.text = @"Friday";
+                cell.textLabel.text = NSLocalizedString(@"Friday", nil);
                 break;
             case 5:
-                cell.textLabel.text = @"Saturday";
+                cell.textLabel.text = NSLocalizedString(@"Saturday", nil);
                 break;
             case 6:
-                cell.textLabel.text = @"Sunday";
+                cell.textLabel.text = NSLocalizedString(@"Sunday", nil);
                 break;
                 
             default:
@@ -200,15 +200,15 @@
                 break;
             case 1:
                 [newRepeateDays removeAllObjects];
-                [newRepeateDays addObjectsFromArray:[NSArray arrayWithObjects:@"monday", @"tuesday", @"wednesday", @"thursday", @"friday", @"saturday", @"sunday", nil]];
+                [newRepeateDays addObjectsFromArray:[NSArray arrayWithObjects:NSLocalizedString(@"Monday", nil), NSLocalizedString(@"Tuesday", nil), NSLocalizedString(@"Wednesday", nil), NSLocalizedString(@"Thursday", nil), NSLocalizedString(@"Friday", nil), NSLocalizedString(@"Saturday", nil), NSLocalizedString(@"Sunday", nil), nil]];
                 break;
             case 2:
                 [newRepeateDays removeAllObjects];
-                [newRepeateDays addObjectsFromArray:[NSArray arrayWithObjects:@"monday", @"tuesday", @"wednesday", @"thursday", @"friday", nil]];
+                [newRepeateDays addObjectsFromArray:[NSArray arrayWithObjects:NSLocalizedString(@"Tuesday", nil), NSLocalizedString(@"Tuesday", nil), NSLocalizedString(@"Wednesday", nil), NSLocalizedString(@"Thursday", nil), NSLocalizedString(@"Friday", nil), nil]];
                 break;
             case 3:
                 [newRepeateDays removeAllObjects];
-                [newRepeateDays addObjectsFromArray:[NSArray arrayWithObjects:@"saturday", @"sunday", nil]];
+                [newRepeateDays addObjectsFromArray:[NSArray arrayWithObjects:NSLocalizedString(@"Saturday", nil), NSLocalizedString(@"Sunday", nil), nil]];
                 break;
                 
             default:
@@ -219,51 +219,51 @@
     else {
         switch (indexPath.row) {
             case 0:
-                if ([JAAlarm days:newRepeateDays containsDay:@"monday"])
-                    newRepeateDays = [[NSMutableArray alloc] initWithArray:[JAAlarm days:newRepeateDays AfterRemovingDay:@"monday"]];
+                if ([JAAlarm days:newRepeateDays containsDay:NSLocalizedString(@"Tuesday", nil)])
+                    newRepeateDays = [[NSMutableArray alloc] initWithArray:[JAAlarm days:newRepeateDays AfterRemovingDay:NSLocalizedString(@"Tuesday", nil)]];
                 else
-                    [newRepeateDays addObject:@"monday"];
+                    [newRepeateDays addObject:NSLocalizedString(@"Tuesday", nil)];
                 break;
             case 1:
-                if ([JAAlarm days:newRepeateDays containsDay:@"tuesday"])
-                    newRepeateDays = [[NSMutableArray alloc] initWithArray:[JAAlarm days:newRepeateDays AfterRemovingDay:@"tuesday"]];
+                if ([JAAlarm days:newRepeateDays containsDay:NSLocalizedString(@"Tuesday", nil)])
+                    newRepeateDays = [[NSMutableArray alloc] initWithArray:[JAAlarm days:newRepeateDays AfterRemovingDay:NSLocalizedString(@"Tuesday", nil)]];
                 else
-                    [newRepeateDays addObject:@"tuesday"];
+                    [newRepeateDays addObject:NSLocalizedString(@"Tuesday", nil)];
                 
                 break;
             case 2:
-                if ([JAAlarm days:newRepeateDays containsDay:@"wednesday"])
-                    newRepeateDays = [[NSMutableArray alloc] initWithArray:[JAAlarm days:newRepeateDays AfterRemovingDay:@"wednesday"]];
+                if ([JAAlarm days:newRepeateDays containsDay:NSLocalizedString(@"Wednesday", nil)])
+                    newRepeateDays = [[NSMutableArray alloc] initWithArray:[JAAlarm days:newRepeateDays AfterRemovingDay:NSLocalizedString(@"Wednesday", nil)]];
                 else
-                    [newRepeateDays addObject:@"wednesday"];
+                    [newRepeateDays addObject:NSLocalizedString(@"Wednesday", nil)];
 
                 break;
             case 3:
-                if ([JAAlarm days:newRepeateDays containsDay:@"thursday"])
-                    newRepeateDays = [[NSMutableArray alloc] initWithArray:[JAAlarm days:newRepeateDays AfterRemovingDay:@"thursday"]];
+                if ([JAAlarm days:newRepeateDays containsDay:NSLocalizedString(@"Thursday", nil)])
+                    newRepeateDays = [[NSMutableArray alloc] initWithArray:[JAAlarm days:newRepeateDays AfterRemovingDay:NSLocalizedString(@"Thursday", nil)]];
                 else
-                    [newRepeateDays addObject:@"thursday"];
+                    [newRepeateDays addObject:NSLocalizedString(@"Thursday", nil)];
                 
                 break;
             case 4:
-                if ([JAAlarm days:newRepeateDays containsDay:@"friday"])
-                    newRepeateDays = [[NSMutableArray alloc] initWithArray:[JAAlarm days:newRepeateDays AfterRemovingDay:@"friday"]];
+                if ([JAAlarm days:newRepeateDays containsDay:NSLocalizedString(@"Friday", nil)])
+                    newRepeateDays = [[NSMutableArray alloc] initWithArray:[JAAlarm days:newRepeateDays AfterRemovingDay:NSLocalizedString(@"Friday", nil)]];
                 else
-                    [newRepeateDays addObject:@"friday"];
+                    [newRepeateDays addObject:NSLocalizedString(@"Friday", nil)];
 
                 break;
             case 5:
-                if ([JAAlarm days:newRepeateDays containsDay:@"saturday"])
-                    newRepeateDays = [[NSMutableArray alloc] initWithArray:[JAAlarm days:newRepeateDays AfterRemovingDay:@"saturday"]];
+                if ([JAAlarm days:newRepeateDays containsDay:NSLocalizedString(@"Saturday", nil)])
+                    newRepeateDays = [[NSMutableArray alloc] initWithArray:[JAAlarm days:newRepeateDays AfterRemovingDay:NSLocalizedString(@"Saturday", nil)]];
                 else
-                    [newRepeateDays addObject:@"saturday"];
+                    [newRepeateDays addObject:NSLocalizedString(@"Saturday", nil)];
 
                 break;
             case 6:
-                if ([JAAlarm days:newRepeateDays containsDay:@"sunday"])
-                    newRepeateDays = [[NSMutableArray alloc] initWithArray:[JAAlarm days:newRepeateDays AfterRemovingDay:@"sunday"]];
+                if ([JAAlarm days:newRepeateDays containsDay:NSLocalizedString(@"Sunday", nil)])
+                    newRepeateDays = [[NSMutableArray alloc] initWithArray:[JAAlarm days:newRepeateDays AfterRemovingDay:NSLocalizedString(@"Sunday", nil)]];
                 else
-                    [newRepeateDays addObject:@"sunday"];
+                    [newRepeateDays addObject:NSLocalizedString(@"Sunday", nil)];
 
                 break;
                 

@@ -159,8 +159,8 @@
     BOOL sun = NO;
     
     for (NSString *day in days) {
-        if ([day isEqualToString:@"saturday"]) sat = YES;
-        if ([day isEqualToString:@"sunday"]) sun = YES;
+        if ([day isEqualToString:NSLocalizedString(@"Saturday", nil)]) sat = YES;
+        if ([day isEqualToString:NSLocalizedString(@"Sunday", nil)]) sun = YES;
     }
     
     return (sat && sun);
@@ -176,11 +176,11 @@
     BOOL fri = NO;
     
     for (NSString *day in days) {
-        if ([day isEqualToString:@"monday"]) mon = YES;
-        if ([day isEqualToString:@"tuesday"]) tue = YES;
-        if ([day isEqualToString:@"wednesday"]) wed = YES;
-        if ([day isEqualToString:@"thursday"]) thu = YES;
-        if ([day isEqualToString:@"friday"]) fri = YES;
+        if ([day isEqualToString:NSLocalizedString(@"Monday", nil)]) mon = YES;
+        if ([day isEqualToString:NSLocalizedString(@"Tuesday", nil)]) tue = YES;
+        if ([day isEqualToString:NSLocalizedString(@"Wednesday", nil)]) wed = YES;
+        if ([day isEqualToString:NSLocalizedString(@"Thursday", nil)]) thu = YES;
+        if ([day isEqualToString:NSLocalizedString(@"Friday", nil)]) fri = YES;
     }
     
     return (mon && tue && wed && thu && fri);
@@ -235,27 +235,27 @@
     
     
     if (days.count == 0)
-        label = @"Never";
+        label = NSLocalizedString(@"Never", nil);
     else if (days.count == 7)
-        label = @"Everyday";
+        label = NSLocalizedString(@"Everyday", nil);
     else if ([self justWeekdays:days])
-        label = @"Weekdays";
+        label = NSLocalizedString(@"Weekdays", nil);
     else if ([self justWeekends:days])
-        label = @"Weekends";
+        label = NSLocalizedString(@"Weekends", nil);
     else {
-        label = [NSString stringWithFormat:@"%@", ([JAAlarm days:days containsDay:@"monday"]) ? @"M" : @""];
+        label = [NSString stringWithFormat:@"%@", ([JAAlarm days:days containsDay:NSLocalizedString(@"Monday", nil)]) ? @"M" : @""];
         
-        label = [NSString stringWithFormat:@"%@%@", label, ([JAAlarm days:days containsDay:@"tuesday"]) ? @" T" : @""];
+        label = [NSString stringWithFormat:@"%@%@", label, ([JAAlarm days:days containsDay:NSLocalizedString(@"Tuesday", nil)]) ? @" T" : @""];
         
-        label = [NSString stringWithFormat:@"%@%@", label, ([JAAlarm days:days containsDay:@"wednesday"]) ? @" W" : @""];
+        label = [NSString stringWithFormat:@"%@%@", label, ([JAAlarm days:days containsDay:NSLocalizedString(@"Wednesday", nil)]) ? @" W" : @""];
         
-        label = [NSString stringWithFormat:@"%@%@", label, ([JAAlarm days:days containsDay:@"thursday"]) ? @" Th" : @""];
+        label = [NSString stringWithFormat:@"%@%@", label, ([JAAlarm days:days containsDay:NSLocalizedString(@"Thursday", nil)]) ? @" Th" : @""];
         
-        label = [NSString stringWithFormat:@"%@%@", label, ([JAAlarm days:days containsDay:@"friday"]) ? @" F" : @""];
+        label = [NSString stringWithFormat:@"%@%@", label, ([JAAlarm days:days containsDay:NSLocalizedString(@"Friday", nil)]) ? @" F" : @""];
         
-        label = [NSString stringWithFormat:@"%@%@", label, ([JAAlarm days:days containsDay:@"saturday"]) ? @" S" : @""];
+        label = [NSString stringWithFormat:@"%@%@", label, ([JAAlarm days:days containsDay:NSLocalizedString(@"Saturday", nil)]) ? @" S" : @""];
         
-        label = [NSString stringWithFormat:@"%@%@", label, ([JAAlarm days:days containsDay:@"sunday"]) ? @" Su" : @""];
+        label = [NSString stringWithFormat:@"%@%@", label, ([JAAlarm days:days containsDay:NSLocalizedString(@"Sunday", nil)]) ? @" Su" : @""];
     }
     
     return label;

@@ -26,6 +26,8 @@
 + (BOOL) showSeconds;
 + (void) setShowSeconds:(BOOL)show;
 + (BOOL) showDate;
++ (void) setShowBackdrop:(BOOL)show;
++ (BOOL) showBackdrop;
 + (void) setShowDate:(BOOL)show;
 + (BOOL) farenheit;
 + (void) setFarenheit:(BOOL)farenheit;

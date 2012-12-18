@@ -31,7 +31,7 @@
         [self.view addSubview:self.tableView];
         
         // Weather switch
-        [self setWeatherSwitch:[[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Farenheight", @"Celsius", nil]]];
+        [self setWeatherSwitch:[[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:NSLocalizedString(@"Farenheight", nil), NSLocalizedString(@"Celsius", nil), nil]]];
         [self.weatherSwitch setSegmentedControlStyle:UISegmentedControlStyleBar];
         [self.weatherSwitch setSelectedSegmentIndex:([JASettings farenheit]) ? 0 : 1];
         [self.weatherSwitch addTarget:self action:@selector(weatherSwitchChanged:) forControlEvents:UIControlEventValueChanged];

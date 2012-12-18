@@ -61,7 +61,7 @@ static BOOL APIError = NO;
 	self.type = MKWeatherRequestTypeCurrent;
 	APIError = NO;
 	
-	NSString *url = [[NSString alloc] initWithFormat:@"%@?%@&%@&cc=yes&fx=no&format=xml&includeLocation=yes", baseURL, _APIKey, _location];
+	NSString *url = [[NSString alloc] initWithFormat:@"%@?%@&%@&cc=yes&fx=yes&format=xml&includeLocation=yes", baseURL, _APIKey, _location];
 	NSString *codedURL = [url stringByReplacingOccurrencesOfString:@" " withString:@"+"];
 	NSURL *theURL = [NSURL URLWithString:codedURL];
 	
@@ -286,7 +286,7 @@ static BOOL APIError = NO;
 		if (!weatherDict) {
 			weatherDict = [[NSMutableDictionary alloc] initWithCapacity:15];
 		}
-	} else if ([elementName isEqualToString:NSLocalizedString(@"Weather", nil)]) {
+	} else if ([elementName isEqualToString:@"weather"]) {
 		if (!weatherDict) {
 			weatherDict = [[NSMutableDictionary alloc] initWithCapacity:15];
 		}
@@ -324,7 +324,7 @@ static BOOL APIError = NO;
 		
 		[weatherDict release];
 		weatherDict = nil;
-	} else if ([elementName isEqualToString:NSLocalizedString(@"Weather", nil)]) {
+	} else if ([elementName isEqualToString:@"weather"]) {
 		[weatherData addObject:weatherDict];
 		
 		[weatherDict release];

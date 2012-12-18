@@ -40,7 +40,7 @@
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBADBannerView" id="1046168619">
 						<reference key="NSNextResponder" ref="339779611"/>
-						<int key="NSvFlags">282</int>
+						<int key="NSvFlags">266</int>
 						<string key="NSFrame">{{0, 518}, {320, 50}}</string>
 						<reference key="NSSuperview" ref="339779611"/>
 						<reference key="NSWindow"/>
@@ -82,7 +82,7 @@
 							</object>
 							<object class="IBUILabel" id="339592118">
 								<reference key="NSNextResponder" ref="774585933"/>
-								<int key="NSvFlags">303</int>
+								<int key="NSvFlags">295</int>
 								<string key="NSFrame">{{20, 185}, {280, 129}}</string>
 								<reference key="NSSuperview" ref="774585933"/>
 								<reference key="NSWindow"/>
@@ -111,6 +111,7 @@
 								</object>
 								<string key="IBUIShadowOffset">{2, 2}</string>
 								<int key="IBUIBaselineAdjustment">0</int>
+								<float key="IBUIMinimumFontSize">26</float>
 								<int key="IBUITextAlignment">1</int>
 								<int key="IBUILineBreakMode">2</int>
 								<object class="IBUIFontDescription" key="IBUIFontDescription">
@@ -124,11 +125,10 @@
 									<double key="NSSize">85</double>
 									<int key="NSfFlags">16</int>
 								</object>
-								<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 							</object>
 							<object class="IBUILabel" id="410702277">
 								<reference key="NSNextResponder" ref="774585933"/>
-								<int key="NSvFlags">296</int>
+								<int key="NSvFlags">288</int>
 								<string key="NSFrame">{{48, 293}, {225, 29}}</string>
 								<reference key="NSSuperview" ref="774585933"/>
 								<reference key="NSWindow"/>
@@ -236,7 +236,7 @@
 							<object class="IBUILabel" id="749219831">
 								<reference key="NSNextResponder" ref="774585933"/>
 								<int key="NSvFlags">289</int>
-								<string key="NSFrame">{{264, 7}, {44, 31}}</string>
+								<string key="NSFrame">{{228, 7}, {44, 31}}</string>
 								<reference key="NSSuperview" ref="774585933"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="339592118"/>
@@ -271,7 +271,7 @@
 							<object class="IBUILabel" id="208908465">
 								<reference key="NSNextResponder" ref="774585933"/>
 								<int key="NSvFlags">289</int>
-								<string key="NSFrame">{{209, 23}, {58, 13}}</string>
+								<string key="NSFrame">{{276, 21}, {58, 13}}</string>
 								<reference key="NSSuperview" ref="774585933"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="749219831"/>
@@ -281,7 +281,7 @@
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<string key="IBUIText">Low: --</string>
+								<string key="IBUIText">L: --</string>
 								<object class="NSColor" key="IBUITextColor">
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MSAxIDEAA</bytes>
@@ -292,7 +292,6 @@
 								<string key="IBUIShadowOffset">{1, 1}</string>
 								<int key="IBUIBaselineAdjustment">0</int>
 								<float key="IBUIMinimumFontSize">9</float>
-								<int key="IBUITextAlignment">2</int>
 								<object class="IBUIFontDescription" key="IBUIFontDescription" id="410059724">
 									<int key="type">1</int>
 									<double key="pointSize">11</double>
@@ -306,7 +305,7 @@
 							<object class="IBUILabel" id="310104882">
 								<reference key="NSNextResponder" ref="774585933"/>
 								<int key="NSvFlags">289</int>
-								<string key="NSFrame">{{209, 13}, {58, 12}}</string>
+								<string key="NSFrame">{{276, 11}, {58, 12}}</string>
 								<reference key="NSSuperview" ref="774585933"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="208908465"/>
@@ -316,7 +315,7 @@
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<string key="IBUIText">Hi: --</string>
+								<string key="IBUIText">H: --</string>
 								<object class="NSColor" key="IBUITextColor">
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MSAxIDEAA</bytes>
@@ -327,7 +326,6 @@
 								<string key="IBUIShadowOffset">{1, 1}</string>
 								<int key="IBUIBaselineAdjustment">0</int>
 								<float key="IBUIMinimumFontSize">9</float>
-								<int key="IBUITextAlignment">2</int>
 								<reference key="IBUIFontDescription" ref="410059724"/>
 								<reference key="IBUIFont" ref="572091416"/>
 							</object>

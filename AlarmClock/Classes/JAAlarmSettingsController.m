@@ -101,9 +101,9 @@
     //if this is a new alarm set the buttons
     if (self.navigationController.viewControllers.count == 1) {
 
-        [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStyleDone target:self action:@selector(dismissModalViewControllerAnimated:)]];
+        [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Save", nil) style:UIBarButtonItemStyleDone target:self action:@selector(dismissModalViewControllerAnimated:)]];
     
-        [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelEdit:)]];
+        [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Cancel", nil) style:UIBarButtonItemStylePlain target:self action:@selector(cancelEdit:)]];
     }
     
     
@@ -195,31 +195,31 @@
     //figure out which cell
     switch (indexPath.row) {
         case 0:
-            cell.textLabel.text = @"Name";
+            cell.textLabel.text = NSLocalizedString(@"Name", nil);
             cell.accessoryView = self.nameField;
             break;
         case 1:
-            cell.textLabel.text = @"Time";
+            cell.textLabel.text = NSLocalizedString(@"Time", nil);
             cell.detailTextLabel.text = [NSString stringWithFormat:@"%i:%02i%@", (_alarm.timeComponents.hour > 12) ? _alarm.timeComponents.hour - 12 : (_alarm.timeComponents.hour == 0) ? 12 : _alarm.timeComponents.hour, _alarm.timeComponents.minute, (_alarm.timeComponents.hour > 12) ? @"pm" : @"am", nil];
             break;
         case 2:
-            cell.textLabel.text = @"Enabled";
+            cell.textLabel.text = NSLocalizedString(@"Enabled", nil);
             cell.accessoryView = self.enableSwitch;
             break;
         case 3:
-            cell.textLabel.text = @"Repeat";
+            cell.textLabel.text = NSLocalizedString(@"Repeat", nil);
             cell.detailTextLabel.text = [JAAlarm labelForDays:self.alarm.repeatDays];
             break;
         case 4:
-            cell.textLabel.text = @"Sound";
+            cell.textLabel.text = NSLocalizedString(@"Sound", nil);
             cell.detailTextLabel.text = self.alarm.sound.name;
             break;
         case 5:
-            cell.textLabel.text = @"Gradual Alarm";
+            cell.textLabel.text = NSLocalizedString(@"Gradual Alarm", nil);
             cell.accessoryView = self.gradualSwitch;
             break;
         case 6:
-            cell.textLabel.text = @"Snooze (mins)";
+            cell.textLabel.text = NSLocalizedString(@"Snooze (mins)", nil);
             cell.accessoryView = self.snoozeField;
             break;
             

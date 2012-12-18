@@ -23,7 +23,7 @@ static JASettings *sharedInstance = nil;
 #define SLEEP_LENGTH_KEY @"sleepLength"
 #define SLEEP_SOUND_KEY @"sleepSound"
 #define SHINE_KEY @"riseAndShine"
-
+#define BACKDROP_KEY @"backdropKey"
 
 
 @implementation JASettings
@@ -58,7 +58,7 @@ static JASettings *sharedInstance = nil;
         }
     }
     
-    return [image  normalizedImage];
+    return [image normalizedImage];
 }
 
 + (void) setBackgroundImage:(NSString*)image
@@ -182,6 +182,24 @@ static JASettings *sharedInstance = nil;
     
 }
 
++ (void) setShowBackdrop:(BOOL)show
+{
+    [[NSUserDefaults standardUserDefaults] setBool:show forKey:BACKDROP_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (BOOL) showBackdrop
+{
+    BOOL back = NO;
+    
+    //check for bg image name
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:BACKDROP_KEY]) {
+        back = [[NSUserDefaults standardUserDefaults] boolForKey:BACKDROP_KEY];
+    }
+    
+    return [[NSUserDefaults standardUserDefaults] boolForKey:BACKDROP_KEY];
+}
+
 + (BOOL) farenheit
 {
     BOOL far = NO;
@@ -238,7 +256,7 @@ static JASettings *sharedInstance = nil;
 
 + (NSDictionary *)sleepSound
 {
-    NSDictionary * sound = [[NSDictionary alloc] initWithObjectsAndKeys:@"", @"", @"", @"", nil];
+    NSDictionary * sound = [[NSDictionary alloc] initWithObjectsAndKeys:@"Beach", @"name", @"Beach.m4a", @"filename", nil];
     
     //check for bg image name
     if ([[NSUserDefaults standardUserDefaults] objectForKey:SLEEP_SOUND_KEY]) {

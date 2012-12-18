@@ -6,6 +6,11 @@
   Copyright (c) 2012 JA. All rights reserved.
 */
 
+//Home Screen
+"H" = "H";
+"L" = "L";
+
+//Settings
 "Alarms" = "Alarms";
 "Display" = "Display";
 "Settings" = "Settings";
@@ -13,10 +18,59 @@
 "Done" = "Done";
 
 //Misc Screen
-"Sleep Sounds" = "Sleep Sounds";
+"Sleep Sound" = "Sleep Sound";
 "Weather" = "Weather";
 "Misc" = "Misc";
 "Rise & Shine" = "Rise & Shine";
 "Scale" = "Scale";
 "Length" = "Length";
 "minutes" = "minutes";
+"Farenheit" = "Farenheit";
+"Celsius" = "Celsius";
+
+//Disp Settings
+"Background Image" = "Background Image";
+"Show Backdrop" = "Show Backdrop";
+"Clock Text Color" = "Clock Text Color";
+"Show Seconds" = "Show Seconds";
+"Show Date" = "Show Date";
+
+//Alarm Settings
+"Name" = "Name";
+"Time" = "Time";
+"Enabled" = "Enabled";
+"Repeat" = "Repeat";
+"Sound" = "Sound";
+"Gradual Alarm" = "Gradual Alarm";
+"Snooze (mins)" = "Snooze (mins)";
+"Save" = "Save";
+"Cancel" = "Cancel";
+
+//Repeat Settings
+"Never" = "Never";
+"Everyday" = "Everyday";
+"Weekdays" = "Weekdays";
+"Weekends" = "Weekends";
+"Monday" = "Monday";
+"Tuesday" = "Tuesday";
+"Wednesday" = "Wednesday";
+"Thursday" = "Thursday";
+"Friday" = "Friday";
+"Saturday" = "Saturday";
+"Sunday" = "Sunday";
+"Repeat" = "Repeat";
+
+//Sound Selector
+"Choose From Library" = "Choose From Library";
+"Record A New Sound" = "Record A New Sound";
+
+//Sound Recorder
+"Sound Name" = "Sound Name";
+"Start Recording" = "Start Recording";
+"Save" = "Save";
+"Stop" = "Stop";
+"Ready" = "Ready";
+"Recording" = "Recording";
+"Stopped" = "Stopped";
+"Play" = "Play";
+"Re-Record" = "Re-Record";

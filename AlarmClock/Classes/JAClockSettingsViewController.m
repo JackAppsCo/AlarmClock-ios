@@ -13,6 +13,7 @@
 @interface JAClockSettingsViewController ()
 - (void) secondsSwitchChanged:(id)sender;
 - (void) dateSwitchChanged:(id)sender;
+- (void) backdropSwitchChanged:(id)sender;
 @end
 
 @implementation JAClockSettingsViewController
@@ -71,6 +72,11 @@
         [self.showDateSwitch setOn:[JASettings showDate]];
         [self.showDateSwitch addTarget:self action:@selector(dateSwitchChanged:) forControlEvents:UIControlEventValueChanged];
         
+        //backdrop switch
+        [self setBackdropSwitch:[[UISwitch alloc] init]];
+        [self.backdropSwitch setOn:[JASettings showBackdrop]];
+        [self.backdropSwitch addTarget:self action:@selector(backdropSwitchChanged:) forControlEvents:UIControlEventValueChanged];
+        
     }
     return self;
 }
@@ -106,6 +112,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.backdropImageview.image = [self.backdropImageview.image stretchableImageWithLeftCapWidth:35 topCapHeight:35];
+    self.backdropImageview.hidden = ![JASettings showBackdrop];
 
 }
 
@@ -137,6 +146,12 @@
     
     [JASettings setShowDate:[(UISwitch*)sender isOn]];
     
+}
+
+- (void) backdropSwitchChanged:(id)sender
+{
+    [JASettings setShowBackdrop:[(UISwitch*)sender isOn]];
+    self.backdropImageview.hidden = ![JASettings showBackdrop];    
 }
 
 - (void) raisePicker
@@ -192,7 +207,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 5;
+    return 6;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -217,7 +232,7 @@
         [cell.layer setShadowRadius:5.0f];
         [cell.layer setShadowOpacity:0.75f];
         
-        cell.textLabel.text = @"Background Image";
+        cell.textLabel.text = NSLocalizedString(@"Background Image", nil);
         cell.detailTextLabel.text = [JASettings backgroundImageName];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.selectionStyle = UITableViewCellSelectionStyleBlue;
@@ -226,7 +241,7 @@
     else if (indexPath.row == 1) {
         [cell.layer setShadowColor:[UIColor clearColor].CGColor];
         
-        cell.textLabel.text = @"Clock Text Color";
+        cell.textLabel.text = NSLocalizedString(@"Clock Text Color", nil);
         cell.detailTextLabel.text = [JASettings clockColorName];
         cell.accessoryType = UITableViewCellAccessoryNone;
         cell.selectionStyle = UITableViewCellSelectionStyleBlue;
@@ -235,14 +250,22 @@
     else if (indexPath.row == 2) {
         [cell.layer setShadowColor:[UIColor clearColor].CGColor];
         
-        cell.textLabel.text = @"Show Seconds";
-        cell.accessoryView = self.showSecondsSwitch;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;        
+        cell.textLabel.text = NSLocalizedString(@"Show Backdrop", nil);
+        cell.accessoryView = self.backdropSwitch;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
     }
     else if (indexPath.row == 3) {
         [cell.layer setShadowColor:[UIColor clearColor].CGColor];
         
-        cell.textLabel.text = @"Show Date";
+        cell.textLabel.text = NSLocalizedString(@"Show Seconds", nil);
+        cell.accessoryView = self.showSecondsSwitch;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;        
+    }
+    else if (indexPath.row == 4) {
+        [cell.layer setShadowColor:[UIColor clearColor].CGColor];
+        
+        cell.textLabel.text = NSLocalizedString(@"Show Date", nil);
         cell.accessoryView = self.showDateSwitch;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
@@ -365,6 +388,7 @@
     [self setTimeLabel:nil];
     [self setTableView:nil];
     [self setPickerView:nil];
+    [self setBackdropImageview:nil];
     [super viewDidUnload];
 }
 
