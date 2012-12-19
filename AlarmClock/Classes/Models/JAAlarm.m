@@ -155,12 +155,14 @@
 //check if its just weekends
 + (BOOL) justWeekends:(NSArray*)days
 {
+    if (days.count != 2) return NO;
+    
     BOOL sat = NO;
     BOOL sun = NO;
     
     for (NSString *day in days) {
-        if ([day isEqualToString:NSLocalizedString(@"Saturday", nil)]) sat = YES;
-        if ([day isEqualToString:NSLocalizedString(@"Sunday", nil)]) sun = YES;
+        if ([[day lowercaseString] isEqualToString:[NSLocalizedString(@"Saturday", nil) lowercaseString]]) sat = YES;
+        if ([[day lowercaseString] isEqualToString:[NSLocalizedString(@"Sunday", nil) lowercaseString]]) sun = YES;
     }
     
     return (sat && sun);
@@ -169,6 +171,9 @@
 //check if its just weekdays
 + (BOOL) justWeekdays:(NSArray*)days
 {
+    
+    if (days.count != 5) return NO;
+    
     BOOL mon = NO;
     BOOL tue = NO;
     BOOL wed = NO;
@@ -176,11 +181,11 @@
     BOOL fri = NO;
     
     for (NSString *day in days) {
-        if ([day isEqualToString:NSLocalizedString(@"Monday", nil)]) mon = YES;
-        if ([day isEqualToString:NSLocalizedString(@"Tuesday", nil)]) tue = YES;
-        if ([day isEqualToString:NSLocalizedString(@"Wednesday", nil)]) wed = YES;
-        if ([day isEqualToString:NSLocalizedString(@"Thursday", nil)]) thu = YES;
-        if ([day isEqualToString:NSLocalizedString(@"Friday", nil)]) fri = YES;
+        if ([[day lowercaseString] isEqualToString:[NSLocalizedString(@"Monday", nil) lowercaseString]]) mon = YES;
+        if ([[day lowercaseString] isEqualToString:[NSLocalizedString(@"Tuesday", nil) lowercaseString]]) tue = YES;
+        if ([[day lowercaseString] isEqualToString:[NSLocalizedString(@"Wednesday", nil) lowercaseString]]) wed = YES;
+        if ([[day lowercaseString] isEqualToString:[NSLocalizedString(@"Thursday", nil) lowercaseString]]) thu = YES;
+        if ([[day lowercaseString] isEqualToString:[NSLocalizedString(@"Friday", nil) lowercaseString]]) fri = YES;
     }
     
     return (mon && tue && wed && thu && fri);
@@ -190,7 +195,7 @@
 {
     
     for (NSString *thisDay in days) {
-        if ([thisDay isEqualToString:day]) return YES;
+        if ([[thisDay lowercaseString] isEqualToString:[day lowercaseString]]) return YES;
     }
     
     return NO;
@@ -202,7 +207,7 @@
     int theIndex = -1;
     
     for (int x = 0; x < days.count; x++) {
-        if ([[days objectAtIndex:x] isEqualToString:day]) {
+        if ([[[days objectAtIndex:x] lowercaseString] isEqualToString:[day lowercaseString]]) {
             theIndex = x;
             break;
         }

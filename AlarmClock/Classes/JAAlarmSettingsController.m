@@ -200,7 +200,7 @@
             break;
         case 1:
             cell.textLabel.text = NSLocalizedString(@"Time", nil);
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"%i:%02i%@", (_alarm.timeComponents.hour > 12) ? _alarm.timeComponents.hour - 12 : (_alarm.timeComponents.hour == 0) ? 12 : _alarm.timeComponents.hour, _alarm.timeComponents.minute, (_alarm.timeComponents.hour > 12) ? @"pm" : @"am", nil];
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%i:%02i%@", (_alarm.timeComponents.hour > 12) ? _alarm.timeComponents.hour - 12 : (_alarm.timeComponents.hour == 0) ? 12 : _alarm.timeComponents.hour, _alarm.timeComponents.minute, (_alarm.timeComponents.hour >= 12) ? @"pm" : @"am", nil];
             break;
         case 2:
             cell.textLabel.text = NSLocalizedString(@"Enabled", nil);

@@ -106,6 +106,7 @@ static ClockManager *sharedInstance = nil;
     
     JAAlarm *newSnoozeAlarm = anAlarm;
     newSnoozeAlarm.timeComponents = timeComponents;
+    newSnoozeAlarm.repeatDays = nil;
     
     [[ClockManager instance].snoozeAlarms addObject:newSnoozeAlarm];
 

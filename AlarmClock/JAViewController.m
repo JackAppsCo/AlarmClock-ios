@@ -148,7 +148,7 @@
     _backdropImageview.frame = CGRectMake(self.mainView.frame.origin.x, self.clockLabel.frame.origin.y - 10, self.mainView.frame.size.width, self.clockLabel.frame.size.height + 20);
     _backdropImageview.hidden = ![JASettings showBackdrop];
     [self.mainView addSubview:_backdropImageview];
-    [self.mainView insertSubview:_backdropImageview belowSubview:self.dateLabel];
+    [self.mainView insertSubview:_backdropImageview belowSubview:self.amPmLabel];
     
     //setup clock labels
     self.clockLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:([JASettings showSeconds]) ? 87 : 110];
@@ -165,7 +165,7 @@
 
 - (void) setAlarmIcon
 {
-    if (![JASettings alarmsEnabled]) {
+    if ([JASettings alarmsDisabled]) {
         [self.alarmButton setBackgroundImage:[UIImage imageNamed:@"alarmOffIcon.png"] forState:UIControlStateNormal];
         return;
     }
@@ -192,6 +192,7 @@
     [self setHighTempLabel:nil];
     [self setMainView:nil];
     [self setAdBanner:nil];
+    [self setAmPmLabel:nil];
     [super viewDidUnload];
 }
 
@@ -215,6 +216,7 @@
     
     //clock color
     self.clockLabel.textColor = [JASettings clockColor];
+    self.amPmLabel.textColor = [JASettings clockColor];
     self.dateLabel.textColor = [JASettings clockColor];
     
     //set backdrop
@@ -232,6 +234,10 @@
     }
     
     self.clockLabel.text = [_formatter stringFromDate:[NSDate date]];
+    
+    //am pm
+    NSDateComponents *comps = [_gregorian components:NSHourCalendarUnit fromDate:[NSDate date]];
+    self.amPmLabel.text = (comps.hour >= 12) ? @"PM" : @"AM";
     
     if ([JASettings showDate]) {
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -300,7 +306,7 @@
 
 - (IBAction)alarmButtonPressed:(id)sender {
 
-    [JASettings setAlarmsEnabled:![JASettings alarmsEnabled]];
+    [JASettings setAlarmsDisabled:![JASettings alarmsDisabled]];
     
     [self setAlarmIcon];
     
@@ -372,6 +378,7 @@
     
     if ([[[JASettings clockColorName] uppercaseString] isEqualToString:@"WHITE"]) {
         [self.clockLabel setTextColor:[JASettings clockColor]];
+        [self.amPmLabel setTextColor:[JASettings clockColor]];
     }
 }
 
@@ -380,7 +387,7 @@
 {
     
     //dont do anything if alarms are disabled
-    if (![JASettings alarmsEnabled])
+    if ([JASettings alarmsDisabled])
         return;
     
     _currentAlarm = [notification object];
@@ -468,9 +475,9 @@
 {
     if (UIInterfaceOrientationIsPortrait(toInterfaceOrientation)) {
 
-        self.clockLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:([JASettings showSeconds]) ? 55 : 85];
+        self.clockLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:([JASettings showSeconds]) ? 65 : 75];
         
-        [self layoutClockLabelForFrame:CGRectMake(15.0, 100.0, self.mainView.frame.size.width - 30.0, self.mainView.frame.size.height - 200.0)];
+        [self layoutClockLabelForFrame:CGRectMake(25.0, 50.0, self.mainView.frame.size.width - 50.0, self.mainView.frame.size.height - 100.0)];
         
         
     }
@@ -479,7 +486,7 @@
         
         self.clockLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:([JASettings showSeconds]) ? 87 : 110];
         
-        [self layoutClockLabelForFrame:CGRectMake(75.0, 25.0, self.mainView.frame.size.width - 150.0, self.mainView.frame.size.height - 50.0)];
+        [self layoutClockLabelForFrame:CGRectMake(60.0, 15.0, self.mainView.frame.size.width - 120.0, self.mainView.frame.size.height - 30.0)];
         
     }
     
@@ -500,16 +507,19 @@
     
     float dateAdjustment = ([JASettings showDate]) ? -dateSize.height : 0;
     
-    CGRect clockFrame = CGRectInset(insetFrame, 0, roundf((insetFrame.size.height - clockSize.height) / 2));
+    CGRect clockFrame = CGRectInset(insetFrame, roundf((insetFrame.size.width - clockSize.width) / 2), roundf((insetFrame.size.height - clockSize.height) / 2));
     clockFrame.origin.y += dateAdjustment;
     CGRect dateFrame = CGRectMake(frame.origin.x, clockFrame.origin.y + clockFrame.size.height + 20, frame.size.width, dateSize.height);
     dateFrame.origin.y += dateAdjustment;
+    CGRect amFrame = CGRectMake(clockFrame.origin.x + clockFrame.size.width, clockFrame.origin.y + 18, self.amPmLabel.frame.size.width, self.amPmLabel.frame.size.height);
 
+    
     
     self.clockLabel.frame = clockFrame;
     self.dateLabel.frame = dateFrame;
+    self.amPmLabel.frame = amFrame;
     
-    CGRect totalFrame = CGRectMake(frame.origin.x, ([JASettings showDate]) ? clockFrame.origin.y - 5 : clockFrame.origin.y - 20, frame.size.width, dateFrame.origin.y + dateFrame.size.height - clockFrame.origin.y + 20);
+    CGRect totalFrame = CGRectMake(clockFrame.origin.x - (1.5 * amFrame.size.width), ([JASettings showDate]) ? clockFrame.origin.y - 5 : clockFrame.origin.y - 20, clockFrame.size.width + (amFrame.size.width * 3), dateFrame.origin.y + dateFrame.size.height - clockFrame.origin.y + 20);
     _backdropImageview.frame = totalFrame;
     
     
@@ -527,6 +537,10 @@
         [_formatter setDateFormat:@"h:mm"];
     
     self.clockLabel.text = [_formatter stringFromDate:[NSDate date]];
+    
+    //am/pm
+    NSDateComponents *comps = [_gregorian components:NSHourCalendarUnit fromDate:[NSDate date]];
+    self.amPmLabel.text = (comps.hour >= 12) ? @"PM" : @"AM";
     
     //change the date if needed
     if ([JASettings showDate]) {
@@ -555,6 +569,7 @@
         if ([[[JASettings clockColorName] uppercaseString] isEqualToString:@"WHITE"]) {
             if (_shineDisableButton.alpha >= 0.5) {
                 [self.clockLabel setTextColor:[UIColor darkGrayColor]];
+                [self.amPmLabel setTextColor:[UIColor darkGrayColor]];
             }
         }
     }

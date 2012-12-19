@@ -138,7 +138,7 @@
     
     JAAlarm *thisAlarm = [_alarms objectAtIndex:indexPath.row];
     cell.textLabel.text = thisAlarm.name;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%i:%02i%@", (thisAlarm.timeComponents.hour > 12) ? thisAlarm.timeComponents.hour - 12 : (thisAlarm.timeComponents.hour == 0) ? 12 : thisAlarm.timeComponents.hour, thisAlarm.timeComponents.minute, (thisAlarm.timeComponents.hour > 12) ? @"pm" : @"am", nil];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%i:%02i%@", (thisAlarm.timeComponents.hour > 12) ? thisAlarm.timeComponents.hour - 12 : (thisAlarm.timeComponents.hour == 0) ? 12 : thisAlarm.timeComponents.hour, thisAlarm.timeComponents.minute, (thisAlarm.timeComponents.hour >= 12) ? @"pm" : @"am", nil];
     
     
     UISwitch *enabledSwitch = [[UISwitch alloc] init];

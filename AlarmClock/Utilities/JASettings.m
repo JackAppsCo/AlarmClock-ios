@@ -218,9 +218,9 @@ static JASettings *sharedInstance = nil;
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-+ (BOOL) alarmsEnabled
++ (BOOL) alarmsDisabled
 {
-    BOOL en = YES;
+    BOOL en = NO;
     
     //check for bg image name
     if ([[NSUserDefaults standardUserDefaults] boolForKey:ALARMS_ENABLED_KEY]) {
@@ -230,7 +230,7 @@ static JASettings *sharedInstance = nil;
     return [[NSUserDefaults standardUserDefaults] boolForKey:ALARMS_ENABLED_KEY];
 }
 
-+ (void) setAlarmsEnabled:(BOOL)enabled
++ (void) setAlarmsDisabled:(BOOL)enabled
 {
     [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:ALARMS_ENABLED_KEY];
     [[NSUserDefaults standardUserDefaults] synchronize];

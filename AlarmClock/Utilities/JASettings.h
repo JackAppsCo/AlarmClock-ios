@@ -31,8 +31,8 @@
 + (void) setShowDate:(BOOL)show;
 + (BOOL) farenheit;
 + (void) setFarenheit:(BOOL)farenheit;
-+ (BOOL) alarmsEnabled;
-+ (void) setAlarmsEnabled:(BOOL)enabled;
++ (BOOL) alarmsDisabled;
++ (void) setAlarmsDisabled:(BOOL)enabled;
 + (int) sleepLength;
 + (void) setSleepLength:(int)length;
 + (NSDictionary *)sleepSound;

@@ -204,7 +204,7 @@
                 break;
             case 2:
                 [newRepeateDays removeAllObjects];
-                [newRepeateDays addObjectsFromArray:[NSArray arrayWithObjects:NSLocalizedString(@"Tuesday", nil), NSLocalizedString(@"Tuesday", nil), NSLocalizedString(@"Wednesday", nil), NSLocalizedString(@"Thursday", nil), NSLocalizedString(@"Friday", nil), nil]];
+                [newRepeateDays addObjectsFromArray:[NSArray arrayWithObjects:NSLocalizedString(@"Monday", nil), NSLocalizedString(@"Tuesday", nil), NSLocalizedString(@"Wednesday", nil), NSLocalizedString(@"Thursday", nil), NSLocalizedString(@"Friday", nil), nil]];
                 break;
             case 3:
                 [newRepeateDays removeAllObjects];
@@ -219,10 +219,10 @@
     else {
         switch (indexPath.row) {
             case 0:
-                if ([JAAlarm days:newRepeateDays containsDay:NSLocalizedString(@"Tuesday", nil)])
-                    newRepeateDays = [[NSMutableArray alloc] initWithArray:[JAAlarm days:newRepeateDays AfterRemovingDay:NSLocalizedString(@"Tuesday", nil)]];
+                if ([JAAlarm days:newRepeateDays containsDay:NSLocalizedString(@"Monday", nil)])
+                    newRepeateDays = [[NSMutableArray alloc] initWithArray:[JAAlarm days:newRepeateDays AfterRemovingDay:NSLocalizedString(@"Monday", nil)]];
                 else
-                    [newRepeateDays addObject:NSLocalizedString(@"Tuesday", nil)];
+                    [newRepeateDays addObject:NSLocalizedString(@"Monday", nil)];
                 break;
             case 1:
                 if ([JAAlarm days:newRepeateDays containsDay:NSLocalizedString(@"Tuesday", nil)])

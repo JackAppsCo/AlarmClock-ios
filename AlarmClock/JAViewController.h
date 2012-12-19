@@ -51,6 +51,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UIButton *alarmButton;
 @property (weak, nonatomic) IBOutlet ADBannerView *adBanner;
+@property (strong, nonatomic) IBOutlet UILabel *amPmLabel;
 
 - (IBAction)sleepButtonPressed:(id)sender;
 - (IBAction)alarmButtonPressed:(id)sender;
