@@ -39,5 +39,7 @@
 + (void) setSleepSound:(NSDictionary*)sleepSound;
 + (void) setShine:(BOOL)shine;
 + (BOOL) shine;
++ (void) setStayAwake:(BOOL)awake;
++ (BOOL) stayAwake;
 
 @end

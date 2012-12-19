@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JAMiscSettingsViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface JAMiscSettingsViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate>
 {
     int _selectedPicker, _selectedSound, _selectedTime;
     
@@ -18,6 +18,6 @@
 @property (strong, nonatomic) UIPickerView *pickerView;
 @property (strong, nonatomic) NSArray *sounds;
 @property (strong, nonatomic) UITableView *tableView;
-@property (strong, nonatomic) UISwitch *shineSwitch;
+@property (strong, nonatomic) UISwitch *shineSwitch, *awakeSwitch;
 
 @end

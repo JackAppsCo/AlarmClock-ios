@@ -11,8 +11,9 @@
 #import "MKWeatherRequest.h"
 #import <AVFoundation/AVFoundation.h>
 #import <iAd/iAd.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface JAViewController : UIViewController <ADBannerViewDelegate, MKClockDelegate, MKWeatherRequestDelegate, UIAlertViewDelegate, AVAudioPlayerDelegate>
+@interface JAViewController : UIViewController <ADBannerViewDelegate, MKClockDelegate, MKWeatherRequestDelegate, UIAlertViewDelegate, AVAudioPlayerDelegate, CLLocationManagerDelegate>
 {
     CGPoint startLocation;
     NSMutableArray *_myAlarms;
@@ -29,6 +30,8 @@
     BOOL _alarmEnabled, _shineEnabled;
     UIButton *_shineDisableButton;
     UIImageView *_backdropImageview;
+    
+    CLLocationManager *_locationManager;
 }
 
 

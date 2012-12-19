@@ -14,6 +14,7 @@
 @interface JAMiscSettingsViewController ()
 - (void)weatherSwitchChanged:(id)sender;
 - (void)shineSwitchChanged:(id)sender;
+- (void)awakeSwitchChanged:(id)sender;
 @end
 
 @implementation JAMiscSettingsViewController
@@ -67,6 +68,11 @@
         [self.shineSwitch setOn:[JASettings shine]];
         [self.shineSwitch addTarget:self action:@selector(shineSwitchChanged:) forControlEvents:UIControlEventValueChanged];
         
+        //awake switch
+        [self setAwakeSwitch:[[UISwitch alloc] init]];
+        [self.awakeSwitch setOn:[JASettings shine]];
+        [self.awakeSwitch addTarget:self action:@selector(awakeSwitchChanged:) forControlEvents:UIControlEventValueChanged];
+        
     }
     return self;
 }
@@ -74,10 +80,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
- 
+    
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
@@ -95,7 +101,27 @@
 
 - (void)shineSwitchChanged:(id)sender
 {
-    [JASettings setShine:[self.shineSwitch isOn]];
+    if ([self.shineSwitch isOn] && ![JASettings stayAwake]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Whoops!", nil) message:NSLocalizedString(@"In order to turn on the Rise & Shine feature we'll have to disable autolock.", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitles:NSLocalizedString(@"Ok", nil), nil];
+        [alert setTag:0];
+        [alert show];
+    }
+    else {
+        [JASettings setShine:[self.shineSwitch isOn]];
+    }
+}
+
+- (void)awakeSwitchChanged:(id)sender
+{
+    if (![self.awakeSwitch isOn] && [JASettings shine]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Whoops!", nil) message:NSLocalizedString(@"Enabling autolock will disable the Rise & Shine feature.", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitles:NSLocalizedString(@"Ok", nil), nil];
+        [alert setTag:1];
+        [alert show];
+    }
+    else {
+        [JASettings setStayAwake:[self.awakeSwitch isOn]];
+    }
+    
 }
 
 #pragma mark - Table view data source
@@ -111,16 +137,16 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-
+    
     // Return the number of sections.
     return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-
+    
     // Return the number of rows in the section.
-    return (section == 0) ? 2 : 1;
+    return (section == 1) ? 1 : 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -159,9 +185,16 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     else {
-        cell.textLabel.text = NSLocalizedString(@"Rise & Shine", nil);
-        cell.accessoryView = self.shineSwitch;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        if (indexPath.row == 0) {
+            cell.textLabel.text = NSLocalizedString(@"Rise & Shine", nil);
+            cell.accessoryView = self.shineSwitch;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        }
+        else {
+            cell.textLabel.text = NSLocalizedString(@"Disable Autolock", nil);
+            cell.accessoryView = self.awakeSwitch;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        }
     }
     
     
@@ -169,43 +202,43 @@
 }
 
 /*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
 
 /*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ if (editingStyle == UITableViewCellEditingStyleDelete) {
+ // Delete the row from the data source
+ [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+ }
+ else if (editingStyle == UITableViewCellEditingStyleInsert) {
+ // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+ }
+ }
+ */
 
 /*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+ {
+ }
+ */
 
 /*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
 
 #pragma mark - Table view delegate
 
@@ -214,7 +247,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.section == 0) {
-    
+        
         _selectedPicker = indexPath.row;
         
         if (indexPath.row == 0) {
@@ -301,6 +334,35 @@
     
     [self.tableView reloadData];
     [self lowerPicker];
+}
+
+#pragma mark - UIAlertviewDelegate
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 0) {
+        if (buttonIndex == 0) {
+            [self.shineSwitch setOn:NO];
+        }
+        else {
+            [self.awakeSwitch setOn:YES];
+            [self.shineSwitch setOn:YES];
+            
+            [JASettings setStayAwake:YES];
+            [JASettings setShine:YES];
+        }
+    }
+    else {
+        if (buttonIndex == 0) {
+            [self.awakeSwitch setOn:YES];
+        }
+        else {
+            [self.awakeSwitch setOn:NO];
+            [self.shineSwitch setOn:NO];
+            
+            [JASettings setStayAwake:NO];
+            [JASettings setShine:NO];
+        }
+    }
 }
 
 @end

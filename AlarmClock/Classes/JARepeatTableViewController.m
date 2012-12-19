@@ -117,7 +117,7 @@
     else {
         switch (indexPath.row) {
             case 0:
-                cell.textLabel.text = NSLocalizedString(@"Tuesday", nil);
+                cell.textLabel.text = NSLocalizedString(@"Monday", nil);
                 break;
             case 1:
                 cell.textLabel.text = NSLocalizedString(@"Tuesday", nil);

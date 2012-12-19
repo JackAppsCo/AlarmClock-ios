@@ -24,7 +24,7 @@ static JASettings *sharedInstance = nil;
 #define SLEEP_SOUND_KEY @"sleepSound"
 #define SHINE_KEY @"riseAndShine"
 #define BACKDROP_KEY @"backdropKey"
-
+#define AWAKE_KEY @"stayAwake"
 
 @implementation JASettings
 
@@ -281,6 +281,18 @@ static JASettings *sharedInstance = nil;
 + (BOOL) shine
 {
     return [[NSUserDefaults standardUserDefaults] boolForKey:SHINE_KEY];
+}
+
++ (void) setStayAwake:(BOOL)awake
+{
+    [[UIApplication sharedApplication] setIdleTimerDisabled:awake];
+    [[NSUserDefaults standardUserDefaults] setBool:awake forKey:AWAKE_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (BOOL) stayAwake
+{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:AWAKE_KEY];
 }
 
 #pragma mark - Class Methods

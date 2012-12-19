@@ -58,6 +58,10 @@
         _shineEnabled = NO;
         _alarmEnabled = NO;
 
+        //location
+        _locationManager = [[CLLocationManager alloc] init];
+        [_locationManager setDelegate:self];
+        [_locationManager startUpdatingLocation];
         
     }
     
@@ -105,9 +109,6 @@
     _tabBarController = [[UITabBarController alloc] init];
     [_tabBarController setViewControllers:[NSArray arrayWithObjects:alarmNavController, displayNavController, settingsNavController, nil]];
     
-    //weather request
-    _weatherRequest = [[MKWeatherRequest alloc] initWithCoordinate:CLLocationCoordinate2DMake(38.906029,-77.043475) APIKey:WEATHER_API_KEY delegate:self];
-    [_weatherRequest weatherForcast];
     
     //settings button
     [self.settingsButton addTarget:self action:@selector(settingsButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -155,6 +156,11 @@
     
     //bring clock label to front
     [self.mainView bringSubviewToFront:self.clockLabel];
+    
+    //hide temp labels
+    self.currentTempLabel.alpha = 0.0;
+    self.lowTempLabel.alpha = 0.0;
+    self.highTempLabel.alpha = 0.0;
 }
 
 - (void) setAlarmIcon
@@ -346,10 +352,12 @@
         
         if(dy > 15) {
             _dimView.alpha += (_dimView.alpha < 1.0f) ? 0.05 : 0.0;
+            [UIScreen mainScreen].brightness -= ([UIScreen mainScreen].brightness > 0.0f) ? 0.05 : 0.0;
             startLocation = stopLocation;
         }
         else if (dy < -15) {
-            _dimView.alpha -= (_dimView.alpha > 0.0f) ? 0.1 : 0.0;
+            _dimView.alpha -= (_dimView.alpha > 0.0f) ? 0.05 : 0.0;
+            [UIScreen mainScreen].brightness += ([UIScreen mainScreen].brightness < 1.0f) ? 0.05 : 0.0;
             startLocation = stopLocation;
         }
         
@@ -541,6 +549,8 @@
     
     if (_shineEnabled) {
         _shineDisableButton.alpha = _shineDisableButton.alpha + (1.0 / 1800.0);
+        [UIScreen mainScreen].brightness += ([UIScreen mainScreen].brightness < 1.0f) ?  + (1.0 / 1800.0) : 0.0;
+        _dimView.alpha -= (_dimView.alpha > 0.0f) ? (1.0 / 1800.0) : 0.0;
         
         if ([[[JASettings clockColorName] uppercaseString] isEqualToString:@"WHITE"]) {
             if (_shineDisableButton.alpha >= 0.5) {
@@ -591,6 +601,10 @@
         self.highTempLabel.text = [NSString stringWithFormat:@"%@: %0.0f˚", NSLocalizedString(@"H", nil), [[weatherDict objectForKey:([JASettings farenheit]) ? WEATHER_FORCAST_TEMP_MAX_F : WEATHER_FORCAST_TEMP_MAX_C] floatValue], nil];
         self.lowTempLabel.text = [NSString stringWithFormat:@"%@: %0.0f˚", NSLocalizedString(@"L", nil), [[weatherDict objectForKey:([JASettings farenheit]) ? WEATHER_FORCAST_TEMP_MIN_F : WEATHER_FORCAST_TEMP_MIN_C] floatValue], nil];
     }
+    
+    self.currentTempLabel.alpha = 1.0;
+    self.lowTempLabel.alpha = 1.0;
+    self.highTempLabel.alpha = 1.0;
 }
 
 #pragma mark - UIAlertViewDelegate
@@ -650,6 +664,14 @@
         }
     }];
     
+}
+
+#pragma mark - Location Delegate
+- (void) locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+    //weather request
+    _weatherRequest = [[MKWeatherRequest alloc] initWithCoordinate:CLLocationCoordinate2DMake(38.906029,-77.043475) APIKey:WEATHER_API_KEY delegate:self];
+    [_weatherRequest weatherForcast];
 }
 
 @end

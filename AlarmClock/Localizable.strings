@@ -6,6 +6,9 @@
   Copyright (c) 2012 JA. All rights reserved.
 */
 
+//Other
+"Open" = "Open";
+
 //Home Screen
 "H" = "H";
 "L" = "L";
@@ -27,6 +30,11 @@
 "minutes" = "minutes";
 "Farenheit" = "Farenheit";
 "Celsius" = "Celsius";
+"Disable Autolock" = "Disable Autolock";
+"Whoops!" = "Whoops!";
+"Enabling autolock will disable the Rise & Shine feature." = "Enabling autolock will disable the Rise & Shine feature.";
+"Cancel" = "Cancel";
+"Ok" = "Ok";
 
 //Disp Settings
 "Background Image" = "Background Image";
