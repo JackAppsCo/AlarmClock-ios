@@ -98,7 +98,7 @@
 {
     JASound *defaultSound = [[JASound alloc] init];
     [defaultSound setName:@"Alarm"];
-    [defaultSound setSoundFilename:@"Background__Alarm_.wav"];
+    [defaultSound setSoundFilename:@"Background__Alarm__cut.m4a"];
     [defaultSound setCollection:nil];
     
     return defaultSound;

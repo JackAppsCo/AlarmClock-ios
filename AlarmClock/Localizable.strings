@@ -13,6 +13,15 @@
 "H" = "H";
 "L" = "L";
 
+//Sleep Screen
+"Sleep Cycle" = "Sleep Cycle";
+"Sleep Smart" = "Sleep Smart";
+"Sleep By" = "Sleep By";
+"Wake By" = "Wake By";
+"Create Alarm" = "Create Alarm";
+"You try to fall asleep at one of these times:" = "You try to fall asleep at one of these times:";
+"Select one of these times to wake up at:" = "Select one of these times to wake up at:";
+
 //Settings
 "Alarms" = "Alarms";
 "Display" = "Display";

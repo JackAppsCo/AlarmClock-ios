@@ -13,6 +13,7 @@
 #import "JAClockSettingsViewController.h"
 #import "JAMiscSettingsViewController.h"
 #import "UIImage+fixOrientation.h"
+#import "JASleepCycleViewController.h"
 
 #define WEATHER_API_KEY @"c74edf0183141706121311"
 
@@ -76,7 +77,12 @@
     //init alarmsOn
     _alarmsOn = YES;
     
-    //init clock
+    //alarm settings
+    JASleepCycleViewController *_sleepController = [[JASleepCycleViewController alloc] init];
+    [_sleepController setTitle:NSLocalizedString(@"Sleep Cycle", nil)];
+    [_sleepController setTabBarItem:[[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Sleep Smart", nil) image:[UIImage imageNamed:@"tabIconSleep.png"] tag:0]];
+    UIBarButtonItem *doneSleepButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", nil) style:UIBarButtonItemStyleDone target:self action:@selector(dismissSettingsController:)];
+    [_sleepController.navigationItem setLeftBarButtonItem:doneSleepButton];
     
     //alarm settings
     JAAlarmListViewController *_alarmSettingsController = [[JAAlarmListViewController alloc] init];
@@ -104,10 +110,11 @@
     UINavigationController *alarmNavController = [[UINavigationController alloc] initWithRootViewController:_alarmSettingsController];
     UINavigationController *displayNavController = [[UINavigationController alloc] initWithRootViewController:_displaySettingsController];
     UINavigationController *settingsNavController = [[UINavigationController alloc] initWithRootViewController:_miscSettingsController];
+    UINavigationController *sleepNavController = [[UINavigationController alloc] initWithRootViewController:_sleepController];
     
     //tab bar
     _tabBarController = [[UITabBarController alloc] init];
-    [_tabBarController setViewControllers:[NSArray arrayWithObjects:alarmNavController, displayNavController, settingsNavController, nil]];
+    [_tabBarController setViewControllers:[NSArray arrayWithObjects:sleepNavController, alarmNavController, displayNavController, settingsNavController, nil]];
     
     
     //settings button
