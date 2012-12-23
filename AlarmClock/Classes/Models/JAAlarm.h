@@ -14,7 +14,7 @@
 @interface JAAlarm : NSObject
 
 @property NSDateComponents *timeComponents;
-@property NSDate *lastFireDate;
+@property NSDate *lastFireDate, *enabledDate;
 @property NSNumber *alarmID, *snoozeTime;
 @property NSString *name;
 @property BOOL *enabled, *gradualSound;

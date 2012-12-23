@@ -170,6 +170,8 @@
 		C916EFD216879E9A000B53F5 /* Thunderstorm.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C916EFCD16879E9A000B53F5 /* Thunderstorm.m4a */; };
 		C916EFD316879E9A000B53F5 /* Beach.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C916EFCE16879E9A000B53F5 /* Beach.m4a */; };
 		C916EFD416879E9A000B53F5 /* Beach.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C916EFCE16879E9A000B53F5 /* Beach.m4a */; };
+		C916EFDA16879FB0000B53F5 /* JASleepCycleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0443331683EFB10087B1D0 /* JASleepCycleViewController.m */; };
+		C916EFDB16879FB0000B53F5 /* JASleepCycleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0443361683EFE20087B1D0 /* JASleepCycleView.m */; };
 		C91F88441658493F004F0943 /* AlarmClockIcon3_114.png in Resources */ = {isa = PBXBuildFile; fileRef = C91F88421658493F004F0943 /* AlarmClockIcon3_114.png */; };
 		C91F88451658493F004F0943 /* AlarmClockIcon3_57.png in Resources */ = {isa = PBXBuildFile; fileRef = C91F88431658493F004F0943 /* AlarmClockIcon3_57.png */; };
 		C92783D11677853200CFEA8D /* UIImage+fixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = C92783D01677853200CFEA8D /* UIImage+fixOrientation.m */; };
@@ -1285,6 +1287,8 @@
 				C916EF2A16879754000B53F5 /* JAClockSettingsViewController.m in Sources */,
 				C916EF2B16879754000B53F5 /* JAMiscSettingsViewController.m in Sources */,
 				C916EF2C16879754000B53F5 /* UIImage+fixOrientation.m in Sources */,
+				C916EFDA16879FB0000B53F5 /* JASleepCycleViewController.m in Sources */,
+				C916EFDB16879FB0000B53F5 /* JASleepCycleView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

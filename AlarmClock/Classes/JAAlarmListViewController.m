@@ -65,6 +65,15 @@
 {
     JAAlarm *thisAlarm = [_alarms objectAtIndex:[(UISwitch*)sender tag]];
     [thisAlarm setEnabled:[(UISwitch*)sender isOn]];
+    [thisAlarm setEnabledDate:[NSDate date]];
+    
+    //up the day if necesary
+    NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];    
+    NSDate *alarmDate = [calendar dateFromComponents:thisAlarm.timeComponents];
+    if ([alarmDate compare:[NSDate date]] == NSOrderedAscending) {
+        thisAlarm.timeComponents.day = thisAlarm.timeComponents.day + 1;
+    }
+    
     [JAAlarm saveAlarm:thisAlarm];
     _alarms = [JAAlarm savedAlarms];
     [self.tableView reloadData];

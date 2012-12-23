@@ -80,6 +80,8 @@
     _alarm.sound = [JASound defaultSound];
     _alarm.name = @"Sleep Smart Alarm";
     _alarm.snoozeTime = [NSNumber numberWithInt:10];
+    _alarm.lastFireDate = nil;
+    _alarm.enabledDate = [NSDate date];    
     
     //time comps
     NSDate *alarmDate;

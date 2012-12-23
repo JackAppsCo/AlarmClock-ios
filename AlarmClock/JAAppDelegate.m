@@ -36,6 +36,7 @@
     //capture brightness
     _initalBrightness = [UIScreen mainScreen].brightness;
     
+    
     //check for disabl lock
     [[UIApplication sharedApplication] setIdleTimerDisabled:[JASettings stayAwake]];
     
@@ -96,6 +97,23 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+    //enable or disable alarms with no repeat
+    NSArray *temp = [JAAlarm savedAlarms];
+    for (JAAlarm *thisAlarm in temp) {
+        if (thisAlarm.enabled && thisAlarm.repeatDays.count == 0) {
+            
+            NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
+            NSDate *alarmDate = [calendar dateFromComponents:thisAlarm.timeComponents];
+            
+            if ([alarmDate compare:[NSDate date]] == NSOrderedAscending) {
+                [thisAlarm setEnabled:NO];
+                [JAAlarm saveAlarm:thisAlarm];
+            }
+            
+        }
+    }
+    
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -165,12 +183,16 @@
             }
             else {
                 NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
-                NSDateComponents *dateComps = [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit fromDate:[NSDate date]];
+                NSDateComponents *dateComps = [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit fromDate:[NSDate date]];
                 [dateComps setHour:thisAlarm.timeComponents.hour];
                 [dateComps setMinute:thisAlarm.timeComponents.minute];
+                [dateComps setDay:thisAlarm.timeComponents.day];
                 NSDate *itemDate = [calendar dateFromComponents:dateComps];
                 
-                if ([itemDate compare:[NSDate date]] == NSOrderedDescending) {
+                //increase the day if it's in the past
+                if ([itemDate compare:[NSDate date]] == NSOrderedAscending) {
+                    thisAlarm.timeComponents.day = thisAlarm.timeComponents.day + 1;
+                }
                 
                 UILocalNotification *localNotif = [[UILocalNotification alloc] init];
                 if (localNotif == nil)
@@ -187,7 +209,7 @@
                 
                 [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
                     
-                }
+                
                 
             }
         }
@@ -249,30 +271,31 @@
             }
             else {
                 NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
-                NSDateComponents *dateComps = [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit fromDate:[NSDate date]];
+                NSDateComponents *dateComps = [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit fromDate:[NSDate date]];
                 [dateComps setHour:thisAlarm.timeComponents.hour];
                 [dateComps setMinute:thisAlarm.timeComponents.minute];
+                [dateComps setDay:thisAlarm.timeComponents.day];
                 NSDate *itemDate = [calendar dateFromComponents:dateComps];
                 
-                if ([itemDate compare:[NSDate date]] == NSOrderedDescending) {
-                    
-                    UILocalNotification *localNotif = [[UILocalNotification alloc] init];
-                    if (localNotif == nil)
-                        return;
-                    localNotif.fireDate = itemDate;
-                    localNotif.timeZone = [NSTimeZone defaultTimeZone];
-                    localNotif.alertBody = thisAlarm.name;
-                    localNotif.repeatInterval = 0;
-                    localNotif.alertAction = NSLocalizedString(@"Snooze", nil);
-
-                    localNotif.soundName = thisAlarm.sound.soundFilename;
-                    
-                    NSDictionary *infoDict = [NSDictionary dictionaryWithObject:[NSKeyedArchiver archivedDataWithRootObject:thisAlarm] forKey:@"alarm"];
-                    localNotif.userInfo = infoDict;
-                    
-                    [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
-                    
+                //increase the day if it's in the past
+                if ([itemDate compare:[NSDate date]] == NSOrderedAscending) {
+                    thisAlarm.timeComponents.day = thisAlarm.timeComponents.day + 1;
                 }
+                
+                UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+                if (localNotif == nil)
+                    return;
+                localNotif.fireDate = itemDate;
+                localNotif.timeZone = [NSTimeZone defaultTimeZone];
+                localNotif.alertBody = thisAlarm.name;
+                localNotif.repeatInterval = 0;
+                localNotif.alertAction = NSLocalizedString(@"Snooze", nil);
+                localNotif.soundName = thisAlarm.sound.soundFilename;
+                
+                NSDictionary *infoDict = [NSDictionary dictionaryWithObject:[NSKeyedArchiver archivedDataWithRootObject:thisAlarm] forKey:@"alarm"];
+                localNotif.userInfo = infoDict;
+                
+                [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
                 
             }
         }

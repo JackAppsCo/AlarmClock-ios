@@ -9,12 +9,13 @@
 #import "JAAlarm.h"
 
 @implementation JAAlarm
-@synthesize timeComponents = _timeComponents, alarmID = _alarmID, lastFireDate = _lastFireDate, repeatDays = _repeatDays, enabled = _enabled, sound = _sound, snoozeTime = _snoozeTime, gradualSound = _gradualSound;
+@synthesize timeComponents = _timeComponents, alarmID = _alarmID, lastFireDate = _lastFireDate, repeatDays = _repeatDays, enabled = _enabled, sound = _sound, snoozeTime = _snoozeTime, gradualSound = _gradualSound, enabledDate = _enabledDate;
 
 - (void) encodeWithCoder:(NSCoder *)encoder {
     [encoder encodeObject:_timeComponents forKey:@"alarmDate"];
     [encoder encodeObject:_alarmID forKey:@"alarmID"];
     [encoder encodeObject:_lastFireDate forKey:@"lastFireDate"];
+    [encoder encodeObject:_enabledDate forKey:@"enabledDate"];
     [encoder encodeObject:_name forKey:@"alarmName"];
     [encoder encodeBool:_enabled forKey:@"alarmEnabled"];
     [encoder encodeBool:_gradualSound forKey:@"gradualSound"];
@@ -30,6 +31,7 @@
 		[self setTimeComponents:[coder decodeObjectForKey:@"alarmDate"]];
         [self setAlarmID:[coder decodeObjectForKey:@"alarmID"]];
         [self setLastFireDate:[coder decodeObjectForKey:@"lastFireDate"]];
+        [self setEnabledDate:[coder decodeObjectForKey:@"enabledDate"]];
         [self setName:[coder decodeObjectForKey:@"alarmName"]];
         [self setEnabled:[coder decodeBoolForKey:@"alarmEnabled"]];
         [self setGradualSound:[coder decodeBoolForKey:@"gradualSound"]];

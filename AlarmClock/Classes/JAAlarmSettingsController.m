@@ -41,6 +41,8 @@
             _alarm.sound = [JASound defaultSound];
             _alarm.name = @"Alarm";
             _alarm.snoozeTime = [NSNumber numberWithInt:10];
+            _alarm.lastFireDate = nil;
+            _alarm.enabledDate = [NSDate date];
             
             //time comps
             now = [NSDate dateWithTimeIntervalSinceNow:(60 * 10)];
@@ -122,11 +124,35 @@
     if (!pressedCancel)
     {
         self.alarm.enabled = self.enableSwitch.on;
+        if (self.alarm.enabled) {
+            [self.alarm setEnabledDate:[NSDate date]];
+            
+            NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
+            NSDate *alarmDate = [calendar dateFromComponents:self.alarm.timeComponents];
+            if ([alarmDate compare:[NSDate date]] == NSOrderedAscending) {
+                self.alarm.timeComponents.day = self.alarm.timeComponents.day + 1;
+            }
+            
+        }
         self.alarm.gradualSound = self.gradualSwitch.on;
         self.alarm.name = self.nameField.text;
         NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
         [f setNumberStyle:NSNumberFormatterDecimalStyle];
         self.alarm.snoozeTime = [f numberFromString:self.snoozeField.text];
+        
+        
+        //make sure the alarm is in the future
+        /*if (self.alarm.repeatDays.count == 0) {
+            NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
+            NSDateComponents *todayComponents = [calendar components:(NSDayCalendarUnit) fromDate:[NSDate date]];
+            [self.alarm.timeComponents setDay:todayComponents.day];
+            
+            NSDate *alarmDate = [calendar dateFromComponents:self.alarm.timeComponents];
+            if ([alarmDate compare:[NSDate date]] == NSOrderedAscending) {
+                self.alarm.timeComponents.day = self.alarm.timeComponents.day + 1;
+            }
+        }*/
+        
         [JAAlarm saveAlarm:self.alarm];
     }
 }
@@ -146,8 +172,20 @@
         NSDate *theTime = _datePicker.date;
         NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
         NSDateComponents *timeComponents = [gregorian components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:theTime];
+        [timeComponents setMinute:timeComponents.minute];
         [timeComponents setSecond:0];
-
+        
+        NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
+        NSDateComponents *todayComponents = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:[NSDate date]];
+        [timeComponents setDay:todayComponents.day];
+        [timeComponents setYear:todayComponents.year];
+        [timeComponents setMonth:todayComponents.month];
+        
+        NSDate *alarmDate = [calendar dateFromComponents:timeComponents];
+        if ([alarmDate compare:[NSDate date]] == NSOrderedAscending) {
+            timeComponents.day = timeComponents.day + 1;
+        }
+        
         //set the alarm's date
         _alarm.timeComponents = timeComponents;
         

@@ -403,6 +403,8 @@
         return;
     
     _currentAlarm = [notification object];
+    _currentAlarm.lastFireDate = [NSDate date];
+    [JAAlarm saveAlarm:_currentAlarm];
     
     //create the fileURL obejct
     NSURL *fileURL;
