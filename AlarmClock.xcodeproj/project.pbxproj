@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F0443341683EFB10087B1D0 /* JASleepCycleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0443331683EFB10087B1D0 /* JASleepCycleViewController.m */; };
+		5F0443371683EFE20087B1D0 /* JASleepCycleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0443361683EFE20087B1D0 /* JASleepCycleView.m */; };
 		C911EF3E166BDBCE0081A0FF /* Gotham-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C911EF3D166BDBCE0081A0FF /* Gotham-Black.ttf */; };
 		C91512AD166067D800295189 /* JAClockSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C91512AB166067D800295189 /* JAClockSettingsViewController.m */; };
 		C91512AE166067D800295189 /* JAClockSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C91512AC166067D800295189 /* JAClockSettingsViewController.xib */; };
@@ -302,6 +304,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5F0443321683EFB10087B1D0 /* JASleepCycleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JASleepCycleViewController.h; path = Classes/JASleepCycleViewController.h; sourceTree = "<group>"; };
+		5F0443331683EFB10087B1D0 /* JASleepCycleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JASleepCycleViewController.m; path = Classes/JASleepCycleViewController.m; sourceTree = "<group>"; };
+		5F0443351683EFE20087B1D0 /* JASleepCycleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JASleepCycleView.h; path = Classes/JASleepCycleView.h; sourceTree = "<group>"; };
+		5F0443361683EFE20087B1D0 /* JASleepCycleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JASleepCycleView.m; path = Classes/JASleepCycleView.m; sourceTree = "<group>"; };
 		C911EF3D166BDBCE0081A0FF /* Gotham-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Black.ttf"; sourceTree = "<group>"; };
 		C91512AA166067D800295189 /* JAClockSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JAClockSettingsViewController.h; path = Classes/JAClockSettingsViewController.h; sourceTree = "<group>"; };
 		C91512AB166067D800295189 /* JAClockSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JAClockSettingsViewController.m; path = Classes/JAClockSettingsViewController.m; sourceTree = "<group>"; };
@@ -524,6 +530,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F0443311683EF520087B1D0 /* SleepCycle */ = {
+			isa = PBXGroup;
+			children = (
+				5F0443321683EFB10087B1D0 /* JASleepCycleViewController.h */,
+				5F0443331683EFB10087B1D0 /* JASleepCycleViewController.m */,
+				5F0443351683EFE20087B1D0 /* JASleepCycleView.h */,
+				5F0443361683EFE20087B1D0 /* JASleepCycleView.m */,
+			);
+			name = SleepCycle;
+			sourceTree = "<group>";
+		};
 		C911EF3B166BDB910081A0FF /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -797,6 +814,7 @@
 		C9E6406916528B7C00A388C6 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				5F0443311683EF520087B1D0 /* SleepCycle */,
 				C93A02311666F81100E1A273 /* MiscSettings */,
 				C9A2BBEF165F197100F09634 /* Display Settings */,
 				C9349E12165A858D0058D6EB /* Clock Management */,
@@ -1296,6 +1314,8 @@
 				C91512AD166067D800295189 /* JAClockSettingsViewController.m in Sources */,
 				C93A02361666F84300E1A273 /* JAMiscSettingsViewController.m in Sources */,
 				C92783D11677853200CFEA8D /* UIImage+fixOrientation.m in Sources */,
+				5F0443341683EFB10087B1D0 /* JASleepCycleViewController.m in Sources */,
+				5F0443371683EFE20087B1D0 /* JASleepCycleView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
