@@ -182,6 +182,11 @@
         [self.alarmButton setHidden:NO];
     }
     
+    //if Paid rmeove ads
+    if ([JASettings isPaid])
+        [self.adBanner removeFromSuperview];
+
+
 }
 
 - (void)viewDidUnload {

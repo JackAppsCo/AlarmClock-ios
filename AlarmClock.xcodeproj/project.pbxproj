@@ -10,6 +10,164 @@
 		C911EF3E166BDBCE0081A0FF /* Gotham-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C911EF3D166BDBCE0081A0FF /* Gotham-Black.ttf */; };
 		C91512AD166067D800295189 /* JAClockSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C91512AB166067D800295189 /* JAClockSettingsViewController.m */; };
 		C91512AE166067D800295189 /* JAClockSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C91512AC166067D800295189 /* JAClockSettingsViewController.xib */; };
+		C916EF1716879754000B53F5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E6405216528B7500A388C6 /* main.m */; };
+		C916EF1816879754000B53F5 /* JAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E6405616528B7500A388C6 /* JAAppDelegate.m */; };
+		C916EF1916879754000B53F5 /* JAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E6405F16528B7500A388C6 /* JAViewController.m */; };
+		C916EF1A16879754000B53F5 /* MKWeatherErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E6406D16528C3300A388C6 /* MKWeatherErrorView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C916EF1B16879754000B53F5 /* MKWeatherLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E6406F16528C3300A388C6 /* MKWeatherLoadingView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C916EF1C16879754000B53F5 /* MKWeatherRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E6407116528C3300A388C6 /* MKWeatherRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C916EF1D16879754000B53F5 /* MKClock.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E6418F1652966F00A388C6 /* MKClock.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C916EF1E16879754000B53F5 /* MKObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E641911652966F00A388C6 /* MKObject.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C916EF1F16879754000B53F5 /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9284970165331A500B4CF8E /* SwipeView.m */; };
+		C916EF2016879754000B53F5 /* JAAlarm.m in Sources */ = {isa = PBXBuildFile; fileRef = C928497316533B7700B4CF8E /* JAAlarm.m */; };
+		C916EF2116879754000B53F5 /* JAAlarmListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9284991165341CD00B4CF8E /* JAAlarmListViewController.m */; };
+		C916EF2216879754000B53F5 /* JAAlarmSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = C92849941653422A00B4CF8E /* JAAlarmSettingsController.m */; };
+		C916EF2316879754000B53F5 /* JASoundSelectorTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C98895B71657EEAE0072EC6E /* JASoundSelectorTableViewController.m */; };
+		C916EF2416879754000B53F5 /* JASound.m in Sources */ = {isa = PBXBuildFile; fileRef = C98895CE1657F7950072EC6E /* JASound.m */; };
+		C916EF2516879754000B53F5 /* VoiceRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9889618165804F20072EC6E /* VoiceRecordViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C916EF2616879754000B53F5 /* ClockManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C9349E15165A85D40058D6EB /* ClockManager.m */; };
+		C916EF2716879754000B53F5 /* JARepeatTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C95BDD94165DBFDA005AEEFC /* JARepeatTableViewController.m */; };
+		C916EF2816879754000B53F5 /* JASettings.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A2BBF5165F19D500F09634 /* JASettings.m */; };
+		C916EF2916879754000B53F5 /* JABackgroundPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A2BBF9165F235A00F09634 /* JABackgroundPickerViewController.m */; };
+		C916EF2A16879754000B53F5 /* JAClockSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C91512AB166067D800295189 /* JAClockSettingsViewController.m */; };
+		C916EF2B16879754000B53F5 /* JAMiscSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C93A02341666F84300E1A273 /* JAMiscSettingsViewController.m */; };
+		C916EF2C16879754000B53F5 /* UIImage+fixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = C92783D01677853200CFEA8D /* UIImage+fixOrientation.m */; };
+		C916EF2E16879754000B53F5 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B2FC88166CF08A0037E588 /* iAd.framework */; };
+		C916EF2F16879754000B53F5 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C93AC1321665BD1F0065798B /* AssetsLibrary.framework */; };
+		C916EF3016879754000B53F5 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C95BDD9A165E7F85005AEEFC /* MediaPlayer.framework */; };
+		C916EF3116879754000B53F5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C988961A165805250072EC6E /* AVFoundation.framework */; };
+		C916EF3216879754000B53F5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98895E41657FCC70072EC6E /* QuartzCore.framework */; };
+		C916EF3316879754000B53F5 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98895E21657FCB90072EC6E /* OpenGLES.framework */; };
+		C916EF3416879754000B53F5 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98895DE1657FC910072EC6E /* AudioToolbox.framework */; };
+		C916EF3516879754000B53F5 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98895DF1657FC910072EC6E /* CoreAudio.framework */; };
+		C916EF3616879754000B53F5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E6419A1652AC9400A388C6 /* CoreLocation.framework */; };
+		C916EF3716879754000B53F5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E6404616528B7500A388C6 /* UIKit.framework */; };
+		C916EF3816879754000B53F5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E6404816528B7500A388C6 /* Foundation.framework */; };
+		C916EF3916879754000B53F5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E6404A16528B7500A388C6 /* CoreGraphics.framework */; };
+		C916EF3B16879754000B53F5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9E6404F16528B7500A388C6 /* InfoPlist.strings */; };
+		C916EF3C16879754000B53F5 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E6405816528B7500A388C6 /* Default.png */; };
+		C916EF3D16879754000B53F5 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E6405A16528B7500A388C6 /* Default@2x.png */; };
+		C916EF3E16879754000B53F5 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E6405C16528B7500A388C6 /* Default-568h@2x.png */; };
+		C916EF3F16879754000B53F5 /* JAViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9E6406116528B7500A388C6 /* JAViewController.xib */; };
+		C916EF4016879754000B53F5 /* AlarmClockIcon57.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A0E4571654A4DA000BB045 /* AlarmClockIcon57.png */; };
+		C916EF4116879754000B53F5 /* AlarmClockIcon114.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A0E4581654A4DA000BB045 /* AlarmClockIcon114.png */; };
+		C916EF4216879754000B53F5 /* AlarmClockIcon57.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A0E45B1654A4E9000BB045 /* AlarmClockIcon57.png */; };
+		C916EF4316879754000B53F5 /* AlarmClockIcon114.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A0E45D1654A4EE000BB045 /* AlarmClockIcon114.png */; };
+		C916EF4516879754000B53F5 /* VoiceRecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C988961C1658056E0072EC6E /* VoiceRecordViewController.xib */; };
+		C916EF4616879754000B53F5 /* AlarmClockIcon3_114.png in Resources */ = {isa = PBXBuildFile; fileRef = C91F88421658493F004F0943 /* AlarmClockIcon3_114.png */; };
+		C916EF4716879754000B53F5 /* AlarmClockIcon3_57.png in Resources */ = {isa = PBXBuildFile; fileRef = C91F88431658493F004F0943 /* AlarmClockIcon3_57.png */; };
+		C916EF4816879754000B53F5 /* BlackBG.png in Resources */ = {isa = PBXBuildFile; fileRef = C95BDD8F165D711D005AEEFC /* BlackBG.png */; };
+		C916EF4916879754000B53F5 /* JABackgroundPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9A2BBFA165F235A00F09634 /* JABackgroundPickerViewController.xib */; };
+		C916EF4A16879754000B53F5 /* backgroundsList.plist in Resources */ = {isa = PBXBuildFile; fileRef = C9A2BBFE165F26A800F09634 /* backgroundsList.plist */; };
+		C916EF4B16879754000B53F5 /* beach.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A2BC00165F27E600F09634 /* beach.png */; };
+		C916EF4C16879754000B53F5 /* chalkboard.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A2BC01165F27E600F09634 /* chalkboard.png */; };
+		C916EF4D16879754000B53F5 /* JAClockSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C91512AC166067D800295189 /* JAClockSettingsViewController.xib */; };
+		C916EF4E16879754000B53F5 /* rowBG.png in Resources */ = {isa = PBXBuildFile; fileRef = C92EEFEA16629BF100274FBB /* rowBG.png */; };
+		C916EF4F16879754000B53F5 /* rowBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C92EEFEB16629BF100274FBB /* rowBG@2x.png */; };
+		C916EF5016879754000B53F5 /* alarmRowBG.png in Resources */ = {isa = PBXBuildFile; fileRef = C92EEFEE16629D4B00274FBB /* alarmRowBG.png */; };
+		C916EF5116879754000B53F5 /* alarmRowBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C92EEFEF16629D4B00274FBB /* alarmRowBG@2x.png */; };
+		C916EF5216879754000B53F5 /* BlackBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C96BCE92166510AA0002450C /* BlackBG@2x.png */; };
+		C916EF5316879754000B53F5 /* chalkboard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C96BCE93166510AA0002450C /* chalkboard@2x.png */; };
+		C916EF5416879754000B53F5 /* beach@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C96BCE94166510AA0002450C /* beach@2x.png */; };
+		C916EF5516879754000B53F5 /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = C93AC1271665B1F70065798B /* plus.png */; };
+		C916EF5616879754000B53F5 /* playButton.png in Resources */ = {isa = PBXBuildFile; fileRef = C93A02231666DAE800E1A273 /* playButton.png */; };
+		C916EF5716879754000B53F5 /* stopButton.png in Resources */ = {isa = PBXBuildFile; fileRef = C93A02241666DAE800E1A273 /* stopButton.png */; };
+		C916EF5816879754000B53F5 /* stopButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C93A02251666DAE800E1A273 /* stopButton@2x.png */; };
+		C916EF5916879754000B53F5 /* playButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C93A02261666DAE800E1A273 /* playButton@2x.png */; };
+		C916EF5A16879754000B53F5 /* fullAlarmIcon1.png in Resources */ = {isa = PBXBuildFile; fileRef = C95D700516695B3300A9FD03 /* fullAlarmIcon1.png */; };
+		C916EF5B16879754000B53F5 /* fullAlarmIcon2.png in Resources */ = {isa = PBXBuildFile; fileRef = C95D700616695B3300A9FD03 /* fullAlarmIcon2.png */; };
+		C916EF5C16879754000B53F5 /* fullAlarmIcon3.png in Resources */ = {isa = PBXBuildFile; fileRef = C95D700716695B3300A9FD03 /* fullAlarmIcon3.png */; };
+		C916EF5D16879754000B53F5 /* fullAlarmIcon4.png in Resources */ = {isa = PBXBuildFile; fileRef = C95D700816695B3300A9FD03 /* fullAlarmIcon4.png */; };
+		C916EF5E16879754000B53F5 /* fullAlarmIcon5.png in Resources */ = {isa = PBXBuildFile; fileRef = C95D700916695B3300A9FD03 /* fullAlarmIcon5.png */; };
+		C916EF5F16879754000B53F5 /* fullAlarmIcon6.png in Resources */ = {isa = PBXBuildFile; fileRef = C95D700A16695B3300A9FD03 /* fullAlarmIcon6.png */; };
+		C916EF6016879754000B53F5 /* fullAlarmIcon6@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C95D700B16695B3300A9FD03 /* fullAlarmIcon6@2x.png */; };
+		C916EF6116879754000B53F5 /* fullAlarmIcon5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C95D700C16695B3300A9FD03 /* fullAlarmIcon5@2x.png */; };
+		C916EF6216879754000B53F5 /* fullAlarmIcon4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C95D700D16695B3300A9FD03 /* fullAlarmIcon4@2x.png */; };
+		C916EF6316879754000B53F5 /* fullAlarmIcon3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C95D700E16695B3300A9FD03 /* fullAlarmIcon3@2x.png */; };
+		C916EF6416879754000B53F5 /* fullAlarmIcon1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C95D700F16695B3300A9FD03 /* fullAlarmIcon1@2x.png */; };
+		C916EF6516879754000B53F5 /* fullAlarmIcon2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C95D701016695B3300A9FD03 /* fullAlarmIcon2@2x.png */; };
+		C916EF6616879754000B53F5 /* alarmOffIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = C95D701116695B3300A9FD03 /* alarmOffIcon.png */; };
+		C916EF6716879754000B53F5 /* alarmOffIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C95D701216695B3300A9FD03 /* alarmOffIcon@2x.png */; };
+		C916EF6816879754000B53F5 /* fullAlarmIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C95D701316695B3300A9FD03 /* fullAlarmIcon@2x.png */; };
+		C916EF6916879754000B53F5 /* fullAlarmIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = C95D701416695B3300A9FD03 /* fullAlarmIcon.png */; };
+		C916EF6A16879754000B53F5 /* SettingsIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = C95D701516695B3300A9FD03 /* SettingsIcon.png */; };
+		C916EF6B16879754000B53F5 /* SettingsIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C95D701616695B3300A9FD03 /* SettingsIcon@2x.png */; };
+		C916EF6C16879754000B53F5 /* snoozeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = C95D701716695B3300A9FD03 /* snoozeIcon.png */; };
+		C916EF6D16879754000B53F5 /* snoozeIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C95D701816695B3300A9FD03 /* snoozeIcon@2x.png */; };
+		C916EF6E16879754000B53F5 /* Gotham-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C911EF3D166BDBCE0081A0FF /* Gotham-Black.ttf */; };
+		C916EF6F16879754000B53F5 /* disabledNameIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4EB716750574007B4A38 /* disabledNameIcon.png */; };
+		C916EF7016879754000B53F5 /* nameIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4EB816750574007B4A38 /* nameIcon.png */; };
+		C916EF7116879754000B53F5 /* disabledRedoIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4EB916750574007B4A38 /* disabledRedoIcon.png */; };
+		C916EF7216879754000B53F5 /* redoIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4EBA16750574007B4A38 /* redoIcon.png */; };
+		C916EF7316879754000B53F5 /* disabledSaveIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4EBB16750574007B4A38 /* disabledSaveIcon.png */; };
+		C916EF7416879754000B53F5 /* saveIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4EBC16750574007B4A38 /* saveIcon.png */; };
+		C916EF7516879754000B53F5 /* recordIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4EBD16750574007B4A38 /* recordIcon.png */; };
+		C916EF7616879754000B53F5 /* disabledRecordIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4EBE16750574007B4A38 /* disabledRecordIcon.png */; };
+		C916EF7716879754000B53F5 /* disabledRecordIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4EBF16750574007B4A38 /* disabledRecordIcon@2x.png */; };
+		C916EF7816879754000B53F5 /* recordIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4EC016750574007B4A38 /* recordIcon@2x.png */; };
+		C916EF7916879754000B53F5 /* saveIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4EC116750574007B4A38 /* saveIcon@2x.png */; };
+		C916EF7A16879754000B53F5 /* disabledSaveIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4EC216750574007B4A38 /* disabledSaveIcon@2x.png */; };
+		C916EF7B16879754000B53F5 /* redoIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4EC316750574007B4A38 /* redoIcon@2x.png */; };
+		C916EF7C16879754000B53F5 /* disabledRedoIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4EC416750574007B4A38 /* disabledRedoIcon@2x.png */; };
+		C916EF7D16879754000B53F5 /* disabledNameIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4EC516750574007B4A38 /* disabledNameIcon@2x.png */; };
+		C916EF7E16879754000B53F5 /* nameIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4EC616750574007B4A38 /* nameIcon@2x.png */; };
+		C916EF7F16879754000B53F5 /* buttonBG.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4EC716750574007B4A38 /* buttonBG.png */; };
+		C916EF8016879754000B53F5 /* highlightedButtonBG.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4EC816750574007B4A38 /* highlightedButtonBG.png */; };
+		C916EF8116879754000B53F5 /* disabledButtonBG.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4EC916750574007B4A38 /* disabledButtonBG.png */; };
+		C916EF8216879754000B53F5 /* disabledButtonBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4ECA16750574007B4A38 /* disabledButtonBG@2x.png */; };
+		C916EF8316879754000B53F5 /* buttonBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4ECB16750574007B4A38 /* buttonBG@2x.png */; };
+		C916EF8416879754000B53F5 /* highlightedButtonBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4ECC16750574007B4A38 /* highlightedButtonBG@2x.png */; };
+		C916EF8516879754000B53F5 /* beachSample@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4EE416751228007B4A38 /* beachSample@2x.png */; };
+		C916EF8616879754000B53F5 /* chalkboardSample@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4EE516751228007B4A38 /* chalkboardSample@2x.png */; };
+		C916EF8716879754000B53F5 /* BlackBGSample@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4EE616751228007B4A38 /* BlackBGSample@2x.png */; };
+		C916EF8816879754000B53F5 /* customBGIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4EEA16751501007B4A38 /* customBGIcon.png */; };
+		C916EF8916879754000B53F5 /* customBGIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4EEB16751501007B4A38 /* customBGIcon@2x.png */; };
+		C916EF8A16879754000B53F5 /* tabIconSleep.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4EEF16752764007B4A38 /* tabIconSleep.png */; };
+		C916EF8B16879754000B53F5 /* tabIconSettings.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4EF016752764007B4A38 /* tabIconSettings.png */; };
+		C916EF8C16879754000B53F5 /* tabIconAlarms.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4EF116752764007B4A38 /* tabIconAlarms.png */; };
+		C916EF8D16879754000B53F5 /* tabIconDisplay.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4EF216752764007B4A38 /* tabIconDisplay.png */; };
+		C916EF8E16879754000B53F5 /* tabIconDisplay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4EF316752764007B4A38 /* tabIconDisplay@2x.png */; };
+		C916EF8F16879754000B53F5 /* tabIconAlarms@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4EF416752764007B4A38 /* tabIconAlarms@2x.png */; };
+		C916EF9016879754000B53F5 /* tabIconSettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4EF516752764007B4A38 /* tabIconSettings@2x.png */; };
+		C916EF9116879754000B53F5 /* tabIconSleep@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4EF616752764007B4A38 /* tabIconSleep@2x.png */; };
+		C916EF9216879754000B53F5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4EFF167527A1007B4A38 /* Localizable.strings */; };
+		C916EF9416879754000B53F5 /* Air Raid_cut.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C9BA46101677A395000EA053 /* Air Raid_cut.m4a */; };
+		C916EF9516879754000B53F5 /* Background__Alarm__cut.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C9BA46111677A395000EA053 /* Background__Alarm__cut.m4a */; };
+		C916EF9616879754000B53F5 /* British Ambulance_cut.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C9BA46121677A395000EA053 /* British Ambulance_cut.m4a */; };
+		C916EF9716879754000B53F5 /* Burglar Alarm_cut.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C9BA46131677A395000EA053 /* Burglar Alarm_cut.m4a */; };
+		C916EF9816879754000B53F5 /* Church Bell_cut.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C9BA46141677A395000EA053 /* Church Bell_cut.m4a */; };
+		C916EF9916879754000B53F5 /* Old School Clock_cut.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C9BA46151677A395000EA053 /* Old School Clock_cut.m4a */; };
+		C916EF9A16879754000B53F5 /* School Bell_cut.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C9BA46161677A395000EA053 /* School Bell_cut.m4a */; };
+		C916EF9B16879754000B53F5 /* Siren_cut.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C9BA46171677A395000EA053 /* Siren_cut.m4a */; };
+		C916EF9C16879754000B53F5 /* Spaceship_cut.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C9BA46181677A395000EA053 /* Spaceship_cut.m4a */; };
+		C916EF9D16879754000B53F5 /* Submarine_cut.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C9BA46191677A395000EA053 /* Submarine_cut.m4a */; };
+		C916EF9E16879754000B53F5 /* Techy_cut.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C9BA461A1677A395000EA053 /* Techy_cut.m4a */; };
+		C916EFA116879754000B53F5 /* backdrop.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D4212016800C930035C0D4 /* backdrop.png */; };
+		C916EFA216879754000B53F5 /* backdrop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D4212116800C930035C0D4 /* backdrop@2x.png */; };
+		C916EFB116879A1A000B53F5 /* Chimes.M4A in Resources */ = {isa = PBXBuildFile; fileRef = C916EFAA16879A1A000B53F5 /* Chimes.M4A */; };
+		C916EFB216879A1A000B53F5 /* Chimes.M4A in Resources */ = {isa = PBXBuildFile; fileRef = C916EFAA16879A1A000B53F5 /* Chimes.M4A */; };
+		C916EFB316879A1A000B53F5 /* Ethereal Piano.M4A in Resources */ = {isa = PBXBuildFile; fileRef = C916EFAB16879A1A000B53F5 /* Ethereal Piano.M4A */; };
+		C916EFB416879A1A000B53F5 /* Ethereal Piano.M4A in Resources */ = {isa = PBXBuildFile; fileRef = C916EFAB16879A1A000B53F5 /* Ethereal Piano.M4A */; };
+		C916EFB516879A1A000B53F5 /* Gentle Rise.M4A in Resources */ = {isa = PBXBuildFile; fileRef = C916EFAC16879A1A000B53F5 /* Gentle Rise.M4A */; };
+		C916EFB616879A1A000B53F5 /* Gentle Rise.M4A in Resources */ = {isa = PBXBuildFile; fileRef = C916EFAC16879A1A000B53F5 /* Gentle Rise.M4A */; };
+		C916EFB716879A1A000B53F5 /* Harp.M4A in Resources */ = {isa = PBXBuildFile; fileRef = C916EFAD16879A1A000B53F5 /* Harp.M4A */; };
+		C916EFB816879A1A000B53F5 /* Harp.M4A in Resources */ = {isa = PBXBuildFile; fileRef = C916EFAD16879A1A000B53F5 /* Harp.M4A */; };
+		C916EFB916879A1A000B53F5 /* Rooster Call.M4A in Resources */ = {isa = PBXBuildFile; fileRef = C916EFAE16879A1A000B53F5 /* Rooster Call.M4A */; };
+		C916EFBA16879A1A000B53F5 /* Rooster Call.M4A in Resources */ = {isa = PBXBuildFile; fileRef = C916EFAE16879A1A000B53F5 /* Rooster Call.M4A */; };
+		C916EFBD16879A1A000B53F5 /* Vibraphone.M4A in Resources */ = {isa = PBXBuildFile; fileRef = C916EFB016879A1A000B53F5 /* Vibraphone.M4A */; };
+		C916EFBE16879A1A000B53F5 /* Vibraphone.M4A in Resources */ = {isa = PBXBuildFile; fileRef = C916EFB016879A1A000B53F5 /* Vibraphone.M4A */; };
+		C916EFC116879A61000B53F5 /* soundsList.plist in Resources */ = {isa = PBXBuildFile; fileRef = C916EFC016879A61000B53F5 /* soundsList.plist */; };
+		C916EFC216879A65000B53F5 /* soundsList.plist in Resources */ = {isa = PBXBuildFile; fileRef = C98895C81657F4B10072EC6E /* soundsList.plist */; };
+		C916EFC416879AFA000B53F5 /* Song Bird.M4A in Resources */ = {isa = PBXBuildFile; fileRef = C916EFC316879AFA000B53F5 /* Song Bird.M4A */; };
+		C916EFC516879AFA000B53F5 /* Song Bird.M4A in Resources */ = {isa = PBXBuildFile; fileRef = C916EFC316879AFA000B53F5 /* Song Bird.M4A */; };
+		C916EFC916879D60000B53F5 /* Configs.plist in Resources */ = {isa = PBXBuildFile; fileRef = C916EFC816879D60000B53F5 /* Configs.plist */; };
+		C916EFCB16879D7B000B53F5 /* Configs.plist in Resources */ = {isa = PBXBuildFile; fileRef = C916EFCA16879D7B000B53F5 /* Configs.plist */; };
+		C916EFCF16879E9A000B53F5 /* sleepSoundsList.plist in Resources */ = {isa = PBXBuildFile; fileRef = C916EFCC16879E9A000B53F5 /* sleepSoundsList.plist */; };
+		C916EFD016879E9A000B53F5 /* sleepSoundsList.plist in Resources */ = {isa = PBXBuildFile; fileRef = C916EFCC16879E9A000B53F5 /* sleepSoundsList.plist */; };
+		C916EFD116879E9A000B53F5 /* Thunderstorm.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C916EFCD16879E9A000B53F5 /* Thunderstorm.m4a */; };
+		C916EFD216879E9A000B53F5 /* Thunderstorm.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C916EFCD16879E9A000B53F5 /* Thunderstorm.m4a */; };
+		C916EFD316879E9A000B53F5 /* Beach.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C916EFCE16879E9A000B53F5 /* Beach.m4a */; };
+		C916EFD416879E9A000B53F5 /* Beach.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C916EFCE16879E9A000B53F5 /* Beach.m4a */; };
 		C91F88441658493F004F0943 /* AlarmClockIcon3_114.png in Resources */ = {isa = PBXBuildFile; fileRef = C91F88421658493F004F0943 /* AlarmClockIcon3_114.png */; };
 		C91F88451658493F004F0943 /* AlarmClockIcon3_57.png in Resources */ = {isa = PBXBuildFile; fileRef = C91F88431658493F004F0943 /* AlarmClockIcon3_57.png */; };
 		C92783D11677853200CFEA8D /* UIImage+fixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = C92783D01677853200CFEA8D /* UIImage+fixOrientation.m */; };
@@ -56,7 +214,6 @@
 		C96BCE96166510AA0002450C /* chalkboard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C96BCE93166510AA0002450C /* chalkboard@2x.png */; };
 		C96BCE97166510AA0002450C /* beach@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C96BCE94166510AA0002450C /* beach@2x.png */; };
 		C98895B81657EEAE0072EC6E /* JASoundSelectorTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C98895B71657EEAE0072EC6E /* JASoundSelectorTableViewController.m */; };
-		C98895CC1657F4B10072EC6E /* soundsList.plist in Resources */ = {isa = PBXBuildFile; fileRef = C98895C81657F4B10072EC6E /* soundsList.plist */; };
 		C98895CF1657F7950072EC6E /* JASound.m in Sources */ = {isa = PBXBuildFile; fileRef = C98895CE1657F7950072EC6E /* JASound.m */; };
 		C98895E01657FC910072EC6E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98895DE1657FC910072EC6E /* AudioToolbox.framework */; };
 		C98895E11657FC910072EC6E /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98895DF1657FC910072EC6E /* CoreAudio.framework */; };
@@ -87,8 +244,6 @@
 		C9BA46231677A395000EA053 /* Spaceship_cut.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C9BA46181677A395000EA053 /* Spaceship_cut.m4a */; };
 		C9BA46241677A395000EA053 /* Submarine_cut.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C9BA46191677A395000EA053 /* Submarine_cut.m4a */; };
 		C9BA46251677A395000EA053 /* Techy_cut.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C9BA461A1677A395000EA053 /* Techy_cut.m4a */; };
-		C9BA46291677A3AB000EA053 /* Beach.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C9BA46271677A3AB000EA053 /* Beach.m4a */; };
-		C9BA462A1677A3AB000EA053 /* Thunderstorm.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C9BA46281677A3AB000EA053 /* Thunderstorm.m4a */; };
 		C9D4212216800C930035C0D4 /* backdrop.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D4212016800C930035C0D4 /* backdrop.png */; };
 		C9D4212316800C930035C0D4 /* backdrop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D4212116800C930035C0D4 /* backdrop@2x.png */; };
 		C9E6404716528B7500A388C6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E6404616528B7500A388C6 /* UIKit.framework */; };
@@ -144,7 +299,6 @@
 		C9FD4EFD16752764007B4A38 /* tabIconSettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4EF516752764007B4A38 /* tabIconSettings@2x.png */; };
 		C9FD4EFE16752764007B4A38 /* tabIconSleep@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4EF616752764007B4A38 /* tabIconSleep@2x.png */; };
 		C9FD4F00167527A1007B4A38 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4EFF167527A1007B4A38 /* Localizable.strings */; };
-		C9FD4F0A1675871A007B4A38 /* sleepSoundsList.plist in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4F091675871A007B4A38 /* sleepSoundsList.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -152,6 +306,21 @@
 		C91512AA166067D800295189 /* JAClockSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JAClockSettingsViewController.h; path = Classes/JAClockSettingsViewController.h; sourceTree = "<group>"; };
 		C91512AB166067D800295189 /* JAClockSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JAClockSettingsViewController.m; path = Classes/JAClockSettingsViewController.m; sourceTree = "<group>"; };
 		C91512AC166067D800295189 /* JAClockSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JAClockSettingsViewController.xib; path = Classes/JAClockSettingsViewController.xib; sourceTree = "<group>"; };
+		C916EFA616879754000B53F5 /* AlarmClock Paid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AlarmClock Paid.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C916EFA816879754000B53F5 /* AlarmClock copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "AlarmClock copy-Info.plist"; path = "/Users/bsinger/Documents/AlarmClock/AlarmClock-iOS/AlarmClock copy-Info.plist"; sourceTree = "<absolute>"; };
+		C916EFAA16879A1A000B53F5 /* Chimes.M4A */ = {isa = PBXFileReference; lastKnownFileType = file; path = Chimes.M4A; sourceTree = "<group>"; };
+		C916EFAB16879A1A000B53F5 /* Ethereal Piano.M4A */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ethereal Piano.M4A"; sourceTree = "<group>"; };
+		C916EFAC16879A1A000B53F5 /* Gentle Rise.M4A */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gentle Rise.M4A"; sourceTree = "<group>"; };
+		C916EFAD16879A1A000B53F5 /* Harp.M4A */ = {isa = PBXFileReference; lastKnownFileType = file; path = Harp.M4A; sourceTree = "<group>"; };
+		C916EFAE16879A1A000B53F5 /* Rooster Call.M4A */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rooster Call.M4A"; sourceTree = "<group>"; };
+		C916EFB016879A1A000B53F5 /* Vibraphone.M4A */ = {isa = PBXFileReference; lastKnownFileType = file; path = Vibraphone.M4A; sourceTree = "<group>"; };
+		C916EFC016879A61000B53F5 /* soundsList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = soundsList.plist; path = "Paid Sounds/soundsList.plist"; sourceTree = "<group>"; };
+		C916EFC316879AFA000B53F5 /* Song Bird.M4A */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Song Bird.M4A"; sourceTree = "<group>"; };
+		C916EFC816879D60000B53F5 /* Configs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Configs.plist; path = paid/Configs.plist; sourceTree = "<group>"; };
+		C916EFCA16879D7B000B53F5 /* Configs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Configs.plist; path = free/Configs.plist; sourceTree = "<group>"; };
+		C916EFCC16879E9A000B53F5 /* sleepSoundsList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = sleepSoundsList.plist; path = "AlarmClock/Sounds/Sleep Sounds/sleepSoundsList.plist"; sourceTree = SOURCE_ROOT; };
+		C916EFCD16879E9A000B53F5 /* Thunderstorm.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = Thunderstorm.m4a; path = "AlarmClock/Sounds/Sleep Sounds/Thunderstorm.m4a"; sourceTree = SOURCE_ROOT; };
+		C916EFCE16879E9A000B53F5 /* Beach.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = Beach.m4a; path = "AlarmClock/Sounds/Sleep Sounds/Beach.m4a"; sourceTree = SOURCE_ROOT; };
 		C91F88421658493F004F0943 /* AlarmClockIcon3_114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AlarmClockIcon3_114.png; sourceTree = "<group>"; };
 		C91F88431658493F004F0943 /* AlarmClockIcon3_57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AlarmClockIcon3_57.png; sourceTree = "<group>"; };
 		C92783CF1677853200CFEA8D /* UIImage+fixOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+fixOrientation.h"; sourceTree = "<group>"; };
@@ -207,7 +376,7 @@
 		C96BCE94166510AA0002450C /* beach@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "beach@2x.png"; path = "Images/beach@2x.png"; sourceTree = "<group>"; };
 		C98895B61657EEAE0072EC6E /* JASoundSelectorTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JASoundSelectorTableViewController.h; path = Classes/JASoundSelectorTableViewController.h; sourceTree = "<group>"; };
 		C98895B71657EEAE0072EC6E /* JASoundSelectorTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JASoundSelectorTableViewController.m; path = Classes/JASoundSelectorTableViewController.m; sourceTree = "<group>"; };
-		C98895C81657F4B10072EC6E /* soundsList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = soundsList.plist; path = Sounds/soundsList.plist; sourceTree = "<group>"; };
+		C98895C81657F4B10072EC6E /* soundsList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = soundsList.plist; sourceTree = "<group>"; };
 		C98895CD1657F7950072EC6E /* JASound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JASound.h; path = Classes/Models/JASound.h; sourceTree = "<group>"; };
 		C98895CE1657F7950072EC6E /* JASound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JASound.m; path = Classes/Models/JASound.m; sourceTree = "<group>"; };
 		C98895DE1657FC910072EC6E /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -231,19 +400,17 @@
 		C9A2BC00165F27E600F09634 /* beach.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beach.png; path = Images/beach.png; sourceTree = "<group>"; };
 		C9A2BC01165F27E600F09634 /* chalkboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = chalkboard.png; path = Images/chalkboard.png; sourceTree = "<group>"; };
 		C9B2FC88166CF08A0037E588 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
-		C9BA46101677A395000EA053 /* Air Raid_cut.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Air Raid_cut.m4a"; path = "Sounds/Air Raid_cut.m4a"; sourceTree = "<group>"; };
-		C9BA46111677A395000EA053 /* Background__Alarm__cut.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = Background__Alarm__cut.m4a; path = Sounds/Background__Alarm__cut.m4a; sourceTree = "<group>"; };
-		C9BA46121677A395000EA053 /* British Ambulance_cut.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "British Ambulance_cut.m4a"; path = "Sounds/British Ambulance_cut.m4a"; sourceTree = "<group>"; };
-		C9BA46131677A395000EA053 /* Burglar Alarm_cut.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Burglar Alarm_cut.m4a"; path = "Sounds/Burglar Alarm_cut.m4a"; sourceTree = "<group>"; };
-		C9BA46141677A395000EA053 /* Church Bell_cut.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Church Bell_cut.m4a"; path = "Sounds/Church Bell_cut.m4a"; sourceTree = "<group>"; };
-		C9BA46151677A395000EA053 /* Old School Clock_cut.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Old School Clock_cut.m4a"; path = "Sounds/Old School Clock_cut.m4a"; sourceTree = "<group>"; };
-		C9BA46161677A395000EA053 /* School Bell_cut.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "School Bell_cut.m4a"; path = "Sounds/School Bell_cut.m4a"; sourceTree = "<group>"; };
-		C9BA46171677A395000EA053 /* Siren_cut.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = Siren_cut.m4a; path = Sounds/Siren_cut.m4a; sourceTree = "<group>"; };
-		C9BA46181677A395000EA053 /* Spaceship_cut.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = Spaceship_cut.m4a; path = Sounds/Spaceship_cut.m4a; sourceTree = "<group>"; };
-		C9BA46191677A395000EA053 /* Submarine_cut.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = Submarine_cut.m4a; path = Sounds/Submarine_cut.m4a; sourceTree = "<group>"; };
-		C9BA461A1677A395000EA053 /* Techy_cut.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = Techy_cut.m4a; path = Sounds/Techy_cut.m4a; sourceTree = "<group>"; };
-		C9BA46271677A3AB000EA053 /* Beach.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Beach.m4a; sourceTree = "<group>"; };
-		C9BA46281677A3AB000EA053 /* Thunderstorm.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Thunderstorm.m4a; sourceTree = "<group>"; };
+		C9BA46101677A395000EA053 /* Air Raid_cut.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Air Raid_cut.m4a"; sourceTree = "<group>"; };
+		C9BA46111677A395000EA053 /* Background__Alarm__cut.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Background__Alarm__cut.m4a; sourceTree = "<group>"; };
+		C9BA46121677A395000EA053 /* British Ambulance_cut.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "British Ambulance_cut.m4a"; sourceTree = "<group>"; };
+		C9BA46131677A395000EA053 /* Burglar Alarm_cut.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Burglar Alarm_cut.m4a"; sourceTree = "<group>"; };
+		C9BA46141677A395000EA053 /* Church Bell_cut.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Church Bell_cut.m4a"; sourceTree = "<group>"; };
+		C9BA46151677A395000EA053 /* Old School Clock_cut.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Old School Clock_cut.m4a"; sourceTree = "<group>"; };
+		C9BA46161677A395000EA053 /* School Bell_cut.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "School Bell_cut.m4a"; sourceTree = "<group>"; };
+		C9BA46171677A395000EA053 /* Siren_cut.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Siren_cut.m4a; sourceTree = "<group>"; };
+		C9BA46181677A395000EA053 /* Spaceship_cut.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Spaceship_cut.m4a; sourceTree = "<group>"; };
+		C9BA46191677A395000EA053 /* Submarine_cut.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Submarine_cut.m4a; sourceTree = "<group>"; };
+		C9BA461A1677A395000EA053 /* Techy_cut.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Techy_cut.m4a; sourceTree = "<group>"; };
 		C9D4212016800C930035C0D4 /* backdrop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = backdrop.png; path = Images/backdrop.png; sourceTree = "<group>"; };
 		C9D4212116800C930035C0D4 /* backdrop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "backdrop@2x.png"; path = "Images/backdrop@2x.png"; sourceTree = "<group>"; };
 		C9E6404216528B7500A388C6 /* AlarmClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlarmClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -313,10 +480,28 @@
 		C9FD4EF516752764007B4A38 /* tabIconSettings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tabIconSettings@2x.png"; path = "Images/tabIconSettings@2x.png"; sourceTree = "<group>"; };
 		C9FD4EF616752764007B4A38 /* tabIconSleep@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tabIconSleep@2x.png"; path = "Images/tabIconSleep@2x.png"; sourceTree = "<group>"; };
 		C9FD4EFF167527A1007B4A38 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
-		C9FD4F091675871A007B4A38 /* sleepSoundsList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sleepSoundsList.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C916EF2D16879754000B53F5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C916EF2E16879754000B53F5 /* iAd.framework in Frameworks */,
+				C916EF2F16879754000B53F5 /* AssetsLibrary.framework in Frameworks */,
+				C916EF3016879754000B53F5 /* MediaPlayer.framework in Frameworks */,
+				C916EF3116879754000B53F5 /* AVFoundation.framework in Frameworks */,
+				C916EF3216879754000B53F5 /* QuartzCore.framework in Frameworks */,
+				C916EF3316879754000B53F5 /* OpenGLES.framework in Frameworks */,
+				C916EF3416879754000B53F5 /* AudioToolbox.framework in Frameworks */,
+				C916EF3516879754000B53F5 /* CoreAudio.framework in Frameworks */,
+				C916EF3616879754000B53F5 /* CoreLocation.framework in Frameworks */,
+				C916EF3716879754000B53F5 /* UIKit.framework in Frameworks */,
+				C916EF3816879754000B53F5 /* Foundation.framework in Frameworks */,
+				C916EF3916879754000B53F5 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C9E6403F16528B7500A388C6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -347,12 +532,36 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		C916EFBF16879A55000B53F5 /* Paid Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				C916EFC016879A61000B53F5 /* soundsList.plist */,
+			);
+			name = "Paid Sounds";
+			sourceTree = "<group>";
+		};
+		C916EFC616879D2A000B53F5 /* free */ = {
+			isa = PBXGroup;
+			children = (
+				C916EFCA16879D7B000B53F5 /* Configs.plist */,
+			);
+			name = free;
+			sourceTree = "<group>";
+		};
+		C916EFC716879D32000B53F5 /* paid */ = {
+			isa = PBXGroup;
+			children = (
+				C916EFC816879D60000B53F5 /* Configs.plist */,
+			);
+			name = paid;
+			sourceTree = "<group>";
+		};
 		C92EF00D1662C98C00274FBB /* Sleep Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				C9BA46271677A3AB000EA053 /* Beach.m4a */,
-				C9BA46281677A3AB000EA053 /* Thunderstorm.m4a */,
-				C9FD4F091675871A007B4A38 /* sleepSoundsList.plist */,
+				C916EFCC16879E9A000B53F5 /* sleepSoundsList.plist */,
+				C916EFCD16879E9A000B53F5 /* Thunderstorm.m4a */,
+				C916EFCE16879E9A000B53F5 /* Beach.m4a */,
 			);
 			name = "Sleep Sounds";
 			path = "Sounds/Sleep Sounds";
@@ -427,6 +636,14 @@
 		C98895C31657F4770072EC6E /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				C916EFBF16879A55000B53F5 /* Paid Sounds */,
+				C916EFAA16879A1A000B53F5 /* Chimes.M4A */,
+				C916EFAB16879A1A000B53F5 /* Ethereal Piano.M4A */,
+				C916EFAC16879A1A000B53F5 /* Gentle Rise.M4A */,
+				C916EFAD16879A1A000B53F5 /* Harp.M4A */,
+				C916EFAE16879A1A000B53F5 /* Rooster Call.M4A */,
+				C916EFC316879AFA000B53F5 /* Song Bird.M4A */,
+				C916EFB016879A1A000B53F5 /* Vibraphone.M4A */,
 				C9BA46101677A395000EA053 /* Air Raid_cut.m4a */,
 				C9BA46111677A395000EA053 /* Background__Alarm__cut.m4a */,
 				C9BA46121677A395000EA053 /* British Ambulance_cut.m4a */,
@@ -441,7 +658,7 @@
 				C92EF00D1662C98C00274FBB /* Sleep Sounds */,
 				C98895C81657F4B10072EC6E /* soundsList.plist */,
 			);
-			name = Sounds;
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 		C9A0E4551654A4D0000BB045 /* Images */ = {
@@ -515,6 +732,7 @@
 				C9E6404C16528B7500A388C6 /* AlarmClock */,
 				C9E6404516528B7500A388C6 /* Frameworks */,
 				C9E6404316528B7500A388C6 /* Products */,
+				C916EFA816879754000B53F5 /* AlarmClock copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -522,6 +740,7 @@
 			isa = PBXGroup;
 			children = (
 				C9E6404216528B7500A388C6 /* AlarmClock.app */,
+				C916EFA616879754000B53F5 /* AlarmClock Paid.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -560,6 +779,8 @@
 		C9E6404D16528B7500A388C6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C916EFC716879D32000B53F5 /* paid */,
+				C916EFC616879D2A000B53F5 /* free */,
 				C9A2BBFD165F267800F09634 /* Backgrounds */,
 				C9E6404E16528B7500A388C6 /* AlarmClock-Info.plist */,
 				C9E6404F16528B7500A388C6 /* InfoPlist.strings */,
@@ -716,6 +937,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		C916EF1516879754000B53F5 /* AlarmClock Paid */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C916EFA316879754000B53F5 /* Build configuration list for PBXNativeTarget "AlarmClock Paid" */;
+			buildPhases = (
+				C916EF1616879754000B53F5 /* Sources */,
+				C916EF2D16879754000B53F5 /* Frameworks */,
+				C916EF3A16879754000B53F5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "AlarmClock Paid";
+			productName = AlarmClock;
+			productReference = C916EFA616879754000B53F5 /* AlarmClock Paid.app */;
+			productType = "com.apple.product-type.application";
+		};
 		C9E6404116528B7500A388C6 /* AlarmClock */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C9E6406616528B7500A388C6 /* Build configuration list for PBXNativeTarget "AlarmClock" */;
@@ -756,11 +994,131 @@
 			projectRoot = "";
 			targets = (
 				C9E6404116528B7500A388C6 /* AlarmClock */,
+				C916EF1516879754000B53F5 /* AlarmClock Paid */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		C916EF3A16879754000B53F5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C916EF3B16879754000B53F5 /* InfoPlist.strings in Resources */,
+				C916EF3C16879754000B53F5 /* Default.png in Resources */,
+				C916EF3D16879754000B53F5 /* Default@2x.png in Resources */,
+				C916EF3E16879754000B53F5 /* Default-568h@2x.png in Resources */,
+				C916EF3F16879754000B53F5 /* JAViewController.xib in Resources */,
+				C916EF4016879754000B53F5 /* AlarmClockIcon57.png in Resources */,
+				C916EF4116879754000B53F5 /* AlarmClockIcon114.png in Resources */,
+				C916EF4216879754000B53F5 /* AlarmClockIcon57.png in Resources */,
+				C916EF4316879754000B53F5 /* AlarmClockIcon114.png in Resources */,
+				C916EF4516879754000B53F5 /* VoiceRecordViewController.xib in Resources */,
+				C916EF4616879754000B53F5 /* AlarmClockIcon3_114.png in Resources */,
+				C916EF4716879754000B53F5 /* AlarmClockIcon3_57.png in Resources */,
+				C916EF4816879754000B53F5 /* BlackBG.png in Resources */,
+				C916EF4916879754000B53F5 /* JABackgroundPickerViewController.xib in Resources */,
+				C916EF4A16879754000B53F5 /* backgroundsList.plist in Resources */,
+				C916EF4B16879754000B53F5 /* beach.png in Resources */,
+				C916EF4C16879754000B53F5 /* chalkboard.png in Resources */,
+				C916EF4D16879754000B53F5 /* JAClockSettingsViewController.xib in Resources */,
+				C916EF4E16879754000B53F5 /* rowBG.png in Resources */,
+				C916EF4F16879754000B53F5 /* rowBG@2x.png in Resources */,
+				C916EF5016879754000B53F5 /* alarmRowBG.png in Resources */,
+				C916EF5116879754000B53F5 /* alarmRowBG@2x.png in Resources */,
+				C916EF5216879754000B53F5 /* BlackBG@2x.png in Resources */,
+				C916EF5316879754000B53F5 /* chalkboard@2x.png in Resources */,
+				C916EF5416879754000B53F5 /* beach@2x.png in Resources */,
+				C916EF5516879754000B53F5 /* plus.png in Resources */,
+				C916EF5616879754000B53F5 /* playButton.png in Resources */,
+				C916EF5716879754000B53F5 /* stopButton.png in Resources */,
+				C916EF5816879754000B53F5 /* stopButton@2x.png in Resources */,
+				C916EF5916879754000B53F5 /* playButton@2x.png in Resources */,
+				C916EF5A16879754000B53F5 /* fullAlarmIcon1.png in Resources */,
+				C916EF5B16879754000B53F5 /* fullAlarmIcon2.png in Resources */,
+				C916EF5C16879754000B53F5 /* fullAlarmIcon3.png in Resources */,
+				C916EF5D16879754000B53F5 /* fullAlarmIcon4.png in Resources */,
+				C916EF5E16879754000B53F5 /* fullAlarmIcon5.png in Resources */,
+				C916EF5F16879754000B53F5 /* fullAlarmIcon6.png in Resources */,
+				C916EF6016879754000B53F5 /* fullAlarmIcon6@2x.png in Resources */,
+				C916EF6116879754000B53F5 /* fullAlarmIcon5@2x.png in Resources */,
+				C916EF6216879754000B53F5 /* fullAlarmIcon4@2x.png in Resources */,
+				C916EF6316879754000B53F5 /* fullAlarmIcon3@2x.png in Resources */,
+				C916EF6416879754000B53F5 /* fullAlarmIcon1@2x.png in Resources */,
+				C916EF6516879754000B53F5 /* fullAlarmIcon2@2x.png in Resources */,
+				C916EF6616879754000B53F5 /* alarmOffIcon.png in Resources */,
+				C916EF6716879754000B53F5 /* alarmOffIcon@2x.png in Resources */,
+				C916EF6816879754000B53F5 /* fullAlarmIcon@2x.png in Resources */,
+				C916EF6916879754000B53F5 /* fullAlarmIcon.png in Resources */,
+				C916EF6A16879754000B53F5 /* SettingsIcon.png in Resources */,
+				C916EF6B16879754000B53F5 /* SettingsIcon@2x.png in Resources */,
+				C916EF6C16879754000B53F5 /* snoozeIcon.png in Resources */,
+				C916EF6D16879754000B53F5 /* snoozeIcon@2x.png in Resources */,
+				C916EF6E16879754000B53F5 /* Gotham-Black.ttf in Resources */,
+				C916EF6F16879754000B53F5 /* disabledNameIcon.png in Resources */,
+				C916EF7016879754000B53F5 /* nameIcon.png in Resources */,
+				C916EF7116879754000B53F5 /* disabledRedoIcon.png in Resources */,
+				C916EF7216879754000B53F5 /* redoIcon.png in Resources */,
+				C916EF7316879754000B53F5 /* disabledSaveIcon.png in Resources */,
+				C916EF7416879754000B53F5 /* saveIcon.png in Resources */,
+				C916EF7516879754000B53F5 /* recordIcon.png in Resources */,
+				C916EF7616879754000B53F5 /* disabledRecordIcon.png in Resources */,
+				C916EF7716879754000B53F5 /* disabledRecordIcon@2x.png in Resources */,
+				C916EF7816879754000B53F5 /* recordIcon@2x.png in Resources */,
+				C916EF7916879754000B53F5 /* saveIcon@2x.png in Resources */,
+				C916EF7A16879754000B53F5 /* disabledSaveIcon@2x.png in Resources */,
+				C916EF7B16879754000B53F5 /* redoIcon@2x.png in Resources */,
+				C916EF7C16879754000B53F5 /* disabledRedoIcon@2x.png in Resources */,
+				C916EF7D16879754000B53F5 /* disabledNameIcon@2x.png in Resources */,
+				C916EF7E16879754000B53F5 /* nameIcon@2x.png in Resources */,
+				C916EF7F16879754000B53F5 /* buttonBG.png in Resources */,
+				C916EF8016879754000B53F5 /* highlightedButtonBG.png in Resources */,
+				C916EF8116879754000B53F5 /* disabledButtonBG.png in Resources */,
+				C916EF8216879754000B53F5 /* disabledButtonBG@2x.png in Resources */,
+				C916EF8316879754000B53F5 /* buttonBG@2x.png in Resources */,
+				C916EF8416879754000B53F5 /* highlightedButtonBG@2x.png in Resources */,
+				C916EF8516879754000B53F5 /* beachSample@2x.png in Resources */,
+				C916EF8616879754000B53F5 /* chalkboardSample@2x.png in Resources */,
+				C916EF8716879754000B53F5 /* BlackBGSample@2x.png in Resources */,
+				C916EF8816879754000B53F5 /* customBGIcon.png in Resources */,
+				C916EF8916879754000B53F5 /* customBGIcon@2x.png in Resources */,
+				C916EF8A16879754000B53F5 /* tabIconSleep.png in Resources */,
+				C916EF8B16879754000B53F5 /* tabIconSettings.png in Resources */,
+				C916EF8C16879754000B53F5 /* tabIconAlarms.png in Resources */,
+				C916EF8D16879754000B53F5 /* tabIconDisplay.png in Resources */,
+				C916EF8E16879754000B53F5 /* tabIconDisplay@2x.png in Resources */,
+				C916EF8F16879754000B53F5 /* tabIconAlarms@2x.png in Resources */,
+				C916EF9016879754000B53F5 /* tabIconSettings@2x.png in Resources */,
+				C916EF9116879754000B53F5 /* tabIconSleep@2x.png in Resources */,
+				C916EF9216879754000B53F5 /* Localizable.strings in Resources */,
+				C916EF9416879754000B53F5 /* Air Raid_cut.m4a in Resources */,
+				C916EF9516879754000B53F5 /* Background__Alarm__cut.m4a in Resources */,
+				C916EF9616879754000B53F5 /* British Ambulance_cut.m4a in Resources */,
+				C916EF9716879754000B53F5 /* Burglar Alarm_cut.m4a in Resources */,
+				C916EF9816879754000B53F5 /* Church Bell_cut.m4a in Resources */,
+				C916EF9916879754000B53F5 /* Old School Clock_cut.m4a in Resources */,
+				C916EF9A16879754000B53F5 /* School Bell_cut.m4a in Resources */,
+				C916EF9B16879754000B53F5 /* Siren_cut.m4a in Resources */,
+				C916EF9C16879754000B53F5 /* Spaceship_cut.m4a in Resources */,
+				C916EF9D16879754000B53F5 /* Submarine_cut.m4a in Resources */,
+				C916EF9E16879754000B53F5 /* Techy_cut.m4a in Resources */,
+				C916EFA116879754000B53F5 /* backdrop.png in Resources */,
+				C916EFA216879754000B53F5 /* backdrop@2x.png in Resources */,
+				C916EFB216879A1A000B53F5 /* Chimes.M4A in Resources */,
+				C916EFB416879A1A000B53F5 /* Ethereal Piano.M4A in Resources */,
+				C916EFB616879A1A000B53F5 /* Gentle Rise.M4A in Resources */,
+				C916EFB816879A1A000B53F5 /* Harp.M4A in Resources */,
+				C916EFBA16879A1A000B53F5 /* Rooster Call.M4A in Resources */,
+				C916EFBE16879A1A000B53F5 /* Vibraphone.M4A in Resources */,
+				C916EFC116879A61000B53F5 /* soundsList.plist in Resources */,
+				C916EFC516879AFA000B53F5 /* Song Bird.M4A in Resources */,
+				C916EFC916879D60000B53F5 /* Configs.plist in Resources */,
+				C916EFD016879E9A000B53F5 /* sleepSoundsList.plist in Resources */,
+				C916EFD216879E9A000B53F5 /* Thunderstorm.m4a in Resources */,
+				C916EFD416879E9A000B53F5 /* Beach.m4a in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C9E6404016528B7500A388C6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -774,7 +1132,6 @@
 				C9A0E45A1654A4DA000BB045 /* AlarmClockIcon114.png in Resources */,
 				C9A0E45C1654A4E9000BB045 /* AlarmClockIcon57.png in Resources */,
 				C9A0E45E1654A4EE000BB045 /* AlarmClockIcon114.png in Resources */,
-				C98895CC1657F4B10072EC6E /* soundsList.plist in Resources */,
 				C988961D1658056E0072EC6E /* VoiceRecordViewController.xib in Resources */,
 				C91F88441658493F004F0943 /* AlarmClockIcon3_114.png in Resources */,
 				C91F88451658493F004F0943 /* AlarmClockIcon3_57.png in Resources */,
@@ -853,7 +1210,6 @@
 				C9FD4EFD16752764007B4A38 /* tabIconSettings@2x.png in Resources */,
 				C9FD4EFE16752764007B4A38 /* tabIconSleep@2x.png in Resources */,
 				C9FD4F00167527A1007B4A38 /* Localizable.strings in Resources */,
-				C9FD4F0A1675871A007B4A38 /* sleepSoundsList.plist in Resources */,
 				C9BA461B1677A395000EA053 /* Air Raid_cut.m4a in Resources */,
 				C9BA461C1677A395000EA053 /* Background__Alarm__cut.m4a in Resources */,
 				C9BA461D1677A395000EA053 /* British Ambulance_cut.m4a in Resources */,
@@ -865,16 +1221,55 @@
 				C9BA46231677A395000EA053 /* Spaceship_cut.m4a in Resources */,
 				C9BA46241677A395000EA053 /* Submarine_cut.m4a in Resources */,
 				C9BA46251677A395000EA053 /* Techy_cut.m4a in Resources */,
-				C9BA46291677A3AB000EA053 /* Beach.m4a in Resources */,
-				C9BA462A1677A3AB000EA053 /* Thunderstorm.m4a in Resources */,
 				C9D4212216800C930035C0D4 /* backdrop.png in Resources */,
 				C9D4212316800C930035C0D4 /* backdrop@2x.png in Resources */,
+				C916EFB116879A1A000B53F5 /* Chimes.M4A in Resources */,
+				C916EFB316879A1A000B53F5 /* Ethereal Piano.M4A in Resources */,
+				C916EFB516879A1A000B53F5 /* Gentle Rise.M4A in Resources */,
+				C916EFB716879A1A000B53F5 /* Harp.M4A in Resources */,
+				C916EFB916879A1A000B53F5 /* Rooster Call.M4A in Resources */,
+				C916EFBD16879A1A000B53F5 /* Vibraphone.M4A in Resources */,
+				C916EFC216879A65000B53F5 /* soundsList.plist in Resources */,
+				C916EFC416879AFA000B53F5 /* Song Bird.M4A in Resources */,
+				C916EFCB16879D7B000B53F5 /* Configs.plist in Resources */,
+				C916EFCF16879E9A000B53F5 /* sleepSoundsList.plist in Resources */,
+				C916EFD116879E9A000B53F5 /* Thunderstorm.m4a in Resources */,
+				C916EFD316879E9A000B53F5 /* Beach.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C916EF1616879754000B53F5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C916EF1716879754000B53F5 /* main.m in Sources */,
+				C916EF1816879754000B53F5 /* JAAppDelegate.m in Sources */,
+				C916EF1916879754000B53F5 /* JAViewController.m in Sources */,
+				C916EF1A16879754000B53F5 /* MKWeatherErrorView.m in Sources */,
+				C916EF1B16879754000B53F5 /* MKWeatherLoadingView.m in Sources */,
+				C916EF1C16879754000B53F5 /* MKWeatherRequest.m in Sources */,
+				C916EF1D16879754000B53F5 /* MKClock.m in Sources */,
+				C916EF1E16879754000B53F5 /* MKObject.m in Sources */,
+				C916EF1F16879754000B53F5 /* SwipeView.m in Sources */,
+				C916EF2016879754000B53F5 /* JAAlarm.m in Sources */,
+				C916EF2116879754000B53F5 /* JAAlarmListViewController.m in Sources */,
+				C916EF2216879754000B53F5 /* JAAlarmSettingsController.m in Sources */,
+				C916EF2316879754000B53F5 /* JASoundSelectorTableViewController.m in Sources */,
+				C916EF2416879754000B53F5 /* JASound.m in Sources */,
+				C916EF2516879754000B53F5 /* VoiceRecordViewController.m in Sources */,
+				C916EF2616879754000B53F5 /* ClockManager.m in Sources */,
+				C916EF2716879754000B53F5 /* JARepeatTableViewController.m in Sources */,
+				C916EF2816879754000B53F5 /* JASettings.m in Sources */,
+				C916EF2916879754000B53F5 /* JABackgroundPickerViewController.m in Sources */,
+				C916EF2A16879754000B53F5 /* JAClockSettingsViewController.m in Sources */,
+				C916EF2B16879754000B53F5 /* JAMiscSettingsViewController.m in Sources */,
+				C916EF2C16879754000B53F5 /* UIImage+fixOrientation.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C9E6403E16528B7500A388C6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -926,6 +1321,34 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		C916EFA416879754000B53F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AlarmClock/AlarmClock-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					"PAID=1",
+				);
+				INFOPLIST_FILE = "AlarmClock copy-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C916EFA516879754000B53F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AlarmClock/AlarmClock-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "PAID=1";
+				INFOPLIST_FILE = "AlarmClock copy-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 		C9E6406416528B7500A388C6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1003,6 +1426,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C916EFA316879754000B53F5 /* Build configuration list for PBXNativeTarget "AlarmClock Paid" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C916EFA416879754000B53F5 /* Debug */,
+				C916EFA516879754000B53F5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C9E6403C16528B7500A388C6 /* Build configuration list for PBXProject "AlarmClock" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

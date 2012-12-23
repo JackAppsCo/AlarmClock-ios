@@ -41,5 +41,5 @@
 + (BOOL) shine;
 + (void) setStayAwake:(BOOL)awake;
 + (BOOL) stayAwake;
-
++ (BOOL) isPaid;
 @end

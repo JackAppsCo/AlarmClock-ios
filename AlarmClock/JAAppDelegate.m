@@ -151,7 +151,7 @@
                     localNotif.timeZone = [NSTimeZone defaultTimeZone];
                     localNotif.repeatInterval = NSWeekCalendarUnit;
                     localNotif.alertBody = thisAlarm.name;
-                    localNotif.alertAction = NSLocalizedString(@"Open", nil);
+                    localNotif.alertAction = NSLocalizedString(@"Snooza", nil);
                     
                     
                     
@@ -179,7 +179,7 @@
                 localNotif.timeZone = [NSTimeZone defaultTimeZone];
                 localNotif.alertBody = thisAlarm.name;
                 localNotif.repeatInterval = 0;
-                localNotif.alertAction = NSLocalizedString(@"Open", nil);
+                localNotif.alertAction = NSLocalizedString(@"Snooze", nil);
                 localNotif.soundName = thisAlarm.sound.soundFilename;
                 
                 NSDictionary *infoDict = [NSDictionary dictionaryWithObject:[NSKeyedArchiver archivedDataWithRootObject:thisAlarm] forKey:@"alarm"];

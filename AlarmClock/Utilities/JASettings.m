@@ -295,6 +295,17 @@ static JASettings *sharedInstance = nil;
     return [[NSUserDefaults standardUserDefaults] boolForKey:AWAKE_KEY];
 }
 
++ (BOOL) isPaid
+{
+    NSString *configsLocation = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Configs.plist"];
+    NSDictionary *configs = [[NSDictionary alloc] initWithContentsOfFile:configsLocation];
+    if ([configs objectForKey:@"paid"])
+        return YES;
+    
+    return NO;
+
+}
+
 #pragma mark - Class Methods
 
 + (JASettings *)instance {

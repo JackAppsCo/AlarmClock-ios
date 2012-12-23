@@ -70,48 +70,6 @@
 			<key>filename</key>
 			<string>Techy_cut.m4a</string>
 		</dict>
-		<dict>
-			<key>name</key>
-			<string>Chimes</string>
-			<key>filename</key>
-			<string>Chimes.M4A</string>
-		</dict>
-		<dict>
-			<key>name</key>
-			<string>Ethereal Piano</string>
-			<key>filename</key>
-			<string>Ethereal Piano.M4A</string>
-		</dict>
-		<dict>
-			<key>name</key>
-			<string>Gentle Rise</string>
-			<key>filename</key>
-			<string>Gentle Rise.M4A</string>
-		</dict>
-		<dict>
-			<key>name</key>
-			<string>Harp</string>
-			<key>filename</key>
-			<string>Harp.M4A</string>
-		</dict>
-		<dict>
-			<key>name</key>
-			<string>Rooster Call</string>
-			<key>filename</key>
-			<string>Rooster Call.M4A</string>
-		</dict>
-		<dict>
-			<key>name</key>
-			<string>Song Bird</string>
-			<key>filename</key>
-			<string>Song Bird.M4A</string>
-		</dict>
-		<dict>
-			<key>name</key>
-			<string>Vibraphona</string>
-			<key>filename</key>
-			<string>Vibraphona.M4A</string>
-		</dict>
 	</array>
 </dict>
 </plist>
