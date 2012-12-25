@@ -1,25 +1,19 @@
 //
-//  JAMiscSettingsViewController.m
+//  JASleepSmartControllerViewController.m
 //  AlarmClock
 //
-//  Created by Brian C. Singer on 11/28/12.
+//  Created by Brian C. Singer on 12/24/12.
 //  Copyright (c) 2012 JA. All rights reserved.
 //
 
-#import "JAMiscSettingsViewController.h"
-#import "JASettings.h"
-#import "JASound.h"
+#import "JASleepSmartControllerViewController.h"
 #import "JASettings.h"
 
-@interface JAMiscSettingsViewController ()
-- (void)weatherSwitchChanged:(id)sender;
+@interface JASleepSmartControllerViewController ()
 - (void)shineSwitchChanged:(id)sender;
-- (void)awakeSwitchChanged:(id)sender;
-- (void)dimSwitchChanged:(id)sender;
-- (void)flashlightSwitchChanged:(id)sender;
 @end
 
-@implementation JAMiscSettingsViewController
+@implementation JASleepSmartControllerViewController
 
 - (id)init
 {
@@ -34,12 +28,7 @@
         [self.tableView setDataSource:self];
         [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
         [self.view addSubview:self.tableView];
-        
-        // Weather switch
-        [self setWeatherSwitch:[[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:NSLocalizedString(@"Farenheight", nil), NSLocalizedString(@"Celsius", nil), nil]]];
-        [self.weatherSwitch setSegmentedControlStyle:UISegmentedControlStyleBar];
-        [self.weatherSwitch setSelectedSegmentIndex:([JASettings celsius]) ? 1 : 0];
-        [self.weatherSwitch addTarget:self action:@selector(weatherSwitchChanged:) forControlEvents:UIControlEventValueChanged];
+
         
         //set picker and sound
         _selectedPicker = 0;
@@ -71,22 +60,7 @@
         [self setShineSwitch:[[UISwitch alloc] init]];
         [self.shineSwitch setOn:[JASettings shine]];
         [self.shineSwitch addTarget:self action:@selector(shineSwitchChanged:) forControlEvents:UIControlEventValueChanged];
-        
-        //awake switch
-        [self setAwakeSwitch:[[UISwitch alloc] init]];
-        [self.awakeSwitch setOn:[JASettings shine]];
-        [self.awakeSwitch addTarget:self action:@selector(awakeSwitchChanged:) forControlEvents:UIControlEventValueChanged];
-        
-        //dim switch
-        [self setDimSwitch:[[UISwitch alloc] init]];
-        [self.dimSwitch setOn:![JASettings dimDisabled]];
-        [self.dimSwitch addTarget:self action:@selector(dimSwitchChanged:) forControlEvents:UIControlEventValueChanged];
-        
-        //flashlight switch
-        [self setFlashlightSwitch:[[UISwitch alloc] init]];
-        [self.flashlightSwitch setOn:![JASettings flashlightDisabled]];
-        [self.flashlightSwitch addTarget:self action:@selector(flashlightSwitchChanged:) forControlEvents:UIControlEventValueChanged];
-        
+                
     }
     return self;
 }
@@ -103,10 +77,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)weatherSwitchChanged:(id)sender
-{
-    [JASettings setCelsius:([self.weatherSwitch selectedSegmentIndex] == 1) ? YES : NO];
-}
 
 - (void)shineSwitchChanged:(id)sender
 {
@@ -120,28 +90,6 @@
     }
 }
 
-- (void)dimSwitchChanged:(id)sender
-{
-    [JASettings setDimDisabled:![self.dimSwitch isOn]];
-}
-
-- (void)flashlightSwitchChanged:(id)sender
-{
-    [JASettings setFlashlightDisabled:![self.flashlightSwitch isOn]];
-}
-
-- (void)awakeSwitchChanged:(id)sender
-{
-    if (![self.awakeSwitch isOn] && [JASettings shine]) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Whoops!", nil) message:NSLocalizedString(@"Enabling autolock will disable the Rise & Shine feature.", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitles:NSLocalizedString(@"Ok", nil), nil];
-        [alert setTag:1];
-        [alert show];
-    }
-    else {
-        [JASettings setStayAwake:[self.awakeSwitch isOn]];
-    }
-    
-}
 
 #pragma mark - Table view data source
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -151,7 +99,7 @@
 
 - (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return (section == 0) ? NSLocalizedString(@"Settings", nil) : (section == 1) ? NSLocalizedString(@"Auto Lock", nil) : NSLocalizedString(@"Help & Information", nil);
+    return (section == 0) ? NSLocalizedString(@"White Noise Sleep Timer", nil) : (section == 1) ? NSLocalizedString(@"Sleep Cycle Calculator", nil) : NSLocalizedString(@"Rise & Shine", nil);
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -166,7 +114,7 @@
     
     // Return the number of rows in the section.
     if (section == 0) {
-        return 4;
+        return 2;
     }
     else if (section == 1) {
         return 1;
@@ -189,54 +137,37 @@
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             
-            cell.textLabel.text = NSLocalizedString(@"Snooze Length", nil);
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"%i %@", _selectedTime, NSLocalizedString(@"minutes", nil), nil];
+            cell.textLabel.text = NSLocalizedString(@"Sleep Sound", nil);
+            cell.detailTextLabel.text = [[self.sounds objectAtIndex:_selectedSound] objectForKey:@"name"];
             cell.accessoryType = UITableViewCellAccessoryNone;
             cell.selectionStyle = UITableViewCellSelectionStyleBlue;
             
         }
         else if (indexPath.row == 1) {
-         
-            cell.textLabel.text = NSLocalizedString(@"Weather", nil);
-            cell.accessoryView = self.weatherSwitch;
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
-//            cell.textLabel.text = NSLocalizedString(@"Sleep Sound", nil);
-//            cell.detailTextLabel.text = [[self.sounds objectAtIndex:_selectedSound] objectForKey:@"name"];
-//            cell.accessoryType = UITableViewCellAccessoryNone;
-//            cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-        }
-        else if (indexPath.row == 2) {
-            
-            cell.textLabel.text = NSLocalizedString(@"Flashlight", nil);
-            cell.accessoryView = self.flashlightSwitch;
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            
-        }
-        else if (indexPath.row == 3) {
-            
-            cell.textLabel.text = NSLocalizedString(@"Slide Finger", nil);
-            cell.accessoryView = self.dimSwitch;
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.textLabel.text = NSLocalizedString(@"Set Timer", nil);
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%i %@", _selectedTime, NSLocalizedString(@"minutes", nil), nil];
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            cell.selectionStyle = UITableViewCellSelectionStyleBlue;
             
         }
     }
     else if (indexPath.section == 1) {
-        cell.textLabel.text = NSLocalizedString(@"Disable Autolock", nil);
-        cell.accessoryView = self.awakeSwitch;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+        
+    }
+    else if (indexPath.section == 2) {
+
+        if (indexPath.row == 0) {
+            
+        }
+        else if (indexPath.row == 1) {
+            
+        }
+        
     }
     else {
-//        if (indexPath.row == 0) {
-//            cell.textLabel.text = NSLocalizedString(@"Rise & Shine", nil);
-//            cell.accessoryView = self.shineSwitch;
-//            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//        }
-//        else {
-//            cell.textLabel.text = NSLocalizedString(@"Disable Autolock", nil);
-//            cell.accessoryView = self.awakeSwitch;
-//            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//        }
+        
     }
     
     
@@ -297,11 +228,11 @@
             [self.pickerView selectRow:_selectedTime inComponent:0 animated:NO];
             [self raisePicker];
         }
-//        else {
-//            [self.pickerView reloadAllComponents];
-//            [self.pickerView selectRow:_selectedSound inComponent:0 animated:NO];
-//            [self raisePicker];
-//        }
+        //        else {
+        //            [self.pickerView reloadAllComponents];
+        //            [self.pickerView selectRow:_selectedSound inComponent:0 animated:NO];
+        //            [self raisePicker];
+        //        }
     }
     
     
@@ -408,5 +339,6 @@
         }
     }
 }
+
 
 @end

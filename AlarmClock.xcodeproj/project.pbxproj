@@ -267,6 +267,8 @@
 		C9E641921652966F00A388C6 /* MKClock.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E6418F1652966F00A388C6 /* MKClock.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C9E641931652966F00A388C6 /* MKObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E641911652966F00A388C6 /* MKObject.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C9E6419B1652AC9400A388C6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E6419A1652AC9400A388C6 /* CoreLocation.framework */; };
+		C9EDE6811689142D00D17D37 /* JASleepSmartControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9EDE6801689142D00D17D37 /* JASleepSmartControllerViewController.m */; };
+		C9EDE6821689142D00D17D37 /* JASleepSmartControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9EDE6801689142D00D17D37 /* JASleepSmartControllerViewController.m */; };
 		C9FD4ECD16750574007B4A38 /* disabledNameIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4EB716750574007B4A38 /* disabledNameIcon.png */; };
 		C9FD4ECE16750574007B4A38 /* nameIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4EB816750574007B4A38 /* nameIcon.png */; };
 		C9FD4ECF16750574007B4A38 /* disabledRedoIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FD4EB916750574007B4A38 /* disabledRedoIcon.png */; };
@@ -452,6 +454,8 @@
 		C9E641911652966F00A388C6 /* MKObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MKObject.m; path = Classes/MKKit/MKObject.m; sourceTree = "<group>"; };
 		C9E641941652969800A388C6 /* MKObjectDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MKObjectDelegate.h; path = Classes/MKKit/MKObjectDelegate.h; sourceTree = "<group>"; };
 		C9E6419A1652AC9400A388C6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		C9EDE67F1689142D00D17D37 /* JASleepSmartControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JASleepSmartControllerViewController.h; path = Classes/JASleepSmartControllerViewController.h; sourceTree = "<group>"; };
+		C9EDE6801689142D00D17D37 /* JASleepSmartControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JASleepSmartControllerViewController.m; path = Classes/JASleepSmartControllerViewController.m; sourceTree = "<group>"; };
 		C9FD4EB716750574007B4A38 /* disabledNameIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disabledNameIcon.png; sourceTree = "<group>"; };
 		C9FD4EB816750574007B4A38 /* nameIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nameIcon.png; sourceTree = "<group>"; };
 		C9FD4EB916750574007B4A38 /* disabledRedoIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disabledRedoIcon.png; sourceTree = "<group>"; };
@@ -816,6 +820,7 @@
 		C9E6406916528B7C00A388C6 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C9EDE67D1689132900D17D37 /* SleepSmart */,
 				5F0443311683EF520087B1D0 /* SleepCycle */,
 				C93A02311666F81100E1A273 /* MiscSettings */,
 				C9A2BBEF165F197100F09634 /* Display Settings */,
@@ -897,6 +902,15 @@
 				C98895CE1657F7950072EC6E /* JASound.m */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		C9EDE67D1689132900D17D37 /* SleepSmart */ = {
+			isa = PBXGroup;
+			children = (
+				C9EDE67F1689142D00D17D37 /* JASleepSmartControllerViewController.h */,
+				C9EDE6801689142D00D17D37 /* JASleepSmartControllerViewController.m */,
+			);
+			name = SleepSmart;
 			sourceTree = "<group>";
 		};
 		C9FD4EB51675054D007B4A38 /* Recording */ = {
@@ -1289,6 +1303,7 @@
 				C916EF2C16879754000B53F5 /* UIImage+fixOrientation.m in Sources */,
 				C916EFDA16879FB0000B53F5 /* JASleepCycleViewController.m in Sources */,
 				C916EFDB16879FB0000B53F5 /* JASleepCycleView.m in Sources */,
+				C9EDE6821689142D00D17D37 /* JASleepSmartControllerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1320,6 +1335,7 @@
 				C92783D11677853200CFEA8D /* UIImage+fixOrientation.m in Sources */,
 				5F0443341683EFB10087B1D0 /* JASleepCycleViewController.m in Sources */,
 				5F0443371683EFE20087B1D0 /* JASleepCycleView.m in Sources */,
+				C9EDE6811689142D00D17D37 /* JASleepSmartControllerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

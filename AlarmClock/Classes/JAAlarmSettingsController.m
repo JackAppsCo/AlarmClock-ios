@@ -47,7 +47,7 @@
             //time comps
             now = [NSDate dateWithTimeIntervalSinceNow:(60 * 10)];
             NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-            NSDateComponents *timeComponents = [gregorian components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:now];
+            NSDateComponents *timeComponents = [gregorian components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:now];
             [timeComponents setSecond:0];
             _alarm.timeComponents = timeComponents;
 
@@ -141,18 +141,6 @@
         self.alarm.snoozeTime = [f numberFromString:self.snoozeField.text];
         
         
-        //make sure the alarm is in the future
-        /*if (self.alarm.repeatDays.count == 0) {
-            NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
-            NSDateComponents *todayComponents = [calendar components:(NSDayCalendarUnit) fromDate:[NSDate date]];
-            [self.alarm.timeComponents setDay:todayComponents.day];
-            
-            NSDate *alarmDate = [calendar dateFromComponents:self.alarm.timeComponents];
-            if ([alarmDate compare:[NSDate date]] == NSOrderedAscending) {
-                self.alarm.timeComponents.day = self.alarm.timeComponents.day + 1;
-            }
-        }*/
-        
         [JAAlarm saveAlarm:self.alarm];
     }
 }
@@ -218,7 +206,7 @@
 {
 
     // Return the number of rows in the section.
-    return 7;
+    return 6;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

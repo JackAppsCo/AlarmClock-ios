@@ -29,8 +29,8 @@
 + (void) setShowBackdrop:(BOOL)show;
 + (BOOL) showBackdrop;
 + (void) setShowDate:(BOOL)show;
-+ (BOOL) farenheit;
-+ (void) setFarenheit:(BOOL)farenheit;
++ (BOOL) celsius;
++ (void) setCelsius:(BOOL)celsius;
 + (BOOL) alarmsDisabled;
 + (void) setAlarmsDisabled:(BOOL)enabled;
 + (int) sleepLength;
@@ -42,4 +42,10 @@
 + (void) setStayAwake:(BOOL)awake;
 + (BOOL) stayAwake;
 + (BOOL) isPaid;
++ (int) snoozeLength;
++ (void) setSnoozeLength:(int)length;
++ (void) setFlashlightDisabled:(BOOL)enabled;
++ (BOOL) flashlightDisabled;
++ (void) setDimDisabled:(BOOL)enabled;
++ (BOOL) dimDisabled;
 @end

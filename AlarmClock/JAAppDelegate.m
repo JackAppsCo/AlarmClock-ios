@@ -60,8 +60,8 @@
     if ([notification userInfo] && [[notification userInfo] objectForKey:@"alarm"]) {
         JAAlarm *notificationAlarm = [NSKeyedUnarchiver unarchiveObjectWithData:[[notification userInfo] objectForKey:@"alarm"]];
         
-        if (notificationAlarm)
-            [ClockManager snoozeAlarm:notificationAlarm];
+        //if (notificationAlarm)
+            //[ClockManager snoozeAlarm:notificationAlarm];
         
         NSLog(@"%@", notificationAlarm);
     }
@@ -161,24 +161,26 @@
                     [dateComps setMinute:thisAlarm.timeComponents.minute];
                     NSDate *itemDate = [calendar dateFromComponents:dateComps];
                     
-                    UILocalNotification *localNotif = [[UILocalNotification alloc] init];
-                    if (localNotif == nil)
-                        return;
-                    
-                    localNotif.fireDate = itemDate;
-                    localNotif.timeZone = [NSTimeZone defaultTimeZone];
-                    localNotif.repeatInterval = NSWeekCalendarUnit;
-                    localNotif.alertBody = thisAlarm.name;
-                    localNotif.alertAction = NSLocalizedString(@"Snooza", nil);
-                    
-                    
-                    
-                    localNotif.soundName = thisAlarm.sound.soundFilename;
-                    
-                    NSDictionary *infoDict = [NSDictionary dictionaryWithObject:[NSKeyedArchiver archivedDataWithRootObject:thisAlarm] forKey:@"alarm"];
-                    localNotif.userInfo = infoDict;
-                    
-                    [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
+                    //increase the day if it's in the past
+                    if ([itemDate compare:[NSDate date]] != NSOrderedAscending) {
+                        
+                        UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+                        if (localNotif == nil)
+                            return;
+                        
+                        localNotif.fireDate = itemDate;
+                        localNotif.timeZone = [NSTimeZone defaultTimeZone];
+                        localNotif.repeatInterval = NSWeekCalendarUnit;
+                        localNotif.alertBody = thisAlarm.name;
+                        localNotif.alertAction = NSLocalizedString(@"Snooza", nil);
+                        localNotif.soundName = thisAlarm.sound.soundFilename;
+                        
+                        NSDictionary *infoDict = [NSDictionary dictionaryWithObject:[NSKeyedArchiver archivedDataWithRootObject:thisAlarm] forKey:@"alarm"];
+                        localNotif.userInfo = infoDict;
+                        
+                        [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
+                        
+                    }
                 }
             }
             else {
@@ -190,25 +192,24 @@
                 NSDate *itemDate = [calendar dateFromComponents:dateComps];
                 
                 //increase the day if it's in the past
-                if ([itemDate compare:[NSDate date]] == NSOrderedAscending) {
-                    thisAlarm.timeComponents.day = thisAlarm.timeComponents.day + 1;
-                }
-                
-                UILocalNotification *localNotif = [[UILocalNotification alloc] init];
-                if (localNotif == nil)
-                    return;
-                localNotif.fireDate = itemDate;
-                localNotif.timeZone = [NSTimeZone defaultTimeZone];
-                localNotif.alertBody = thisAlarm.name;
-                localNotif.repeatInterval = 0;
-                localNotif.alertAction = NSLocalizedString(@"Snooze", nil);
-                localNotif.soundName = thisAlarm.sound.soundFilename;
-                
-                NSDictionary *infoDict = [NSDictionary dictionaryWithObject:[NSKeyedArchiver archivedDataWithRootObject:thisAlarm] forKey:@"alarm"];
-                localNotif.userInfo = infoDict;
-                
-                [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
+                if ([itemDate compare:[NSDate date]] != NSOrderedAscending) {
                     
+                    UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+                    if (localNotif == nil)
+                        return;
+                    localNotif.fireDate = itemDate;
+                    localNotif.timeZone = [NSTimeZone defaultTimeZone];
+                    localNotif.alertBody = thisAlarm.name;
+                    localNotif.repeatInterval = 0;
+                    localNotif.alertAction = NSLocalizedString(@"Snooze", nil);
+                    localNotif.soundName = thisAlarm.sound.soundFilename;
+                    
+                    NSDictionary *infoDict = [NSDictionary dictionaryWithObject:[NSKeyedArchiver archivedDataWithRootObject:thisAlarm] forKey:@"alarm"];
+                    localNotif.userInfo = infoDict;
+                    
+                    [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
+                    
+                }
                 
                 
             }
@@ -249,6 +250,9 @@
                     [dateComps setMinute:thisAlarm.timeComponents.minute];
                     NSDate *itemDate = [calendar dateFromComponents:dateComps];
                     
+                    //increase the day if it's in the past
+                    if ([itemDate compare:[NSDate date]] != NSOrderedAscending) {
+                    
                     UILocalNotification *localNotif = [[UILocalNotification alloc] init];
                     if (localNotif == nil)
                         return;
@@ -267,6 +271,8 @@
                     localNotif.userInfo = infoDict;
                     
                     [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
+                        
+                    }
                 }
             }
             else {
@@ -279,23 +285,22 @@
                 
                 //increase the day if it's in the past
                 if ([itemDate compare:[NSDate date]] == NSOrderedAscending) {
-                    thisAlarm.timeComponents.day = thisAlarm.timeComponents.day + 1;
+                    
+                    UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+                    if (localNotif == nil)
+                        return;
+                    localNotif.fireDate = itemDate;
+                    localNotif.timeZone = [NSTimeZone defaultTimeZone];
+                    localNotif.alertBody = thisAlarm.name;
+                    localNotif.repeatInterval = 0;
+                    localNotif.alertAction = NSLocalizedString(@"Snooze", nil);
+                    localNotif.soundName = thisAlarm.sound.soundFilename;
+                    
+                    NSDictionary *infoDict = [NSDictionary dictionaryWithObject:[NSKeyedArchiver archivedDataWithRootObject:thisAlarm] forKey:@"alarm"];
+                    localNotif.userInfo = infoDict;
+                    
+                    [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
                 }
-                
-                UILocalNotification *localNotif = [[UILocalNotification alloc] init];
-                if (localNotif == nil)
-                    return;
-                localNotif.fireDate = itemDate;
-                localNotif.timeZone = [NSTimeZone defaultTimeZone];
-                localNotif.alertBody = thisAlarm.name;
-                localNotif.repeatInterval = 0;
-                localNotif.alertAction = NSLocalizedString(@"Snooze", nil);
-                localNotif.soundName = thisAlarm.sound.soundFilename;
-                
-                NSDictionary *infoDict = [NSDictionary dictionaryWithObject:[NSKeyedArchiver archivedDataWithRootObject:thisAlarm] forKey:@"alarm"];
-                localNotif.userInfo = infoDict;
-                
-                [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
                 
             }
         }
@@ -325,6 +330,9 @@
 
 //toggle flash
 - (void) toggleFlash {
+    
+    if ([JASettings flashlightDisabled])
+        return;
     
     Class captureDeviceClass = NSClassFromString(@"AVCaptureDevice");
     if (captureDeviceClass != nil) {

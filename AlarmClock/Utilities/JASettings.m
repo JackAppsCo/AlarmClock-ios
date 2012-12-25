@@ -25,6 +25,9 @@ static JASettings *sharedInstance = nil;
 #define SHINE_KEY @"riseAndShine"
 #define BACKDROP_KEY @"backdropKey"
 #define AWAKE_KEY @"stayAwake"
+#define SNOOZE_LENGTH_KEY @"snoozeLength"
+#define FLASHLIGHT_KEY @"flashlightKey"
+#define DIM_KEY @"dimKey"
 
 @implementation JASettings
 
@@ -200,7 +203,7 @@ static JASettings *sharedInstance = nil;
     return [[NSUserDefaults standardUserDefaults] boolForKey:BACKDROP_KEY];
 }
 
-+ (BOOL) farenheit
++ (BOOL) celsius
 {
     BOOL far = NO;
     
@@ -212,9 +215,9 @@ static JASettings *sharedInstance = nil;
     return [[NSUserDefaults standardUserDefaults] boolForKey:FARENHEIT_KEY];
 }
 
-+ (void) setFarenheit:(BOOL)farenheit
++ (void) setCelsius:(BOOL)celsius
 {
-    [[NSUserDefaults standardUserDefaults] setBool:farenheit forKey:FARENHEIT_KEY];
+    [[NSUserDefaults standardUserDefaults] setBool:celsius forKey:FARENHEIT_KEY];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -304,6 +307,48 @@ static JASettings *sharedInstance = nil;
     
     return NO;
 
+}
+
++ (int) snoozeLength
+{
+    int len = 10;
+    
+    //check for bg image name
+    if ([[NSUserDefaults standardUserDefaults] integerForKey:SNOOZE_LENGTH_KEY]) {
+        len = [[NSUserDefaults standardUserDefaults] integerForKey:SNOOZE_LENGTH_KEY];
+    }
+    
+    return len;
+}
+
++ (void) setSnoozeLength:(int)length
+{
+    [[NSUserDefaults standardUserDefaults] setInteger:length forKey:SNOOZE_LENGTH_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (void) setFlashlightDisabled:(BOOL)enabled
+{
+    [[UIApplication sharedApplication] setIdleTimerDisabled:enabled];
+    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:FLASHLIGHT_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (BOOL) flashlightDisabled
+{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:FLASHLIGHT_KEY];
+}
+
++ (void) setDimDisabled:(BOOL)enabled
+{
+    [[UIApplication sharedApplication] setIdleTimerDisabled:enabled];
+    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:DIM_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (BOOL) dimDisabled
+{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:DIM_KEY];
 }
 
 #pragma mark - Class Methods

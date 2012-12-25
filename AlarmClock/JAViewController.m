@@ -355,6 +355,9 @@
 // handle gestures
 - (void)panGesture:(UIPanGestureRecognizer *)sender {
     
+    if ([JASettings dimDisabled])
+        return;
+    
     if (_shineEnabled) {
         [self disableShine:nil];
     }
@@ -622,13 +625,13 @@
 {
     if (_weatherData.count > 1) {
         NSDictionary *weatherDict = [_weatherData objectAtIndex:1];
-        self.currentTempLabel.text = [NSString stringWithFormat:@"%0.0f˚", [[weatherDict objectForKey:([JASettings farenheit]) ? WEATHER_TEMP_F : WEATHER_TEMP_C] floatValue], nil];
+        self.currentTempLabel.text = [NSString stringWithFormat:@"%0.0f˚", [[weatherDict objectForKey:([JASettings celsius]) ? WEATHER_TEMP_C : WEATHER_TEMP_F] floatValue], nil];
     }
     
     if (_weatherData.count > 2) {
         NSDictionary *weatherDict = [_weatherData objectAtIndex:2];
-        self.highTempLabel.text = [NSString stringWithFormat:@"%@: %0.0f˚", NSLocalizedString(@"H", nil), [[weatherDict objectForKey:([JASettings farenheit]) ? WEATHER_FORCAST_TEMP_MAX_F : WEATHER_FORCAST_TEMP_MAX_C] floatValue], nil];
-        self.lowTempLabel.text = [NSString stringWithFormat:@"%@: %0.0f˚", NSLocalizedString(@"L", nil), [[weatherDict objectForKey:([JASettings farenheit]) ? WEATHER_FORCAST_TEMP_MIN_F : WEATHER_FORCAST_TEMP_MIN_C] floatValue], nil];
+        self.highTempLabel.text = [NSString stringWithFormat:@"%@: %0.0f˚", NSLocalizedString(@"H", nil), [[weatherDict objectForKey:([JASettings celsius]) ? WEATHER_FORCAST_TEMP_MAX_C : WEATHER_FORCAST_TEMP_MAX_F] floatValue], nil];
+        self.lowTempLabel.text = [NSString stringWithFormat:@"%@: %0.0f˚", NSLocalizedString(@"L", nil), [[weatherDict objectForKey:([JASettings celsius]) ? WEATHER_FORCAST_TEMP_MIN_C : WEATHER_FORCAST_TEMP_MIN_F] floatValue], nil];
     }
     
     self.currentTempLabel.alpha = 1.0;
