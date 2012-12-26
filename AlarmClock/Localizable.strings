@@ -21,6 +21,8 @@
 "Create Alarm" = "Create Alarm";
 "You try to fall asleep at one of these times:" = "You try to fall asleep at one of these times:";
 "Select one of these times to wake up at:" = "Select one of these times to wake up at:";
+"Select a Time" = "Select a Time";
+"Sleep Cycle Calculator" = "Sleep Cycle Calculator";
 
 //Settings
 "Alarms" = "Alarms";
@@ -42,7 +44,7 @@
 "Celsius" = "Celsius";
 "Disable Autolock" = "Disable Autolock";
 "Whoops!" = "Whoops!";
-"Enabling autolock will disable the Rise & Shine feature." = "Enabling autolock will disable the Rise & Shine feature.";
+"If you don't keep autolock disabled the Rise & Shine feature will be disabled." = "If you don't keep autolock disabled the Rise & Shine feature will be disabled.";
 "Cancel" = "Cancel";
 "Ok" = "Ok";
 "Flashlight" = "Flashlight";

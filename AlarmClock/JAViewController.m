@@ -13,7 +13,8 @@
 #import "JAClockSettingsViewController.h"
 #import "JAMiscSettingsViewController.h"
 #import "UIImage+fixOrientation.h"
-#import "JASleepCycleViewController.h"
+#import "JASleepSmartControllerViewController.h"
+
 
 #define WEATHER_API_KEY @"c74edf0183141706121311"
 
@@ -77,12 +78,14 @@
     //init alarmsOn
     _alarmsOn = YES;
     
-    //alarm settings
-    JASleepCycleViewController *_sleepController = [[JASleepCycleViewController alloc] init];
-    [_sleepController setTitle:NSLocalizedString(@"Sleep Cycle", nil)];
-    [_sleepController setTabBarItem:[[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Sleep Smart", nil) image:[UIImage imageNamed:@"tabIconSleep.png"] tag:0]];
-    UIBarButtonItem *doneSleepButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", nil) style:UIBarButtonItemStyleDone target:self action:@selector(dismissSettingsController:)];
-    [_sleepController.navigationItem setLeftBarButtonItem:doneSleepButton];
+
+    //sleep cycle
+    JASleepSmartControllerViewController *_sleepSmartController = [[JASleepSmartControllerViewController alloc] init];
+    [_sleepSmartController setTitle:NSLocalizedString(@"Sleep Smart", nil)];
+    [_sleepSmartController setTabBarItem:[[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Sleep Smart", nil) image:[UIImage imageNamed:@"tabIconSleep.png"] tag:0]];
+    UIBarButtonItem *doneSleepSmartButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", nil) style:UIBarButtonItemStyleDone target:self action:@selector(dismissSettingsController:)];
+    [_sleepSmartController.navigationItem setLeftBarButtonItem:doneSleepSmartButton];
+
     
     //alarm settings
     JAAlarmListViewController *_alarmSettingsController = [[JAAlarmListViewController alloc] init];
@@ -110,11 +113,11 @@
     UINavigationController *alarmNavController = [[UINavigationController alloc] initWithRootViewController:_alarmSettingsController];
     UINavigationController *displayNavController = [[UINavigationController alloc] initWithRootViewController:_displaySettingsController];
     UINavigationController *settingsNavController = [[UINavigationController alloc] initWithRootViewController:_miscSettingsController];
-    UINavigationController *sleepNavController = [[UINavigationController alloc] initWithRootViewController:_sleepController];
+    UINavigationController *sleepSmartNavController = [[UINavigationController alloc] initWithRootViewController:_sleepSmartController];
     
     //tab bar
     _tabBarController = [[UITabBarController alloc] init];
-    [_tabBarController setViewControllers:[NSArray arrayWithObjects:sleepNavController, alarmNavController, displayNavController, settingsNavController, nil]];
+    [_tabBarController setViewControllers:[NSArray arrayWithObjects:sleepSmartNavController, alarmNavController, displayNavController, settingsNavController, nil]];
     
     
     //settings button

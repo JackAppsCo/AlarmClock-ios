@@ -23,8 +23,6 @@
         [self.sleepWakeControl setSegmentedControlStyle:UISegmentedControlStyleBar];
         [self.sleepWakeControl setSelectedSegmentIndex:0];
         
-
-        
         //time button
         [self setTimeButton:[UIButton buttonWithType:UIButtonTypeRoundedRect]];
         [self.timeButton setFrame:CGRectOffset(self.sleepWakeControl.frame, 0, self.sleepWakeControl.frame.size.height + 15)];

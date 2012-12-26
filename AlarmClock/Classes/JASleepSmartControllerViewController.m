@@ -8,9 +8,23 @@
 
 #import "JASleepSmartControllerViewController.h"
 #import "JASettings.h"
+#import "JAAlarm.h"
+#import "JAAlarmSettingsController.h"
 
 @interface JASleepSmartControllerViewController ()
 - (void)shineSwitchChanged:(id)sender;
+
+- (void) raiseDatePicker;
+- (void) lowerDatePicker;
+- (void) togglePicker;
+
+- (void) raisePicker;
+- (void) lowerPicker;
+
+- (void) controlChanged:(id)sender;
+- (void) createButtonPressed:(id)sender;
+- (void) dateChanged:(id)sender;
+
 @end
 
 @implementation JASleepSmartControllerViewController
@@ -34,6 +48,7 @@
         _selectedPicker = 0;
         _selectedSound = 0;
         _selectedTime = [JASettings snoozeLength];
+        [self setTimeComponents:nil];
         
         //setup the dictionary from Settings.plist
 		NSString *soundsLocation = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"sleepSoundsList.plist"];
@@ -60,7 +75,63 @@
         [self setShineSwitch:[[UISwitch alloc] init]];
         [self.shineSwitch setOn:[JASettings shine]];
         [self.shineSwitch addTarget:self action:@selector(shineSwitchChanged:) forControlEvents:UIControlEventValueChanged];
-                
+        
+        //Sleep Calc
+        //-----------
+        //sleep control
+        [self setSleepWakeControl:[[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:NSLocalizedString(@"Wake By", nil), NSLocalizedString(@"Sleep By", nil), nil]]];
+        [self.sleepWakeControl setFrame:CGRectMake(15, 50, self.view.frame.size.width - 30, 40)];
+        [self.sleepWakeControl setSegmentedControlStyle:UISegmentedControlStyleBar];
+        [self.sleepWakeControl setSelectedSegmentIndex:0];
+        [self.sleepWakeControl addTarget:self action:@selector(controlChanged:) forControlEvents:UIControlEventValueChanged];
+        
+        //time button
+        [self setTimeButton:[UIButton buttonWithType:UIButtonTypeRoundedRect]];
+        [self.timeButton setFrame:CGRectOffset(self.sleepWakeControl.frame, 0, self.sleepWakeControl.frame.size.height + 10)];
+        [self.timeButton setClipsToBounds:YES];
+        [self.timeButton setTitle:NSLocalizedString(@"Select a Time", nil) forState:UIControlStateNormal];
+        [self.timeButton addTarget:self action:@selector(togglePicker) forControlEvents:UIControlEventTouchUpInside];
+        [self.timeButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [self.timeButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateHighlighted];
+        
+        //create button
+        [self setCreateButton:[UIButton buttonWithType:UIButtonTypeRoundedRect]];
+        [self.createButton setFrame:CGRectMake(15, 10, self.view.frame.size.width - 30, 45.0)];
+        [self.createButton setAutoresizingMask:UIViewAutoresizingFlexibleTopMargin];
+        [self.createButton setTitle:NSLocalizedString(@"Create Alarm", nil) forState:UIControlStateNormal];
+        [self.createButton setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
+        [self.createButton setEnabled:NO];
+        
+        //label
+        [self setSleepLabel:[[UILabel alloc] initWithFrame:CGRectMake(15, self.timeButton.frame.size.height + self.timeButton.frame.origin.y + 15, self.view.frame.size.width - 30, 50)]];
+        [self.sleepLabel setBackgroundColor:[UIColor clearColor]];
+        [self.sleepLabel setNumberOfLines:0];
+        [self.sleepLabel setText:@"THIS IS THE LABEL/nLINE TWO"];
+        
+        //setup companies toolbar
+        [self setDateToolbar:[[UIToolbar alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 35.0)]];
+        UIBarButtonItem *flexSpace3 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        [self setDateDoneButton:[[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(lowerDatePicker)]];
+        [self.dateToolbar setItems:[NSArray arrayWithObjects:flexSpace3, self.dateDoneButton, nil]];
+        
+        //date picker
+        [self setDatePicker:[[UIDatePicker alloc] init]];
+        [self.datePicker setDatePickerMode:UIDatePickerModeTime];
+        CGRect pickerFrame = self.datePicker.frame;
+        pickerFrame.origin.y = self.view.frame.size.height + self.dateToolbar.frame.size.height;
+        [self.datePicker setFrame:pickerFrame];
+        [self.datePicker addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged];
+        [self.view addSubview:self.datePicker];
+        [self.view addSubview:self.dateToolbar];
+        
+        [self.createButton addTarget:self action:@selector(createButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        
+        //date formatter
+        _formatter = [[NSDateFormatter alloc] init];
+        [_formatter setDateFormat:@"h:mm a"];
+        
+        
+        
     }
     return self;
 }
@@ -68,6 +139,26 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+	// Do any additional setup after loading the view.
+    
+    
+    self.sleepLabel.text = NSLocalizedString(@"You try to fall asleep at one of these times:", nil);
+    self.createButton.enabled = NO;
+    
+    [self.tableView reloadData];
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if (self.timeButton.titleLabel.text.length == 0) {
+        [self.datePicker setDate:[NSDate dateWithTimeInterval:(60 * 10) sinceDate:[NSDate date]]];
+        [self.timeButton.titleLabel setText:[_formatter stringFromDate:self.datePicker.date]];
+    }
+    
+    
+    [self.shineSwitch setOn:[JASettings shine]];
     
 }
 
@@ -97,9 +188,66 @@
     return 45.0f;
 }
 
+- (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (section == 1) {
+        return 200.0f;
+    }
+    
+    return 40.0;
+}
+
+- (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    if (section == 1 && self.timeComponents != nil) {
+        return 65.0f;
+    }
+    
+    return 0.0f;
+}
+
+- (UIView*) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    if (section == 1) {
+        UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 200.0f)];
+        [headerView setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
+        [headerView addSubview:self.sleepWakeControl];
+        [headerView addSubview:self.timeButton];
+        [headerView addSubview:self.sleepLabel];
+        
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, 15, self.view.frame.size.width - 30.0, 30.0f)];
+        [label setBackgroundColor:[UIColor clearColor]];
+        [label setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:17]];
+        [label setTextAlignment:NSTextAlignmentLeft];
+        [label setTextColor:[UIColor colorWithRed:59.0/255.0 green:67.0/255.0 blue:90.0/255.0 alpha:1.0]];
+        [label setShadowColor:[UIColor whiteColor]];
+        [label setShadowOffset:CGSizeMake(0, 1)];
+        [label setText:NSLocalizedString(@"Sleep Cycle Calculator", nil)];
+        [headerView addSubview:label];
+        
+        return headerView;
+    }
+    
+    return nil;
+}
+
+- (UIView*) tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    if (section == 1 && self.timeComponents != nil) {
+        UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 65.0f)];
+        [footerView setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
+        [footerView addSubview:self.createButton];
+        
+        
+        return footerView;
+    }
+    
+    return nil;
+}
+
 - (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return (section == 0) ? NSLocalizedString(@"White Noise Sleep Timer", nil) : (section == 1) ? NSLocalizedString(@"Sleep Cycle Calculator", nil) : NSLocalizedString(@"Rise & Shine", nil);
+    return (section == 0) ? NSLocalizedString(@"White Noise Sleep Timer", nil) : (section == 1) ? nil : NSLocalizedString(@"Rise & Shine", nil);
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -117,10 +265,13 @@
         return 2;
     }
     else if (section == 1) {
-        return 1;
+        if (self.timeComponents == nil)
+            return 0;
+        else
+            return 10;
     }
     else {
-        return 2;
+        return 1;
     }
 }
 
@@ -132,7 +283,6 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
     }
     
-    // Configure the cell...
     
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
@@ -148,27 +298,37 @@
             cell.textLabel.text = NSLocalizedString(@"Set Timer", nil);
             cell.detailTextLabel.text = [NSString stringWithFormat:@"%i %@", _selectedTime, NSLocalizedString(@"minutes", nil), nil];
             cell.accessoryType = UITableViewCellAccessoryNone;
+            cell.accessoryView = nil;
             cell.selectionStyle = UITableViewCellSelectionStyleBlue;
             
         }
     }
     else if (indexPath.section == 1) {
-
         
+        if (self.sleepWakeControl.selectedSegmentIndex == 0) {
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        }
+        else {
+            cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+        }
+        
+        int timeInterval = -(60 * 90) * (10 - indexPath.row);
+        NSDate *newDate = [NSDate dateWithTimeInterval:timeInterval sinceDate:self.datePicker.date];
+        
+        cell.textLabel.text = [_formatter stringFromDate:newDate];
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.accessoryView = nil;
+        cell.detailTextLabel.text = @"";
     }
     else if (indexPath.section == 2) {
 
-        if (indexPath.row == 0) {
-            
-        }
-        else if (indexPath.row == 1) {
-            
-        }
+        cell.textLabel.text = NSLocalizedString(@"Rise & Shine", nil);
+        cell.detailTextLabel.text = @"";
+        cell.accessoryView = self.shineSwitch;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
     }
-    else {
-        
-    }
+    
     
     
     return cell;
@@ -217,22 +377,29 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     
     if (indexPath.section == 0) {
-        
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
         _selectedPicker = indexPath.row;
         
         if (indexPath.row == 0) {
             [self.pickerView reloadAllComponents];
-            [self.pickerView selectRow:_selectedTime inComponent:0 animated:NO];
+            [self.pickerView selectRow:_selectedSound inComponent:0 animated:NO];
             [self raisePicker];
         }
-        //        else {
-        //            [self.pickerView reloadAllComponents];
-        //            [self.pickerView selectRow:_selectedSound inComponent:0 animated:NO];
-        //            [self raisePicker];
-        //        }
+        else {
+            [self.pickerView reloadAllComponents];
+            [self.pickerView selectRow:((_selectedTime / 5) - 1) inComponent:0 animated:NO];
+            [self raisePicker];
+        }
+    }
+    else if (indexPath.section == 1)
+    {
+        self.createButton.enabled = YES;
+    }
+    else {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
     
     
@@ -273,9 +440,10 @@
 - (int) pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
     if (_selectedPicker == 0)
-        return 120;
-    else
         return self.sounds.count;
+    else
+        return 24;
+
 }
 
 - (int) numberOfComponentsInPickerView:(UIPickerView *)pickerView
@@ -286,24 +454,24 @@
 - (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
     if (_selectedPicker == 0)
-        return [NSString stringWithFormat:@"%i mins", row + 1];
-    else
         return [[self.sounds objectAtIndex:row] objectForKey:@"name"];
+    else
+        return [NSString stringWithFormat:@"%i mins", (row + 1) * 5];
 }
 
 - (void) pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
     if (_selectedPicker == 0) {
         
-        _selectedTime = row + 1;
-        
-        [JASettings setSnoozeLength:_selectedTime];
+        [JASettings setSleepSound:[self.sounds objectAtIndex:row]];
+        _selectedSound = row;
         
     }
     else {
         
-        [JASettings setSleepSound:[self.sounds objectAtIndex:row]];
-        _selectedSound = row;
+        _selectedTime = (row + 1) * 5;
+        
+        [JASettings setSnoozeLength:_selectedTime];
         
     }
     
@@ -319,7 +487,6 @@
             [self.shineSwitch setOn:NO];
         }
         else {
-            [self.awakeSwitch setOn:YES];
             [self.shineSwitch setOn:YES];
             
             [JASettings setStayAwake:YES];
@@ -327,17 +494,156 @@
         }
     }
     else {
-        if (buttonIndex == 0) {
-            [self.awakeSwitch setOn:YES];
-        }
-        else {
-            [self.awakeSwitch setOn:NO];
+        if (buttonIndex == 1) {
+            
             [self.shineSwitch setOn:NO];
             
             [JASettings setStayAwake:NO];
             [JASettings setShine:NO];
         }
     }
+}
+
+
+#pragma mark - Date Picker
+- (void) togglePicker
+{
+    if (self.dateToolbar.frame.origin.y < self.view.frame.size.height) {
+        [self lowerDatePicker];
+    }
+    else {
+        [self raiseDatePicker];
+    }
+    
+}
+
+- (void) raiseDatePicker
+{
+    [UIView animateWithDuration:0.3f
+                     animations:^{
+                         
+                         self.dateToolbar.frame = CGRectMake(0, self.view.frame.size.height - self.datePicker.frame.size.height - self.dateToolbar.frame.size.height, self.view.frame.size.width, self.dateToolbar.frame.size.height);
+                         self.datePicker.frame = CGRectMake(0, self.view.frame.size.height - self.datePicker.frame.size.height, self.datePicker.frame.size.width, self.datePicker.frame.size.height);
+                     }
+                     completion:^(BOOL finished) {
+                         
+                     }];
+}
+
+- (void) lowerDatePicker
+{
+    [UIView animateWithDuration:0.3f
+                     animations:^{
+                         
+                         self.dateToolbar.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.dateToolbar.frame.size.height);
+                         self.datePicker.frame = CGRectMake(0, self.view.frame.size.height + self.dateToolbar.frame.size.height, self.datePicker.frame.size.width, self.datePicker.frame.size.height);
+                     }
+                     completion:^(BOOL finished) {
+                         
+                     }];
+    
+    
+}
+
+#pragma mark - Sleep Calc
+- (void) createButtonPressed:(id)sender
+{
+    JAAlarm *_alarm = [[JAAlarm alloc] init];
+    _alarm.alarmID = [NSNumber numberWithInt:-1];
+    _alarm.enabled = YES;
+    _alarm.gradualSound = YES;
+    _alarm.repeatDays = [[NSArray alloc] init];
+    _alarm.sound = [JASound defaultSound];
+    _alarm.name = @"Sleep Smart Alarm";
+    _alarm.snoozeTime = [NSNumber numberWithInt:10];
+    _alarm.lastFireDate = nil;
+    _alarm.enabledDate = [NSDate date];
+    
+    //time comps
+    NSDate *alarmDate;
+    if (self.sleepWakeControl.selectedSegmentIndex == 0) {
+        alarmDate = self.datePicker.date;
+    }
+    else {
+        int timeInterval = -(60 * 90) * (10 - [self.tableView indexPathForSelectedRow].row);
+        alarmDate = [NSDate dateWithTimeInterval:timeInterval sinceDate:self.datePicker.date];
+    }
+    
+    //set time components
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *timeComponents = [gregorian components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:alarmDate];
+    [timeComponents setSecond:0];
+    _alarm.timeComponents = timeComponents;
+    
+    
+    //Alarm Settings View
+    JAAlarmSettingsController *newAlarmController =[[JAAlarmSettingsController alloc] initWithAlarm:_alarm];
+    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonItemStyleDone target:self action:@selector(dismissModalViewControllerAnimated:)];
+    [saveButton setTitle:NSLocalizedString(@"Save", nil)];
+    [newAlarmController.navigationItem setLeftBarButtonItem:saveButton];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:newAlarmController];
+    [self presentViewController:navController animated:YES completion:nil];
+    
+    
+}
+
+//set the alarm's date
+- (void)dateChanged:(id)sender
+{
+    self.tableView.alpha = 1;
+    
+    if (self.sleepWakeControl.selectedSegmentIndex == 0) {
+        
+        
+        //break the chosen date down so we just have the hour and minute with a zero'd seconds
+        NSDate *theTime = self.datePicker.date;
+        NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+        NSDateComponents *timeComponents = [gregorian components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:theTime];
+        [timeComponents setSecond:0];
+        
+        //set time button label
+        [self.timeButton setTitle:[_formatter stringFromDate:theTime] forState:UIControlStateNormal];
+        
+        //set the alarm's date
+        self.timeComponents = timeComponents;
+        
+        //enable create buton
+        [self.createButton setEnabled:YES];
+    }
+    else {
+        
+        //break the chosen date down so we just have the hour and minute with a zero'd seconds
+        NSDate *theTime = self.datePicker.date;
+        NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+        NSDateComponents *timeComponents = [gregorian components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:theTime];
+        [timeComponents setSecond:0];
+        
+        //set the alarm's date
+        self.timeComponents = timeComponents;
+        
+        //set time button label
+        [self.timeButton setTitle:[_formatter stringFromDate:theTime] forState:UIControlStateNormal];
+        
+    }
+    
+    //reload times table
+    [self.tableView reloadData];
+}
+
+- (void)controlChanged:(id)sender
+{
+    if (self.sleepWakeControl.selectedSegmentIndex == 0) {
+        self.sleepLabel.text = NSLocalizedString(@"You try to fall asleep at one of these times:", nil);
+        self.createButton.enabled = YES;
+    }
+    else {
+        self.sleepLabel.text = NSLocalizedString(@"Select one of these times to wake up at:", nil);
+        self.createButton.enabled = NO;
+    }
+    
+    
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+    [self.tableView reloadData];
 }
 
 

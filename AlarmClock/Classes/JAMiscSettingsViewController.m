@@ -67,11 +67,6 @@
         [self.pickerView setShowsSelectionIndicator:YES];
         [self.pickerView setDataSource:self];
         
-        //shine switch
-        [self setShineSwitch:[[UISwitch alloc] init]];
-        [self.shineSwitch setOn:[JASettings shine]];
-        [self.shineSwitch addTarget:self action:@selector(shineSwitchChanged:) forControlEvents:UIControlEventValueChanged];
-        
         //awake switch
         [self setAwakeSwitch:[[UISwitch alloc] init]];
         [self.awakeSwitch setOn:[JASettings shine]];
@@ -97,6 +92,12 @@
     
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.awakeSwitch setOn:[JASettings stayAwake]];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -106,18 +107,6 @@
 - (void)weatherSwitchChanged:(id)sender
 {
     [JASettings setCelsius:([self.weatherSwitch selectedSegmentIndex] == 1) ? YES : NO];
-}
-
-- (void)shineSwitchChanged:(id)sender
-{
-    if ([self.shineSwitch isOn] && ![JASettings stayAwake]) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Whoops!", nil) message:NSLocalizedString(@"In order to turn on the Rise & Shine feature we'll have to disable autolock.", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitles:NSLocalizedString(@"Ok", nil), nil];
-        [alert setTag:0];
-        [alert show];
-    }
-    else {
-        [JASettings setShine:[self.shineSwitch isOn]];
-    }
 }
 
 - (void)dimSwitchChanged:(id)sender
@@ -133,7 +122,7 @@
 - (void)awakeSwitchChanged:(id)sender
 {
     if (![self.awakeSwitch isOn] && [JASettings shine]) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Whoops!", nil) message:NSLocalizedString(@"Enabling autolock will disable the Rise & Shine feature.", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitles:NSLocalizedString(@"Ok", nil), nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Whoops!", nil) message:NSLocalizedString(@"If you don't keep autolock disabled the Rise & Shine feature will be disabled.", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitles:NSLocalizedString(@"Ok", nil), nil];
         [alert setTag:1];
         [alert show];
     }
@@ -200,11 +189,7 @@
             cell.textLabel.text = NSLocalizedString(@"Weather", nil);
             cell.accessoryView = self.weatherSwitch;
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            
-//            cell.textLabel.text = NSLocalizedString(@"Sleep Sound", nil);
-//            cell.detailTextLabel.text = [[self.sounds objectAtIndex:_selectedSound] objectForKey:@"name"];
-//            cell.accessoryType = UITableViewCellAccessoryNone;
-//            cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+
         }
         else if (indexPath.row == 2) {
             
@@ -227,16 +212,7 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     else {
-//        if (indexPath.row == 0) {
-//            cell.textLabel.text = NSLocalizedString(@"Rise & Shine", nil);
-//            cell.accessoryView = self.shineSwitch;
-//            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//        }
-//        else {
-//            cell.textLabel.text = NSLocalizedString(@"Disable Autolock", nil);
-//            cell.accessoryView = self.awakeSwitch;
-//            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//        }
+
     }
     
     
@@ -385,11 +361,9 @@
 {
     if (alertView.tag == 0) {
         if (buttonIndex == 0) {
-            [self.shineSwitch setOn:NO];
         }
         else {
             [self.awakeSwitch setOn:YES];
-            [self.shineSwitch setOn:YES];
             
             [JASettings setStayAwake:YES];
             [JASettings setShine:YES];
@@ -401,7 +375,6 @@
         }
         else {
             [self.awakeSwitch setOn:NO];
-            [self.shineSwitch setOn:NO];
             
             [JASettings setStayAwake:NO];
             [JASettings setShine:NO];
