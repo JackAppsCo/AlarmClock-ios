@@ -156,6 +156,7 @@
     _backdropImageview = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"backdrop.png"] stretchableImageWithLeftCapWidth:45 topCapHeight:45]];
     _backdropImageview.frame = CGRectInset(self.mainView.frame, 15.0, 0.0);
     _backdropImageview.frame = CGRectMake(self.mainView.frame.origin.x, self.clockLabel.frame.origin.y - 10, self.mainView.frame.size.width, self.clockLabel.frame.size.height + 20);
+    _backdropImageview.alpha = 0.65f;
     _backdropImageview.hidden = ![JASettings showBackdrop];
     [self.mainView addSubview:_backdropImageview];
     [self.mainView insertSubview:_backdropImageview belowSubview:self.amPmLabel];
@@ -283,6 +284,16 @@
     
 }
 
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if ([JASettings previousLaunchCount] > 0 && [JASettings previousLaunchCount] % 10 == 0)
+    {
+        UIAlertView *freeAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Wanna Upgrade?", nil) message:NSLocalizedString(@"If you like what you've seen so far you should check out the paid version.", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"No Thanks", nil) otherButtonTitles:NSLocalizedString(@"Upgrade Me!", nil), nil];
+        [freeAlert show];
+    }
+}
 
 - (IBAction)sleepButtonPressed:(id)sender {
     

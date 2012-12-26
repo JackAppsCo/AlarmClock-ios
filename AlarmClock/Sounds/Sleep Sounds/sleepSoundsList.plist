@@ -5,16 +5,92 @@
 	<key>sounds</key>
 	<array>
 		<dict>
+			<key>free</key>
+			<true/>
 			<key>name</key>
-			<string>Beach</string>
+			<string>Rain Forest</string>
 			<key>filename</key>
-			<string>Beach.m4a</string>
+			<string>Rain Forest.m4a</string>
+		</dict>
+		<dict>
+			<key>free</key>
+			<true/>
+			<key>name</key>
+			<string>Ocean Waves</string>
+			<key>filename</key>
+			<string>Ocean Waves.m4a</string>
+		</dict>
+		<dict>
+			<key>free</key>
+			<false/>
+			<key>name</key>
+			<string>Windy Day</string>
+			<key>filename</key>
+			<string>Windy Day.m4a</string>
 		</dict>
 		<dict>
 			<key>name</key>
 			<string>Thunderstorm</string>
+			<key>free</key>
+			<false/>
 			<key>filename</key>
 			<string>Thunderstorm.m4a</string>
+		</dict>
+		<dict>
+			<key>free</key>
+			<false/>
+			<key>name</key>
+			<string>Rainstorm</string>
+			<key>filename</key>
+			<string>Rainstorm.m4a</string>
+		</dict>
+		<dict>
+			<key>free</key>
+			<false/>
+			<key>name</key>
+			<string>Lake Shore</string>
+			<key>filename</key>
+			<string>Lake Shore.m4a</string>
+		</dict>
+		<dict>
+			<key>free</key>
+			<false/>
+			<key>name</key>
+			<string>Countryside</string>
+			<key>filename</key>
+			<string>Countryside.m4a</string>
+		</dict>
+		<dict>
+			<key>free</key>
+			<false/>
+			<key>name</key>
+			<string>City Sounds</string>
+			<key>filename</key>
+			<string>City Sounds.m4a</string>
+		</dict>
+		<dict>
+			<key>free</key>
+			<false/>
+			<key>name</key>
+			<string>Waterfall</string>
+			<key>filename</key>
+			<string>Waterfall.m4a</string>
+		</dict>
+		<dict>
+			<key>free</key>
+			<false/>
+			<key>name</key>
+			<string>Rain on Pavement</string>
+			<key>filename</key>
+			<string>Rain on Pavement.m4a</string>
+		</dict>
+		<dict>
+			<key>free</key>
+			<false/>
+			<key>name</key>
+			<string>Beach</string>
+			<key>filename</key>
+			<string>Beach.m4a</string>
 		</dict>
 	</array>
 </dict>

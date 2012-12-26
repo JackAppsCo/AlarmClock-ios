@@ -10,10 +10,12 @@
 #import "JASettings.h"
 #import "JASound.h"
 #import "JASettings.h"
+#import <Social/Social.h>
+#import <Twitter/Twitter.h>
+
 
 @interface JAMiscSettingsViewController ()
 - (void)weatherSwitchChanged:(id)sender;
-- (void)shineSwitchChanged:(id)sender;
 - (void)awakeSwitchChanged:(id)sender;
 - (void)dimSwitchChanged:(id)sender;
 - (void)flashlightSwitchChanged:(id)sender;
@@ -140,14 +142,26 @@
 
 - (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return (section == 0) ? NSLocalizedString(@"Settings", nil) : (section == 1) ? NSLocalizedString(@"Auto Lock", nil) : NSLocalizedString(@"Help & Information", nil);
+    if (section == 0) {
+        return NSLocalizedString(@"Settings", nil);
+    }
+    else if (section == 1) {
+        return NSLocalizedString(@"Auto Lock", nil);
+    }
+    else if (section == 2) {
+        return NSLocalizedString(@"Help & Information", nil);
+    }
+    else {
+        return NSLocalizedString(@"Spread the Word", nil);
+    }
+
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     
     // Return the number of sections.
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -160,8 +174,11 @@
     else if (section == 1) {
         return 1;
     }
-    else {
+    else if (section == 2) {
         return 2;
+    }
+    else {
+        return 4;
     }
 }
 
@@ -211,8 +228,24 @@
         cell.accessoryView = self.awakeSwitch;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    else {
+    else if (indexPath.section == 2) {
 
+    }
+    else {
+        if (indexPath.row == 0)
+            cell.textLabel.text = NSLocalizedString(@"Facebook", nil);
+        else if (indexPath.row == 1)
+            cell.textLabel.text = NSLocalizedString(@"Twitter", nil);
+        else if (indexPath.row == 2)
+            cell.textLabel.text = NSLocalizedString(@"Text Message", nil);
+        else
+            cell.textLabel.text = NSLocalizedString(@"Email", nil);
+        
+        cell.detailTextLabel.text = @"";
+        
+        cell.accessoryView = nil;
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
     }
     
     
@@ -278,6 +311,31 @@
 //            [self.pickerView selectRow:_selectedSound inComponent:0 animated:NO];
 //            [self raisePicker];
 //        }
+    }
+    else if (indexPath.section == 3) {
+        
+        if (indexPath.row == 0)
+        {
+            SLComposeViewController *composer = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+            [composer setInitialText:NSLocalizedString(@"Check out SleepSmart!", nil)];
+            [composer addImage:[UIImage imageNamed:@"AlarmClockIcon57.png"]];
+            [composer addURL:[NSURL URLWithString:NSLocalizedString(@"APPSTORE_URL", nil)]];
+            [self presentModalViewController:composer animated:YES];
+        }
+        else if (indexPath.row == 1) {
+            SLComposeViewController *composer = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+            [composer setInitialText:NSLocalizedString(@"Check out SleepSmart!", nil)];
+            [composer addImage:[UIImage imageNamed:@"AlarmClockIcon57.png"]];
+            [composer addURL:[NSURL URLWithString:NSLocalizedString(@"APPSTORE_URL", nil)]];
+            [self presentModalViewController:composer animated:YES];
+        }
+        else if (indexPath.row == 2 && [MFMessageComposeViewController canSendText]) {
+                [self displaySMSComposerSheet];
+        }
+        else if ([MFMailComposeViewController canSendMail])
+            [self displayComposerSheet];
+        
+        
     }
     
     
@@ -380,6 +438,52 @@
             [JASettings setShine:NO];
         }
     }
+}
+
+
+#pragma mark - Mail Composer
+-(void)displayComposerSheet
+{
+    MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
+    picker.mailComposeDelegate = self;
+    
+    [picker setSubject:@"Check out SleepSmart!"];
+    
+
+    
+    // Fill out the email body text.
+    NSString *emailBody = [NSString stringWithFormat:@"Check out <a href=\"%@\">SleepSmart</a> on the App Store", NSLocalizedString(@"APPSTORE_URL", nil), nil];
+    [picker setMessageBody:emailBody isHTML:YES];
+    
+    // Present the mail composition interface.
+    [self presentModalViewController:picker animated:YES];
+
+}
+
+// The mail compose view controller delegate method
+- (void)mailComposeController:(MFMailComposeViewController *)controller
+          didFinishWithResult:(MFMailComposeResult)result
+                        error:(NSError *)error
+{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+-(void)displaySMSComposerSheet
+{
+    MFMessageComposeViewController *picker = [[MFMessageComposeViewController alloc] init];
+    picker.messageComposeDelegate = self;
+
+    NSString *textBody = [NSString stringWithFormat:@"Check out SleepSmart on the App Store: %@", NSLocalizedString(@"APPSTORE_URL", nil), nil];
+    [picker setBody:textBody];
+    
+    [self presentModalViewController:picker animated:YES];
+
+}
+
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller
+                 didFinishWithResult:(MessageComposeResult)result {
+    
+        [self dismissModalViewControllerAnimated:YES];
 }
 
 @end

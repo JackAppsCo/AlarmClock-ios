@@ -28,6 +28,7 @@ static JASettings *sharedInstance = nil;
 #define SNOOZE_LENGTH_KEY @"snoozeLength"
 #define FLASHLIGHT_KEY @"flashlightKey"
 #define DIM_KEY @"dimKey"
+#define LAUNCH_KEY @"launchKey"
 
 @implementation JASettings
 
@@ -349,6 +350,17 @@ static JASettings *sharedInstance = nil;
 + (BOOL) dimDisabled
 {
     return [[NSUserDefaults standardUserDefaults] boolForKey:DIM_KEY];
+}
+
++ (int) previousLaunchCount
+{
+    return [[NSUserDefaults standardUserDefaults] integerForKey:LAUNCH_KEY];
+}
+
++ (void) increaseLaunchCount
+{
+    [[NSUserDefaults standardUserDefaults] setInteger:([JASettings previousLaunchCount] + 1) forKey:LAUNCH_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 #pragma mark - Class Methods

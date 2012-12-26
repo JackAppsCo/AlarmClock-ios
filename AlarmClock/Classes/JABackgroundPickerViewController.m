@@ -198,7 +198,9 @@
     
     // Get the image from the result
     self.customImageURL = @"custom";
-    [self.customImage setImage:[info valueForKey:@"UIImagePickerControllerOriginalImage"]];
+    UIImage *imageCropped = [self imageByCropping:[info valueForKey:@"UIImagePickerControllerOriginalImage"] toRect:[[info valueForKey:@"UIImagePickerControllerCropRect"] CGRectValue]];
+    //imageCropped.imageOrientation = [(UIImage*)[info valueForKey:@"UIImagePickerControllerOriginalImage"] imageOrientation];
+    [self.customImage setImage:imageCropped];
     
     NSData *pngData = UIImagePNGRepresentation([self.customImage.image fixOrientation]);
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -219,6 +221,18 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
+- (UIImage *)imageByCropping:(UIImage *)imageToCrop toRect:(CGRect)rect
+{
+    CGImageRef imageRef = CGImageCreateWithImageInRect([imageToCrop CGImage], rect);
+    
+    UIImage *cropped = [UIImage imageWithCGImage:imageRef];
+    CGImageRelease(imageRef);
+    
+    
+    return cropped;
+    
+}
+
 #pragma mark - UIActionSheet Methods
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
@@ -228,6 +242,7 @@
         case 0:
         {
             UIImagePickerController *imgPicker = [[UIImagePickerController alloc] init];
+            [imgPicker setAllowsEditing:YES];
             imgPicker.delegate = self;
             imgPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
             [self presentModalViewController:imgPicker animated:YES];
@@ -237,6 +252,7 @@
         {
             UIImagePickerController *imgPicker = [[UIImagePickerController alloc] init];
             imgPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            [imgPicker setAllowsEditing:YES];            
             imgPicker.delegate = self;
             [self presentModalViewController:imgPicker animated:YES];
             break;

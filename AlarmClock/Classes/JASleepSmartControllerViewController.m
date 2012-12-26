@@ -75,6 +75,7 @@
         [self setShineSwitch:[[UISwitch alloc] init]];
         [self.shineSwitch setOn:[JASettings shine]];
         [self.shineSwitch addTarget:self action:@selector(shineSwitchChanged:) forControlEvents:UIControlEventValueChanged];
+        [self.shineSwitch setEnabled:[JASettings isPaid]];
         
         //Sleep Calc
         //-----------
@@ -335,7 +336,7 @@
         cell.textLabel.text = NSLocalizedString(@"Rise & Shine", nil);
         cell.detailTextLabel.text = @"";
         cell.accessoryView = self.shineSwitch;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.selectionStyle = ([JASettings isPaid]) ? UITableViewCellSelectionStyleBlue : UITableViewCellSelectionStyleNone;
         
     }
     
@@ -410,6 +411,13 @@
     }
     else {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        
+        if (indexPath.section == 2 && ![JASettings isPaid]) {
+            
+            UIAlertView *freeAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Wanna Upgrade?", nil) message:NSLocalizedString(@"The Rise & Shine feature is only available in the paid application.", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"No Thanks", nil) otherButtonTitles:NSLocalizedString(@"Upgrade Me!", nil), nil];
+            [freeAlert show];
+            
+        }
     }
     
     

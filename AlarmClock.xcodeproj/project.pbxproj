@@ -7,6 +7,50 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		46662C0F168AA2C400661715 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46662C0E168AA2C400661715 /* Social.framework */; };
+		46662C12168AA2CA00661715 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46662C11168AA2CA00661715 /* Twitter.framework */; };
+		46662C14168AA2D600661715 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46662C13168AA2D600661715 /* MessageUI.framework */; };
+		46662C1E168ACE0F00661715 /* City Sounds.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46662C15168ACE0F00661715 /* City Sounds.m4a */; };
+		46662C1F168ACE0F00661715 /* City Sounds.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46662C15168ACE0F00661715 /* City Sounds.m4a */; };
+		46662C20168ACE0F00661715 /* Countryside.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46662C16168ACE0F00661715 /* Countryside.m4a */; };
+		46662C21168ACE0F00661715 /* Countryside.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46662C16168ACE0F00661715 /* Countryside.m4a */; };
+		46662C22168ACE0F00661715 /* Lake Shore.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46662C17168ACE0F00661715 /* Lake Shore.m4a */; };
+		46662C23168ACE0F00661715 /* Lake Shore.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46662C17168ACE0F00661715 /* Lake Shore.m4a */; };
+		46662C24168ACE0F00661715 /* Ocean Waves.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46662C18168ACE0F00661715 /* Ocean Waves.m4a */; };
+		46662C25168ACE0F00661715 /* Ocean Waves.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46662C18168ACE0F00661715 /* Ocean Waves.m4a */; };
+		46662C26168ACE0F00661715 /* Rain Forest.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46662C19168ACE0F00661715 /* Rain Forest.m4a */; };
+		46662C27168ACE0F00661715 /* Rain Forest.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46662C19168ACE0F00661715 /* Rain Forest.m4a */; };
+		46662C28168ACE0F00661715 /* Rain on Pavement.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46662C1A168ACE0F00661715 /* Rain on Pavement.m4a */; };
+		46662C29168ACE0F00661715 /* Rain on Pavement.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46662C1A168ACE0F00661715 /* Rain on Pavement.m4a */; };
+		46662C2A168ACE0F00661715 /* Rainstorm.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46662C1B168ACE0F00661715 /* Rainstorm.m4a */; };
+		46662C2B168ACE0F00661715 /* Rainstorm.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46662C1B168ACE0F00661715 /* Rainstorm.m4a */; };
+		46662C2C168ACE0F00661715 /* Waterfall.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46662C1C168ACE0F00661715 /* Waterfall.m4a */; };
+		46662C2D168ACE0F00661715 /* Waterfall.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46662C1C168ACE0F00661715 /* Waterfall.m4a */; };
+		46662C2E168ACE0F00661715 /* Windy Day.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46662C1D168ACE0F00661715 /* Windy Day.m4a */; };
+		46662C2F168ACE0F00661715 /* Windy Day.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46662C1D168ACE0F00661715 /* Windy Day.m4a */; };
+		46662C3A168AD30200661715 /* rainbow.png in Resources */ = {isa = PBXBuildFile; fileRef = 46662C30168AD30200661715 /* rainbow.png */; };
+		46662C3B168AD30200661715 /* rainbow.png in Resources */ = {isa = PBXBuildFile; fileRef = 46662C30168AD30200661715 /* rainbow.png */; };
+		46662C3C168AD30200661715 /* rainbow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46662C31168AD30200661715 /* rainbow@2x.png */; };
+		46662C3D168AD30200661715 /* rainbow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46662C31168AD30200661715 /* rainbow@2x.png */; };
+		46662C3E168AD30200661715 /* wheat.png in Resources */ = {isa = PBXBuildFile; fileRef = 46662C32168AD30200661715 /* wheat.png */; };
+		46662C3F168AD30200661715 /* wheat.png in Resources */ = {isa = PBXBuildFile; fileRef = 46662C32168AD30200661715 /* wheat.png */; };
+		46662C40168AD30200661715 /* wheat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46662C33168AD30200661715 /* wheat@2x.png */; };
+		46662C41168AD30200661715 /* wheat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46662C33168AD30200661715 /* wheat@2x.png */; };
+		46662C42168AD30200661715 /* canal.png in Resources */ = {isa = PBXBuildFile; fileRef = 46662C34168AD30200661715 /* canal.png */; };
+		46662C43168AD30200661715 /* canal.png in Resources */ = {isa = PBXBuildFile; fileRef = 46662C34168AD30200661715 /* canal.png */; };
+		46662C44168AD30200661715 /* canal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46662C35168AD30200661715 /* canal@2x.png */; };
+		46662C45168AD30200661715 /* canal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46662C35168AD30200661715 /* canal@2x.png */; };
+		46662C46168AD30200661715 /* drops.png in Resources */ = {isa = PBXBuildFile; fileRef = 46662C36168AD30200661715 /* drops.png */; };
+		46662C47168AD30200661715 /* drops.png in Resources */ = {isa = PBXBuildFile; fileRef = 46662C36168AD30200661715 /* drops.png */; };
+		46662C48168AD30200661715 /* drops@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46662C37168AD30200661715 /* drops@2x.png */; };
+		46662C49168AD30200661715 /* drops@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46662C37168AD30200661715 /* drops@2x.png */; };
+		46662C4A168AD30200661715 /* trees.png in Resources */ = {isa = PBXBuildFile; fileRef = 46662C38168AD30200661715 /* trees.png */; };
+		46662C4B168AD30200661715 /* trees.png in Resources */ = {isa = PBXBuildFile; fileRef = 46662C38168AD30200661715 /* trees.png */; };
+		46662C4C168AD30200661715 /* trees@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46662C39168AD30200661715 /* trees@2x.png */; };
+		46662C4D168AD30200661715 /* trees@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46662C39168AD30200661715 /* trees@2x.png */; };
+		46662C4E168AD7AA00661715 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46662C13168AA2D600661715 /* MessageUI.framework */; };
+		46662C4F168AD7AA00661715 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46662C11168AA2CA00661715 /* Twitter.framework */; };
+		46662C50168AD7AA00661715 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46662C0E168AA2C400661715 /* Social.framework */; };
 		4694317E168A8B90000FE3E3 /* libFlurry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4694317D168A8B90000FE3E3 /* libFlurry.a */; };
 		4694317F168A8B90000FE3E3 /* libFlurry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4694317D168A8B90000FE3E3 /* libFlurry.a */; };
 		46943184168A8C75000FE3E3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46943183168A8C75000FE3E3 /* SystemConfiguration.framework */; };
@@ -319,6 +363,28 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		46662C0E168AA2C400661715 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		46662C11168AA2CA00661715 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		46662C13168AA2D600661715 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		46662C15168ACE0F00661715 /* City Sounds.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "City Sounds.m4a"; path = "AlarmClock/Sounds/Sleep Sounds/City Sounds.m4a"; sourceTree = SOURCE_ROOT; };
+		46662C16168ACE0F00661715 /* Countryside.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = Countryside.m4a; path = "AlarmClock/Sounds/Sleep Sounds/Countryside.m4a"; sourceTree = SOURCE_ROOT; };
+		46662C17168ACE0F00661715 /* Lake Shore.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lake Shore.m4a"; path = "AlarmClock/Sounds/Sleep Sounds/Lake Shore.m4a"; sourceTree = SOURCE_ROOT; };
+		46662C18168ACE0F00661715 /* Ocean Waves.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ocean Waves.m4a"; path = "AlarmClock/Sounds/Sleep Sounds/Ocean Waves.m4a"; sourceTree = SOURCE_ROOT; };
+		46662C19168ACE0F00661715 /* Rain Forest.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Rain Forest.m4a"; path = "AlarmClock/Sounds/Sleep Sounds/Rain Forest.m4a"; sourceTree = SOURCE_ROOT; };
+		46662C1A168ACE0F00661715 /* Rain on Pavement.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Rain on Pavement.m4a"; path = "AlarmClock/Sounds/Sleep Sounds/Rain on Pavement.m4a"; sourceTree = SOURCE_ROOT; };
+		46662C1B168ACE0F00661715 /* Rainstorm.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = Rainstorm.m4a; path = "AlarmClock/Sounds/Sleep Sounds/Rainstorm.m4a"; sourceTree = SOURCE_ROOT; };
+		46662C1C168ACE0F00661715 /* Waterfall.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = Waterfall.m4a; path = "AlarmClock/Sounds/Sleep Sounds/Waterfall.m4a"; sourceTree = SOURCE_ROOT; };
+		46662C1D168ACE0F00661715 /* Windy Day.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Windy Day.m4a"; path = "AlarmClock/Sounds/Sleep Sounds/Windy Day.m4a"; sourceTree = SOURCE_ROOT; };
+		46662C30168AD30200661715 /* rainbow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rainbow.png; path = Images/rainbow.png; sourceTree = "<group>"; };
+		46662C31168AD30200661715 /* rainbow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "rainbow@2x.png"; path = "Images/rainbow@2x.png"; sourceTree = "<group>"; };
+		46662C32168AD30200661715 /* wheat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wheat.png; path = Images/wheat.png; sourceTree = "<group>"; };
+		46662C33168AD30200661715 /* wheat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "wheat@2x.png"; path = "Images/wheat@2x.png"; sourceTree = "<group>"; };
+		46662C34168AD30200661715 /* canal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = canal.png; path = Images/canal.png; sourceTree = "<group>"; };
+		46662C35168AD30200661715 /* canal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "canal@2x.png"; path = "Images/canal@2x.png"; sourceTree = "<group>"; };
+		46662C36168AD30200661715 /* drops.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = drops.png; path = Images/drops.png; sourceTree = "<group>"; };
+		46662C37168AD30200661715 /* drops@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "drops@2x.png"; path = "Images/drops@2x.png"; sourceTree = "<group>"; };
+		46662C38168AD30200661715 /* trees.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = trees.png; path = Images/trees.png; sourceTree = "<group>"; };
+		46662C39168AD30200661715 /* trees@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "trees@2x.png"; path = "Images/trees@2x.png"; sourceTree = "<group>"; };
 		4694317D168A8B90000FE3E3 /* libFlurry.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFlurry.a; path = "../../Flurry iPhone SDK v4.1.0/Flurry/libFlurry.a"; sourceTree = "<group>"; };
 		46943180168A8BE2000FE3E3 /* Flurry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Flurry.h; path = "../../Flurry iPhone SDK v4.1.0/Flurry/Flurry.h"; sourceTree = "<group>"; };
 		46943183168A8C75000FE3E3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -554,6 +620,9 @@
 				C916EF3916879754000B53F5 /* CoreGraphics.framework in Frameworks */,
 				4694317F168A8B90000FE3E3 /* libFlurry.a in Frameworks */,
 				469431AB168A9069000FE3E3 /* SystemConfiguration.framework in Frameworks */,
+				46662C4E168AD7AA00661715 /* MessageUI.framework in Frameworks */,
+				46662C4F168AD7AA00661715 /* Twitter.framework in Frameworks */,
+				46662C50168AD7AA00661715 /* Social.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -561,6 +630,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46662C14168AA2D600661715 /* MessageUI.framework in Frameworks */,
+				46662C12168AA2CA00661715 /* Twitter.framework in Frameworks */,
+				46662C0F168AA2C400661715 /* Social.framework in Frameworks */,
 				46943184168A8C75000FE3E3 /* SystemConfiguration.framework in Frameworks */,
 				C9B2FC89166CF08A0037E588 /* iAd.framework in Frameworks */,
 				C93AC1331665BD1F0065798B /* AssetsLibrary.framework in Frameworks */,
@@ -658,6 +730,15 @@
 		C92EF00D1662C98C00274FBB /* Sleep Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				46662C15168ACE0F00661715 /* City Sounds.m4a */,
+				46662C16168ACE0F00661715 /* Countryside.m4a */,
+				46662C17168ACE0F00661715 /* Lake Shore.m4a */,
+				46662C18168ACE0F00661715 /* Ocean Waves.m4a */,
+				46662C19168ACE0F00661715 /* Rain Forest.m4a */,
+				46662C1A168ACE0F00661715 /* Rain on Pavement.m4a */,
+				46662C1B168ACE0F00661715 /* Rainstorm.m4a */,
+				46662C1C168ACE0F00661715 /* Waterfall.m4a */,
+				46662C1D168ACE0F00661715 /* Windy Day.m4a */,
 				C916EFCC16879E9A000B53F5 /* sleepSoundsList.plist */,
 				C916EFCD16879E9A000B53F5 /* Thunderstorm.m4a */,
 				C916EFCE16879E9A000B53F5 /* Beach.m4a */,
@@ -763,33 +844,43 @@
 		C9A0E4551654A4D0000BB045 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				C9D4212016800C930035C0D4 /* backdrop.png */,
-				C9D4212116800C930035C0D4 /* backdrop@2x.png */,
-				C9FD4EEE1675275B007B4A38 /* Tab Icons */,
-				C9FD4EEA16751501007B4A38 /* customBGIcon.png */,
-				C9FD4EEB16751501007B4A38 /* customBGIcon@2x.png */,
-				C9FD4EE31675121C007B4A38 /* BG Samples */,
-				C9FD4EB51675054D007B4A38 /* Recording */,
-				C95D700316695B1D00A9FD03 /* HomeScreenIcons */,
-				C93A02231666DAE800E1A273 /* playButton.png */,
-				C93A02241666DAE800E1A273 /* stopButton.png */,
-				C93A02251666DAE800E1A273 /* stopButton@2x.png */,
-				C93A02261666DAE800E1A273 /* playButton@2x.png */,
 				C9A0E4581654A4DA000BB045 /* AlarmClockIcon114.png */,
 				C91F88421658493F004F0943 /* AlarmClockIcon3_114.png */,
 				C91F88431658493F004F0943 /* AlarmClockIcon3_57.png */,
 				C9A0E4571654A4DA000BB045 /* AlarmClockIcon57.png */,
 				C92EEFEE16629D4B00274FBB /* alarmRowBG.png */,
 				C92EEFEF16629D4B00274FBB /* alarmRowBG@2x.png */,
+				C9D4212016800C930035C0D4 /* backdrop.png */,
+				C9D4212116800C930035C0D4 /* backdrop@2x.png */,
 				C9A2BC00165F27E600F09634 /* beach.png */,
 				C96BCE94166510AA0002450C /* beach@2x.png */,
+				C9FD4EE31675121C007B4A38 /* BG Samples */,
 				C95BDD8F165D711D005AEEFC /* BlackBG.png */,
 				C96BCE92166510AA0002450C /* BlackBG@2x.png */,
+				46662C34168AD30200661715 /* canal.png */,
+				46662C35168AD30200661715 /* canal@2x.png */,
 				C9A2BC01165F27E600F09634 /* chalkboard.png */,
 				C96BCE93166510AA0002450C /* chalkboard@2x.png */,
+				C9FD4EEA16751501007B4A38 /* customBGIcon.png */,
+				C9FD4EEB16751501007B4A38 /* customBGIcon@2x.png */,
+				46662C36168AD30200661715 /* drops.png */,
+				46662C37168AD30200661715 /* drops@2x.png */,
+				C95D700316695B1D00A9FD03 /* HomeScreenIcons */,
+				C93A02231666DAE800E1A273 /* playButton.png */,
+				C93A02261666DAE800E1A273 /* playButton@2x.png */,
 				C93AC1271665B1F70065798B /* plus.png */,
+				46662C30168AD30200661715 /* rainbow.png */,
+				46662C31168AD30200661715 /* rainbow@2x.png */,
+				C9FD4EB51675054D007B4A38 /* Recording */,
 				C92EEFEA16629BF100274FBB /* rowBG.png */,
 				C92EEFEB16629BF100274FBB /* rowBG@2x.png */,
+				C93A02241666DAE800E1A273 /* stopButton.png */,
+				C93A02251666DAE800E1A273 /* stopButton@2x.png */,
+				C9FD4EEE1675275B007B4A38 /* Tab Icons */,
+				46662C38168AD30200661715 /* trees.png */,
+				46662C39168AD30200661715 /* trees@2x.png */,
+				46662C32168AD30200661715 /* wheat.png */,
+				46662C33168AD30200661715 /* wheat@2x.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -847,6 +938,9 @@
 		C9E6404516528B7500A388C6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				46662C13168AA2D600661715 /* MessageUI.framework */,
+				46662C11168AA2CA00661715 /* Twitter.framework */,
+				46662C0E168AA2C400661715 /* Social.framework */,
 				46943183168A8C75000FE3E3 /* SystemConfiguration.framework */,
 				C9B2FC88166CF08A0037E588 /* iAd.framework */,
 				C93AC1321665BD1F0065798B /* AssetsLibrary.framework */,
@@ -1252,6 +1346,25 @@
 				469431A8168A8DDB000FE3E3 /* AppiraterLocalizable.strings in Resources */,
 				469431AA168A8DDB000FE3E3 /* README.md in Resources */,
 				469431AD168A93C6000FE3E3 /* Piano Melody.m4a in Resources */,
+				46662C1F168ACE0F00661715 /* City Sounds.m4a in Resources */,
+				46662C21168ACE0F00661715 /* Countryside.m4a in Resources */,
+				46662C23168ACE0F00661715 /* Lake Shore.m4a in Resources */,
+				46662C25168ACE0F00661715 /* Ocean Waves.m4a in Resources */,
+				46662C27168ACE0F00661715 /* Rain Forest.m4a in Resources */,
+				46662C29168ACE0F00661715 /* Rain on Pavement.m4a in Resources */,
+				46662C2B168ACE0F00661715 /* Rainstorm.m4a in Resources */,
+				46662C2D168ACE0F00661715 /* Waterfall.m4a in Resources */,
+				46662C2F168ACE0F00661715 /* Windy Day.m4a in Resources */,
+				46662C3B168AD30200661715 /* rainbow.png in Resources */,
+				46662C3D168AD30200661715 /* rainbow@2x.png in Resources */,
+				46662C3F168AD30200661715 /* wheat.png in Resources */,
+				46662C41168AD30200661715 /* wheat@2x.png in Resources */,
+				46662C43168AD30200661715 /* canal.png in Resources */,
+				46662C45168AD30200661715 /* canal@2x.png in Resources */,
+				46662C47168AD30200661715 /* drops.png in Resources */,
+				46662C49168AD30200661715 /* drops@2x.png in Resources */,
+				46662C4B168AD30200661715 /* trees.png in Resources */,
+				46662C4D168AD30200661715 /* trees@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1373,6 +1486,25 @@
 				469431A3168A8DDB000FE3E3 /* .gitignore in Resources */,
 				469431A7168A8DDB000FE3E3 /* AppiraterLocalizable.strings in Resources */,
 				469431A9168A8DDB000FE3E3 /* README.md in Resources */,
+				46662C1E168ACE0F00661715 /* City Sounds.m4a in Resources */,
+				46662C20168ACE0F00661715 /* Countryside.m4a in Resources */,
+				46662C22168ACE0F00661715 /* Lake Shore.m4a in Resources */,
+				46662C24168ACE0F00661715 /* Ocean Waves.m4a in Resources */,
+				46662C26168ACE0F00661715 /* Rain Forest.m4a in Resources */,
+				46662C28168ACE0F00661715 /* Rain on Pavement.m4a in Resources */,
+				46662C2A168ACE0F00661715 /* Rainstorm.m4a in Resources */,
+				46662C2C168ACE0F00661715 /* Waterfall.m4a in Resources */,
+				46662C2E168ACE0F00661715 /* Windy Day.m4a in Resources */,
+				46662C3A168AD30200661715 /* rainbow.png in Resources */,
+				46662C3C168AD30200661715 /* rainbow@2x.png in Resources */,
+				46662C3E168AD30200661715 /* wheat.png in Resources */,
+				46662C40168AD30200661715 /* wheat@2x.png in Resources */,
+				46662C42168AD30200661715 /* canal.png in Resources */,
+				46662C44168AD30200661715 /* canal@2x.png in Resources */,
+				46662C46168AD30200661715 /* drops.png in Resources */,
+				46662C48168AD30200661715 /* drops@2x.png in Resources */,
+				46662C4A168AD30200661715 /* trees.png in Resources */,
+				46662C4C168AD30200661715 /* trees@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1554,7 +1686,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -1576,7 +1708,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "DF974808-475A-41FA-BEAD-D768CD1CAA48";
 				SDKROOT = iphoneos;
