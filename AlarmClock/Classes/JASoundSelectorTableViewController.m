@@ -8,6 +8,7 @@
 
 #import "JASoundSelectorTableViewController.h"
 #import "VoiceRecordViewController.h"
+#import "JASettings.h"
 
 #define DOCUMENTS_FOLDER [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"]
 
@@ -37,6 +38,7 @@
 		NSString *soundsLocation = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"soundsList.plist"];
 		NSDictionary *soundsDict = [[NSDictionary alloc] initWithContentsOfFile:soundsLocation];
         [self setSoundList:[soundsDict objectForKey:@"sounds"]];
+        [self setGentleSoundList:[soundsDict objectForKey:@"gentle"]];
         
         //set the selected sound
         if (!aSound) {
@@ -108,18 +110,33 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
     if (section == 0)
-        return self.soundList.count;
+        return self.gentleSoundList.count;
     else if (section == 1)
+        return self.soundList.count;
+    else if (section == 2)
         return (1 + [JASound savedSounds].count);
     else
         return 1;
+}
+
+- (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    // Return the number of rows in the section.
+    if (section == 0)
+        return NSLocalizedString(@"Gentle Alarms", nil);
+    else if (section == 1)
+        return NSLocalizedString(@"Alarm Sounds", nil);
+    else if (section == 2)
+        return NSLocalizedString(@"Custom Alarms", nil);
+    else
+        return NSLocalizedString(@"iPhone Alarms", nil);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -131,17 +148,34 @@
         
     }
     
+    cell.textLabel.textColor = [UIColor blackColor];
+    
     if (indexPath.section == 0) {
+        
+        if (![JASettings isPaid] && ![[(NSDictionary*)[self.gentleSoundList objectAtIndex:indexPath.row] objectForKey:@"free"] boolValue])
+            cell.textLabel.textColor = [UIColor grayColor];
+        
+        // Configure the cell...
+        cell.textLabel.text = [(NSDictionary*)[self.gentleSoundList objectAtIndex:indexPath.row] objectForKey:@"name"];
+        cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+        
+        if ([[(NSDictionary*)[self.gentleSoundList objectAtIndex:indexPath.row] objectForKey:@"filename"] isEqualToString:self.selectedSound.soundFilename]) {
+            
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
+        else {
+            //cell.imageView.image = nil;
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+    }
+    else if (indexPath.section == 1) {
+        
+        if (![JASettings isPaid] && ![[(NSDictionary*)[self.soundList objectAtIndex:indexPath.row] objectForKey:@"free"] boolValue])
+            cell.textLabel.textColor = [UIColor grayColor];
+        
         // Configure the cell...
         cell.textLabel.text = [(NSDictionary*)[soundList objectAtIndex:indexPath.row] objectForKey:@"name"];
         cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
-        
-        /*if ([[(NSDictionary*)[soundList objectAtIndex:indexPath.row] objectForKey:@"filename"] isEqualToString:_currentlyPlayingFilename]) {
-         [cell setAccessoryView:[self makeDetailDisclosureButtonWithImage:@"stopButton.png"]];
-         }
-         else {
-         [cell setAccessoryView:[self makeDetailDisclosureButtonWithImage:@"playButton.png"]];
-         }*/
         
         if ([[(NSDictionary*)[soundList objectAtIndex:indexPath.row] objectForKey:@"filename"] isEqualToString:self.selectedSound.soundFilename]) {
             //cell.imageView.image = [UIImage imageNamed:@"plus"];
@@ -152,7 +186,7 @@
             cell.accessoryType = UITableViewCellAccessoryNone;
         }
     }
-    else if (indexPath.section == 1) {
+    else if (indexPath.section == 2) {
         if (indexPath.row == 0) {
             cell.textLabel.text = NSLocalizedString(@"Record A New Sound", nil);
             cell.accessoryType = UITableViewCellAccessoryNone;
@@ -252,6 +286,16 @@
         
         if (indexPath.section == 0) {
             
+            if ([[(NSDictionary*)[self.gentleSoundList objectAtIndex:indexPath.row] objectForKey:@"filename"] isEqualToString:_currentlyPlayingFilename]) {
+                [self.aPlayer stop];
+                _currentlyPlayingFilename = @"";
+                [self.tableView reloadData];
+                return;
+            }
+            
+        }
+        else if (indexPath.section == 1) {
+            
             if ([[(NSDictionary*)[soundList objectAtIndex:indexPath.row] objectForKey:@"filename"] isEqualToString:_currentlyPlayingFilename]) {
                 [self.aPlayer stop];
                 _currentlyPlayingFilename = @"";
@@ -260,7 +304,7 @@
             }
             
         }
-        else if (indexPath.section == 1 && indexPath.row != 0) {
+        else if (indexPath.section == 2 && indexPath.row != 0) {
             
             if ([[(JASound*)[[JASound savedSounds] objectAtIndex:(indexPath.row - 1)] soundFilename] isEqualToString:_currentlyPlayingFilename]) {
                 [self.aPlayer stop];
@@ -275,9 +319,12 @@
     NSString *filename, *soundFilePath;
     NSURL *fileURL;
     if (indexPath.section == 0) {
+        _currentlyPlayingFilename = filename = [(NSDictionary*)[self.gentleSoundList objectAtIndex:indexPath.row] objectForKey:@"filename"];
+    }
+    else if (indexPath.section == 1) {
         _currentlyPlayingFilename = filename = [(NSDictionary*)[soundList objectAtIndex:indexPath.row] objectForKey:@"filename"];
     }
-    else if (indexPath.section == 1 && indexPath.row != 0) {
+    else if (indexPath.section == 2 && indexPath.row != 0) {
         _currentlyPlayingFilename = filename = [(JASound*)[[JASound savedSounds] objectAtIndex:(indexPath.row - 1)] soundFilename];
     }
     
@@ -312,7 +359,7 @@
     
     JASound *newSound = nil;
     
-    if (indexPath.section == 1) {
+    if (indexPath.section == 2) {
         
         if (indexPath.row == 0) {
             VoiceRecordViewController *recorder = [[VoiceRecordViewController alloc] initWithNibName:@"VoiceRecordViewController" bundle:[NSBundle mainBundle]];
@@ -329,10 +376,31 @@
     }
     else if (indexPath.section == 0) {
         
-        newSound = [[JASound alloc] init];
-        [newSound setName:[(NSDictionary*)[soundList objectAtIndex:indexPath.row] objectForKey:@"name"]];
-        [newSound setSoundFilename:[(NSDictionary*)[soundList objectAtIndex:indexPath.row] objectForKey:@"filename"]];
-        [self setSelectedSound:newSound];
+        if ([JASettings isPaid] || (![JASettings isPaid] && [[(NSDictionary*)[self.gentleSoundList objectAtIndex:indexPath.row] objectForKey:@"free"] boolValue])) {
+            newSound = [[JASound alloc] init];
+            [newSound setName:[(NSDictionary*)[self.gentleSoundList objectAtIndex:indexPath.row] objectForKey:@"name"]];
+            [newSound setSoundFilename:[(NSDictionary*)[self.gentleSoundList objectAtIndex:indexPath.row] objectForKey:@"filename"]];
+            [self setSelectedSound:newSound];
+        }
+        else {
+            UIAlertView *freeAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Wanna Upgrade?", nil) message:NSLocalizedString(@"This alarm is only available in the paid application.", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"No Thanks", nil) otherButtonTitles:NSLocalizedString(@"Upgrade Me!", nil), nil];
+            [freeAlert show];
+            return;
+        }
+    }
+    else if (indexPath.section == 1) {
+        if ([JASettings isPaid] || (![JASettings isPaid] && [[(NSDictionary*)[self.soundList objectAtIndex:indexPath.row] objectForKey:@"free"] boolValue])) {
+            
+            newSound = [[JASound alloc] init];
+            [newSound setName:[(NSDictionary*)[soundList objectAtIndex:indexPath.row] objectForKey:@"name"]];
+            [newSound setSoundFilename:[(NSDictionary*)[soundList objectAtIndex:indexPath.row] objectForKey:@"filename"]];
+            [self setSelectedSound:newSound];
+        }
+        else {
+            UIAlertView *freeAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Wanna Upgrade?", nil) message:NSLocalizedString(@"This alarm is only available in the paid application.", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"No Thanks", nil) otherButtonTitles:NSLocalizedString(@"Upgrade Me!", nil), nil];
+            [freeAlert show];
+            return;
+        }
     }
     else {
         [self showMediaPicker:nil];
@@ -352,9 +420,12 @@
         NSString *filename, *soundFilePath;
         NSURL *fileURL;
         if (indexPath.section == 0) {
+            _currentlyPlayingFilename = filename = [(NSDictionary*)[self.gentleSoundList objectAtIndex:indexPath.row] objectForKey:@"filename"];
+        }
+        else if (indexPath.section == 1) {
             _currentlyPlayingFilename = filename = [(NSDictionary*)[soundList objectAtIndex:indexPath.row] objectForKey:@"filename"];
         }
-        else if (indexPath.section == 1 && indexPath.row != 0) {
+        else if (indexPath.section == 2 && indexPath.row != 0) {
             _currentlyPlayingFilename = filename = [(JASound*)[[JASound savedSounds] objectAtIndex:(indexPath.row - 1)] soundFilename];
         }
         

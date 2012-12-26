@@ -9,6 +9,8 @@
 #import "JAAppDelegate.h"
 #import "JAViewController.h"
 #import "JASettings.h"
+#import "Flurry.h"
+#import "Appirater.h"
 
 @implementation UITabBarController (Rotation)
 
@@ -33,6 +35,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+        
+    //call flurry
+    [Flurry startSession:@"5TJ5GGNGYW7S6Z7W7CSW"];
+    
     //capture brightness
     _initalBrightness = [UIScreen mainScreen].brightness;
     
@@ -52,6 +58,11 @@
     self.viewController = [[JAViewController alloc] initWithNibName:@"JAViewController" bundle:nil];
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
+    
+    //call appirator
+    [Appirater appLaunched:YES];
+    [Appirater setAppId:JA_APP_ID];
+    
     return YES;
 }
 
@@ -88,11 +99,14 @@
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     
+    //call appirator
+    [Appirater appEnteredForeground:YES];
     
     //cancel all notificaitons
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
     
 }
+
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
@@ -113,6 +127,8 @@
             
         }
     }
+    
+
     
 }
 

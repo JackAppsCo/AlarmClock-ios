@@ -80,7 +80,7 @@
         //-----------
         //sleep control
         [self setSleepWakeControl:[[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:NSLocalizedString(@"Wake By", nil), NSLocalizedString(@"Sleep By", nil), nil]]];
-        [self.sleepWakeControl setFrame:CGRectMake(15, 50, self.view.frame.size.width - 30, 40)];
+        [self.sleepWakeControl setFrame:CGRectMake(15, 45, self.view.frame.size.width - 30, 40)];
         [self.sleepWakeControl setSegmentedControlStyle:UISegmentedControlStyleBar];
         [self.sleepWakeControl setSelectedSegmentIndex:0];
         [self.sleepWakeControl addTarget:self action:@selector(controlChanged:) forControlEvents:UIControlEventValueChanged];
@@ -103,10 +103,11 @@
         [self.createButton setEnabled:NO];
         
         //label
-        [self setSleepLabel:[[UILabel alloc] initWithFrame:CGRectMake(15, self.timeButton.frame.size.height + self.timeButton.frame.origin.y + 15, self.view.frame.size.width - 30, 50)]];
+        [self setSleepLabel:[[UILabel alloc] initWithFrame:CGRectMake(15, self.timeButton.frame.size.height + self.timeButton.frame.origin.y + 7, self.view.frame.size.width - 30, 50)]];
         [self.sleepLabel setBackgroundColor:[UIColor clearColor]];
         [self.sleepLabel setNumberOfLines:0];
-        [self.sleepLabel setText:@"THIS IS THE LABEL/nLINE TWO"];
+        [self.sleepLabel setAlpha:0.0];
+        [self.sleepLabel setText:NSLocalizedString(@"Select one of these times to wake up at:", nil)];
         
         //setup companies toolbar
         [self setDateToolbar:[[UIToolbar alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 35.0)]];
@@ -191,7 +192,7 @@
 - (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     if (section == 1) {
-        return 200.0f;
+        return (self.timeComponents == nil) ? 130.0f : 200.0f;
     }
     
     return 40.0;
@@ -202,33 +203,45 @@
     if (section == 1 && self.timeComponents != nil) {
         return 65.0f;
     }
+    else if (section == 1) {
+        return 20.0f;
+    }
     
-    return 0.0f;
+    return 0.0;
 }
 
 - (UIView*) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
+    NSString *labelString = @"";
+    UIView *headerView;
     if (section == 1) {
-        UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 200.0f)];
+        headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 200.0f)];
         [headerView setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
         [headerView addSubview:self.sleepWakeControl];
         [headerView addSubview:self.timeButton];
         [headerView addSubview:self.sleepLabel];
         
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, 15, self.view.frame.size.width - 30.0, 30.0f)];
-        [label setBackgroundColor:[UIColor clearColor]];
-        [label setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:17]];
-        [label setTextAlignment:NSTextAlignmentLeft];
-        [label setTextColor:[UIColor colorWithRed:59.0/255.0 green:67.0/255.0 blue:90.0/255.0 alpha:1.0]];
-        [label setShadowColor:[UIColor whiteColor]];
-        [label setShadowOffset:CGSizeMake(0, 1)];
-        [label setText:NSLocalizedString(@"Sleep Cycle Calculator", nil)];
-        [headerView addSubview:label];
+        labelString = NSLocalizedString(@"Sleep Cycle Calculator", nil);
+
+    }
+    else {
+        headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 30.0f)];
+        [headerView setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
         
-        return headerView;
+        labelString = (section == 0) ? NSLocalizedString(@"White Noise Sleep Timer", nil) : NSLocalizedString(@"Rise & Shine", nil);
     }
     
-    return nil;
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, 10, self.view.frame.size.width - 30.0, 30.0f)];
+    [label setBackgroundColor:[UIColor clearColor]];
+    [label setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:17]];
+    [label setTextAlignment:NSTextAlignmentLeft];
+    [label setTextColor:[UIColor colorWithRed:59.0/255.0 green:67.0/255.0 blue:90.0/255.0 alpha:1.0]];
+    [label setShadowColor:[UIColor whiteColor]];
+    [label setShadowOffset:CGSizeMake(0, 1)];
+    [label setText:labelString];
+    [headerView addSubview:label];
+    
+    return headerView;
 }
 
 - (UIView*) tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
@@ -245,10 +258,7 @@
     return nil;
 }
 
-- (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    return (section == 0) ? NSLocalizedString(@"White Noise Sleep Timer", nil) : (section == 1) ? nil : NSLocalizedString(@"Rise & Shine", nil);
-}
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -590,7 +600,7 @@
 //set the alarm's date
 - (void)dateChanged:(id)sender
 {
-    self.tableView.alpha = 1;
+    [self.sleepLabel setAlpha:1.0];
     
     if (self.sleepWakeControl.selectedSegmentIndex == 0) {
         

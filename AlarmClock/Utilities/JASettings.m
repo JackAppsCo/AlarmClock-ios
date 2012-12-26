@@ -302,7 +302,7 @@ static JASettings *sharedInstance = nil;
 {
     NSString *configsLocation = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Configs.plist"];
     NSDictionary *configs = [[NSDictionary alloc] initWithContentsOfFile:configsLocation];
-    if ([configs objectForKey:@"paid"])
+    if ([[configs objectForKey:@"paid"] boolValue])
         return YES;
     
     return NO;

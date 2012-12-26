@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#define JA_APP_ID @"APPID"
+
 static BOOL L0AccelerationIsShaking(UIAcceleration* last, UIAcceleration* current, double threshold) {
 	double
     deltaX = fabs(last.x - current.x),

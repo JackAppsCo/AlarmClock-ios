@@ -1,0 +1,3 @@
+[submodule "AlarmClock/Appirator"]
+	path = AlarmClock/Appirator
+	url = https://github.com/arashpayan/appirater.git

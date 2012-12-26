@@ -25,7 +25,7 @@
 
 
 @property (strong, nonatomic) AVAudioPlayer *aPlayer;
-@property (strong, nonatomic) NSArray *soundList;
+@property (strong, nonatomic) NSArray *soundList, *gentleSoundList;
 @property (strong, nonatomic) id <JASoundSelectorTableViewControllerDelegate> delegate;
 @property (strong, nonatomic) JASound *selectedSound;
 

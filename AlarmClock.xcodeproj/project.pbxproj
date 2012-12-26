@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4694317E168A8B90000FE3E3 /* libFlurry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4694317D168A8B90000FE3E3 /* libFlurry.a */; };
+		4694317F168A8B90000FE3E3 /* libFlurry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4694317D168A8B90000FE3E3 /* libFlurry.a */; };
+		46943184168A8C75000FE3E3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46943183168A8C75000FE3E3 /* SystemConfiguration.framework */; };
+		469431A3168A8DDB000FE3E3 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 46943187168A8DDB000FE3E3 /* .gitignore */; };
+		469431A4168A8DDB000FE3E3 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 46943187168A8DDB000FE3E3 /* .gitignore */; };
+		469431A5168A8DDB000FE3E3 /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = 46943189168A8DDB000FE3E3 /* Appirater.m */; };
+		469431A6168A8DDB000FE3E3 /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = 46943189168A8DDB000FE3E3 /* Appirater.m */; };
+		469431A7168A8DDB000FE3E3 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4694318B168A8DDB000FE3E3 /* AppiraterLocalizable.strings */; };
+		469431A8168A8DDB000FE3E3 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4694318B168A8DDB000FE3E3 /* AppiraterLocalizable.strings */; };
+		469431A9168A8DDB000FE3E3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4694319D168A8DDB000FE3E3 /* README.md */; };
+		469431AA168A8DDB000FE3E3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4694319D168A8DDB000FE3E3 /* README.md */; };
+		469431AB168A9069000FE3E3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46943183168A8C75000FE3E3 /* SystemConfiguration.framework */; };
+		469431AD168A93C6000FE3E3 /* Piano Melody.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 469431AC168A93C6000FE3E3 /* Piano Melody.m4a */; };
 		5F0443341683EFB10087B1D0 /* JASleepCycleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0443331683EFB10087B1D0 /* JASleepCycleViewController.m */; };
 		5F0443371683EFE20087B1D0 /* JASleepCycleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0443361683EFE20087B1D0 /* JASleepCycleView.m */; };
 		C911EF3E166BDBCE0081A0FF /* Gotham-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C911EF3D166BDBCE0081A0FF /* Gotham-Black.ttf */; };
@@ -142,7 +155,6 @@
 		C916EF9A16879754000B53F5 /* School Bell_cut.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C9BA46161677A395000EA053 /* School Bell_cut.m4a */; };
 		C916EF9B16879754000B53F5 /* Siren_cut.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C9BA46171677A395000EA053 /* Siren_cut.m4a */; };
 		C916EF9C16879754000B53F5 /* Spaceship_cut.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C9BA46181677A395000EA053 /* Spaceship_cut.m4a */; };
-		C916EF9D16879754000B53F5 /* Submarine_cut.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C9BA46191677A395000EA053 /* Submarine_cut.m4a */; };
 		C916EF9E16879754000B53F5 /* Techy_cut.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C9BA461A1677A395000EA053 /* Techy_cut.m4a */; };
 		C916EFA116879754000B53F5 /* backdrop.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D4212016800C930035C0D4 /* backdrop.png */; };
 		C916EFA216879754000B53F5 /* backdrop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D4212116800C930035C0D4 /* backdrop@2x.png */; };
@@ -246,7 +258,6 @@
 		C9BA46211677A395000EA053 /* School Bell_cut.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C9BA46161677A395000EA053 /* School Bell_cut.m4a */; };
 		C9BA46221677A395000EA053 /* Siren_cut.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C9BA46171677A395000EA053 /* Siren_cut.m4a */; };
 		C9BA46231677A395000EA053 /* Spaceship_cut.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C9BA46181677A395000EA053 /* Spaceship_cut.m4a */; };
-		C9BA46241677A395000EA053 /* Submarine_cut.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C9BA46191677A395000EA053 /* Submarine_cut.m4a */; };
 		C9BA46251677A395000EA053 /* Techy_cut.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C9BA461A1677A395000EA053 /* Techy_cut.m4a */; };
 		C9D4212216800C930035C0D4 /* backdrop.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D4212016800C930035C0D4 /* backdrop.png */; };
 		C9D4212316800C930035C0D4 /* backdrop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D4212116800C930035C0D4 /* backdrop@2x.png */; };
@@ -308,6 +319,37 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4694317D168A8B90000FE3E3 /* libFlurry.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFlurry.a; path = "../../Flurry iPhone SDK v4.1.0/Flurry/libFlurry.a"; sourceTree = "<group>"; };
+		46943180168A8BE2000FE3E3 /* Flurry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Flurry.h; path = "../../Flurry iPhone SDK v4.1.0/Flurry/Flurry.h"; sourceTree = "<group>"; };
+		46943183168A8C75000FE3E3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		46943187168A8DDB000FE3E3 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		46943188168A8DDB000FE3E3 /* Appirater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Appirater.h; sourceTree = "<group>"; };
+		46943189168A8DDB000FE3E3 /* Appirater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Appirater.m; sourceTree = "<group>"; };
+		4694318A168A8DDB000FE3E3 /* AppiraterDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppiraterDelegate.h; sourceTree = "<group>"; };
+		4694318C168A8DDB000FE3E3 /* ca */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ca; path = ca.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
+		4694318D168A8DDB000FE3E3 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
+		4694318E168A8DDB000FE3E3 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
+		4694318F168A8DDB000FE3E3 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
+		46943190168A8DDB000FE3E3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
+		46943191168A8DDB000FE3E3 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
+		46943192168A8DDB000FE3E3 /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
+		46943193168A8DDB000FE3E3 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
+		46943194168A8DDB000FE3E3 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
+		46943195168A8DDB000FE3E3 /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
+		46943196168A8DDB000FE3E3 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
+		46943197168A8DDB000FE3E3 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
+		46943198168A8DDB000FE3E3 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
+		46943199168A8DDB000FE3E3 /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
+		4694319A168A8DDB000FE3E3 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
+		4694319B168A8DDB000FE3E3 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
+		4694319C168A8DDB000FE3E3 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
+		4694319D168A8DDB000FE3E3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		4694319E168A8DDB000FE3E3 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
+		4694319F168A8DDB000FE3E3 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
+		469431A0168A8DDB000FE3E3 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
+		469431A1168A8DDB000FE3E3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/AppiraterLocalizable.strings"; sourceTree = "<group>"; };
+		469431A2168A8DDB000FE3E3 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/AppiraterLocalizable.strings"; sourceTree = "<group>"; };
+		469431AC168A93C6000FE3E3 /* Piano Melody.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Piano Melody.m4a"; sourceTree = "<group>"; };
 		5F0443321683EFB10087B1D0 /* JASleepCycleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JASleepCycleViewController.h; path = Classes/JASleepCycleViewController.h; sourceTree = "<group>"; };
 		5F0443331683EFB10087B1D0 /* JASleepCycleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JASleepCycleViewController.m; path = Classes/JASleepCycleViewController.m; sourceTree = "<group>"; };
 		5F0443351683EFE20087B1D0 /* JASleepCycleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JASleepCycleView.h; path = Classes/JASleepCycleView.h; sourceTree = "<group>"; };
@@ -419,7 +461,6 @@
 		C9BA46161677A395000EA053 /* School Bell_cut.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "School Bell_cut.m4a"; sourceTree = "<group>"; };
 		C9BA46171677A395000EA053 /* Siren_cut.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Siren_cut.m4a; sourceTree = "<group>"; };
 		C9BA46181677A395000EA053 /* Spaceship_cut.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Spaceship_cut.m4a; sourceTree = "<group>"; };
-		C9BA46191677A395000EA053 /* Submarine_cut.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Submarine_cut.m4a; sourceTree = "<group>"; };
 		C9BA461A1677A395000EA053 /* Techy_cut.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Techy_cut.m4a; sourceTree = "<group>"; };
 		C9D4212016800C930035C0D4 /* backdrop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = backdrop.png; path = Images/backdrop.png; sourceTree = "<group>"; };
 		C9D4212116800C930035C0D4 /* backdrop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "backdrop@2x.png"; path = "Images/backdrop@2x.png"; sourceTree = "<group>"; };
@@ -511,6 +552,8 @@
 				C916EF3716879754000B53F5 /* UIKit.framework in Frameworks */,
 				C916EF3816879754000B53F5 /* Foundation.framework in Frameworks */,
 				C916EF3916879754000B53F5 /* CoreGraphics.framework in Frameworks */,
+				4694317F168A8B90000FE3E3 /* libFlurry.a in Frameworks */,
+				469431AB168A9069000FE3E3 /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,6 +561,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46943184168A8C75000FE3E3 /* SystemConfiguration.framework in Frameworks */,
 				C9B2FC89166CF08A0037E588 /* iAd.framework in Frameworks */,
 				C93AC1331665BD1F0065798B /* AssetsLibrary.framework in Frameworks */,
 				C95BDD9B165E7F86005AEEFC /* MediaPlayer.framework in Frameworks */,
@@ -530,12 +574,44 @@
 				C9E6404716528B7500A388C6 /* UIKit.framework in Frameworks */,
 				C9E6404916528B7500A388C6 /* Foundation.framework in Frameworks */,
 				C9E6404B16528B7500A388C6 /* CoreGraphics.framework in Frameworks */,
+				4694317E168A8B90000FE3E3 /* libFlurry.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4694317B168A8B4F000FE3E3 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				46943186168A8DDB000FE3E3 /* Appirator */,
+				46943185168A8DAA000FE3E3 /* Flurry */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		46943185168A8DAA000FE3E3 /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+				46943180168A8BE2000FE3E3 /* Flurry.h */,
+				4694317D168A8B90000FE3E3 /* libFlurry.a */,
+			);
+			name = Flurry;
+			sourceTree = "<group>";
+		};
+		46943186168A8DDB000FE3E3 /* Appirator */ = {
+			isa = PBXGroup;
+			children = (
+				46943187168A8DDB000FE3E3 /* .gitignore */,
+				46943188168A8DDB000FE3E3 /* Appirater.h */,
+				46943189168A8DDB000FE3E3 /* Appirater.m */,
+				4694318A168A8DDB000FE3E3 /* AppiraterDelegate.h */,
+				4694318B168A8DDB000FE3E3 /* AppiraterLocalizable.strings */,
+				4694319D168A8DDB000FE3E3 /* README.md */,
+			);
+			path = Appirator;
+			sourceTree = "<group>";
+		};
 		5F0443311683EF520087B1D0 /* SleepCycle */ = {
 			isa = PBXGroup;
 			children = (
@@ -673,10 +749,10 @@
 				C9BA46131677A395000EA053 /* Burglar Alarm_cut.m4a */,
 				C9BA46141677A395000EA053 /* Church Bell_cut.m4a */,
 				C9BA46151677A395000EA053 /* Old School Clock_cut.m4a */,
+				469431AC168A93C6000FE3E3 /* Piano Melody.m4a */,
 				C9BA46161677A395000EA053 /* School Bell_cut.m4a */,
 				C9BA46171677A395000EA053 /* Siren_cut.m4a */,
 				C9BA46181677A395000EA053 /* Spaceship_cut.m4a */,
-				C9BA46191677A395000EA053 /* Submarine_cut.m4a */,
 				C9BA461A1677A395000EA053 /* Techy_cut.m4a */,
 				C92EF00D1662C98C00274FBB /* Sleep Sounds */,
 				C98895C81657F4B10072EC6E /* soundsList.plist */,
@@ -771,6 +847,7 @@
 		C9E6404516528B7500A388C6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				46943183168A8C75000FE3E3 /* SystemConfiguration.framework */,
 				C9B2FC88166CF08A0037E588 /* iAd.framework */,
 				C93AC1321665BD1F0065798B /* AssetsLibrary.framework */,
 				C95BDD9A165E7F85005AEEFC /* MediaPlayer.framework */,
@@ -790,6 +867,7 @@
 		C9E6404C16528B7500A388C6 /* AlarmClock */ = {
 			isa = PBXGroup;
 			children = (
+				4694317B168A8B4F000FE3E3 /* Libraries */,
 				C911EF3B166BDB910081A0FF /* Fonts */,
 				C9E6406916528B7C00A388C6 /* Classes */,
 				C9A0E4551654A4D0000BB045 /* Images */,
@@ -1021,6 +1099,27 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				ca,
+				cs,
+				da,
+				de,
+				es,
+				fi,
+				fr,
+				he,
+				hu,
+				it,
+				ja,
+				ko,
+				nb,
+				nl,
+				pl,
+				pt,
+				ru,
+				sk,
+				sv,
+				"zh-Hans",
+				"zh-Hant",
 			);
 			mainGroup = C9E6403716528B7500A388C6;
 			productRefGroup = C9E6404316528B7500A388C6 /* Products */;
@@ -1134,7 +1233,6 @@
 				C916EF9A16879754000B53F5 /* School Bell_cut.m4a in Resources */,
 				C916EF9B16879754000B53F5 /* Siren_cut.m4a in Resources */,
 				C916EF9C16879754000B53F5 /* Spaceship_cut.m4a in Resources */,
-				C916EF9D16879754000B53F5 /* Submarine_cut.m4a in Resources */,
 				C916EF9E16879754000B53F5 /* Techy_cut.m4a in Resources */,
 				C916EFA116879754000B53F5 /* backdrop.png in Resources */,
 				C916EFA216879754000B53F5 /* backdrop@2x.png in Resources */,
@@ -1150,6 +1248,10 @@
 				C916EFD016879E9A000B53F5 /* sleepSoundsList.plist in Resources */,
 				C916EFD216879E9A000B53F5 /* Thunderstorm.m4a in Resources */,
 				C916EFD416879E9A000B53F5 /* Beach.m4a in Resources */,
+				469431A4168A8DDB000FE3E3 /* .gitignore in Resources */,
+				469431A8168A8DDB000FE3E3 /* AppiraterLocalizable.strings in Resources */,
+				469431AA168A8DDB000FE3E3 /* README.md in Resources */,
+				469431AD168A93C6000FE3E3 /* Piano Melody.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1253,7 +1355,6 @@
 				C9BA46211677A395000EA053 /* School Bell_cut.m4a in Resources */,
 				C9BA46221677A395000EA053 /* Siren_cut.m4a in Resources */,
 				C9BA46231677A395000EA053 /* Spaceship_cut.m4a in Resources */,
-				C9BA46241677A395000EA053 /* Submarine_cut.m4a in Resources */,
 				C9BA46251677A395000EA053 /* Techy_cut.m4a in Resources */,
 				C9D4212216800C930035C0D4 /* backdrop.png in Resources */,
 				C9D4212316800C930035C0D4 /* backdrop@2x.png in Resources */,
@@ -1269,6 +1370,9 @@
 				C916EFCF16879E9A000B53F5 /* sleepSoundsList.plist in Resources */,
 				C916EFD116879E9A000B53F5 /* Thunderstorm.m4a in Resources */,
 				C916EFD316879E9A000B53F5 /* Beach.m4a in Resources */,
+				469431A3168A8DDB000FE3E3 /* .gitignore in Resources */,
+				469431A7168A8DDB000FE3E3 /* AppiraterLocalizable.strings in Resources */,
+				469431A9168A8DDB000FE3E3 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1304,6 +1408,7 @@
 				C916EFDA16879FB0000B53F5 /* JASleepCycleViewController.m in Sources */,
 				C916EFDB16879FB0000B53F5 /* JASleepCycleView.m in Sources */,
 				C9EDE6821689142D00D17D37 /* JASleepSmartControllerViewController.m in Sources */,
+				469431A6168A8DDB000FE3E3 /* Appirater.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1336,12 +1441,42 @@
 				5F0443341683EFB10087B1D0 /* JASleepCycleViewController.m in Sources */,
 				5F0443371683EFE20087B1D0 /* JASleepCycleView.m in Sources */,
 				C9EDE6811689142D00D17D37 /* JASleepSmartControllerViewController.m in Sources */,
+				469431A5168A8DDB000FE3E3 /* Appirater.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		4694318B168A8DDB000FE3E3 /* AppiraterLocalizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4694318C168A8DDB000FE3E3 /* ca */,
+				4694318D168A8DDB000FE3E3 /* cs */,
+				4694318E168A8DDB000FE3E3 /* da */,
+				4694318F168A8DDB000FE3E3 /* de */,
+				46943190168A8DDB000FE3E3 /* en */,
+				46943191168A8DDB000FE3E3 /* es */,
+				46943192168A8DDB000FE3E3 /* fi */,
+				46943193168A8DDB000FE3E3 /* fr */,
+				46943194168A8DDB000FE3E3 /* he */,
+				46943195168A8DDB000FE3E3 /* hu */,
+				46943196168A8DDB000FE3E3 /* it */,
+				46943197168A8DDB000FE3E3 /* ja */,
+				46943198168A8DDB000FE3E3 /* ko */,
+				46943199168A8DDB000FE3E3 /* nb */,
+				4694319A168A8DDB000FE3E3 /* nl */,
+				4694319B168A8DDB000FE3E3 /* pl */,
+				4694319C168A8DDB000FE3E3 /* pt */,
+				4694319E168A8DDB000FE3E3 /* ru */,
+				4694319F168A8DDB000FE3E3 /* sk */,
+				469431A0168A8DDB000FE3E3 /* sv */,
+				469431A1168A8DDB000FE3E3 /* zh-Hans */,
+				469431A2168A8DDB000FE3E3 /* zh-Hant */,
+			);
+			name = AppiraterLocalizable.strings;
+			sourceTree = "<group>";
+		};
 		C9E6404F16528B7500A388C6 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1372,6 +1507,10 @@
 					"PAID=1",
 				);
 				INFOPLIST_FILE = "AlarmClock copy-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../Flurry iPhone SDK v4.1.0/Flurry\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1384,6 +1523,10 @@
 				GCC_PREFIX_HEADER = "AlarmClock/AlarmClock-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "PAID=1";
 				INFOPLIST_FILE = "AlarmClock copy-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../Flurry iPhone SDK v4.1.0/Flurry\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1447,6 +1590,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AlarmClock/AlarmClock-Prefix.pch";
 				INFOPLIST_FILE = "AlarmClock/AlarmClock-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../Flurry iPhone SDK v4.1.0/Flurry\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1458,6 +1605,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AlarmClock/AlarmClock-Prefix.pch";
 				INFOPLIST_FILE = "AlarmClock/AlarmClock-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../Flurry iPhone SDK v4.1.0/Flurry\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

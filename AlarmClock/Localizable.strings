@@ -92,6 +92,14 @@
 "White Noise Sleep Timer" = "White Noise Sleep Timer";
 "Set Timer" = "Set Timer";
 "Sleep Sound" = "Sleep Sound";
+"This alarm is only available in the paid application." = "This alarm is only available in the paid application.";
+"Wanna Upgrade?" = "Wanna Upgrade?";
+"No Thanks" = "No Thanks";
+"Upgrade Me!" = "Upgrade Me!";
+"iPhone Alarms" = "iPhone Alarms";
+"Custom Alarms" = "Custom Alarms";
+"Alarm Sounds" = "Alarm Sounds";
+"Gentle Alarms" = "Gentle Alarms";
 
 //Sound Recorder
 "Sound Name" = "Sound Name";
