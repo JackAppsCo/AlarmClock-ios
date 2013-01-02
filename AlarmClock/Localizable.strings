@@ -15,14 +15,14 @@
 
 //Sleep Screen
 "Sleep Cycle" = "Sleep Cycle";
-"Sleep Smart" = "Sleep Smart";
-"Sleep By" = "Sleep By";
-"Wake By" = "Wake By";
-"Create Alarm" = "Create Alarm";
-"You try to fall asleep at one of these times:" = "You try to fall asleep at one of these times:";
-"Select one of these times to wake up at:" = "Select one of these times to wake up at:";
+"Bedtime" = "Bedtime";
+"Wake Up Time" = "Wake Up Time";
+"Create SleepSmart Alarm" = "Create SleepSmart Alarm";
+"To complete your sleep cycle, you should fall asleep at one of these times:" = "To complete your sleep cycle, you should fall asleep at one of these times:";
+"To complete your sleep cycle, you should wake up at one of these times:" = "To complete your sleep cycle, you should wake up at one of these times:";
 "Select a Time" = "Select a Time";
 "Sleep Cycle Calculator" = "Sleep Cycle Calculator";
+"SleepSmart Alarm" = "SleepSmart Alarm";
 
 //Settings
 "Alarms" = "Alarms";
@@ -98,7 +98,8 @@
 "Record A New Sound" = "Record A New Sound";
 "Sleep Cycle Calculator" = "Sleep Cycle Calculator";
 "White Noise Sleep Timer" = "White Noise Sleep Timer";
-"Set Timer" = "Set Timer";
+"Timer Length" = "Timer Length";
+"SleepSmart" = "SleepSmart";
 "Sleep Sound" = "Sleep Sound";
 "This alarm is only available in the paid application." = "This alarm is only available in the paid application.";
 "Wanna Upgrade?" = "Wanna Upgrade?";

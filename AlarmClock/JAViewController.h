@@ -39,6 +39,7 @@
 @property (nonatomic, retain) ClockManager *clock;
 @property (nonatomic, retain) MKWeatherRequest *weatherRequest;
 
+@property (weak, nonatomic) IBOutlet UIImageView *amImageView;
 @property (weak, nonatomic) IBOutlet UIView *mainView;
 @property (nonatomic, retain) UIView *dimView;
 @property (weak, nonatomic) IBOutlet UIImageView *bgImageView;

@@ -198,7 +198,8 @@
     
     // Get the image from the result
     self.customImageURL = @"custom";
-    UIImage *imageCropped = [self imageByCropping:[info valueForKey:@"UIImagePickerControllerOriginalImage"] toRect:[[info valueForKey:@"UIImagePickerControllerCropRect"] CGRectValue]];
+    UIImage *originalImage = [[info valueForKey:@"UIImagePickerControllerOriginalImage"] fixOrientation];
+    UIImage *imageCropped = [self imageByCropping:originalImage toRect:[[info valueForKey:@"UIImagePickerControllerCropRect"] CGRectValue]];
     //imageCropped.imageOrientation = [(UIImage*)[info valueForKey:@"UIImagePickerControllerOriginalImage"] imageOrientation];
     [self.customImage setImage:imageCropped];
     
@@ -208,7 +209,6 @@
     NSString *filePath = [documentsPath stringByAppendingPathComponent:@"customBG.png"]; //Add the file name
     [pngData writeToFile:filePath atomically:YES]; //Write the file
     
-    //[self reload];
     
 }
 

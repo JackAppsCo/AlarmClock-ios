@@ -80,7 +80,7 @@
         //Sleep Calc
         //-----------
         //sleep control
-        [self setSleepWakeControl:[[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:NSLocalizedString(@"Wake By", nil), NSLocalizedString(@"Sleep By", nil), nil]]];
+        [self setSleepWakeControl:[[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:NSLocalizedString(@"Wake Up Time", nil), NSLocalizedString(@"Bedtime", nil), nil]]];
         [self.sleepWakeControl setFrame:CGRectMake(15, 45, self.view.frame.size.width - 30, 40)];
         [self.sleepWakeControl setSegmentedControlStyle:UISegmentedControlStyleBar];
         [self.sleepWakeControl setSelectedSegmentIndex:0];
@@ -99,7 +99,7 @@
         [self setCreateButton:[UIButton buttonWithType:UIButtonTypeRoundedRect]];
         [self.createButton setFrame:CGRectMake(15, 10, self.view.frame.size.width - 30, 45.0)];
         [self.createButton setAutoresizingMask:UIViewAutoresizingFlexibleTopMargin];
-        [self.createButton setTitle:NSLocalizedString(@"Create Alarm", nil) forState:UIControlStateNormal];
+        [self.createButton setTitle:NSLocalizedString(@"Create SleepSmart Alarm", nil) forState:UIControlStateNormal];
         [self.createButton setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
         [self.createButton setEnabled:NO];
         
@@ -108,7 +108,8 @@
         [self.sleepLabel setBackgroundColor:[UIColor clearColor]];
         [self.sleepLabel setNumberOfLines:0];
         [self.sleepLabel setAlpha:0.0];
-        [self.sleepLabel setText:NSLocalizedString(@"Select one of these times to wake up at:", nil)];
+        [self.sleepLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:15]];
+        [self.sleepLabel setText:NSLocalizedString(@"To complete your sleep cycle, you should wake up at one of these times:", nil)];
         
         //setup companies toolbar
         [self setDateToolbar:[[UIToolbar alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 35.0)]];
@@ -144,7 +145,7 @@
 	// Do any additional setup after loading the view.
     
     
-    self.sleepLabel.text = NSLocalizedString(@"You try to fall asleep at one of these times:", nil);
+    self.sleepLabel.text = NSLocalizedString(@"To complete your sleep cycle, you should fall asleep at one of these times:", nil);
     self.createButton.enabled = NO;
     
     [self.tableView reloadData];
@@ -159,6 +160,10 @@
         [self.timeButton.titleLabel setText:[_formatter stringFromDate:self.datePicker.date]];
     }
     
+    //scroll to top
+    if (self.tableView) {
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+    }
     
     [self.shineSwitch setOn:[JASettings shine]];
     
@@ -306,7 +311,7 @@
         }
         else if (indexPath.row == 1) {
             
-            cell.textLabel.text = NSLocalizedString(@"Set Timer", nil);
+            cell.textLabel.text = NSLocalizedString(@"Timer Length", nil);
             cell.detailTextLabel.text = [NSString stringWithFormat:@"%i %@", _selectedTime, NSLocalizedString(@"minutes", nil), nil];
             cell.accessoryType = UITableViewCellAccessoryNone;
             cell.accessoryView = nil;
@@ -572,7 +577,7 @@
     _alarm.gradualSound = YES;
     _alarm.repeatDays = [[NSArray alloc] init];
     _alarm.sound = [JASound defaultSound];
-    _alarm.name = @"Sleep Smart Alarm";
+    _alarm.name = NSLocalizedString(@"SleepSmart Alarm", nil);
     _alarm.snoozeTime = [NSNumber numberWithInt:10];
     _alarm.lastFireDate = nil;
     _alarm.enabledDate = [NSDate date];
@@ -608,10 +613,11 @@
 //set the alarm's date
 - (void)dateChanged:(id)sender
 {
-    [self.sleepLabel setAlpha:1.0];
     
     if (self.sleepWakeControl.selectedSegmentIndex == 0) {
         
+        //label
+        self.sleepLabel.text = NSLocalizedString(@"To complete your sleep cycle, you should fall asleep at one of these times:", nil);
         
         //break the chosen date down so we just have the hour and minute with a zero'd seconds
         NSDate *theTime = self.datePicker.date;
@@ -630,6 +636,9 @@
     }
     else {
         
+        //sleep label
+        self.sleepLabel.text = NSLocalizedString(@"To complete your sleep cycle, you should wake up at one of these times:", nil);
+        
         //break the chosen date down so we just have the hour and minute with a zero'd seconds
         NSDate *theTime = self.datePicker.date;
         NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
@@ -644,6 +653,9 @@
         
     }
     
+    //show label
+    [self.sleepLabel setAlpha:1.0];
+    
     //reload times table
     [self.tableView reloadData];
 }
@@ -651,11 +663,11 @@
 - (void)controlChanged:(id)sender
 {
     if (self.sleepWakeControl.selectedSegmentIndex == 0) {
-        self.sleepLabel.text = NSLocalizedString(@"You try to fall asleep at one of these times:", nil);
+        self.sleepLabel.text = NSLocalizedString(@"To complete your sleep cycle, you should fall asleep at one of these times:", nil);
         self.createButton.enabled = YES;
     }
     else {
-        self.sleepLabel.text = NSLocalizedString(@"Select one of these times to wake up at:", nil);
+        self.sleepLabel.text = NSLocalizedString(@"To complete your sleep cycle, you should wake up at one of these times:", nil);
         self.createButton.enabled = NO;
     }
     

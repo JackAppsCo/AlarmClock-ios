@@ -79,10 +79,10 @@
     _alarmsOn = YES;
     
 
-    //sleep cycle
+    //sleep smart
     JASleepSmartControllerViewController *_sleepSmartController = [[JASleepSmartControllerViewController alloc] init];
-    [_sleepSmartController setTitle:NSLocalizedString(@"Sleep Smart", nil)];
-    [_sleepSmartController setTabBarItem:[[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Sleep Smart", nil) image:[UIImage imageNamed:@"tabIconSleep.png"] tag:0]];
+    [_sleepSmartController setTitle:NSLocalizedString(@"SleepSmart", nil)];
+    [_sleepSmartController setTabBarItem:[[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"SleepSmart", nil) image:[UIImage imageNamed:@"tabIconSleep.png"] tag:0]];
     UIBarButtonItem *doneSleepSmartButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", nil) style:UIBarButtonItemStyleDone target:self action:@selector(dismissSettingsController:)];
     [_sleepSmartController.navigationItem setLeftBarButtonItem:doneSleepSmartButton];
 
@@ -542,15 +542,18 @@
     clockFrame.origin.y += dateAdjustment;
     CGRect dateFrame = CGRectMake(frame.origin.x, clockFrame.origin.y + clockFrame.size.height + 20, frame.size.width, dateSize.height);
     dateFrame.origin.y += dateAdjustment;
-    CGRect amFrame = CGRectMake(clockFrame.origin.x + clockFrame.size.width, clockFrame.origin.y + 18, self.amPmLabel.frame.size.width, self.amPmLabel.frame.size.height);
-
+    CGRect amFrame = CGRectMake(clockFrame.origin.x + clockFrame.size.width, clockFrame.origin.y + 15, self.amImageView.frame.size.width, self.amImageView.frame.size.height);
+    
     
     
     self.clockLabel.frame = clockFrame;
     self.dateLabel.frame = dateFrame;
-    self.amPmLabel.frame = amFrame;
-    
+    //self.amPmLabel.frame = amFrame;
+    self.amImageView.frame = amFrame;
+    self.amImageView.center = CGPointMake(self.amImageView.center.x, self.clockLabel.center.y);
     CGRect totalFrame = CGRectMake(clockFrame.origin.x - (1.5 * amFrame.size.width), ([JASettings showDate]) ? clockFrame.origin.y - 5 : clockFrame.origin.y - 20, clockFrame.size.width + (amFrame.size.width * 3), dateFrame.origin.y + dateFrame.size.height - clockFrame.origin.y + 20);
+
+    
     _backdropImageview.frame = totalFrame;
     
     
@@ -572,6 +575,14 @@
     //am/pm
     NSDateComponents *comps = [_gregorian components:NSHourCalendarUnit fromDate:[NSDate date]];
     self.amPmLabel.text = (comps.hour >= 12) ? @"PM" : @"AM";
+    NSString *imageName = (comps.hour >= 12) ? @"pm" : @"am";
+    if ([[[JASettings clockColorName] uppercaseString] isEqualToString:@"WHITE"]) {
+        imageName = [NSString stringWithFormat:@"%@_%@.png", imageName, @"white", nil];
+    }
+    else {
+        imageName = [NSString stringWithFormat:@"%@_%@.png", imageName, @"black", nil];
+    }
+    self.amImageView.image = [UIImage imageNamed:imageName];
     
     //change the date if needed
     if ([JASettings showDate]) {

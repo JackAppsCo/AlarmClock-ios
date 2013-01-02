@@ -51,6 +51,22 @@
 		46662C4E168AD7AA00661715 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46662C13168AA2D600661715 /* MessageUI.framework */; };
 		46662C4F168AD7AA00661715 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46662C11168AA2CA00661715 /* Twitter.framework */; };
 		46662C50168AD7AA00661715 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46662C0E168AA2C400661715 /* Social.framework */; };
+		469364C1168E3114000A7ED0 /* am_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 469364B9168E3114000A7ED0 /* am_white.png */; };
+		469364C2168E3114000A7ED0 /* am_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 469364B9168E3114000A7ED0 /* am_white.png */; };
+		469364C3168E3114000A7ED0 /* am_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 469364BA168E3114000A7ED0 /* am_black.png */; };
+		469364C4168E3114000A7ED0 /* am_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 469364BA168E3114000A7ED0 /* am_black.png */; };
+		469364C5168E3114000A7ED0 /* am_black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 469364BB168E3114000A7ED0 /* am_black@2x.png */; };
+		469364C6168E3114000A7ED0 /* am_black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 469364BB168E3114000A7ED0 /* am_black@2x.png */; };
+		469364C7168E3114000A7ED0 /* am_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 469364BC168E3114000A7ED0 /* am_white@2x.png */; };
+		469364C8168E3114000A7ED0 /* am_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 469364BC168E3114000A7ED0 /* am_white@2x.png */; };
+		469364C9168E3114000A7ED0 /* pm_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 469364BD168E3114000A7ED0 /* pm_white@2x.png */; };
+		469364CA168E3114000A7ED0 /* pm_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 469364BD168E3114000A7ED0 /* pm_white@2x.png */; };
+		469364CB168E3114000A7ED0 /* pm_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 469364BE168E3114000A7ED0 /* pm_white.png */; };
+		469364CC168E3114000A7ED0 /* pm_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 469364BE168E3114000A7ED0 /* pm_white.png */; };
+		469364CD168E3114000A7ED0 /* pm_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 469364BF168E3114000A7ED0 /* pm_black.png */; };
+		469364CE168E3114000A7ED0 /* pm_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 469364BF168E3114000A7ED0 /* pm_black.png */; };
+		469364CF168E3114000A7ED0 /* pm_black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 469364C0168E3114000A7ED0 /* pm_black@2x.png */; };
+		469364D0168E3114000A7ED0 /* pm_black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 469364C0168E3114000A7ED0 /* pm_black@2x.png */; };
 		4694317E168A8B90000FE3E3 /* libFlurry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4694317D168A8B90000FE3E3 /* libFlurry.a */; };
 		4694317F168A8B90000FE3E3 /* libFlurry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4694317D168A8B90000FE3E3 /* libFlurry.a */; };
 		46943184168A8C75000FE3E3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46943183168A8C75000FE3E3 /* SystemConfiguration.framework */; };
@@ -64,8 +80,6 @@
 		469431AA168A8DDB000FE3E3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4694319D168A8DDB000FE3E3 /* README.md */; };
 		469431AB168A9069000FE3E3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46943183168A8C75000FE3E3 /* SystemConfiguration.framework */; };
 		469431AD168A93C6000FE3E3 /* Piano Melody.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 469431AC168A93C6000FE3E3 /* Piano Melody.m4a */; };
-		5F0443341683EFB10087B1D0 /* JASleepCycleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0443331683EFB10087B1D0 /* JASleepCycleViewController.m */; };
-		5F0443371683EFE20087B1D0 /* JASleepCycleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0443361683EFE20087B1D0 /* JASleepCycleView.m */; };
 		C911EF3E166BDBCE0081A0FF /* Gotham-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C911EF3D166BDBCE0081A0FF /* Gotham-Black.ttf */; };
 		C91512AD166067D800295189 /* JAClockSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C91512AB166067D800295189 /* JAClockSettingsViewController.m */; };
 		C91512AE166067D800295189 /* JAClockSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C91512AC166067D800295189 /* JAClockSettingsViewController.xib */; };
@@ -226,8 +240,6 @@
 		C916EFD216879E9A000B53F5 /* Thunderstorm.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C916EFCD16879E9A000B53F5 /* Thunderstorm.m4a */; };
 		C916EFD316879E9A000B53F5 /* Beach.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C916EFCE16879E9A000B53F5 /* Beach.m4a */; };
 		C916EFD416879E9A000B53F5 /* Beach.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C916EFCE16879E9A000B53F5 /* Beach.m4a */; };
-		C916EFDA16879FB0000B53F5 /* JASleepCycleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0443331683EFB10087B1D0 /* JASleepCycleViewController.m */; };
-		C916EFDB16879FB0000B53F5 /* JASleepCycleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0443361683EFE20087B1D0 /* JASleepCycleView.m */; };
 		C91F88441658493F004F0943 /* AlarmClockIcon3_114.png in Resources */ = {isa = PBXBuildFile; fileRef = C91F88421658493F004F0943 /* AlarmClockIcon3_114.png */; };
 		C91F88451658493F004F0943 /* AlarmClockIcon3_57.png in Resources */ = {isa = PBXBuildFile; fileRef = C91F88431658493F004F0943 /* AlarmClockIcon3_57.png */; };
 		C92783D11677853200CFEA8D /* UIImage+fixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = C92783D01677853200CFEA8D /* UIImage+fixOrientation.m */; };
@@ -385,6 +397,14 @@
 		46662C37168AD30200661715 /* drops@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "drops@2x.png"; path = "Images/drops@2x.png"; sourceTree = "<group>"; };
 		46662C38168AD30200661715 /* trees.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = trees.png; path = Images/trees.png; sourceTree = "<group>"; };
 		46662C39168AD30200661715 /* trees@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "trees@2x.png"; path = "Images/trees@2x.png"; sourceTree = "<group>"; };
+		469364B9168E3114000A7ED0 /* am_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = am_white.png; path = Images/HomeScreen/am_white.png; sourceTree = "<group>"; };
+		469364BA168E3114000A7ED0 /* am_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = am_black.png; path = Images/HomeScreen/am_black.png; sourceTree = "<group>"; };
+		469364BB168E3114000A7ED0 /* am_black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "am_black@2x.png"; path = "Images/HomeScreen/am_black@2x.png"; sourceTree = "<group>"; };
+		469364BC168E3114000A7ED0 /* am_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "am_white@2x.png"; path = "Images/HomeScreen/am_white@2x.png"; sourceTree = "<group>"; };
+		469364BD168E3114000A7ED0 /* pm_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pm_white@2x.png"; path = "Images/HomeScreen/pm_white@2x.png"; sourceTree = "<group>"; };
+		469364BE168E3114000A7ED0 /* pm_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pm_white.png; path = Images/HomeScreen/pm_white.png; sourceTree = "<group>"; };
+		469364BF168E3114000A7ED0 /* pm_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pm_black.png; path = Images/HomeScreen/pm_black.png; sourceTree = "<group>"; };
+		469364C0168E3114000A7ED0 /* pm_black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pm_black@2x.png"; path = "Images/HomeScreen/pm_black@2x.png"; sourceTree = "<group>"; };
 		4694317D168A8B90000FE3E3 /* libFlurry.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFlurry.a; path = "../../Flurry iPhone SDK v4.1.0/Flurry/libFlurry.a"; sourceTree = "<group>"; };
 		46943180168A8BE2000FE3E3 /* Flurry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Flurry.h; path = "../../Flurry iPhone SDK v4.1.0/Flurry/Flurry.h"; sourceTree = "<group>"; };
 		46943183168A8C75000FE3E3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -416,10 +436,6 @@
 		469431A1168A8DDB000FE3E3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/AppiraterLocalizable.strings"; sourceTree = "<group>"; };
 		469431A2168A8DDB000FE3E3 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/AppiraterLocalizable.strings"; sourceTree = "<group>"; };
 		469431AC168A93C6000FE3E3 /* Piano Melody.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Piano Melody.m4a"; sourceTree = "<group>"; };
-		5F0443321683EFB10087B1D0 /* JASleepCycleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JASleepCycleViewController.h; path = Classes/JASleepCycleViewController.h; sourceTree = "<group>"; };
-		5F0443331683EFB10087B1D0 /* JASleepCycleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JASleepCycleViewController.m; path = Classes/JASleepCycleViewController.m; sourceTree = "<group>"; };
-		5F0443351683EFE20087B1D0 /* JASleepCycleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JASleepCycleView.h; path = Classes/JASleepCycleView.h; sourceTree = "<group>"; };
-		5F0443361683EFE20087B1D0 /* JASleepCycleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JASleepCycleView.m; path = Classes/JASleepCycleView.m; sourceTree = "<group>"; };
 		C911EF3D166BDBCE0081A0FF /* Gotham-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Black.ttf"; sourceTree = "<group>"; };
 		C91512AA166067D800295189 /* JAClockSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JAClockSettingsViewController.h; path = Classes/JAClockSettingsViewController.h; sourceTree = "<group>"; };
 		C91512AB166067D800295189 /* JAClockSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JAClockSettingsViewController.m; path = Classes/JAClockSettingsViewController.m; sourceTree = "<group>"; };
@@ -684,17 +700,6 @@
 			path = Appirator;
 			sourceTree = "<group>";
 		};
-		5F0443311683EF520087B1D0 /* SleepCycle */ = {
-			isa = PBXGroup;
-			children = (
-				5F0443321683EFB10087B1D0 /* JASleepCycleViewController.h */,
-				5F0443331683EFB10087B1D0 /* JASleepCycleViewController.m */,
-				5F0443351683EFE20087B1D0 /* JASleepCycleView.h */,
-				5F0443361683EFE20087B1D0 /* JASleepCycleView.m */,
-			);
-			name = SleepCycle;
-			sourceTree = "<group>";
-		};
 		C911EF3B166BDB910081A0FF /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -777,6 +782,14 @@
 		C95D700316695B1D00A9FD03 /* HomeScreenIcons */ = {
 			isa = PBXGroup;
 			children = (
+				469364B9168E3114000A7ED0 /* am_white.png */,
+				469364BA168E3114000A7ED0 /* am_black.png */,
+				469364BB168E3114000A7ED0 /* am_black@2x.png */,
+				469364BC168E3114000A7ED0 /* am_white@2x.png */,
+				469364BD168E3114000A7ED0 /* pm_white@2x.png */,
+				469364BE168E3114000A7ED0 /* pm_white.png */,
+				469364BF168E3114000A7ED0 /* pm_black.png */,
+				469364C0168E3114000A7ED0 /* pm_black@2x.png */,
 				C95D700516695B3300A9FD03 /* fullAlarmIcon1.png */,
 				C95D700616695B3300A9FD03 /* fullAlarmIcon2.png */,
 				C95D700716695B3300A9FD03 /* fullAlarmIcon3.png */,
@@ -993,7 +1006,6 @@
 			isa = PBXGroup;
 			children = (
 				C9EDE67D1689132900D17D37 /* SleepSmart */,
-				5F0443311683EF520087B1D0 /* SleepCycle */,
 				C93A02311666F81100E1A273 /* MiscSettings */,
 				C9A2BBEF165F197100F09634 /* Display Settings */,
 				C9349E12165A858D0058D6EB /* Clock Management */,
@@ -1365,6 +1377,14 @@
 				46662C49168AD30200661715 /* drops@2x.png in Resources */,
 				46662C4B168AD30200661715 /* trees.png in Resources */,
 				46662C4D168AD30200661715 /* trees@2x.png in Resources */,
+				469364C2168E3114000A7ED0 /* am_white.png in Resources */,
+				469364C4168E3114000A7ED0 /* am_black.png in Resources */,
+				469364C6168E3114000A7ED0 /* am_black@2x.png in Resources */,
+				469364C8168E3114000A7ED0 /* am_white@2x.png in Resources */,
+				469364CA168E3114000A7ED0 /* pm_white@2x.png in Resources */,
+				469364CC168E3114000A7ED0 /* pm_white.png in Resources */,
+				469364CE168E3114000A7ED0 /* pm_black.png in Resources */,
+				469364D0168E3114000A7ED0 /* pm_black@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1505,6 +1525,14 @@
 				46662C48168AD30200661715 /* drops@2x.png in Resources */,
 				46662C4A168AD30200661715 /* trees.png in Resources */,
 				46662C4C168AD30200661715 /* trees@2x.png in Resources */,
+				469364C1168E3114000A7ED0 /* am_white.png in Resources */,
+				469364C3168E3114000A7ED0 /* am_black.png in Resources */,
+				469364C5168E3114000A7ED0 /* am_black@2x.png in Resources */,
+				469364C7168E3114000A7ED0 /* am_white@2x.png in Resources */,
+				469364C9168E3114000A7ED0 /* pm_white@2x.png in Resources */,
+				469364CB168E3114000A7ED0 /* pm_white.png in Resources */,
+				469364CD168E3114000A7ED0 /* pm_black.png in Resources */,
+				469364CF168E3114000A7ED0 /* pm_black@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1537,8 +1565,6 @@
 				C916EF2A16879754000B53F5 /* JAClockSettingsViewController.m in Sources */,
 				C916EF2B16879754000B53F5 /* JAMiscSettingsViewController.m in Sources */,
 				C916EF2C16879754000B53F5 /* UIImage+fixOrientation.m in Sources */,
-				C916EFDA16879FB0000B53F5 /* JASleepCycleViewController.m in Sources */,
-				C916EFDB16879FB0000B53F5 /* JASleepCycleView.m in Sources */,
 				C9EDE6821689142D00D17D37 /* JASleepSmartControllerViewController.m in Sources */,
 				469431A6168A8DDB000FE3E3 /* Appirater.m in Sources */,
 			);
@@ -1570,8 +1596,6 @@
 				C91512AD166067D800295189 /* JAClockSettingsViewController.m in Sources */,
 				C93A02361666F84300E1A273 /* JAMiscSettingsViewController.m in Sources */,
 				C92783D11677853200CFEA8D /* UIImage+fixOrientation.m in Sources */,
-				5F0443341683EFB10087B1D0 /* JASleepCycleViewController.m in Sources */,
-				5F0443371683EFE20087B1D0 /* JASleepCycleView.m in Sources */,
 				C9EDE6811689142D00D17D37 /* JASleepSmartControllerViewController.m in Sources */,
 				469431A5168A8DDB000FE3E3 /* Appirater.m in Sources */,
 			);
@@ -1673,7 +1697,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Brooke Ginty (UKV7SM7KD4)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1688,6 +1712,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "023B5DEA-2CB0-4703-B2BE-F568858C8A1A";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;

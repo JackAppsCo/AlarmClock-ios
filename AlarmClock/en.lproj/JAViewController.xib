@@ -82,7 +82,7 @@
 							</object>
 							<object class="IBUILabel" id="309362508">
 								<reference key="NSNextResponder" ref="774585933"/>
-								<int key="NSvFlags">295</int>
+								<int key="NSvFlags">-2147483353</int>
 								<string key="NSFrame">{{268, 210}, {32, 21}}</string>
 								<reference key="NSSuperview" ref="774585933"/>
 								<reference key="NSWindow"/>
@@ -128,13 +128,29 @@
 								<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 								<double key="preferredMaxLayoutWidth">32</double>
 							</object>
+							<object class="IBUIImageView" id="52984394">
+								<reference key="NSNextResponder" ref="774585933"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{261, 229}, {45, 47}}</string>
+								<reference key="NSSuperview" ref="774585933"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="309362508"/>
+								<string key="NSReuseIdentifierKey">_NS:9</string>
+								<int key="IBUIContentMode">1</int>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">pm_white.png</string>
+								</object>
+							</object>
 							<object class="IBUILabel" id="339592118">
 								<reference key="NSNextResponder" ref="774585933"/>
 								<int key="NSvFlags">295</int>
 								<string key="NSFrame">{{20, 185}, {280, 129}}</string>
 								<reference key="NSSuperview" ref="774585933"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="309362508"/>
+								<reference key="NSNextKeyView" ref="52984394"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">1</int>
@@ -151,9 +167,9 @@
 									<reference key="NSCustomColorSpace" ref="469442844"/>
 								</object>
 								<nil key="IBUIHighlightedColor"/>
-								<object class="NSColor" key="IBUIShadowColor" id="1052079712">
+								<object class="NSColor" key="IBUIShadowColor">
 									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MC41MDIxMzI0OTM2IDAuNTAyMTMyNDkzNiAwLjUwMjEzMjQ5MzYgMC40AA</bytes>
+									<bytes key="NSRGB">MCAwIDAAA</bytes>
 								</object>
 								<string key="IBUIShadowOffset">{2, 2}</string>
 								<int key="IBUIBaselineAdjustment">0</int>
@@ -192,7 +208,10 @@
 									<reference key="NSCustomColorSpace" ref="469442844"/>
 								</object>
 								<nil key="IBUIHighlightedColor"/>
-								<reference key="IBUIShadowColor" ref="1052079712"/>
+								<object class="NSColor" key="IBUIShadowColor" id="1052079712">
+									<int key="NSColorSpace">1</int>
+									<bytes key="NSRGB">MC41MDIxMzI0OTM2IDAuNTAyMTMyNDkzNiAwLjUwMjEzMjQ5MzYgMC40AA</bytes>
+								</object>
 								<string key="IBUIShadowOffset">{1, 1}</string>
 								<int key="IBUIBaselineAdjustment">0</int>
 								<float key="IBUIMinimumFontSize">20</float>
@@ -554,6 +573,14 @@
 					<int key="connectionID">80</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">amImageView</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="52984394"/>
+					</object>
+					<int key="connectionID">82</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">sleepButtonPressed:</string>
 						<reference key="source" ref="799058737"/>
@@ -622,6 +649,7 @@
 							<reference ref="339592118"/>
 							<reference ref="799058737"/>
 							<reference ref="309362508"/>
+							<reference ref="52984394"/>
 						</array>
 						<reference key="parent" ref="339779611"/>
 					</object>
@@ -683,6 +711,11 @@
 						<reference key="object" ref="309362508"/>
 						<reference key="parent" ref="774585933"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">81</int>
+						<reference key="object" ref="52984394"/>
+						<reference key="parent" ref="774585933"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -703,12 +736,13 @@
 				<string key="6.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="79.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="8.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="81.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">80</int>
+			<int key="maxID">82</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -732,6 +766,7 @@
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="adBanner">ADBannerView</string>
 						<string key="alarmButton">UIButton</string>
+						<string key="amImageView">UIImageView</string>
 						<string key="amPmLabel">UILabel</string>
 						<string key="bgImageView">UIImageView</string>
 						<string key="clockLabel">UILabel</string>
@@ -750,6 +785,10 @@
 						<object class="IBToOneOutletInfo" key="alarmButton">
 							<string key="name">alarmButton</string>
 							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="amImageView">
+							<string key="name">amImageView</string>
+							<string key="candidateClassName">UIImageView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="amPmLabel">
 							<string key="name">amPmLabel</string>
@@ -803,6 +842,7 @@
 			<string key="BlackBG.png">{503, 504}</string>
 			<string key="SettingsIcon.png">{40, 40}</string>
 			<string key="fullAlarmIcon.png">{40, 40}</string>
+			<string key="pm_white.png">{20, 45}</string>
 			<string key="snoozeIcon.png">{40, 40}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">1930</string>
