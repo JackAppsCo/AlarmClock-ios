@@ -117,6 +117,14 @@
 		46F9A5501698AEDE00D7EF54 /* snoozeIconBlack.png in Resources */ = {isa = PBXBuildFile; fileRef = 46F9A52F1698AEDE00D7EF54 /* snoozeIconBlack.png */; };
 		46F9A5511698AEDE00D7EF54 /* snoozeIconBlack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46F9A5301698AEDE00D7EF54 /* snoozeIconBlack@2x.png */; };
 		46F9A5521698AEDE00D7EF54 /* snoozeIconBlack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46F9A5301698AEDE00D7EF54 /* snoozeIconBlack@2x.png */; };
+		46F9A55716995DB000D7EF54 /* SleepSmart57.png in Resources */ = {isa = PBXBuildFile; fileRef = 46F9A55416995DB000D7EF54 /* SleepSmart57.png */; };
+		46F9A55916995DB000D7EF54 /* SleepSmart114.png in Resources */ = {isa = PBXBuildFile; fileRef = 46F9A55516995DB000D7EF54 /* SleepSmart114.png */; };
+		46F9A55C16995E7900D7EF54 /* SleepSmartFree57.png in Resources */ = {isa = PBXBuildFile; fileRef = 46F9A55A16995E7900D7EF54 /* SleepSmartFree57.png */; };
+		46F9A55D16995E7900D7EF54 /* SleepSmartFree114.png in Resources */ = {isa = PBXBuildFile; fileRef = 46F9A55B16995E7900D7EF54 /* SleepSmartFree114.png */; };
+		46F9A55F16995EC500D7EF54 /* SleepSmartFree57.png in Resources */ = {isa = PBXBuildFile; fileRef = 46F9A55E16995EC500D7EF54 /* SleepSmartFree57.png */; };
+		46F9A56116995ECA00D7EF54 /* SleepSmartFree114.png in Resources */ = {isa = PBXBuildFile; fileRef = 46F9A56016995ECA00D7EF54 /* SleepSmartFree114.png */; };
+		46F9A56316995ED900D7EF54 /* SleepSmart57.png in Resources */ = {isa = PBXBuildFile; fileRef = 46F9A56216995ED900D7EF54 /* SleepSmart57.png */; };
+		46F9A56516995EDD00D7EF54 /* SleepSmart114.png in Resources */ = {isa = PBXBuildFile; fileRef = 46F9A56416995EDD00D7EF54 /* SleepSmart114.png */; };
 		C911EF3E166BDBCE0081A0FF /* Gotham-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C911EF3D166BDBCE0081A0FF /* Gotham-Black.ttf */; };
 		C91512AD166067D800295189 /* JAClockSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C91512AB166067D800295189 /* JAClockSettingsViewController.m */; };
 		C91512AE166067D800295189 /* JAClockSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C91512AC166067D800295189 /* JAClockSettingsViewController.xib */; };
@@ -489,12 +497,20 @@
 		46F9A52E1698AEDE00D7EF54 /* SettingsIconBlack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "SettingsIconBlack@2x.png"; path = "Images/HomeScreen/SettingsIconBlack@2x.png"; sourceTree = "<group>"; };
 		46F9A52F1698AEDE00D7EF54 /* snoozeIconBlack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = snoozeIconBlack.png; path = Images/HomeScreen/snoozeIconBlack.png; sourceTree = "<group>"; };
 		46F9A5301698AEDE00D7EF54 /* snoozeIconBlack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "snoozeIconBlack@2x.png"; path = "Images/HomeScreen/snoozeIconBlack@2x.png"; sourceTree = "<group>"; };
+		46F9A55416995DB000D7EF54 /* SleepSmart57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SleepSmart57.png; path = Images/icons/SleepSmart57.png; sourceTree = "<group>"; };
+		46F9A55516995DB000D7EF54 /* SleepSmart114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SleepSmart114.png; path = Images/icons/SleepSmart114.png; sourceTree = "<group>"; };
+		46F9A55A16995E7900D7EF54 /* SleepSmartFree57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SleepSmartFree57.png; path = Images/icons/SleepSmartFree57.png; sourceTree = "<group>"; };
+		46F9A55B16995E7900D7EF54 /* SleepSmartFree114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SleepSmartFree114.png; path = Images/icons/SleepSmartFree114.png; sourceTree = "<group>"; };
+		46F9A55E16995EC500D7EF54 /* SleepSmartFree57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SleepSmartFree57.png; sourceTree = "<group>"; };
+		46F9A56016995ECA00D7EF54 /* SleepSmartFree114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SleepSmartFree114.png; sourceTree = "<group>"; };
+		46F9A56216995ED900D7EF54 /* SleepSmart57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SleepSmart57.png; sourceTree = "<group>"; };
+		46F9A56416995EDD00D7EF54 /* SleepSmart114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SleepSmart114.png; sourceTree = "<group>"; };
 		C911EF3D166BDBCE0081A0FF /* Gotham-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Black.ttf"; sourceTree = "<group>"; };
 		C91512AA166067D800295189 /* JAClockSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JAClockSettingsViewController.h; path = Classes/JAClockSettingsViewController.h; sourceTree = "<group>"; };
 		C91512AB166067D800295189 /* JAClockSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JAClockSettingsViewController.m; path = Classes/JAClockSettingsViewController.m; sourceTree = "<group>"; };
 		C91512AC166067D800295189 /* JAClockSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JAClockSettingsViewController.xib; path = Classes/JAClockSettingsViewController.xib; sourceTree = "<group>"; };
 		C916EFA616879754000B53F5 /* AlarmClock Paid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AlarmClock Paid.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C916EFA816879754000B53F5 /* AlarmClock copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "AlarmClock copy-Info.plist"; path = "/Users/bsinger/Documents/AlarmClock/AlarmClock-iOS/AlarmClock copy-Info.plist"; sourceTree = "<absolute>"; };
+		C916EFA816879754000B53F5 /* AlarmClockPlus-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "AlarmClockPlus-Info.plist"; path = "/Users/briancsinger/Work/AlarmClock/AlarmClock/AlarmClockPlus-Info.plist"; sourceTree = "<absolute>"; };
 		C916EFAA16879A1A000B53F5 /* Chimes.M4A */ = {isa = PBXFileReference; lastKnownFileType = file; path = Chimes.M4A; sourceTree = "<group>"; };
 		C916EFAB16879A1A000B53F5 /* Ethereal Piano.M4A */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ethereal Piano.M4A"; sourceTree = "<group>"; };
 		C916EFAC16879A1A000B53F5 /* Gentle Rise.M4A */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gentle Rise.M4A"; sourceTree = "<group>"; };
@@ -754,6 +770,17 @@
 			path = Appirator;
 			sourceTree = "<group>";
 		};
+		46F9A55316995D9C00D7EF54 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				46F9A55A16995E7900D7EF54 /* SleepSmartFree57.png */,
+				46F9A55B16995E7900D7EF54 /* SleepSmartFree114.png */,
+				46F9A55416995DB000D7EF54 /* SleepSmart57.png */,
+				46F9A55516995DB000D7EF54 /* SleepSmart114.png */,
+			);
+			name = Icons;
+			sourceTree = "<group>";
+		};
 		C911EF3B166BDB910081A0FF /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -949,6 +976,7 @@
 				46662C36168AD30200661715 /* drops.png */,
 				46662C37168AD30200661715 /* drops@2x.png */,
 				C95D700316695B1D00A9FD03 /* HomeScreenIcons */,
+				46F9A55316995D9C00D7EF54 /* Icons */,
 				C93A02231666DAE800E1A273 /* playButton.png */,
 				C93A02261666DAE800E1A273 /* playButton@2x.png */,
 				C93AC1271665B1F70065798B /* plus.png */,
@@ -1000,12 +1028,15 @@
 		C9E6403716528B7500A388C6 = {
 			isa = PBXGroup;
 			children = (
+				46F9A56416995EDD00D7EF54 /* SleepSmart114.png */,
+				46F9A56216995ED900D7EF54 /* SleepSmart57.png */,
+				46F9A56016995ECA00D7EF54 /* SleepSmartFree114.png */,
+				46F9A55E16995EC500D7EF54 /* SleepSmartFree57.png */,
 				C9A0E45D1654A4EE000BB045 /* AlarmClockIcon114.png */,
 				C9A0E45B1654A4E9000BB045 /* AlarmClockIcon57.png */,
 				C9E6404C16528B7500A388C6 /* AlarmClock */,
 				C9E6404516528B7500A388C6 /* Frameworks */,
 				C9E6404316528B7500A388C6 /* Products */,
-				C916EFA816879754000B53F5 /* AlarmClock copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1058,6 +1089,7 @@
 		C9E6404D16528B7500A388C6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C916EFA816879754000B53F5 /* AlarmClockPlus-Info.plist */,
 				C916EFC716879D32000B53F5 /* paid */,
 				C916EFC616879D2A000B53F5 /* free */,
 				C9A2BBFD165F267800F09634 /* Backgrounds */,
@@ -1472,6 +1504,10 @@
 				46F9A54E1698AEDE00D7EF54 /* SettingsIconBlack@2x.png in Resources */,
 				46F9A5501698AEDE00D7EF54 /* snoozeIconBlack.png in Resources */,
 				46F9A5521698AEDE00D7EF54 /* snoozeIconBlack@2x.png in Resources */,
+				46F9A55716995DB000D7EF54 /* SleepSmart57.png in Resources */,
+				46F9A55916995DB000D7EF54 /* SleepSmart114.png in Resources */,
+				46F9A56316995ED900D7EF54 /* SleepSmart57.png in Resources */,
+				46F9A56516995EDD00D7EF54 /* SleepSmart114.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1637,6 +1673,10 @@
 				46F9A54D1698AEDE00D7EF54 /* SettingsIconBlack@2x.png in Resources */,
 				46F9A54F1698AEDE00D7EF54 /* snoozeIconBlack.png in Resources */,
 				46F9A5511698AEDE00D7EF54 /* snoozeIconBlack@2x.png in Resources */,
+				46F9A55C16995E7900D7EF54 /* SleepSmartFree57.png in Resources */,
+				46F9A55D16995E7900D7EF54 /* SleepSmartFree114.png in Resources */,
+				46F9A55F16995EC500D7EF54 /* SleepSmartFree57.png in Resources */,
+				46F9A56116995ECA00D7EF54 /* SleepSmartFree114.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1766,7 +1806,7 @@
 					"$(inherited)",
 					"PAID=1",
 				);
-				INFOPLIST_FILE = "AlarmClock copy-Info.plist";
+				INFOPLIST_FILE = "AlarmClock/AlarmClockPlus-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../Flurry iPhone SDK v4.1.0/Flurry\"",
@@ -1779,15 +1819,17 @@
 		C916EFA516879754000B53F5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Brooke Ginty";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AlarmClock/AlarmClock-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "PAID=1";
-				INFOPLIST_FILE = "AlarmClock copy-Info.plist";
+				INFOPLIST_FILE = "AlarmClock/AlarmClockPlus-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../Flurry iPhone SDK v4.1.0/Flurry\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0CC00310-B9B3-4E7B-B3A8-C2AB9717B8B4";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
