@@ -43,8 +43,8 @@
         //set the selected sound
         if (!aSound) {
             JASound *newSound = [[JASound alloc] init];
-            [newSound setName:@"Alarm"];
-            [newSound setSoundFilename:@"Background__Alarm__cut.m4a"];
+            [newSound setName:[(NSDictionary*)[soundList objectAtIndex:0] objectForKey:@"name"]];
+            [newSound setSoundFilename:[(NSDictionary*)[soundList objectAtIndex:0] objectForKey:@"filename"]];
             [self setSelectedSound:newSound];
         }
         else {
@@ -136,7 +136,7 @@
     else if (section == 2)
         return NSLocalizedString(@"Custom Alarms", nil);
     else
-        return NSLocalizedString(@"iPhone Alarms", nil);
+        return NSLocalizedString(@"iPhone Music", nil);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -415,7 +415,7 @@
     
     
     //preview sound
-    if (indexPath.section == 0 || (indexPath.section == 1 && indexPath.row != 0)) {
+    if (indexPath.section == 0 || indexPath.section == 1) {
         
         NSString *filename, *soundFilePath;
         NSURL *fileURL;
@@ -458,7 +458,7 @@
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
-    return (indexPath.section == 1 && indexPath.row != 0) ? YES : NO;
+    return (indexPath.section == 2 && indexPath.row != 0) ? YES : NO;
 }
 
 

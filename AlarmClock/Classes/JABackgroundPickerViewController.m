@@ -143,7 +143,7 @@
         [plusButton setFrame:CGRectMake(self.customImage.frame.origin.x, self.customImage.frame.origin.y + self.customImage.frame.size.height - 50, self.customImage.frame.size.width, 50)];
         [plusButton addTarget:self action:@selector(customImageTapped:) forControlEvents:UIControlEventTouchUpInside];
         [plusButton setImage:[UIImage imageNamed:@"customBGIcon.png"] forState:UIControlStateNormal];
-        [plusButton setTitle:@"Custom Image" forState:UIControlStateNormal];
+        [plusButton setTitle:NSLocalizedString(@"Create You Own", nil) forState:UIControlStateNormal];
         [plusButton setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.75]];
         [plusButton.layer setBorderColor:[UIColor whiteColor].CGColor];
         [plusButton.layer setBorderWidth:3.0f];

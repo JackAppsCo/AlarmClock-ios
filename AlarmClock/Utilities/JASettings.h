@@ -15,6 +15,7 @@
 }
 
 + (JASettings *)instance;
++ (UIImage*) filterImageNamed:(NSString*)imageName ofType:(NSString*)type darker:(BOOL)darker;
 
 + (UIImage *)backgroundImage;
 + (void) setBackgroundImage:(NSString*)image;

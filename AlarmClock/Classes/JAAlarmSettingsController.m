@@ -221,7 +221,7 @@
     //figure out which cell
     switch (indexPath.row) {
         case 0:
-            cell.textLabel.text = NSLocalizedString(@"Name", nil);
+            cell.textLabel.text = NSLocalizedString(@"Create Name", nil);
             cell.accessoryView = self.nameField;
             break;
         case 1:

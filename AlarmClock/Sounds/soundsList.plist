@@ -139,14 +139,6 @@
 			<key>free</key>
 			<false/>
 			<key>name</key>
-			<string>Piano Melody</string>
-			<key>filename</key>
-			<string>Piano Melody.m4a</string>
-		</dict>
-		<dict>
-			<key>free</key>
-			<false/>
-			<key>name</key>
 			<string>Rooster Call</string>
 			<key>filename</key>
 			<string>Rooster Call.M4A</string>

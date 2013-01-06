@@ -30,8 +30,8 @@
         
         //setup tableview
         [self setTableView:[[UITableView alloc] initWithFrame:CGRectInset(self.view.frame, 0, 0) style:UITableViewStyleGrouped]];
-        [self.tableView setContentInset:UIEdgeInsetsMake(0, 0, 95.0, 0)];
-        [self.tableView setScrollIndicatorInsets:UIEdgeInsetsMake(0, 0, 95.0, 0)];
+        //[self.tableView setContentInset:UIEdgeInsetsMake(0, 0, 95.0, 0)];
+        //[self.tableView setScrollIndicatorInsets:UIEdgeInsetsMake(0, 0, 95.0, 0)];
         [self.tableView setDelegate:self];
         [self.tableView setDataSource:self];
         [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
@@ -146,7 +146,7 @@
         return NSLocalizedString(@"Settings", nil);
     }
     else if (section == 1) {
-        return NSLocalizedString(@"Auto Lock", nil);
+        return NSLocalizedString(@"Auto-Lock", nil);
     }
     else if (section == 2) {
         return NSLocalizedString(@"Help & Information", nil);
@@ -210,14 +210,14 @@
         }
         else if (indexPath.row == 2) {
             
-            cell.textLabel.text = NSLocalizedString(@"Flashlight", nil);
+            cell.textLabel.text = NSLocalizedString(@"Shake for Flashlight", nil);
             cell.accessoryView = self.flashlightSwitch;
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
         }
         else if (indexPath.row == 3) {
             
-            cell.textLabel.text = NSLocalizedString(@"Slide Finger", nil);
+            cell.textLabel.text = NSLocalizedString(@"Slide Finger for Brightness", nil);
             cell.accessoryView = self.dimSwitch;
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
@@ -303,7 +303,7 @@
         
         if (indexPath.row == 0) {
             [self.pickerView reloadAllComponents];
-            [self.pickerView selectRow:_selectedTime inComponent:0 animated:NO];
+            [self.pickerView selectRow:(_selectedTime - 1) inComponent:0 animated:NO];
             [self raisePicker];
         }
 //        else {
@@ -348,7 +348,7 @@
     [UIView animateWithDuration:0.3f
                      animations:^{
                          self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width, self.view.frame.size.height - self.pickerView.frame.size.height);
-                         self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+                         //self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
                          self.pickerView.frame = CGRectMake(0, self.view.frame.size.height - self.pickerView.frame.size.height, self.pickerView.frame.size.width, self.pickerView.frame.size.height);
                      }
                      completion:^(BOOL finished) {
@@ -361,7 +361,7 @@
     [UIView animateWithDuration:0.3f
                      animations:^{
                          self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width, self.view.frame.size.height);
-                         self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 95, 0);
+                         //self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
                          self.pickerView.frame = CGRectMake(0, self.view.frame.size.height, self.pickerView.frame.size.width, self.pickerView.frame.size.height);
                      }
                      completion:^(BOOL finished) {
@@ -410,8 +410,8 @@
         
     }
     
-    [self.tableView reloadData];
     [self lowerPicker];
+    [self.tableView reloadData];
 }
 
 #pragma mark - UIAlertviewDelegate

@@ -6,18 +6,6 @@
 	<array>
 		<dict>
 			<key>name</key>
-			<string>Default</string>
-			<key>filename</key>
-			<string>BlackBG.png</string>
-		</dict>
-		<dict>
-			<key>name</key>
-			<string>Beach</string>
-			<key>filename</key>
-			<string>beach.png</string>
-		</dict>
-		<dict>
-			<key>name</key>
 			<string>Chalkboard</string>
 			<key>filename</key>
 			<string>chalkboard.png</string>
@@ -36,9 +24,21 @@
 		</dict>
 		<dict>
 			<key>name</key>
+			<string>Beach</string>
+			<key>filename</key>
+			<string>beach.png</string>
+		</dict>
+		<dict>
+			<key>name</key>
 			<string>Canal</string>
 			<key>filename</key>
 			<string>canal.png</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Fall</string>
+			<key>filename</key>
+			<string>trees.png</string>
 		</dict>
 		<dict>
 			<key>name</key>
@@ -48,9 +48,9 @@
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>Fall</string>
+			<string>Default</string>
 			<key>filename</key>
-			<string>trees.png</string>
+			<string>BlackBG.png</string>
 		</dict>
 	</array>
 </dict>

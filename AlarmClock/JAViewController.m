@@ -176,8 +176,9 @@
 
 - (void) setAlarmIcon
 {
+    NSString *iconColor = ([[JASettings clockColorName] isEqualToString:@"Black"]) ? @"Black" : @"";
     if ([JASettings alarmsDisabled]) {
-        [self.alarmButton setBackgroundImage:[UIImage imageNamed:@"alarmOffIcon.png"] forState:UIControlStateNormal];
+        [self.alarmButton setBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat:@"alarmOffIcon%@.png", iconColor, nil]] forState:UIControlStateNormal];
         return;
     }
     
@@ -185,11 +186,11 @@
         [self.alarmButton setHidden:YES];
     }
     else if ([JAAlarm numberOfEnabledAlarms] <= 6) {
-        [self.alarmButton setBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat:@"fullAlarmIcon%i.png", [JAAlarm numberOfEnabledAlarms]]] forState:UIControlStateNormal];
+        [self.alarmButton setBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat:@"fullAlarmIcon%i%@.png", [JAAlarm numberOfEnabledAlarms], iconColor, nil]] forState:UIControlStateNormal];
         [self.alarmButton setHidden:NO];
     }
     else {
-        [self.alarmButton setBackgroundImage:[UIImage imageNamed:@"fullAlarmIcon.png"] forState:UIControlStateNormal];
+        [self.alarmButton setBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat:@"fullAlarmIcon%@.png", iconColor, nil]] forState:UIControlStateNormal];
         [self.alarmButton setHidden:NO];
     }
     
@@ -234,6 +235,23 @@
     self.clockLabel.textColor = [JASettings clockColor];
     self.amPmLabel.textColor = [JASettings clockColor];
     self.dateLabel.textColor = [JASettings clockColor];
+    
+    //temp color
+    self.currentTempLabel.textColor = [JASettings clockColor];
+    self.lowTempLabel.textColor = [JASettings clockColor];
+    self.highTempLabel.textColor = [JASettings clockColor];
+    
+    
+    //setup icon colors
+    if ([[JASettings clockColorName] isEqualToString:@"Black"]) {
+        [self.snoozeButton setBackgroundImage:[UIImage imageNamed:@"snoozeIconBlack.png"] forState:UIControlStateNormal];
+        [self.settingsButton setBackgroundImage:[UIImage imageNamed:@"SettingsIconBlack.png"] forState:UIControlStateNormal];
+    }
+    else {
+        [self.snoozeButton setBackgroundImage:[UIImage imageNamed:@"snoozeIcon.png"] forState:UIControlStateNormal];
+        [self.settingsButton setBackgroundImage:[UIImage imageNamed:@"SettingsIcon.png"] forState:UIControlStateNormal];
+    }
+    
     
     //set backdrop
     _backdropImageview.hidden = ![JASettings showBackdrop];
@@ -332,9 +350,12 @@
 
 - (IBAction)alarmButtonPressed:(id)sender {
 
-    [JASettings setAlarmsDisabled:![JASettings alarmsDisabled]];
+//    [JASettings setAlarmsDisabled:![JASettings alarmsDisabled]];
+//    
+//    [self setAlarmIcon];
     
-    [self setAlarmIcon];
+    [self.tabBarController setSelectedIndex:1];
+    [self settingsButtonPressed:nil];
     
 }
 
@@ -485,6 +506,26 @@
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:_currentAlarm.name message:@"Your alarm went off" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:@"Snooze", nil];
     [alert show];
+    
+    
+    //enable or disable alarms with no repeat
+    NSArray *temp = [JAAlarm savedAlarms];
+    for (JAAlarm *thisAlarm in temp) {
+        if (thisAlarm.enabled && thisAlarm.repeatDays.count == 0) {
+            
+            NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
+            NSDate *alarmDate = [calendar dateFromComponents:thisAlarm.timeComponents];
+            
+            if ([alarmDate compare:[NSDate date]] == NSOrderedAscending) {
+                [thisAlarm setEnabled:NO];
+                [JAAlarm saveAlarm:thisAlarm];
+            }
+            
+        }
+    }
+    
+    
+    [self setAlarmIcon];
     
 }
 

@@ -9,6 +9,7 @@
 #import "JASettings.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "UIImage+fixOrientation.h"
+#import <CoreImage/CoreImage.h>
 
 static JASettings *sharedInstance = nil;
 
@@ -374,5 +375,19 @@ static JASettings *sharedInstance = nil;
 	}
 	return sharedInstance;
 }
+
++ (UIImage*) filterImageNamed:(NSString*)imageName ofType:(NSString*)type darker:(BOOL)darker
+{
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:imageName ofType:type];
+    NSURL *fileNameAndPath = [NSURL fileURLWithPath:filePath];
+    CIImage *beginImage = [CIImage imageWithContentsOfURL:fileNameAndPath];
+    CIContext *context = [CIContext contextWithOptions:nil];
+    CIFilter *colorFilter = [CIFilter filterWithName:@"CIColorMonochrome" keysAndValues:kCIInputImageKey, beginImage, @"inputColor", (darker) ? [CIColor colorWithRed:0 green:0 blue:0] : [CIColor colorWithRed:1 green:1 blue:1], @"inputIntensity", [NSNumber numberWithFloat:1], nil];
+    CIImage *outputImage = [colorFilter outputImage];
+    CGImageRef cgimg = [context createCGImage:outputImage fromRect:[outputImage extent]];
+    
+    return [UIImage imageWithCGImage:cgimg];
+}
+
 
 @end

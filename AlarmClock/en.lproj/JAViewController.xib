@@ -167,7 +167,7 @@
 									<reference key="NSCustomColorSpace" ref="469442844"/>
 								</object>
 								<nil key="IBUIHighlightedColor"/>
-								<object class="NSColor" key="IBUIShadowColor">
+								<object class="NSColor" key="IBUIShadowColor" id="363011548">
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MCAwIDAAA</bytes>
 								</object>
@@ -432,10 +432,7 @@
 						<reference key="NSSuperview" ref="339779611"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="335623427"/>
-						<object class="NSColor" key="IBUIBackgroundColor">
-							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MCAwIDAAA</bytes>
-						</object>
+						<reference key="IBUIBackgroundColor" ref="363011548"/>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 						<object class="IBUIScreenMetrics" key="IBUISimulatedDestinationMetrics" id="527896201">
@@ -579,6 +576,14 @@
 						<reference key="destination" ref="52984394"/>
 					</object>
 					<int key="connectionID">82</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">snoozeButton</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="799058737"/>
+					</object>
+					<int key="connectionID">83</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -742,7 +747,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">82</int>
+			<int key="maxID">83</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -776,6 +781,7 @@
 						<string key="lowTempLabel">UILabel</string>
 						<string key="mainView">UIView</string>
 						<string key="settingsButton">UIButton</string>
+						<string key="snoozeButton">UIButton</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="adBanner">
@@ -824,6 +830,10 @@
 						</object>
 						<object class="IBToOneOutletInfo" key="settingsButton">
 							<string key="name">settingsButton</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="snoozeButton">
+							<string key="name">snoozeButton</string>
 							<string key="candidateClassName">UIButton</string>
 						</object>
 					</dictionary>

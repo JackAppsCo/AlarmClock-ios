@@ -250,19 +250,19 @@
     else if ([self justWeekends:days])
         label = NSLocalizedString(@"Weekends", nil);
     else {
-        label = [NSString stringWithFormat:@"%@", ([JAAlarm days:days containsDay:NSLocalizedString(@"Monday", nil)]) ? @"M" : @""];
+        label = [NSString stringWithFormat:@"%@", ([JAAlarm days:days containsDay:NSLocalizedString(@"Monday", nil)]) ? NSLocalizedString(@"M", nil) : @""];
         
-        label = [NSString stringWithFormat:@"%@%@", label, ([JAAlarm days:days containsDay:NSLocalizedString(@"Tuesday", nil)]) ? @" T" : @""];
+        label = [NSString stringWithFormat:@"%@%@", label, ([JAAlarm days:days containsDay:NSLocalizedString(@"Tuesday", nil)]) ? NSLocalizedString(@" T", nil) : @""];
         
-        label = [NSString stringWithFormat:@"%@%@", label, ([JAAlarm days:days containsDay:NSLocalizedString(@"Wednesday", nil)]) ? @" W" : @""];
+        label = [NSString stringWithFormat:@"%@%@", label, ([JAAlarm days:days containsDay:NSLocalizedString(@"Wednesday", nil)]) ? NSLocalizedString(@" W", nil) : @""];
         
-        label = [NSString stringWithFormat:@"%@%@", label, ([JAAlarm days:days containsDay:NSLocalizedString(@"Thursday", nil)]) ? @" Th" : @""];
+        label = [NSString stringWithFormat:@"%@%@", label, ([JAAlarm days:days containsDay:NSLocalizedString(@"Thursday", nil)]) ? NSLocalizedString(@" Th", nil) : @""];
         
-        label = [NSString stringWithFormat:@"%@%@", label, ([JAAlarm days:days containsDay:NSLocalizedString(@"Friday", nil)]) ? @" F" : @""];
+        label = [NSString stringWithFormat:@"%@%@", label, ([JAAlarm days:days containsDay:NSLocalizedString(@"Friday", nil)]) ? NSLocalizedString(@" F", nil) : @""];
         
-        label = [NSString stringWithFormat:@"%@%@", label, ([JAAlarm days:days containsDay:NSLocalizedString(@"Saturday", nil)]) ? @" S" : @""];
+        label = [NSString stringWithFormat:@"%@%@", label, ([JAAlarm days:days containsDay:NSLocalizedString(@"Saturday", nil)]) ? NSLocalizedString(@" S", nil) : @""];
         
-        label = [NSString stringWithFormat:@"%@%@", label, ([JAAlarm days:days containsDay:NSLocalizedString(@"Sunday", nil)]) ? @" Su" : @""];
+        label = [NSString stringWithFormat:@"%@%@", label, ([JAAlarm days:days containsDay:NSLocalizedString(@"Sunday", nil)]) ? NSLocalizedString(@" Su", nil) : @""];
     }
     
     return label;
