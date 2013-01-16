@@ -9,7 +9,7 @@
 #import "JAAlarm.h"
 
 @implementation JAAlarm
-@synthesize timeComponents = _timeComponents, alarmID = _alarmID, lastFireDate = _lastFireDate, repeatDays = _repeatDays, enabled = _enabled, sound = _sound, snoozeTime = _snoozeTime, gradualSound = _gradualSound, enabledDate = _enabledDate;
+@synthesize timeComponents = _timeComponents, alarmID = _alarmID, lastFireDate = _lastFireDate, repeatDays = _repeatDays, enabled = _enabled, sound = _sound, snoozeTime = _snoozeTime, gradualSound = _gradualSound, enabledDate = _enabledDate, shineEnabled = _shineEnabled;
 
 - (void) encodeWithCoder:(NSCoder *)encoder {
     [encoder encodeObject:_timeComponents forKey:@"alarmDate"];
@@ -17,6 +17,7 @@
     [encoder encodeObject:_lastFireDate forKey:@"lastFireDate"];
     [encoder encodeObject:_enabledDate forKey:@"enabledDate"];
     [encoder encodeObject:_name forKey:@"alarmName"];
+    [encoder encodeBool:_shineEnabled forKey:@"shineEnabled"];
     [encoder encodeBool:_enabled forKey:@"alarmEnabled"];
     [encoder encodeBool:_gradualSound forKey:@"gradualSound"];
     [encoder encodeObject:_repeatDays forKey:@"alarmRepeatDays"];
@@ -33,6 +34,7 @@
         [self setLastFireDate:[coder decodeObjectForKey:@"lastFireDate"]];
         [self setEnabledDate:[coder decodeObjectForKey:@"enabledDate"]];
         [self setName:[coder decodeObjectForKey:@"alarmName"]];
+        [self setShineEnabled:[coder decodeBoolForKey:@"shineEnabled"]];
         [self setEnabled:[coder decodeBoolForKey:@"alarmEnabled"]];
         [self setGradualSound:[coder decodeBoolForKey:@"gradualSound"]];
         [self setRepeatDays:[coder decodeObjectForKey:@"alarmRepeatDays"]];
@@ -230,6 +232,7 @@
     desc = [NSString stringWithFormat:@"%@ lastFireDate:%@;", desc, self.lastFireDate, nil];
     desc = [NSString stringWithFormat:@"%@ sound:%@;", desc, self.sound, nil];
     desc = [NSString stringWithFormat:@"%@ Enabled:%@;", desc, (self.enabled) ? @"YES" : @"NO", nil];
+    desc = [NSString stringWithFormat:@"%@ Shine:%@;", desc, (self.shineEnabled) ? @"YES" : @"NO", nil];
     desc = [NSString stringWithFormat:@"%@ Gradual Sound:%@;", desc, (self.gradualSound) ? @"YES" : @"NO", nil];
     desc = [NSString stringWithFormat:@"%@ Repeat Days:%@;", desc, self.repeatDays, nil];
     return desc;

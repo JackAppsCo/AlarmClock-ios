@@ -19,7 +19,7 @@
 @property (nonatomic, retain) JAAlarm *alarm;
 @property (nonatomic, retain) UITableView *tableView;
 @property (nonatomic, retain) UIDatePicker *datePicker;
-@property (strong, nonatomic) UISwitch *enableSwitch, *gradualSwitch;
+@property (strong, nonatomic) UISwitch *enableSwitch, *gradualSwitch, *shineSwitch;
 @property (strong, nonatomic) UITextField *nameField, *snoozeField;
 
 - (id)initWithAlarm:(JAAlarm*)anAlarm;

@@ -117,7 +117,7 @@
     
     //tab bar
     _tabBarController = [[UITabBarController alloc] init];
-    [_tabBarController setViewControllers:[NSArray arrayWithObjects:sleepSmartNavController, alarmNavController, displayNavController, settingsNavController, nil]];
+    [_tabBarController setViewControllers:[NSArray arrayWithObjects:alarmNavController, displayNavController, sleepSmartNavController, settingsNavController, nil]];
     
     
     //settings button
@@ -322,7 +322,9 @@
     }
     
     NSString *soundFilename = [[JASettings sleepSound] objectForKey:@"filename"];
+    
     NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:[[soundFilename componentsSeparatedByString:@"."] objectAtIndex:0] ofType:[[soundFilename componentsSeparatedByString:@"."] objectAtIndex:1]];
+    //NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:[[soundFilename componentsSeparatedByString:@"."] objectAtIndex:0] ofType:@".m4a.caf"];
     NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
 
     NSError *err;
@@ -354,7 +356,7 @@
 //    
 //    [self setAlarmIcon];
     
-    [self.tabBarController setSelectedIndex:1];
+    [self.tabBarController setSelectedIndex:0];
     [self settingsButtonPressed:nil];
     
 }

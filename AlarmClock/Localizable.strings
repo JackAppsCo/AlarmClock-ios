@@ -42,9 +42,9 @@
 "minutes" = "minutes";
 "Farenheit" = "Farenheit";
 "Celsius" = "Celsius";
-"Disable Autolock" = "Disable Autolock";
+"Disable Auto-Lock" = "Disable Auto-Lock";
 "Whoops!" = "Whoops!";
-"If you don't keep autolock disabled the Rise & Shine feature will be disabled." = "If you don't keep autolock disabled the Rise & Shine feature will be disabled.";
+"If you don't keep auto-lock disabled the Rise & Shine feature will be disabled." = "If you don't keep auto-lock disabled the Rise & Shine feature will be disabled.";
 "Cancel" = "Cancel";
 "Ok" = "Ok";
 "Shake for Flashlight" = "Shake for Flashlight";

@@ -48,6 +48,12 @@
 		</dict>
 		<dict>
 			<key>name</key>
+			<string>Night Sky</string>
+			<key>filename</key>
+			<string>nightsky.png</string>
+		</dict>
+		<dict>
+			<key>name</key>
 			<string>Default</string>
 			<key>filename</key>
 			<string>BlackBG.png</string>

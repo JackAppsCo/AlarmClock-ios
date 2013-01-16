@@ -18,6 +18,7 @@
 {
     SystemSoundID soundID;
     NSString *_currentlyPlayingFilename;
+    NSTimer *_stopTimer;
 }
 
 - (id)initWithDelegate:(id <JASoundSelectorTableViewControllerDelegate>)theDelegate;

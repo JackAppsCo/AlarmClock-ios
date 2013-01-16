@@ -17,7 +17,7 @@
 
 @implementation JAAlarmSettingsController
 
-@synthesize alarm = _alarm, tableView = _tableView, datePicker = _datePicker, enableSwitch = _enableSwitch, gradualSwitch = _gradualSwitch, nameField = _nameField, snoozeField = _snoozeField;
+@synthesize alarm = _alarm, tableView = _tableView, datePicker = _datePicker, enableSwitch = _enableSwitch, shineSwitch = _shineSwitch, gradualSwitch = _gradualSwitch, nameField = _nameField, snoozeField = _snoozeField;
 
 - (id)initWithAlarm:(JAAlarm*)anAlarm
 {
@@ -42,6 +42,7 @@
             _alarm.name = @"Alarm";
             _alarm.snoozeTime = [NSNumber numberWithInt:10];
             _alarm.lastFireDate = nil;
+            _alarm.shineEnabled = NO;
             _alarm.enabledDate = [NSDate date];
             
             //time comps
@@ -59,8 +60,11 @@
         [self setGradualSwitch:[[UISwitch alloc] init]];
         [self.gradualSwitch setOn:self.alarm.gradualSound];
         
+        [self setShineSwitch:[[UISwitch alloc] init]];
+        [self.shineSwitch setOn:self.alarm.shineEnabled];
+        
         [self setNameField:[[UITextField alloc] init]];
-        self.nameField.frame = CGRectMake(0, 0, 200.0, 23.0);
+        self.nameField.frame = CGRectMake(0, 0, 150.0, 23.0);
         [self.nameField setTextAlignment:NSTextAlignmentRight];
         self.nameField.returnKeyType = UIReturnKeyDone;
         self.nameField.delegate = self;
@@ -103,7 +107,8 @@
     //if this is a new alarm set the buttons
     if (self.navigationController.viewControllers.count == 1) {
 
-        [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Save", nil) style:UIBarButtonItemStyleDone target:self action:@selector(dismissModalViewControllerAnimated:)]];
+        if (![self.alarm.name isEqualToString:NSLocalizedString(@"SleepSmart Alarm", nil)])
+            [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Save", nil) style:UIBarButtonItemStyleDone target:self action:@selector(dismissModalViewControllerAnimated:)]];
     
         [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Cancel", nil) style:UIBarButtonItemStylePlain target:self action:@selector(cancelEdit:)]];
     }
@@ -124,6 +129,7 @@
     if (!pressedCancel)
     {
         self.alarm.enabled = self.enableSwitch.on;
+        self.alarm.shineEnabled = self.shineSwitch.on;
         if (self.alarm.enabled) {
             [self.alarm setEnabledDate:[NSDate date]];
             
@@ -206,7 +212,7 @@
 {
 
     // Return the number of rows in the section.
-    return 6;
+    return 7;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -245,6 +251,10 @@
             cell.accessoryView = self.gradualSwitch;
             break;
         case 6:
+            cell.textLabel.text = NSLocalizedString(@"Rise & Shine", nil);
+            cell.accessoryView = self.shineSwitch;
+            break;
+        case 7:
             cell.textLabel.text = NSLocalizedString(@"Snooze (mins)", nil);
             cell.accessoryView = self.snoozeField;
             break;

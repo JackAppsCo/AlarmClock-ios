@@ -66,6 +66,15 @@
     [self.tableView reloadData];
 }
 
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    if ([self.aPlayer isPlaying]) {
+        [self.aPlayer stop];
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -92,6 +101,12 @@
     return (button);
 }
 
+- (void)stopSample:(NSTimer*)theTimer
+{
+    if ([self.aPlayer isPlaying]) {
+        [self.aPlayer stop];
+    }
+}
 
 #pragma mark - Rotate  Methods
 - (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
@@ -451,6 +466,16 @@
         self.aPlayer.volume = 1.0f;
         [self.aPlayer setNumberOfLoops:0];
         [self.aPlayer play];
+        
+        
+        //incase the timer's already running invalidate it
+        if (_stopTimer.isValid) {
+            [_stopTimer invalidate];
+        }
+        
+        _stopTimer = [[NSTimer alloc] initWithFireDate:[NSDate dateWithTimeIntervalSinceNow:(indexPath.section == 0) ? 5 : 3] interval:0 target:self selector:@selector(stopSample:) userInfo:nil repeats:NO];
+        [[NSRunLoop mainRunLoop] addTimer:_stopTimer forMode:NSRunLoopCommonModes];
+        
     }
 }
 

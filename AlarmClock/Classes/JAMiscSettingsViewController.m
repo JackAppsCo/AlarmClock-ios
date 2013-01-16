@@ -124,7 +124,7 @@
 - (void)awakeSwitchChanged:(id)sender
 {
     if (![self.awakeSwitch isOn] && [JASettings shine]) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Whoops!", nil) message:NSLocalizedString(@"If you don't keep autolock disabled the Rise & Shine feature will be disabled.", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitles:NSLocalizedString(@"Ok", nil), nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Whoops!", nil) message:NSLocalizedString(@"If you don't keep auto-lock disabled the Rise & Shine feature will be disabled.", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitles:NSLocalizedString(@"Ok", nil), nil];
         [alert setTag:1];
         [alert show];
     }
@@ -224,7 +224,7 @@
         }
     }
     else if (indexPath.section == 1) {
-        cell.textLabel.text = NSLocalizedString(@"Disable Autolock", nil);
+        cell.textLabel.text = NSLocalizedString(@"Disable Auto-Lock", nil);
         cell.accessoryView = self.awakeSwitch;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }

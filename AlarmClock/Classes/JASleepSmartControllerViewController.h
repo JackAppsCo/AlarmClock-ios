@@ -7,13 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 
 @interface JASleepSmartControllerViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
 {
     int _selectedPicker, _selectedSound, _selectedTime;
     NSDateFormatter *_formatter;
+    NSTimer *_stopTimer;
 }
 
+@property (strong, nonatomic) AVAudioPlayer *aPlayer;
 @property (strong, nonatomic) UIPickerView *pickerView;
 @property (strong, nonatomic) NSArray *sounds;
 @property (strong, nonatomic) UITableView *tableView;

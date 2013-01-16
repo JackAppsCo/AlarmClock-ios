@@ -390,12 +390,17 @@ static BOOL APIError = NO;
 - (void)dealloc {
 	[super dealloc];
 	
-	[baseURL release];
-	
-	[delegate release];
-	
-	[_APIKey release];
-	[_location release];
+//    if (baseURL != nil)
+//        [baseURL release];
+//	
+//    if (delegate != nil)
+//        [delegate release];
+//	
+//    if (_APIKey != nil)
+//        [_APIKey release];
+//
+//    if (_location != nil)
+//        [_location release];
 }
 
 @end

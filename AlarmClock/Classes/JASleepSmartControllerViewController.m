@@ -10,9 +10,12 @@
 #import "JASettings.h"
 #import "JAAlarm.h"
 #import "JAAlarmSettingsController.h"
+#import "JAAppDelegate.h"
 
 @interface JASleepSmartControllerViewController ()
 - (void)shineSwitchChanged:(id)sender;
+
+- (void)stopSample:(NSTimer*)theTimer;
 
 - (void) raiseDatePicker;
 - (void) lowerDatePicker;
@@ -24,6 +27,8 @@
 - (void) controlChanged:(id)sender;
 - (void) createButtonPressed:(id)sender;
 - (void) dateChanged:(id)sender;
+
+- (void)alarmCreated;
 
 @end
 
@@ -175,11 +180,16 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)alarmCreated
+{
+    [self dismissViewControllerAnimated:NO completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 - (void)shineSwitchChanged:(id)sender
 {
     if ([self.shineSwitch isOn] && ![JASettings stayAwake]) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Whoops!", nil) message:NSLocalizedString(@"In order to turn on the Rise & Shine feature we'll have to disable autolock.", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitles:NSLocalizedString(@"Ok", nil), nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Whoops!", nil) message:NSLocalizedString(@"In order to turn on the Rise & Shine feature we'll have to disable auto-lock.", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitles:NSLocalizedString(@"Ok", nil), nil];
         [alert setTag:0];
         [alert show];
     }
@@ -188,6 +198,12 @@
     }
 }
 
+- (void)stopSample:(NSTimer*)theTimer
+{
+    if ([self.aPlayer isPlaying]) {
+        [self.aPlayer stop];
+    }
+}
 
 #pragma mark - Table view data source
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -270,7 +286,7 @@
 {
     
     // Return the number of sections.
-    return 3;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -284,7 +300,7 @@
         if (self.timeComponents == nil)
             return 0;
         else
-            return 10;
+            return 6;
     }
     else {
         return 1;
@@ -328,7 +344,7 @@
             cell.selectionStyle = UITableViewCellSelectionStyleBlue;
         }
         
-        int timeInterval = -(60 * 90) * (10 - indexPath.row);
+        int timeInterval = (self.sleepWakeControl.selectedSegmentIndex == 0) ? -(60 * 90) * (8 - indexPath.row) : (60 * 90) * (indexPath.row + 3);
         NSDate *newDate = [NSDate dateWithTimeInterval:timeInterval sinceDate:self.datePicker.date];
         
         cell.textLabel.text = [_formatter stringFromDate:newDate];
@@ -432,11 +448,16 @@
 
 - (void) raisePicker
 {
+    [self lowerDatePicker];
+    [self.dateDoneButton setAction:@selector(lowerPicker)];
+    
     [UIView animateWithDuration:0.3f
                      animations:^{
+                         self.dateToolbar.frame = CGRectMake(0, self.view.frame.size.height - self.pickerView.frame.size.height - self.dateToolbar.frame.size.height, self.view.frame.size.width, self.dateToolbar.frame.size.height);
                          self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width, self.view.frame.size.height - self.pickerView.frame.size.height);
                          self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
                          self.pickerView.frame = CGRectMake(0, self.view.frame.size.height - self.pickerView.frame.size.height, self.pickerView.frame.size.width, self.pickerView.frame.size.height);
+                         
                      }
                      completion:^(BOOL finished) {
                          
@@ -447,6 +468,8 @@
 {
     [UIView animateWithDuration:0.3f
                      animations:^{
+                         
+                         self.dateToolbar.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.dateToolbar.frame.size.height);
                          self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width, self.view.frame.size.height);
                          self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 95, 0);
                          self.pickerView.frame = CGRectMake(0, self.view.frame.size.height, self.pickerView.frame.size.width, self.pickerView.frame.size.height);
@@ -489,6 +512,34 @@
         [JASettings setSleepSound:[self.sounds objectAtIndex:row]];
         _selectedSound = row;
         
+        NSString *filename = [(NSDictionary*)[self.sounds objectAtIndex:row] objectForKey:@"filename"];
+        NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:[[filename componentsSeparatedByString:@"."] objectAtIndex:0]
+                                                        ofType:[[filename componentsSeparatedByString:@"."] objectAtIndex:1]];
+        NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
+        
+        NSError *err;
+        AVAudioPlayer *player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL
+                                                                       error:&err];
+
+        
+        if (err)
+            NSLog(@"ERR: %@", err);
+        
+        self.aPlayer = player;
+        self.aPlayer.delegate = nil;
+        self.aPlayer.volume = 1.0f;
+        [self.aPlayer setNumberOfLoops:0];
+        [self.aPlayer play];
+        
+        
+        //incase the timer's already running invalidate it
+        if (_stopTimer.isValid) {
+            [_stopTimer invalidate];
+        }
+        
+        _stopTimer = [[NSTimer alloc] initWithFireDate:[NSDate dateWithTimeIntervalSinceNow:5] interval:0 target:self selector:@selector(stopSample:) userInfo:nil repeats:NO];
+        [[NSRunLoop mainRunLoop] addTimer:_stopTimer forMode:NSRunLoopCommonModes];
+        
     }
     else {
         
@@ -499,7 +550,7 @@
     }
     
     [self.tableView reloadData];
-    [self lowerPicker];
+    //[self lowerPicker];
 }
 
 #pragma mark - UIAlertviewDelegate
@@ -542,6 +593,9 @@
 
 - (void) raiseDatePicker
 {
+    [self lowerPicker];
+    [self.dateDoneButton setAction:@selector(lowerDatePicker)];
+    
     [UIView animateWithDuration:0.3f
                      animations:^{
                          
@@ -581,6 +635,7 @@
     _alarm.snoozeTime = [NSNumber numberWithInt:10];
     _alarm.lastFireDate = nil;
     _alarm.enabledDate = [NSDate date];
+    _alarm.shineEnabled = YES;
     
     //time comps
     NSDate *alarmDate;
@@ -601,8 +656,8 @@
     
     //Alarm Settings View
     JAAlarmSettingsController *newAlarmController =[[JAAlarmSettingsController alloc] initWithAlarm:_alarm];
-    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonItemStyleDone target:self action:@selector(dismissModalViewControllerAnimated:)];
-    [saveButton setTitle:NSLocalizedString(@"Save", nil)];
+    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Save", nil) style:UIBarButtonItemStyleDone target:self action:@selector(alarmCreated)];
+    newAlarmController.title = NSLocalizedString(@"SleepSmart Alarm", nil);
     [newAlarmController.navigationItem setLeftBarButtonItem:saveButton];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:newAlarmController];
     [self presentViewController:navController animated:YES completion:nil];

@@ -34,13 +34,13 @@ static ClockManager *sharedInstance = nil;
     
     //get time components
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDateComponents *timeComponents = [gregorian components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:[NSDate date]];
+    NSDateComponents *timeComponents = [gregorian components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:[NSDate date]];
     
     //check every minute to see if the time matches a current alarm
     if (timeComponents.second == 0) {
         
         for (JAAlarm *alarm in [JAAlarm savedAlarms]) {
-            if (alarm.enabled && [JASettings shine] && [ClockManager shouldStartShineForComponents:alarm.timeComponents atComponents:timeComponents]) {
+            if (alarm.enabled && alarm.shineEnabled && [ClockManager shouldStartShineForComponents:alarm.timeComponents atComponents:timeComponents]) {
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"shineTriggered" object:alarm];
             }
             else if (alarm.enabled && timeComponents.minute == alarm.timeComponents.minute && timeComponents.hour == alarm.timeComponents.hour) {
@@ -66,14 +66,17 @@ static ClockManager *sharedInstance = nil;
     NSCalendar *cal = [NSCalendar currentCalendar];
     
     NSDate *shineDate;
-    if (shineComps.hour == 0 && shineComps.minute < 30) {
-        shineDate = [cal dateByAddingComponents:shineComps toDate:[NSDate dateWithTimeInterval:(60 * 60 * 24) sinceDate:[NSDate date]] options:0];
-    }
-    else {
-        shineDate = [cal dateByAddingComponents:shineComps toDate:[NSDate date] options:0];
-    }
+//    if (shineComps.hour == 0 && shineComps.minute < 30) {
+//        shineDate = [cal dateByAddingComponents:shineComps toDate:[NSDate dateWithTimeInterval:(60 * 60 * 24) sinceDate:[NSDate date]] options:0];
+//    }
+//    else {
+//        //shineDate = [cal dateByAddingComponents:shineComps toDate:[NSDate date] options:0];
+//        shineDate = [cal dateFromComponents:shineComps];
+//    }
     
-    NSDate *atDate = [cal dateByAddingComponents:atComps toDate:[NSDate date] options:0];
+    shineDate = [cal dateFromComponents:shineComps];
+    
+    NSDate *atDate = [cal dateFromComponents:atComps];
     
     //get abs value of time interval
     int seconds = [shineDate timeIntervalSinceDate:atDate];

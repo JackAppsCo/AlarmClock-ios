@@ -79,6 +79,10 @@
 		469431A9168A8DDB000FE3E3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4694319D168A8DDB000FE3E3 /* README.md */; };
 		469431AA168A8DDB000FE3E3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4694319D168A8DDB000FE3E3 /* README.md */; };
 		469431AB168A9069000FE3E3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46943183168A8C75000FE3E3 /* SystemConfiguration.framework */; };
+		469F13B616A31576002E91A9 /* nightsky.png in Resources */ = {isa = PBXBuildFile; fileRef = 469F13B416A31576002E91A9 /* nightsky.png */; };
+		469F13B716A31576002E91A9 /* nightsky.png in Resources */ = {isa = PBXBuildFile; fileRef = 469F13B416A31576002E91A9 /* nightsky.png */; };
+		469F13B816A31576002E91A9 /* nightsky@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 469F13B516A31576002E91A9 /* nightsky@2x.png */; };
+		469F13B916A31576002E91A9 /* nightsky@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 469F13B516A31576002E91A9 /* nightsky@2x.png */; };
 		46F9A51B1698A8F200D7EF54 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F9A51A1698A8F200D7EF54 /* CoreImage.framework */; };
 		46F9A51C1698A9DD00D7EF54 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F9A51A1698A8F200D7EF54 /* CoreImage.framework */; };
 		46F9A51E1698AA7000D7EF54 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F9A51D1698AA7000D7EF54 /* CoreGraphics.framework */; };
@@ -478,6 +482,8 @@
 		469431A0168A8DDB000FE3E3 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
 		469431A1168A8DDB000FE3E3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/AppiraterLocalizable.strings"; sourceTree = "<group>"; };
 		469431A2168A8DDB000FE3E3 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/AppiraterLocalizable.strings"; sourceTree = "<group>"; };
+		469F13B416A31576002E91A9 /* nightsky.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = nightsky.png; path = Images/nightsky.png; sourceTree = "<group>"; };
+		469F13B516A31576002E91A9 /* nightsky@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "nightsky@2x.png"; path = "Images/nightsky@2x.png"; sourceTree = "<group>"; };
 		46F9A51A1698A8F200D7EF54 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		46F9A51D1698AA7000D7EF54 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		46F9A5201698AEDE00D7EF54 /* fullAlarmIconBlack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fullAlarmIconBlack.png; path = Images/HomeScreen/fullAlarmIconBlack.png; sourceTree = "<group>"; };
@@ -977,6 +983,8 @@
 				46662C37168AD30200661715 /* drops@2x.png */,
 				C95D700316695B1D00A9FD03 /* HomeScreenIcons */,
 				46F9A55316995D9C00D7EF54 /* Icons */,
+				469F13B416A31576002E91A9 /* nightsky.png */,
+				469F13B516A31576002E91A9 /* nightsky@2x.png */,
 				C93A02231666DAE800E1A273 /* playButton.png */,
 				C93A02261666DAE800E1A273 /* playButton@2x.png */,
 				C93AC1271665B1F70065798B /* plus.png */,
@@ -1508,6 +1516,8 @@
 				46F9A55916995DB000D7EF54 /* SleepSmart114.png in Resources */,
 				46F9A56316995ED900D7EF54 /* SleepSmart57.png in Resources */,
 				46F9A56516995EDD00D7EF54 /* SleepSmart114.png in Resources */,
+				469F13B716A31576002E91A9 /* nightsky.png in Resources */,
+				469F13B916A31576002E91A9 /* nightsky@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1677,6 +1687,8 @@
 				46F9A55D16995E7900D7EF54 /* SleepSmartFree114.png in Resources */,
 				46F9A55F16995EC500D7EF54 /* SleepSmartFree57.png in Resources */,
 				46F9A56116995ECA00D7EF54 /* SleepSmartFree114.png in Resources */,
+				469F13B616A31576002E91A9 /* nightsky.png in Resources */,
+				469F13B816A31576002E91A9 /* nightsky@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

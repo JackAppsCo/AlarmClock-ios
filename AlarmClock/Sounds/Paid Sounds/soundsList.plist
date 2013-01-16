@@ -56,14 +56,6 @@
 			<key>free</key>
 			<false/>
 			<key>name</key>
-			<string>Church Bell</string>
-			<key>filename</key>
-			<string>Church Bell_cut.m4a</string>
-		</dict>
-		<dict>
-			<key>free</key>
-			<false/>
-			<key>name</key>
 			<string>Siren</string>
 			<key>filename</key>
 			<string>Siren_cut.m4a</string>
@@ -118,6 +110,14 @@
 			<string>Harp</string>
 			<key>filename</key>
 			<string>Harp.M4A</string>
+		</dict>
+		<dict>
+			<key>free</key>
+			<false/>
+			<key>name</key>
+			<string>Church Bell</string>
+			<key>filename</key>
+			<string>Church Bell_cut.m4a</string>
 		</dict>
 		<dict>
 			<key>free</key>
