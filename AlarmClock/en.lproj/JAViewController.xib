@@ -168,7 +168,7 @@
 									<reference key="NSCustomColorSpace" ref="469442844"/>
 								</object>
 								<nil key="IBUIHighlightedColor"/>
-								<object class="NSColor" key="IBUIShadowColor" id="363011548">
+								<object class="NSColor" key="IBUIShadowColor" id="728795339">
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MCAwIDAAA</bytes>
 								</object>
@@ -178,13 +178,13 @@
 								<int key="IBUITextAlignment">1</int>
 								<int key="IBUILineBreakMode">2</int>
 								<object class="IBUIFontDescription" key="IBUIFontDescription">
-									<string key="name">HelveticaNeue-Bold</string>
-									<string key="family">Helvetica Neue</string>
+									<string key="name">Cochin-Bold</string>
+									<string key="family">Cochin</string>
 									<int key="traits">2</int>
 									<double key="pointSize">85</double>
 								</object>
 								<object class="NSFont" key="IBUIFont">
-									<string key="NSName">HelveticaNeue-Bold</string>
+									<string key="NSName">Cochin-Bold</string>
 									<double key="NSSize">85</double>
 									<int key="NSfFlags">16</int>
 								</object>
@@ -209,10 +209,7 @@
 									<reference key="NSCustomColorSpace" ref="469442844"/>
 								</object>
 								<nil key="IBUIHighlightedColor"/>
-								<object class="NSColor" key="IBUIShadowColor">
-									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MCAwIDAAA</bytes>
-								</object>
+								<reference key="IBUIShadowColor" ref="728795339"/>
 								<string key="IBUIShadowOffset">{1, 1}</string>
 								<int key="IBUIBaselineAdjustment">0</int>
 								<float key="IBUIMinimumFontSize">20</float>
@@ -320,10 +317,7 @@
 									<reference key="NSCustomColorSpace" ref="469442844"/>
 								</object>
 								<nil key="IBUIHighlightedColor"/>
-								<object class="NSColor" key="IBUIShadowColor" id="728795339">
-									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MCAwIDAAA</bytes>
-								</object>
+								<reference key="IBUIShadowColor" ref="728795339"/>
 								<string key="IBUIShadowOffset">{1, 1}</string>
 								<int key="IBUIBaselineAdjustment">0</int>
 								<int key="IBUITextAlignment">2</int>
@@ -436,7 +430,7 @@
 						<reference key="NSSuperview" ref="339779611"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="335623427"/>
-						<reference key="IBUIBackgroundColor" ref="363011548"/>
+						<reference key="IBUIBackgroundColor" ref="728795339"/>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 						<object class="IBUIScreenMetrics" key="IBUISimulatedDestinationMetrics" id="527896201">

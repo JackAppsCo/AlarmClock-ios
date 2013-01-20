@@ -42,6 +42,19 @@
     //capture brightness
     _initalBrightness = [UIScreen mainScreen].brightness;
     
+    //setup audio session
+    NSError *setCategoryError = nil;
+    BOOL success = [[AVAudioSession sharedInstance]
+                    setCategory: AVAudioSessionCategoryPlayAndRecord
+                    error: &setCategoryError];
+    
+    if (!success) { /* handle the error in setCategoryError */ }
+    
+    UInt32 doChangeDefaultRoute = 1;
+    AudioSessionSetProperty(kAudioSessionProperty_OverrideCategoryDefaultToSpeaker,
+                             sizeof (doChangeDefaultRoute),
+                             &doChangeDefaultRoute
+                             );
     
     //check for disabl lock
     [[UIApplication sharedApplication] setIdleTimerDisabled:[JASettings stayAwake]];

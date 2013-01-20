@@ -137,7 +137,7 @@
     
     //setup clock label frame and font
     self.clockLabel.frame = CGRectMake(20, 50, self.view.frame.size.width - 40, self.view.frame.size.height - 100);
-    self.clockLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:([JASettings showSeconds]) ? 55 : 85];
+    self.clockLabel.font = [UIFont fontWithName:@"Cochin-Bold" size:([JASettings showSeconds]) ? 55 : 85];
     self.dateLabel.frame = CGRectMake(20, self.clockLabel.center.y + 40, self.view.frame.size.width - 40, 29);
     self.dateLabel.font = [UIFont fontWithName:@"Cochin" size:23];
     
@@ -162,7 +162,7 @@
     [self.mainView insertSubview:_backdropImageview belowSubview:self.amPmLabel];
     
     //setup clock labels
-    self.clockLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:([JASettings showSeconds]) ? 87 : 110];
+    self.clockLabel.font = [UIFont fontWithName:@"Cochin-Bold" size:([JASettings showSeconds]) ? 87 : 110];
     [self layoutClockLabelForFrame:CGRectMake(15.0, 100.0, self.mainView.frame.size.width - 30.0, self.mainView.frame.size.height - 200.0)];
     
     //bring clock label to front
@@ -288,13 +288,13 @@
     //clock font size
     if (self.mainView.frame.size.width <= 320) {
         
-        self.clockLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:([JASettings showSeconds]) ? 55 : 85];
+        self.clockLabel.font = [UIFont fontWithName:@"Cochin-Bold" size:([JASettings showSeconds]) ? 55 : 85];
         
         [self layoutClockLabelForFrame:CGRectMake(15.0, 100.0, self.mainView.frame.size.width - 30.0, self.mainView.frame.size.height - 200.0)];
     }
     else {
         
-        self.clockLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:([JASettings showSeconds]) ? 87 : 110];
+        self.clockLabel.font = [UIFont fontWithName:@"Cochin-Bold" size:([JASettings showSeconds]) ? 87 : 110];
         
         [self layoutClockLabelForFrame:CGRectMake(75.0, 25.0, self.mainView.frame.size.width - 150.0, self.mainView.frame.size.height - 50.0)];
     }
@@ -549,7 +549,7 @@
 {
     if (UIInterfaceOrientationIsPortrait(toInterfaceOrientation)) {
 
-        self.clockLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:([JASettings showSeconds]) ? 65 : 75];
+        self.clockLabel.font = [UIFont fontWithName:@"Cochin-Bold" size:([JASettings showSeconds]) ? 65 : 75];
         
         [self layoutClockLabelForFrame:CGRectMake(25.0, 50.0, self.mainView.frame.size.width - 50.0, self.mainView.frame.size.height - 100.0)];
         
@@ -558,7 +558,7 @@
     
     if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
         
-        self.clockLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:([JASettings showSeconds]) ? 87 : 110];
+        self.clockLabel.font = [UIFont fontWithName:@"Cochin-Bold" size:([JASettings showSeconds]) ? 87 : 110];
         
         [self layoutClockLabelForFrame:CGRectMake(60.0, 15.0, self.mainView.frame.size.width - 120.0, self.mainView.frame.size.height - 30.0)];
         

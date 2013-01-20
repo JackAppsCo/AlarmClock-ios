@@ -16,13 +16,16 @@
 //Sleep Screen
 "Sleep Cycle" = "Sleep Cycle";
 "Bedtime" = "Bedtime";
-"Wake Up Time" = "Wake Up Time";
+"Wake-Up Time" = "Wake-Up Time";
 "Create SleepSmart Alarm" = "Create SleepSmart Alarm";
 "To complete your sleep cycle, you should fall asleep at one of these times:" = "To complete your sleep cycle, you should fall asleep at one of these times:";
-"To complete your sleep cycle, you should wake up at one of these times:" = "To complete your sleep cycle, you should wake up at one of these times:";
+"To complete your sleep cycle, you should wake-up at one of these times:" = "To complete your sleep cycle, you should wake-up at one of these times:";
 "Select a Time" = "Select a Time";
 "Sleep Cycle Calculator" = "Sleep Cycle Calculator";
 "SleepSmart Alarm" = "SleepSmart Alarm";
+"When you set an Alarm, make sure to turn on Rise & Shine to emulate the rising sun!  This will gently adjust the brightness of your screen before your alarm goes off to naturally wake you up." = "When you set an Alarm, make sure to turn on Rise & Shine to emulate the rising sun!  This will gently adjust the brightness of your screen before your alarm goes off to naturally wake you up.";
+"Rise & Shine Feature" = "Rise & Shine Feature";
+
 
 //Settings
 "Alarms" = "Alarms";
@@ -44,7 +47,10 @@
 "Celsius" = "Celsius";
 "Disable Auto-Lock" = "Disable Auto-Lock";
 "Whoops!" = "Whoops!";
+"In order to enable the Rise & Shine feature we'll have to disable auto-lock." = "In order to enable the Rise & Shine feature we'll have to disable auto-lock.";
 "If you don't keep auto-lock disabled the Rise & Shine feature will be disabled." = "If you don't keep auto-lock disabled the Rise & Shine feature will be disabled.";
+"Due to multitasking limitations set by Apple, SleepSmart MUST be running in the foreground for its features to work properly.  In order to do this, you must disable your phone’s auto-lock feature./n/nIf you forget to leave the app open, we’ve got your back.  SleepSmart provides a built-in background alarm that will play a default alarm sound when your alarm goes off.   This default alarm is limited to 30 seconds so MAKE SURE you keep SleepSmart running through the night!  Background alarms work only on iPhone 4 models and above." = "Due to multitasking limitations set by Apple, SleepSmart MUST be running in the foreground for its features to work properly.  In order to do this, you must disable your phone’s auto-lock feature.\n\nIf you forget to leave the app open, we’ve got your back.  SleepSmart provides a built-in background alarm that will play a default alarm sound when your alarm goes off.   This default alarm is limited to 30 seconds so MAKE SURE you keep SleepSmart running through the night!  Background alarms work only on iPhone 4 models and above.";
+"The Science Behind SleepSmart – Why Your Sleep Cycle Matters\n\nThink that extra hour of sleep will make you feel more rested?  Think again.  Research has shown that waking up in the middle of your body’s natural sleep cycle can make you feel groggy, disoriented and is actually counterproductive to a full night’s sleep.  Waking your body up at the end of your natural sleep cycle, when your body and brain are already close to wakefulness, can provide you with the best night’s sleep and the most refreshing of mornings.\n\nThe average sleep cycle lasts approximately 90 minutes and a well-rested adult goes through approximately 4-6 cycles a night.  During these cycles your body enters four different stages: N1, transition to sleep (5 min); N2, light sleep (10-25 min); N3, deep sleep (40-60 min); and REM, dream sleep.  Each stage is vital in restoring your body and mind and plays a different role in preparing you for the day ahead.\n\nEven if you’ve enjoyed a full night’s sleep, getting out of bed can be difficult if your alarm goes off when you’re in the middle of deep sleep (stage N3).   If you want the best night’s sleep for an optimal morning, then set your alarm to wake up at the end of your natural sleep cycle.  Simply use SleepSmart’s Sleep Cycle Calculator and you’re on your way to a great night’s sleep!" = "The Science Behind SleepSmart – Why Your Sleep Cycle Matters\n\nThink that extra hour of sleep will make you feel more rested?  Think again.  Research has shown that waking up in the middle of your body’s natural sleep cycle can make you feel groggy, disoriented and is actually counterproductive to a full night’s sleep.  Waking your body up at the end of your natural sleep cycle, when your body and brain are already close to wakefulness, can provide you with the best night’s sleep and the most refreshing of mornings.\n\nThe average sleep cycle lasts approximately 90 minutes and a well-rested adult goes through approximately 4-6 cycles a night.  During these cycles your body enters four different stages: N1, transition to sleep (5 min); N2, light sleep (10-25 min); N3, deep sleep (40-60 min); and REM, dream sleep.  Each stage is vital in restoring your body and mind and plays a different role in preparing you for the day ahead.\n\nEven if you’ve enjoyed a full night’s sleep, getting out of bed can be difficult if your alarm goes off when you’re in the middle of deep sleep (stage N3).   If you want the best night’s sleep for an optimal morning, then set your alarm to wake up at the end of your natural sleep cycle.  Simply use SleepSmart’s Sleep Cycle Calculator and you’re on your way to a great night’s sleep!";
 "Cancel" = "Cancel";
 "Ok" = "Ok";
 "Shake for Flashlight" = "Shake for Flashlight";

@@ -8,11 +8,12 @@
 
 #import "JAAlarmSettingsController.h"
 #import "JARepeatTableViewController.h"
-
+#import "JASettings.h"
 
 @interface JAAlarmSettingsController ()
 - (void)saveAlarm:(id)sender;
 - (void)cancelEdit:(id)sender;
+- (void)shineSwitchChanged:(id)sender;
 @end
 
 @implementation JAAlarmSettingsController
@@ -62,6 +63,7 @@
         
         [self setShineSwitch:[[UISwitch alloc] init]];
         [self.shineSwitch setOn:self.alarm.shineEnabled];
+        [self.shineSwitch addTarget:self action:@selector(shineSwitchChanged:) forControlEvents:UIControlEventTouchUpInside];
         
         [self setNameField:[[UITextField alloc] init]];
         self.nameField.frame = CGRectMake(0, 0, 150.0, 23.0);
@@ -115,6 +117,29 @@
     
     
 }
+
+- (void)shineSwitchChanged:(id)sender
+{
+    if (![JASettings isPaid]) {
+        
+        [self.shineSwitch setOn:NO];
+        
+        UIAlertView *freeAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Wanna Upgrade?", nil) message:NSLocalizedString(@"The Rise & Shine feature is only available in the paid application.", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"No Thanks", nil) otherButtonTitles:NSLocalizedString(@"Upgrade Me!", nil), nil];
+        [freeAlert show];
+        
+        return;
+        
+    }
+    
+    if ([self.shineSwitch isOn] && ![JASettings stayAwake]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Whoops!", nil) message:NSLocalizedString(@"In order to enable the Rise & Shine feature we'll have to disable auto-lock.", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitles:NSLocalizedString(@"Ok", nil), nil];
+        [alert setTag:1];
+        [alert show];
+    }
+    
+    
+}
+
 
 - (void)cancelEdit:(id)sender
 {
@@ -340,8 +365,12 @@
             break;
         case 6:
         {
-            [self.nameField resignFirstResponder];
-            [self.snoozeField becomeFirstResponder];
+            if (![JASettings isPaid]) {
+                
+                UIAlertView *freeAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Wanna Upgrade?", nil) message:NSLocalizedString(@"The Rise & Shine feature is only available in the paid application.", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"No Thanks", nil) otherButtonTitles:NSLocalizedString(@"Upgrade Me!", nil), nil];
+                [freeAlert show];
+                
+            }
             break;
         }
             
@@ -385,6 +414,17 @@
     
     [self.tableView reloadData];
     
+}
+
+#pragma mark - UIAlertviewDelegate
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        [self.shineSwitch setOn:NO];
+    }
+    else {
+        [JASettings setStayAwake:YES];
+    }
 }
 
 

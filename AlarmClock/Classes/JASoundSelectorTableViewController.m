@@ -430,7 +430,7 @@
     
     
     //preview sound
-    if (indexPath.section == 0 || indexPath.section == 1) {
+    if (indexPath.section < 3) {
         
         NSString *filename, *soundFilePath;
         NSURL *fileURL;

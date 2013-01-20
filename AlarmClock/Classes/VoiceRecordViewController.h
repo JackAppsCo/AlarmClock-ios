@@ -25,6 +25,7 @@
 	NSTimer *timer;
 }
 
+@property (strong, nonatomic) AVAudioPlayer *aPlayer;
 @property (strong, nonatomic) IBOutlet UIImageView *recordIconImageview;
 @property (strong, nonatomic) IBOutlet UITextField *nameField;
 @property (strong, nonatomic) NSString *recorderFilePath;

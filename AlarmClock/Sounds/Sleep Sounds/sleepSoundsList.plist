@@ -10,7 +10,7 @@
 			<key>name</key>
 			<string>Rain Forest</string>
 			<key>filename</key>
-			<string>Rain Forest.m4a</string>
+			<string>Rain Forest.aif</string>
 		</dict>
 		<dict>
 			<key>free</key>
@@ -18,7 +18,7 @@
 			<key>name</key>
 			<string>Ocean Waves</string>
 			<key>filename</key>
-			<string>Ocean Waves.m4a</string>
+			<string>Ocean Waves.aif</string>
 		</dict>
 		<dict>
 			<key>free</key>
@@ -26,7 +26,7 @@
 			<key>name</key>
 			<string>Windy Day</string>
 			<key>filename</key>
-			<string>Windy Day.m4a</string>
+			<string>Windy Day.aif</string>
 		</dict>
 		<dict>
 			<key>name</key>
@@ -34,7 +34,7 @@
 			<key>free</key>
 			<false/>
 			<key>filename</key>
-			<string>Thunderstorm.m4a</string>
+			<string>Thunderstorm.aif</string>
 		</dict>
 		<dict>
 			<key>free</key>
@@ -50,7 +50,7 @@
 			<key>name</key>
 			<string>Lake Shore</string>
 			<key>filename</key>
-			<string>Lake Shore.m4a</string>
+			<string>Lake Shore.aif</string>
 		</dict>
 		<dict>
 			<key>free</key>
@@ -58,7 +58,7 @@
 			<key>name</key>
 			<string>Countryside</string>
 			<key>filename</key>
-			<string>Countryside.m4a</string>
+			<string>Countryside.aif</string>
 		</dict>
 		<dict>
 			<key>free</key>
@@ -66,7 +66,7 @@
 			<key>name</key>
 			<string>City Sounds</string>
 			<key>filename</key>
-			<string>City Sounds.m4a</string>
+			<string>City Sounds.aif</string>
 		</dict>
 		<dict>
 			<key>free</key>
@@ -74,7 +74,7 @@
 			<key>name</key>
 			<string>Waterfall</string>
 			<key>filename</key>
-			<string>Waterfall.m4a</string>
+			<string>Waterfall.aif</string>
 		</dict>
 		<dict>
 			<key>free</key>
@@ -82,7 +82,7 @@
 			<key>name</key>
 			<string>Rain on Pavement</string>
 			<key>filename</key>
-			<string>Rain on Pavement.m4a</string>
+			<string>Rain on Pavement.aif</string>
 		</dict>
 		<dict>
 			<key>free</key>
@@ -90,7 +90,7 @@
 			<key>name</key>
 			<string>Beach</string>
 			<key>filename</key>
-			<string>Beach.m4a</string>
+			<string>Beach.aif</string>
 		</dict>
 	</array>
 </dict>

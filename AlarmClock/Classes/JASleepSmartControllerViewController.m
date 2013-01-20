@@ -85,7 +85,7 @@
         //Sleep Calc
         //-----------
         //sleep control
-        [self setSleepWakeControl:[[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:NSLocalizedString(@"Wake Up Time", nil), NSLocalizedString(@"Bedtime", nil), nil]]];
+        [self setSleepWakeControl:[[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:NSLocalizedString(@"Wake-Up Time", nil), NSLocalizedString(@"Bedtime", nil), nil]]];
         [self.sleepWakeControl setFrame:CGRectMake(15, 45, self.view.frame.size.width - 30, 40)];
         [self.sleepWakeControl setSegmentedControlStyle:UISegmentedControlStyleBar];
         [self.sleepWakeControl setSelectedSegmentIndex:0];
@@ -114,7 +114,7 @@
         [self.sleepLabel setNumberOfLines:0];
         [self.sleepLabel setAlpha:0.0];
         [self.sleepLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:15]];
-        [self.sleepLabel setText:NSLocalizedString(@"To complete your sleep cycle, you should wake up at one of these times:", nil)];
+        [self.sleepLabel setText:NSLocalizedString(@"To complete your sleep cycle, you should wake-up at one of these times:", nil)];
         
         //setup companies toolbar
         [self setDateToolbar:[[UIToolbar alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 35.0)]];
@@ -223,7 +223,7 @@
 - (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     if (section == 1 && self.timeComponents != nil) {
-        return 65.0f;
+        return 105.0f;
     }
     else if (section == 1) {
         return 20.0f;
@@ -269,10 +269,24 @@
 - (UIView*) tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
     if (section == 1 && self.timeComponents != nil) {
-        UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 65.0f)];
+        UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 105.0f)];
         [footerView setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
         [footerView addSubview:self.createButton];
         
+        UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, self.createButton.frame.origin.y + self.createButton.frame.size.height + 10.0, footerView.frame.size.width - 30.0f, 15)];
+        [label1 setBackgroundColor:[UIColor clearColor]];
+        [label1 setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:15]];
+        [label1 setText:NSLocalizedString(@"Rise & Shine Feature", nil)];
+        
+        UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, 20.0f + self.createButton.frame.origin.y + self.createButton.frame.size.height + label1.frame.size.height, footerView.frame.size.width - 30.0, 65)];
+        [label2 setBackgroundColor:[UIColor clearColor]];
+        [label2 setNumberOfLines:0];
+        [label2 setLineBreakMode:NSLineBreakByWordWrapping];
+        [label2 setFont:[UIFont fontWithName:@"HelveticaNeue" size:12]];
+        [label2 setText:NSLocalizedString(@"When you set an Alarm, make sure to turn on Rise & Shine to emulate the rising sun!  This will gently adjust the brightness of your screen before your alarm goes off to naturally wake you up.", nil)];
+        
+        [footerView addSubview:label1];
+        [footerView addSubview:label2];
         
         return footerView;
     }
@@ -337,12 +351,7 @@
     }
     else if (indexPath.section == 1) {
         
-        if (self.sleepWakeControl.selectedSegmentIndex == 0) {
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        }
-        else {
-            cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-        }
+        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
         
         int timeInterval = (self.sleepWakeControl.selectedSegmentIndex == 0) ? -(60 * 90) * (8 - indexPath.row) : (60 * 90) * (indexPath.row + 3);
         NSDate *newDate = [NSDate dateWithTimeInterval:timeInterval sinceDate:self.datePicker.date];
@@ -466,6 +475,8 @@
 
 - (void) lowerPicker
 {
+    if (self.aPlayer.isPlaying) self.aPlayer.stop;
+    
     [UIView animateWithDuration:0.3f
                      animations:^{
                          
@@ -692,7 +703,7 @@
     else {
         
         //sleep label
-        self.sleepLabel.text = NSLocalizedString(@"To complete your sleep cycle, you should wake up at one of these times:", nil);
+        self.sleepLabel.text = NSLocalizedString(@"To complete your sleep cycle, you should wake-up at one of these times:", nil);
         
         //break the chosen date down so we just have the hour and minute with a zero'd seconds
         NSDate *theTime = self.datePicker.date;
@@ -722,7 +733,7 @@
         self.createButton.enabled = YES;
     }
     else {
-        self.sleepLabel.text = NSLocalizedString(@"To complete your sleep cycle, you should wake up at one of these times:", nil);
+        self.sleepLabel.text = NSLocalizedString(@"To complete your sleep cycle, you should wake-up at one of these times:", nil);
         self.createButton.enabled = NO;
     }
     

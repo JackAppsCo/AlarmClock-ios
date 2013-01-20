@@ -14,7 +14,7 @@
 
 @implementation VoiceRecordViewController
 
-@synthesize recorderFilePath;
+@synthesize recorderFilePath, aPlayer;
 
 - (void)viewDidLoad
 {
@@ -30,6 +30,9 @@
     
     //make text field first responder
     [self.nameField becomeFirstResponder];
+    
+    
+    
 }
 
 - (void) rerecordPressed:(id)sender
@@ -261,22 +264,34 @@
 {
 	if(!recorderFilePath)
 		recorderFilePath = [[NSString stringWithFormat:@"%@/%@", DOCUMENTS_FOLDER, self.nameField.text] retain];
+    
+    NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:recorderFilePath];
+    
+    NSError *err;
+    AVAudioPlayer *player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:&err];
+
+    
+	UInt32 doChangeDefaultRoute = 1;
+    AudioSessionSetProperty(kAudioSessionProperty_OverrideCategoryDefaultToSpeaker,
+                            sizeof (doChangeDefaultRoute),
+                            &doChangeDefaultRoute
+                            );
 	
-	//NSLog(@"Playing sound from Path: %@",recorderFilePath);
-	
-	if(soundID)
-	{
-		AudioServicesDisposeSystemSoundID(soundID);
-	}
-	
-	//Get a URL for the sound file
-	NSURL *filePath = [NSURL fileURLWithPath:recorderFilePath isDirectory:NO];
+    
+    if (err)
+        NSLog(@"ERR: %@", err);
+    
+    self.aPlayer = player;
+    self.aPlayer.delegate = nil;
+    self.aPlayer.volume = 1.0f;
+    [self.aPlayer setNumberOfLoops:0];
+    [self.aPlayer play];
 	
 	//Use audio sevices to create the sound
-	AudioServicesCreateSystemSoundID((CFURLRef)filePath, &soundID);
+	//AudioServicesCreateSystemSoundID((CFURLRef)filePath, &soundID);
 	
 	//Use audio services to play the sound
-	AudioServicesPlaySystemSound(soundID);
+	//AudioServicesPlaySystemSound(soundID);
     
     [self setupView];
 }
