@@ -45,7 +45,7 @@ static JASettings *sharedInstance = nil;
 + (UIImage *)backgroundImage
 {
     UIImage *image = [UIImage imageNamed:@"rainbow.png"];
-
+    
     //check for bg image
     if ([[NSUserDefaults standardUserDefaults] objectForKey:BG_KEY]) {
         if ([[[NSUserDefaults standardUserDefaults] objectForKey:BG_KEY] rangeOfString:@"custom"].location != NSNotFound) {

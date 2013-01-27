@@ -8,6 +8,7 @@
 
 #import "JARepeatTableViewController.h"
 #import "JAAlarm.h"
+#import "JASettings.h"
 
 @interface JARepeatTableViewController ()
 
@@ -87,6 +88,9 @@
     
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        
+        cell.textLabel.font = [UIFont fontWithName:CELL_TEXT_FONT size:18];
+        cell.detailTextLabel.font = [UIFont fontWithName:CELL_DETAIL_TEXT_FONT size:18];
     }
     
     // Configure the cell...

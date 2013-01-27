@@ -221,6 +221,9 @@
         [whiteBG setImage:[UIImage imageNamed:@"rowBG.png"]];
         cell.backgroundView = whiteBG;
         
+        cell.textLabel.font = [UIFont fontWithName:CELL_TEXT_FONT size:18];
+        cell.detailTextLabel.font = [UIFont fontWithName:CELL_DETAIL_TEXT_FONT size:18];
+        
     }
     
     // Configure the cell...

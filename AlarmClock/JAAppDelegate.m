@@ -16,11 +16,6 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    /*if ([self.selectedViewController isKindOfClass:[UINavigationController class]]) {
-     UIViewController *rootController = [((UINavigationController *)self.selectedViewController).viewControllers objectAtIndex:0];
-     return [rootController shouldAutorotateToInterfaceOrientation:interfaceOrientation];
-     }
-     return [self.selectedViewController shouldAutorotateToInterfaceOrientation:interfaceOrientation];*/
     return UIInterfaceOrientationIsPortrait(interfaceOrientation);
 }
 
@@ -35,7 +30,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-        
+    //increment launch count
+    [JASettings increaseLaunchCount];
+    
     //call flurry
     [Flurry startSession:@"5TJ5GGNGYW7S6Z7W7CSW"];
     

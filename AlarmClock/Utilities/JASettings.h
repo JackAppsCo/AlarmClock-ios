@@ -8,11 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+#define TITLE_FONT @"Avenir-Black"
+#define CELL_TEXT_FONT @"Avenir-Heavy"
+#define CELL_DETAIL_TEXT_FONT @"Avenir-Medium"
+
 #define CLOCK_COLORS [NSArray arrayWithObjects:[[NSDictionary alloc] initWithObjectsAndKeys:[UIColor whiteColor], @"color", @"White", @"name", nil], [[NSDictionary alloc] initWithObjectsAndKeys:[UIColor blackColor], @"color", @"Black", @"name", nil], nil]
 
 @interface JASettings : NSObject
 {
 }
+
 
 + (JASettings *)instance;
 + (UIImage*) filterImageNamed:(NSString*)imageName ofType:(NSString*)type darker:(BOOL)darker;

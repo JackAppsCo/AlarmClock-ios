@@ -11,7 +11,6 @@
 		46662C12168AA2CA00661715 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46662C11168AA2CA00661715 /* Twitter.framework */; };
 		46662C14168AA2D600661715 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46662C13168AA2D600661715 /* MessageUI.framework */; };
 		46662C26168ACE0F00661715 /* Rain Forest.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46662C19168ACE0F00661715 /* Rain Forest.m4a */; };
-		46662C27168ACE0F00661715 /* Rain Forest.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46662C19168ACE0F00661715 /* Rain Forest.m4a */; };
 		46662C3A168AD30200661715 /* rainbow.png in Resources */ = {isa = PBXBuildFile; fileRef = 46662C30168AD30200661715 /* rainbow.png */; };
 		46662C3B168AD30200661715 /* rainbow.png in Resources */ = {isa = PBXBuildFile; fileRef = 46662C30168AD30200661715 /* rainbow.png */; };
 		46662C3C168AD30200661715 /* rainbow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46662C31168AD30200661715 /* rainbow@2x.png */; };
@@ -36,25 +35,15 @@
 		46662C4F168AD7AA00661715 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46662C11168AA2CA00661715 /* Twitter.framework */; };
 		46662C50168AD7AA00661715 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46662C0E168AA2C400661715 /* Social.framework */; };
 		4668547316A90779007AB1B2 /* Beach.aif in Resources */ = {isa = PBXBuildFile; fileRef = 4668546916A90779007AB1B2 /* Beach.aif */; };
-		4668547416A90779007AB1B2 /* Beach.aif in Resources */ = {isa = PBXBuildFile; fileRef = 4668546916A90779007AB1B2 /* Beach.aif */; };
 		4668547516A90779007AB1B2 /* City Sounds.aif in Resources */ = {isa = PBXBuildFile; fileRef = 4668546A16A90779007AB1B2 /* City Sounds.aif */; };
-		4668547616A90779007AB1B2 /* City Sounds.aif in Resources */ = {isa = PBXBuildFile; fileRef = 4668546A16A90779007AB1B2 /* City Sounds.aif */; };
 		4668547716A90779007AB1B2 /* Countryside.aif in Resources */ = {isa = PBXBuildFile; fileRef = 4668546B16A90779007AB1B2 /* Countryside.aif */; };
-		4668547816A90779007AB1B2 /* Countryside.aif in Resources */ = {isa = PBXBuildFile; fileRef = 4668546B16A90779007AB1B2 /* Countryside.aif */; };
 		4668547916A90779007AB1B2 /* Lake Shore.aif in Resources */ = {isa = PBXBuildFile; fileRef = 4668546C16A90779007AB1B2 /* Lake Shore.aif */; };
-		4668547A16A90779007AB1B2 /* Lake Shore.aif in Resources */ = {isa = PBXBuildFile; fileRef = 4668546C16A90779007AB1B2 /* Lake Shore.aif */; };
 		4668547B16A90779007AB1B2 /* Ocean Waves.aif in Resources */ = {isa = PBXBuildFile; fileRef = 4668546D16A90779007AB1B2 /* Ocean Waves.aif */; };
-		4668547C16A90779007AB1B2 /* Ocean Waves.aif in Resources */ = {isa = PBXBuildFile; fileRef = 4668546D16A90779007AB1B2 /* Ocean Waves.aif */; };
 		4668547D16A90779007AB1B2 /* Rain Forest.aif in Resources */ = {isa = PBXBuildFile; fileRef = 4668546E16A90779007AB1B2 /* Rain Forest.aif */; };
-		4668547E16A90779007AB1B2 /* Rain Forest.aif in Resources */ = {isa = PBXBuildFile; fileRef = 4668546E16A90779007AB1B2 /* Rain Forest.aif */; };
 		4668547F16A90779007AB1B2 /* Rain on Pavement.aif in Resources */ = {isa = PBXBuildFile; fileRef = 4668546F16A90779007AB1B2 /* Rain on Pavement.aif */; };
-		4668548016A90779007AB1B2 /* Rain on Pavement.aif in Resources */ = {isa = PBXBuildFile; fileRef = 4668546F16A90779007AB1B2 /* Rain on Pavement.aif */; };
 		4668548116A90779007AB1B2 /* Thunderstorm.aif in Resources */ = {isa = PBXBuildFile; fileRef = 4668547016A90779007AB1B2 /* Thunderstorm.aif */; };
-		4668548216A90779007AB1B2 /* Thunderstorm.aif in Resources */ = {isa = PBXBuildFile; fileRef = 4668547016A90779007AB1B2 /* Thunderstorm.aif */; };
 		4668548316A90779007AB1B2 /* Waterfall.aif in Resources */ = {isa = PBXBuildFile; fileRef = 4668547116A90779007AB1B2 /* Waterfall.aif */; };
-		4668548416A90779007AB1B2 /* Waterfall.aif in Resources */ = {isa = PBXBuildFile; fileRef = 4668547116A90779007AB1B2 /* Waterfall.aif */; };
 		4668548516A90779007AB1B2 /* Windy Day.aif in Resources */ = {isa = PBXBuildFile; fileRef = 4668547216A90779007AB1B2 /* Windy Day.aif */; };
-		4668548616A90779007AB1B2 /* Windy Day.aif in Resources */ = {isa = PBXBuildFile; fileRef = 4668547216A90779007AB1B2 /* Windy Day.aif */; };
 		469364C1168E3114000A7ED0 /* am_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 469364B9168E3114000A7ED0 /* am_white.png */; };
 		469364C2168E3114000A7ED0 /* am_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 469364B9168E3114000A7ED0 /* am_white.png */; };
 		469364C3168E3114000A7ED0 /* am_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 469364BA168E3114000A7ED0 /* am_black.png */; };
@@ -87,6 +76,58 @@
 		469F13B716A31576002E91A9 /* nightsky.png in Resources */ = {isa = PBXBuildFile; fileRef = 469F13B416A31576002E91A9 /* nightsky.png */; };
 		469F13B816A31576002E91A9 /* nightsky@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 469F13B516A31576002E91A9 /* nightsky@2x.png */; };
 		469F13B916A31576002E91A9 /* nightsky@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 469F13B516A31576002E91A9 /* nightsky@2x.png */; };
+		46E4EB8D16ACD9CB00AAD9A0 /* alarmPointer.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E4EB8516ACD9CB00AAD9A0 /* alarmPointer.png */; };
+		46E4EB8E16ACD9CB00AAD9A0 /* alarmPointer.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E4EB8516ACD9CB00AAD9A0 /* alarmPointer.png */; };
+		46E4EB8F16ACD9CB00AAD9A0 /* alarmPointer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E4EB8616ACD9CB00AAD9A0 /* alarmPointer@2x.png */; };
+		46E4EB9016ACD9CB00AAD9A0 /* alarmPointer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E4EB8616ACD9CB00AAD9A0 /* alarmPointer@2x.png */; };
+		46E4EB9116ACD9CB00AAD9A0 /* settingsPointer.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E4EB8716ACD9CB00AAD9A0 /* settingsPointer.png */; };
+		46E4EB9216ACD9CB00AAD9A0 /* settingsPointer.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E4EB8716ACD9CB00AAD9A0 /* settingsPointer.png */; };
+		46E4EB9316ACD9CB00AAD9A0 /* settingsPointer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E4EB8816ACD9CB00AAD9A0 /* settingsPointer@2x.png */; };
+		46E4EB9416ACD9CB00AAD9A0 /* settingsPointer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E4EB8816ACD9CB00AAD9A0 /* settingsPointer@2x.png */; };
+		46E4EB9516ACD9CB00AAD9A0 /* swipePointer.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E4EB8916ACD9CB00AAD9A0 /* swipePointer.png */; };
+		46E4EB9616ACD9CB00AAD9A0 /* swipePointer.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E4EB8916ACD9CB00AAD9A0 /* swipePointer.png */; };
+		46E4EB9716ACD9CB00AAD9A0 /* swipePointer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E4EB8A16ACD9CB00AAD9A0 /* swipePointer@2x.png */; };
+		46E4EB9816ACD9CB00AAD9A0 /* swipePointer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E4EB8A16ACD9CB00AAD9A0 /* swipePointer@2x.png */; };
+		46E4EB9916ACD9CB00AAD9A0 /* timerPointer.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E4EB8B16ACD9CB00AAD9A0 /* timerPointer.png */; };
+		46E4EB9A16ACD9CB00AAD9A0 /* timerPointer.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E4EB8B16ACD9CB00AAD9A0 /* timerPointer.png */; };
+		46E4EB9B16ACD9CB00AAD9A0 /* timerPointer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E4EB8C16ACD9CB00AAD9A0 /* timerPointer@2x.png */; };
+		46E4EB9C16ACD9CB00AAD9A0 /* timerPointer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46E4EB8C16ACD9CB00AAD9A0 /* timerPointer@2x.png */; };
+		46ECF43216B0B90C00CBE347 /* Rainforest.AIFF in Resources */ = {isa = PBXBuildFile; fileRef = 46ECF43116B0B90C00CBE347 /* Rainforest.AIFF */; };
+		46ECF44316B0C4B000CBE347 /* Rainforest.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46ECF44216B0C4B000CBE347 /* Rainforest.m4a */; };
+		46ECF46B16B0EB5200CBE347 /* Beach.aif in Resources */ = {isa = PBXBuildFile; fileRef = 4668546916A90779007AB1B2 /* Beach.aif */; };
+		46ECF46C16B0EB5200CBE347 /* Beach.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C916EFCE16879E9A000B53F5 /* Beach.m4a */; };
+		46ECF46D16B0EB5200CBE347 /* City Sounds.aif in Resources */ = {isa = PBXBuildFile; fileRef = 4668546A16A90779007AB1B2 /* City Sounds.aif */; };
+		46ECF46E16B0EB5200CBE347 /* City Sounds.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46662C15168ACE0F00661715 /* City Sounds.m4a */; };
+		46ECF46F16B0EB5200CBE347 /* Countryside.aif in Resources */ = {isa = PBXBuildFile; fileRef = 4668546B16A90779007AB1B2 /* Countryside.aif */; };
+		46ECF47016B0EB5200CBE347 /* Countryside.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46662C16168ACE0F00661715 /* Countryside.m4a */; };
+		46ECF47116B0EB5200CBE347 /* Lake Shore.aif in Resources */ = {isa = PBXBuildFile; fileRef = 4668546C16A90779007AB1B2 /* Lake Shore.aif */; };
+		46ECF47216B0EB5200CBE347 /* Lake Shore.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46662C17168ACE0F00661715 /* Lake Shore.m4a */; };
+		46ECF47316B0EB5200CBE347 /* Ocean Waves.aif in Resources */ = {isa = PBXBuildFile; fileRef = 4668546D16A90779007AB1B2 /* Ocean Waves.aif */; };
+		46ECF47416B0EB5200CBE347 /* Ocean Waves.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46662C18168ACE0F00661715 /* Ocean Waves.m4a */; };
+		46ECF47516B0EB5200CBE347 /* Rain Forest.aif in Resources */ = {isa = PBXBuildFile; fileRef = 4668546E16A90779007AB1B2 /* Rain Forest.aif */; };
+		46ECF47616B0EB5200CBE347 /* Rain Forest.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46662C19168ACE0F00661715 /* Rain Forest.m4a */; };
+		46ECF47716B0EB5200CBE347 /* Rain on Pavement.aif in Resources */ = {isa = PBXBuildFile; fileRef = 4668546F16A90779007AB1B2 /* Rain on Pavement.aif */; };
+		46ECF47816B0EB5200CBE347 /* Rain on Pavement.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46662C1A168ACE0F00661715 /* Rain on Pavement.m4a */; };
+		46ECF47916B0EB5200CBE347 /* Rainforest.AIFF in Resources */ = {isa = PBXBuildFile; fileRef = 46ECF43116B0B90C00CBE347 /* Rainforest.AIFF */; };
+		46ECF47A16B0EB5200CBE347 /* Rainforest.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46ECF44216B0C4B000CBE347 /* Rainforest.m4a */; };
+		46ECF47B16B0EB5200CBE347 /* Rainstorm.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46662C1B168ACE0F00661715 /* Rainstorm.m4a */; };
+		46ECF47C16B0EB5200CBE347 /* sleepSoundsList.plist in Resources */ = {isa = PBXBuildFile; fileRef = C916EFCC16879E9A000B53F5 /* sleepSoundsList.plist */; };
+		46ECF47D16B0EB5200CBE347 /* Thunderstorm.aif in Resources */ = {isa = PBXBuildFile; fileRef = 4668547016A90779007AB1B2 /* Thunderstorm.aif */; };
+		46ECF47E16B0EB5200CBE347 /* Thunderstorm.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C916EFCD16879E9A000B53F5 /* Thunderstorm.m4a */; };
+		46ECF47F16B0EB5200CBE347 /* Waterfall.aif in Resources */ = {isa = PBXBuildFile; fileRef = 4668547116A90779007AB1B2 /* Waterfall.aif */; };
+		46ECF48016B0EB5200CBE347 /* Waterfall.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46662C1C168ACE0F00661715 /* Waterfall.m4a */; };
+		46ECF48116B0EB5200CBE347 /* Windy Day.aif in Resources */ = {isa = PBXBuildFile; fileRef = 4668547216A90779007AB1B2 /* Windy Day.aif */; };
+		46ECF48216B0EB5200CBE347 /* Windy Day.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46662C1D168ACE0F00661715 /* Windy Day.m4a */; };
+		46ECF48316B0EB5200CBE347 /* Beach.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C916EFCE16879E9A000B53F5 /* Beach.m4a */; };
+		46ECF48416B0EB5200CBE347 /* City Sounds.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46662C15168ACE0F00661715 /* City Sounds.m4a */; };
+		46ECF48516B0EB5200CBE347 /* Countryside.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46662C16168ACE0F00661715 /* Countryside.m4a */; };
+		46ECF48616B0EB5200CBE347 /* Lake Shore.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46662C17168ACE0F00661715 /* Lake Shore.m4a */; };
+		46ECF48716B0EB5200CBE347 /* Ocean Waves.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46662C18168ACE0F00661715 /* Ocean Waves.m4a */; };
+		46ECF48816B0EB5200CBE347 /* Rain on Pavement.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46662C1A168ACE0F00661715 /* Rain on Pavement.m4a */; };
+		46ECF48916B0EB5200CBE347 /* Rainstorm.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46662C1B168ACE0F00661715 /* Rainstorm.m4a */; };
+		46ECF48A16B0EB5200CBE347 /* Thunderstorm.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C916EFCD16879E9A000B53F5 /* Thunderstorm.m4a */; };
+		46ECF48B16B0EB5200CBE347 /* Waterfall.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46662C1C168ACE0F00661715 /* Waterfall.m4a */; };
+		46ECF48C16B0EB5200CBE347 /* Windy Day.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46662C1D168ACE0F00661715 /* Windy Day.m4a */; };
 		46F9A51B1698A8F200D7EF54 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F9A51A1698A8F200D7EF54 /* CoreImage.framework */; };
 		46F9A51C1698A9DD00D7EF54 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F9A51A1698A8F200D7EF54 /* CoreImage.framework */; };
 		46F9A51E1698AA7000D7EF54 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F9A51D1698AA7000D7EF54 /* CoreGraphics.framework */; };
@@ -287,7 +328,6 @@
 		C916EFC916879D60000B53F5 /* Configs.plist in Resources */ = {isa = PBXBuildFile; fileRef = C916EFC816879D60000B53F5 /* Configs.plist */; };
 		C916EFCB16879D7B000B53F5 /* Configs.plist in Resources */ = {isa = PBXBuildFile; fileRef = C916EFCA16879D7B000B53F5 /* Configs.plist */; };
 		C916EFCF16879E9A000B53F5 /* sleepSoundsList.plist in Resources */ = {isa = PBXBuildFile; fileRef = C916EFCC16879E9A000B53F5 /* sleepSoundsList.plist */; };
-		C916EFD016879E9A000B53F5 /* sleepSoundsList.plist in Resources */ = {isa = PBXBuildFile; fileRef = C916EFCC16879E9A000B53F5 /* sleepSoundsList.plist */; };
 		C91F88441658493F004F0943 /* AlarmClockIcon3_114.png in Resources */ = {isa = PBXBuildFile; fileRef = C91F88421658493F004F0943 /* AlarmClockIcon3_114.png */; };
 		C91F88451658493F004F0943 /* AlarmClockIcon3_57.png in Resources */ = {isa = PBXBuildFile; fileRef = C91F88431658493F004F0943 /* AlarmClockIcon3_57.png */; };
 		C92783D11677853200CFEA8D /* UIImage+fixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = C92783D01677853200CFEA8D /* UIImage+fixOrientation.m */; };
@@ -494,6 +534,16 @@
 		469431A2168A8DDB000FE3E3 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/AppiraterLocalizable.strings"; sourceTree = "<group>"; };
 		469F13B416A31576002E91A9 /* nightsky.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = nightsky.png; path = Images/nightsky.png; sourceTree = "<group>"; };
 		469F13B516A31576002E91A9 /* nightsky@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "nightsky@2x.png"; path = "Images/nightsky@2x.png"; sourceTree = "<group>"; };
+		46E4EB8516ACD9CB00AAD9A0 /* alarmPointer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = alarmPointer.png; path = "Images/tutorial images/alarmPointer.png"; sourceTree = "<group>"; };
+		46E4EB8616ACD9CB00AAD9A0 /* alarmPointer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "alarmPointer@2x.png"; path = "Images/tutorial images/alarmPointer@2x.png"; sourceTree = "<group>"; };
+		46E4EB8716ACD9CB00AAD9A0 /* settingsPointer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = settingsPointer.png; path = "Images/tutorial images/settingsPointer.png"; sourceTree = "<group>"; };
+		46E4EB8816ACD9CB00AAD9A0 /* settingsPointer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settingsPointer@2x.png"; path = "Images/tutorial images/settingsPointer@2x.png"; sourceTree = "<group>"; };
+		46E4EB8916ACD9CB00AAD9A0 /* swipePointer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = swipePointer.png; path = "Images/tutorial images/swipePointer.png"; sourceTree = "<group>"; };
+		46E4EB8A16ACD9CB00AAD9A0 /* swipePointer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "swipePointer@2x.png"; path = "Images/tutorial images/swipePointer@2x.png"; sourceTree = "<group>"; };
+		46E4EB8B16ACD9CB00AAD9A0 /* timerPointer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = timerPointer.png; path = "Images/tutorial images/timerPointer.png"; sourceTree = "<group>"; };
+		46E4EB8C16ACD9CB00AAD9A0 /* timerPointer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "timerPointer@2x.png"; path = "Images/tutorial images/timerPointer@2x.png"; sourceTree = "<group>"; };
+		46ECF43116B0B90C00CBE347 /* Rainforest.AIFF */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; name = Rainforest.AIFF; path = "AlarmClock/Sounds/Sleep Sounds/Rainforest.AIFF"; sourceTree = SOURCE_ROOT; };
+		46ECF44216B0C4B000CBE347 /* Rainforest.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = Rainforest.m4a; path = AlarmClock/Sounds/Rainforest.m4a; sourceTree = SOURCE_ROOT; };
 		46F9A51A1698A8F200D7EF54 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		46F9A51D1698AA7000D7EF54 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		46F9A5201698AEDE00D7EF54 /* fullAlarmIconBlack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fullAlarmIconBlack.png; path = Images/HomeScreen/fullAlarmIconBlack.png; sourceTree = "<group>"; };
@@ -786,6 +836,21 @@
 			path = Appirator;
 			sourceTree = "<group>";
 		};
+		46E4EB8316ACD9BA00AAD9A0 /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				46E4EB8516ACD9CB00AAD9A0 /* alarmPointer.png */,
+				46E4EB8616ACD9CB00AAD9A0 /* alarmPointer@2x.png */,
+				46E4EB8716ACD9CB00AAD9A0 /* settingsPointer.png */,
+				46E4EB8816ACD9CB00AAD9A0 /* settingsPointer@2x.png */,
+				46E4EB8916ACD9CB00AAD9A0 /* swipePointer.png */,
+				46E4EB8A16ACD9CB00AAD9A0 /* swipePointer@2x.png */,
+				46E4EB8B16ACD9CB00AAD9A0 /* timerPointer.png */,
+				46E4EB8C16ACD9CB00AAD9A0 /* timerPointer@2x.png */,
+			);
+			name = Tutorial;
+			sourceTree = "<group>";
+		};
 		46F9A55316995D9C00D7EF54 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
@@ -833,27 +898,29 @@
 			isa = PBXGroup;
 			children = (
 				4668546916A90779007AB1B2 /* Beach.aif */,
-				4668546A16A90779007AB1B2 /* City Sounds.aif */,
-				4668546B16A90779007AB1B2 /* Countryside.aif */,
-				4668546C16A90779007AB1B2 /* Lake Shore.aif */,
-				4668546D16A90779007AB1B2 /* Ocean Waves.aif */,
-				4668546E16A90779007AB1B2 /* Rain Forest.aif */,
-				4668546F16A90779007AB1B2 /* Rain on Pavement.aif */,
-				4668547016A90779007AB1B2 /* Thunderstorm.aif */,
-				4668547116A90779007AB1B2 /* Waterfall.aif */,
-				4668547216A90779007AB1B2 /* Windy Day.aif */,
-				46662C15168ACE0F00661715 /* City Sounds.m4a */,
-				46662C16168ACE0F00661715 /* Countryside.m4a */,
-				46662C17168ACE0F00661715 /* Lake Shore.m4a */,
-				46662C18168ACE0F00661715 /* Ocean Waves.m4a */,
-				46662C19168ACE0F00661715 /* Rain Forest.m4a */,
-				46662C1A168ACE0F00661715 /* Rain on Pavement.m4a */,
-				46662C1B168ACE0F00661715 /* Rainstorm.m4a */,
-				46662C1C168ACE0F00661715 /* Waterfall.m4a */,
-				46662C1D168ACE0F00661715 /* Windy Day.m4a */,
-				C916EFCC16879E9A000B53F5 /* sleepSoundsList.plist */,
-				C916EFCD16879E9A000B53F5 /* Thunderstorm.m4a */,
 				C916EFCE16879E9A000B53F5 /* Beach.m4a */,
+				4668546A16A90779007AB1B2 /* City Sounds.aif */,
+				46662C15168ACE0F00661715 /* City Sounds.m4a */,
+				4668546B16A90779007AB1B2 /* Countryside.aif */,
+				46662C16168ACE0F00661715 /* Countryside.m4a */,
+				4668546C16A90779007AB1B2 /* Lake Shore.aif */,
+				46662C17168ACE0F00661715 /* Lake Shore.m4a */,
+				4668546D16A90779007AB1B2 /* Ocean Waves.aif */,
+				46662C18168ACE0F00661715 /* Ocean Waves.m4a */,
+				4668546E16A90779007AB1B2 /* Rain Forest.aif */,
+				46662C19168ACE0F00661715 /* Rain Forest.m4a */,
+				4668546F16A90779007AB1B2 /* Rain on Pavement.aif */,
+				46662C1A168ACE0F00661715 /* Rain on Pavement.m4a */,
+				46ECF43116B0B90C00CBE347 /* Rainforest.AIFF */,
+				46ECF44216B0C4B000CBE347 /* Rainforest.m4a */,
+				46662C1B168ACE0F00661715 /* Rainstorm.m4a */,
+				C916EFCC16879E9A000B53F5 /* sleepSoundsList.plist */,
+				4668547016A90779007AB1B2 /* Thunderstorm.aif */,
+				C916EFCD16879E9A000B53F5 /* Thunderstorm.m4a */,
+				4668547116A90779007AB1B2 /* Waterfall.aif */,
+				46662C1C168ACE0F00661715 /* Waterfall.m4a */,
+				4668547216A90779007AB1B2 /* Windy Day.aif */,
+				46662C1D168ACE0F00661715 /* Windy Day.m4a */,
 			);
 			name = "Sleep Sounds";
 			path = "Sounds/Sleep Sounds";
@@ -980,6 +1047,7 @@
 		C9A0E4551654A4D0000BB045 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				46E4EB8316ACD9BA00AAD9A0 /* Tutorial */,
 				C9A0E4581654A4DA000BB045 /* AlarmClockIcon114.png */,
 				C91F88421658493F004F0943 /* AlarmClockIcon3_114.png */,
 				C91F88431658493F004F0943 /* AlarmClockIcon3_57.png */,
@@ -1482,11 +1550,9 @@
 				C916EFC116879A61000B53F5 /* soundsList.plist in Resources */,
 				C916EFC516879AFA000B53F5 /* Song Bird.M4A in Resources */,
 				C916EFC916879D60000B53F5 /* Configs.plist in Resources */,
-				C916EFD016879E9A000B53F5 /* sleepSoundsList.plist in Resources */,
 				469431A4168A8DDB000FE3E3 /* .gitignore in Resources */,
 				469431A8168A8DDB000FE3E3 /* AppiraterLocalizable.strings in Resources */,
 				469431AA168A8DDB000FE3E3 /* README.md in Resources */,
-				46662C27168ACE0F00661715 /* Rain Forest.m4a in Resources */,
 				46662C3B168AD30200661715 /* rainbow.png in Resources */,
 				46662C3D168AD30200661715 /* rainbow@2x.png in Resources */,
 				46662C3F168AD30200661715 /* wheat.png in Resources */,
@@ -1528,16 +1594,38 @@
 				46F9A56516995EDD00D7EF54 /* SleepSmart114.png in Resources */,
 				469F13B716A31576002E91A9 /* nightsky.png in Resources */,
 				469F13B916A31576002E91A9 /* nightsky@2x.png in Resources */,
-				4668547416A90779007AB1B2 /* Beach.aif in Resources */,
-				4668547616A90779007AB1B2 /* City Sounds.aif in Resources */,
-				4668547816A90779007AB1B2 /* Countryside.aif in Resources */,
-				4668547A16A90779007AB1B2 /* Lake Shore.aif in Resources */,
-				4668547C16A90779007AB1B2 /* Ocean Waves.aif in Resources */,
-				4668547E16A90779007AB1B2 /* Rain Forest.aif in Resources */,
-				4668548016A90779007AB1B2 /* Rain on Pavement.aif in Resources */,
-				4668548216A90779007AB1B2 /* Thunderstorm.aif in Resources */,
-				4668548416A90779007AB1B2 /* Waterfall.aif in Resources */,
-				4668548616A90779007AB1B2 /* Windy Day.aif in Resources */,
+				46E4EB8E16ACD9CB00AAD9A0 /* alarmPointer.png in Resources */,
+				46E4EB9016ACD9CB00AAD9A0 /* alarmPointer@2x.png in Resources */,
+				46E4EB9216ACD9CB00AAD9A0 /* settingsPointer.png in Resources */,
+				46E4EB9416ACD9CB00AAD9A0 /* settingsPointer@2x.png in Resources */,
+				46E4EB9616ACD9CB00AAD9A0 /* swipePointer.png in Resources */,
+				46E4EB9816ACD9CB00AAD9A0 /* swipePointer@2x.png in Resources */,
+				46E4EB9A16ACD9CB00AAD9A0 /* timerPointer.png in Resources */,
+				46E4EB9C16ACD9CB00AAD9A0 /* timerPointer@2x.png in Resources */,
+				46ECF46B16B0EB5200CBE347 /* Beach.aif in Resources */,
+				46ECF46C16B0EB5200CBE347 /* Beach.m4a in Resources */,
+				46ECF46D16B0EB5200CBE347 /* City Sounds.aif in Resources */,
+				46ECF46E16B0EB5200CBE347 /* City Sounds.m4a in Resources */,
+				46ECF46F16B0EB5200CBE347 /* Countryside.aif in Resources */,
+				46ECF47016B0EB5200CBE347 /* Countryside.m4a in Resources */,
+				46ECF47116B0EB5200CBE347 /* Lake Shore.aif in Resources */,
+				46ECF47216B0EB5200CBE347 /* Lake Shore.m4a in Resources */,
+				46ECF47316B0EB5200CBE347 /* Ocean Waves.aif in Resources */,
+				46ECF47416B0EB5200CBE347 /* Ocean Waves.m4a in Resources */,
+				46ECF47516B0EB5200CBE347 /* Rain Forest.aif in Resources */,
+				46ECF47616B0EB5200CBE347 /* Rain Forest.m4a in Resources */,
+				46ECF47716B0EB5200CBE347 /* Rain on Pavement.aif in Resources */,
+				46ECF47816B0EB5200CBE347 /* Rain on Pavement.m4a in Resources */,
+				46ECF47916B0EB5200CBE347 /* Rainforest.AIFF in Resources */,
+				46ECF47A16B0EB5200CBE347 /* Rainforest.m4a in Resources */,
+				46ECF47B16B0EB5200CBE347 /* Rainstorm.m4a in Resources */,
+				46ECF47C16B0EB5200CBE347 /* sleepSoundsList.plist in Resources */,
+				46ECF47D16B0EB5200CBE347 /* Thunderstorm.aif in Resources */,
+				46ECF47E16B0EB5200CBE347 /* Thunderstorm.m4a in Resources */,
+				46ECF47F16B0EB5200CBE347 /* Waterfall.aif in Resources */,
+				46ECF48016B0EB5200CBE347 /* Waterfall.m4a in Resources */,
+				46ECF48116B0EB5200CBE347 /* Windy Day.aif in Resources */,
+				46ECF48216B0EB5200CBE347 /* Windy Day.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1709,6 +1797,26 @@
 				4668548116A90779007AB1B2 /* Thunderstorm.aif in Resources */,
 				4668548316A90779007AB1B2 /* Waterfall.aif in Resources */,
 				4668548516A90779007AB1B2 /* Windy Day.aif in Resources */,
+				46E4EB8D16ACD9CB00AAD9A0 /* alarmPointer.png in Resources */,
+				46E4EB8F16ACD9CB00AAD9A0 /* alarmPointer@2x.png in Resources */,
+				46E4EB9116ACD9CB00AAD9A0 /* settingsPointer.png in Resources */,
+				46E4EB9316ACD9CB00AAD9A0 /* settingsPointer@2x.png in Resources */,
+				46E4EB9516ACD9CB00AAD9A0 /* swipePointer.png in Resources */,
+				46E4EB9716ACD9CB00AAD9A0 /* swipePointer@2x.png in Resources */,
+				46E4EB9916ACD9CB00AAD9A0 /* timerPointer.png in Resources */,
+				46E4EB9B16ACD9CB00AAD9A0 /* timerPointer@2x.png in Resources */,
+				46ECF43216B0B90C00CBE347 /* Rainforest.AIFF in Resources */,
+				46ECF44316B0C4B000CBE347 /* Rainforest.m4a in Resources */,
+				46ECF48316B0EB5200CBE347 /* Beach.m4a in Resources */,
+				46ECF48416B0EB5200CBE347 /* City Sounds.m4a in Resources */,
+				46ECF48516B0EB5200CBE347 /* Countryside.m4a in Resources */,
+				46ECF48616B0EB5200CBE347 /* Lake Shore.m4a in Resources */,
+				46ECF48716B0EB5200CBE347 /* Ocean Waves.m4a in Resources */,
+				46ECF48816B0EB5200CBE347 /* Rain on Pavement.m4a in Resources */,
+				46ECF48916B0EB5200CBE347 /* Rainstorm.m4a in Resources */,
+				46ECF48A16B0EB5200CBE347 /* Thunderstorm.m4a in Resources */,
+				46ECF48B16B0EB5200CBE347 /* Waterfall.m4a in Resources */,
+				46ECF48C16B0EB5200CBE347 /* Windy Day.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

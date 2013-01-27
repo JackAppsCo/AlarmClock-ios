@@ -30,6 +30,7 @@
     BOOL _alarmEnabled, _shineEnabled;
     UIButton *_shineDisableButton;
     UIImageView *_backdropImageview;
+    UIView *_tutorialView;
     
     CLLocationManager *_locationManager;
 }

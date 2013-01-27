@@ -44,7 +44,6 @@
 						<string key="NSFrame">{{0, 518}, {320, 50}}</string>
 						<reference key="NSSuperview" ref="339779611"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -850,7 +849,7 @@
 			<string key="BlackBG.png">{503, 504}</string>
 			<string key="SettingsIcon.png">{40, 40}</string>
 			<string key="fullAlarmIcon.png">{40, 40}</string>
-			<string key="pm_white.png">{20, 45}</string>
+			<string key="pm_white.png">{21, 45}</string>
 			<string key="snoozeIcon.png">{40, 40}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">1930</string>

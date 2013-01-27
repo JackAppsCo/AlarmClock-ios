@@ -90,7 +90,7 @@
             UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(img.frame.origin.x, img.frame.origin.y + img.frame.size.height + 10, img.frame.size.width, 45.0f)];
             [lbl setBackgroundColor:[UIColor clearColor]];
             [lbl setTextAlignment:NSTextAlignmentCenter];
-            [lbl setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:19.0f]];
+            [lbl setFont:[UIFont fontWithName:TITLE_FONT size:19.0f]];
             [lbl setTextColor:[UIColor whiteColor]];
             [lbl setShadowOffset:CGSizeMake(0, 1)];
             [lbl setShadowColor:[UIColor darkTextColor]];
@@ -150,12 +150,12 @@
         [plusButton setTitleColor:[UIColor colorWithRed:68.0/255.0 green:68.0/255.0 blue:68.0/255.0 alpha:1.0] forState:UIControlStateNormal];
         [plusButton setTitleColor:[UIColor colorWithRed:38.0/255.0 green:38.0/255.0 blue:38.0/255.0 alpha:1.0] forState:UIControlStateHighlighted];
         [plusButton setImageEdgeInsets:UIEdgeInsetsMake(0, -50, 0, 0)];
-        [plusButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:18]];
+        [plusButton.titleLabel setFont:[UIFont fontWithName:TITLE_FONT size:18]];
         
         UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(self.customImage.frame.origin.x, self.customImage.frame.origin.y + self.customImage.frame.size.height + 10, self.customImage.frame.size.width, 45.0f)];
         [lbl setBackgroundColor:[UIColor clearColor]];
         [lbl setTextAlignment:NSTextAlignmentCenter];
-        [lbl setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:19.0f]];
+        [lbl setFont:[UIFont fontWithName:TITLE_FONT size:19.0f]];
         [lbl setTextColor:[UIColor whiteColor]];
         [lbl setShadowOffset:CGSizeMake(0, 1)];
         [lbl setShadowColor:[UIColor darkTextColor]];

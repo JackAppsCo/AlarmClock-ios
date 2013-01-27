@@ -8,6 +8,7 @@
 
 #import "VoiceRecordViewController.h"
 #import "JASound.h"
+#import "JASettings.h"
 
 #define DOCUMENTS_FOLDER [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"]
 

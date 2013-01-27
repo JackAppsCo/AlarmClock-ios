@@ -2,13 +2,13 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="7.10">
 	<data>
 		<int key="IBDocument.SystemTarget">1536</int>
-		<string key="IBDocument.SystemVersion">12C60</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2843</string>
+		<string key="IBDocument.SystemVersion">12C2034</string>
+		<string key="IBDocument.InterfaceBuilderVersion">2844</string>
 		<string key="IBDocument.AppKitVersion">1187.34</string>
 		<string key="IBDocument.HIToolboxVersion">625.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">1929</string>
+			<string key="NS.object.0">1930</string>
 		</object>
 		<object class="NSArray" key="IBDocument.IntegratedClassDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -116,14 +116,14 @@
 							<string key="NSResourceName">disabledButtonBG.png</string>
 						</object>
 						<reference key="IBUINormalBackgroundImage" ref="89262292"/>
-						<object class="IBUIFontDescription" key="IBUIFontDescription">
-							<string key="name">Helvetica-Bold</string>
-							<string key="family">Helvetica</string>
+						<object class="IBUIFontDescription" key="IBUIFontDescription" id="432053844">
+							<string key="name">Avenir-Black</string>
+							<string key="family">Avenir</string>
 							<int key="traits">2</int>
 							<double key="pointSize">15</double>
 						</object>
-						<object class="NSFont" key="IBUIFont" id="1058750887">
-							<string key="NSName">Helvetica-Bold</string>
+						<object class="NSFont" key="IBUIFont" id="284044145">
+							<string key="NSName">Avenir-Heavy</string>
 							<double key="NSSize">15</double>
 							<int key="NSfFlags">16</int>
 						</object>
@@ -174,13 +174,13 @@
 						<float key="IBUIMinimumFontSize">10</float>
 						<int key="IBUITextAlignment">1</int>
 						<object class="IBUIFontDescription" key="IBUIFontDescription">
-							<string key="name">Cochin</string>
-							<string key="family">Cochin</string>
+							<string key="name">Avenir-Book</string>
+							<string key="family">Avenir</string>
 							<int key="traits">0</int>
 							<double key="pointSize">17</double>
 						</object>
 						<object class="NSFont" key="IBUIFont">
-							<string key="NSName">Cochin</string>
+							<string key="NSName">Avenir-Medium</string>
 							<double key="NSSize">17</double>
 							<int key="NSfFlags">16</int>
 						</object>
@@ -216,11 +216,13 @@
 						</object>
 						<int key="IBUIClearButtonMode">1</int>
 						<object class="IBUIFontDescription" key="IBUIFontDescription">
-							<int key="type">1</int>
+							<string key="name">Avenir-Black</string>
+							<string key="family">Avenir</string>
+							<int key="traits">2</int>
 							<double key="pointSize">16</double>
 						</object>
 						<object class="NSFont" key="IBUIFont">
-							<string key="NSName">Helvetica</string>
+							<string key="NSName">Avenir-Heavy</string>
 							<double key="NSSize">16</double>
 							<int key="NSfFlags">16</int>
 						</object>
@@ -268,11 +270,8 @@
 						<reference key="IBUIHighlightedBackgroundImage" ref="89262292"/>
 						<reference key="IBUIDisabledBackgroundImage" ref="861517176"/>
 						<reference key="IBUINormalBackgroundImage" ref="89262292"/>
-						<object class="IBUIFontDescription" key="IBUIFontDescription" id="1005612549">
-							<int key="type">2</int>
-							<double key="pointSize">15</double>
-						</object>
-						<reference key="IBUIFont" ref="1058750887"/>
+						<reference key="IBUIFontDescription" ref="432053844"/>
+						<reference key="IBUIFont" ref="284044145"/>
 					</object>
 					<object class="IBUIButton" id="519327014">
 						<reference key="NSNextResponder" ref="774585933"/>
@@ -280,6 +279,7 @@
 						<string key="NSFrame">{{4, 286}, {313, 55}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -313,8 +313,8 @@
 						<reference key="IBUIHighlightedBackgroundImage" ref="89262292"/>
 						<reference key="IBUIDisabledBackgroundImage" ref="861517176"/>
 						<reference key="IBUINormalBackgroundImage" ref="89262292"/>
-						<reference key="IBUIFontDescription" ref="1005612549"/>
-						<reference key="IBUIFont" ref="1058750887"/>
+						<reference key="IBUIFontDescription" ref="432053844"/>
+						<reference key="IBUIFont" ref="284044145"/>
 					</object>
 					<object class="IBUIImageView" id="458518184">
 						<reference key="NSNextResponder" ref="774585933"/>
@@ -792,6 +792,6 @@
 				<string>{22, 22}</string>
 			</object>
 		</object>
-		<string key="IBCocoaTouchPluginVersion">1929</string>
+		<string key="IBCocoaTouchPluginVersion">1930</string>
 	</data>
 </archive>

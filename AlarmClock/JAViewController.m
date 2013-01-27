@@ -14,7 +14,7 @@
 #import "JAMiscSettingsViewController.h"
 #import "UIImage+fixOrientation.h"
 #import "JASleepSmartControllerViewController.h"
-
+#import <AudioToolbox/AudioToolbox.h>
 
 #define WEATHER_API_KEY @"c74edf0183141706121311"
 
@@ -28,11 +28,17 @@
 - (void) showAdBanner:(BOOL)show;
 - (void) disableShine:(id)sender;
 - (void) layoutClockLabelForFrame:(CGRect)frame;
+- (void) dismissTutorial:(id)sender;
 @end
 
 @implementation JAViewController
 
 @synthesize clock = _clock, tabBarController = _tabBarController, weatherRequest = _weatherRequest, dimView = _dimView, aPlayer;
+
+void RouteChangeListener(	void *                  inClientData,
+                         AudioSessionPropertyID	inID,
+                         UInt32                  inDataSize,
+                         const void *            inData);
 
 
 - (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -53,17 +59,40 @@
         [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&err];
         [[AVAudioSession sharedInstance] setActive:YES error:&err];
         
+        OSStatus result = AudioSessionInitialize(NULL, NULL, NULL, NULL);
+        if (result)
+            NSLog(@"Error initializing audio session! %d", result);
+        
+        [[AVAudioSession sharedInstance] setDelegate: self];
+        NSError *setCategoryError = nil;
+        [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryPlayback error: &setCategoryError];
+        if (setCategoryError)
+            NSLog(@"Error setting category! %d", setCategoryError);
+        
+        result = AudioSessionAddPropertyListener (kAudioSessionProperty_AudioRouteChange, RouteChangeListener, (__bridge void *)(self));
+        if (result)
+            NSLog(@"Could not add property listener! %d", result);
+        
+        
         //iad setup
         self.adBanner.requiredContentSizeIdentifiers = [NSSet setWithObjects:ADBannerContentSizeIdentifierPortrait, ADBannerContentSizeIdentifierLandscape, nil];
         
         //init flags
         _shineEnabled = NO;
         _alarmEnabled = NO;
-
+        
         //location
         _locationManager = [[CLLocationManager alloc] init];
         [_locationManager setDelegate:self];
         [_locationManager startUpdatingLocation];
+        
+        //create tutorial view
+        if ([[NSUserDefaults standardUserDefaults] objectForKey:@"isFirstLaunch"] && [[[NSUserDefaults standardUserDefaults] objectForKey:@"isFirstLaunch"] isEqualToString:@"no"]) {
+            //do nothing
+        }
+        else {
+            _tutorialView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, MAX(self.mainView.frame.size.width, self.mainView.frame.size.height), MIN(self.mainView.frame.size.width, self.mainView.frame.size.height))];
+        }
         
     }
     
@@ -78,14 +107,14 @@
     //init alarmsOn
     _alarmsOn = YES;
     
-
+    
     //sleep smart
     JASleepSmartControllerViewController *_sleepSmartController = [[JASleepSmartControllerViewController alloc] init];
     [_sleepSmartController setTitle:NSLocalizedString(@"SleepSmart", nil)];
     [_sleepSmartController setTabBarItem:[[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"SleepSmart", nil) image:[UIImage imageNamed:@"tabIconSleep.png"] tag:0]];
     UIBarButtonItem *doneSleepSmartButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", nil) style:UIBarButtonItemStyleDone target:self action:@selector(dismissSettingsController:)];
     [_sleepSmartController.navigationItem setLeftBarButtonItem:doneSleepSmartButton];
-
+    
     
     //alarm settings
     JAAlarmListViewController *_alarmSettingsController = [[JAAlarmListViewController alloc] init];
@@ -95,7 +124,7 @@
     [_alarmSettingsController.navigationItem setLeftBarButtonItem:doneAlarmButton];
     
     
-    //display settings    
+    //display settings
     JAClockSettingsViewController *_displaySettingsController = [[JAClockSettingsViewController alloc] initWithNibName:@"JAClockSettingsViewController" bundle:[NSBundle mainBundle]];
     [_displaySettingsController setTitle:NSLocalizedString(@"Display", nil)];
     [_displaySettingsController setTabBarItem:[[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Display", nil) image:[UIImage imageNamed:@"tabIconDisplay.png"] tag:1]];
@@ -114,6 +143,10 @@
     UINavigationController *displayNavController = [[UINavigationController alloc] initWithRootViewController:_displaySettingsController];
     UINavigationController *settingsNavController = [[UINavigationController alloc] initWithRootViewController:_miscSettingsController];
     UINavigationController *sleepSmartNavController = [[UINavigationController alloc] initWithRootViewController:_sleepSmartController];
+    [alarmNavController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:TITLE_FONT size:20], UITextAttributeFont, nil]];
+    [displayNavController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:TITLE_FONT size:20], UITextAttributeFont, nil]];
+    [settingsNavController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:TITLE_FONT size:20], UITextAttributeFont, nil]];
+    [sleepSmartNavController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:TITLE_FONT size:20], UITextAttributeFont, nil]];
     
     //tab bar
     _tabBarController = [[UITabBarController alloc] init];
@@ -126,7 +159,7 @@
     //setup swipe gesture
     UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGesture:)];
     [self.view addGestureRecognizer:panGesture];
- 
+    
     //init dimview
     _dimView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1200, 1200)];
     _dimView.autoresizesSubviews = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
@@ -183,7 +216,8 @@
     }
     
     if ([JAAlarm numberOfEnabledAlarms] <= 0) {
-        [self.alarmButton setHidden:YES];
+        [self.alarmButton setBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat:@"fullAlarmIcon%@.png", iconColor, nil]] forState:UIControlStateNormal];
+        [self.alarmButton setHidden:NO];
     }
     else if ([JAAlarm numberOfEnabledAlarms] <= 6) {
         [self.alarmButton setBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat:@"fullAlarmIcon%i%@.png", [JAAlarm numberOfEnabledAlarms], iconColor, nil]] forState:UIControlStateNormal];
@@ -197,8 +231,8 @@
     //if Paid rmeove ads
     if ([JASettings isPaid])
         [self.adBanner removeFromSuperview];
-
-
+    
+    
 }
 
 - (void)viewDidUnload {
@@ -216,6 +250,9 @@
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    //hide status
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
     
     [self setAlarmIcon];
     
@@ -298,19 +335,123 @@
         
         [self layoutClockLabelForFrame:CGRectMake(75.0, 25.0, self.mainView.frame.size.width - 150.0, self.mainView.frame.size.height - 50.0)];
     }
-
     
+}
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    //show status
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
 }
 
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     
-    if ([JASettings previousLaunchCount] > 0 && [JASettings previousLaunchCount] % 10 == 0)
+    if ([JASettings previousLaunchCount] == 1 || ([JASettings previousLaunchCount] > 0 && [JASettings previousLaunchCount] % 10 == 0))
     {
-        UIAlertView *freeAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Wanna Upgrade?", nil) message:NSLocalizedString(@"If you like what you've seen so far you should check out the paid version.", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"No Thanks", nil) otherButtonTitles:NSLocalizedString(@"Upgrade Me!", nil), nil];
+        UIAlertView *freeAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SleepSmart Premium\nJust Released!", nil) message:NSLocalizedString(@"Want MORE features, MORE sounds and NO ads? Then UPGRADE to SleepSmart Premium NOW!!!\n\n*******************************************\nSleepSmart Premium Upgrades Include:\n\n→ A unique “Rise & Shine” feature that emulates the rising sun. Designed to trigger your natural body clock and trick your brain into thinking it’s morning, even if it is dark outside!\n→ Full access to ALL Classic Alarm sounds and Gentle Wake sounds!\n→ Full access to ALL White Noise Sleep Timer themes including Beach, Countryside, Waterfall and many more!\n\nGet it NOW! SleepSmart. LiveSmart.\n*******************************************", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"No Thanks", nil) otherButtonTitles:NSLocalizedString(@"Upgrade Me!", nil), nil];
         [freeAlert show];
     }
+    
+    
+    
+    if (_tutorialView) {
+        
+        //set the first launch key
+        //[[NSUserDefaults standardUserDefaults] setObject:@"no" forKey:@"isFirstLaunch"];
+        
+        _tutorialView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, MAX(self.view.frame.size.width, self.view.frame.size.height), MIN(self.view.frame.size.width, self.view.frame.size.height))];
+        [_tutorialView setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth];
+        [_tutorialView setAutoresizesSubviews:YES];
+        
+        
+        UIButton *tutorialButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [tutorialButton setBackgroundColor:[UIColor colorWithWhite:0.1f alpha:0.8f]];
+        [tutorialButton setFrame:_tutorialView.frame];
+        [tutorialButton setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth];
+        [tutorialButton addTarget:self action:@selector(dismissTutorial:) forControlEvents:UIControlEventTouchUpInside];
+        [_tutorialView addSubview:tutorialButton];
+        
+        UIImageView *timerImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"timerPointer.png"]];
+        [timerImage setFrame:CGRectMake(60 - timerImage.image.size.width, 20.0, timerImage.image.size.width, timerImage.image.size.height)];
+        [timerImage setAutoresizingMask:UIViewAutoresizingFlexibleRightMargin];
+        [_tutorialView addSubview:timerImage];
+        
+        UILabel *timerLabel = [[UILabel alloc] initWithFrame:CGRectMake(timerImage.frame.origin.x + timerImage.frame.size.width + 5, timerImage.frame.origin.y, 130.0f, 80.0f)];
+        [timerLabel setTextAlignment:NSTextAlignmentLeft];
+        [timerLabel setNumberOfLines:0];
+        [timerLabel setFont:[UIFont fontWithName:TITLE_FONT size:16]];
+        [timerLabel setBackgroundColor:[UIColor clearColor]];
+        [timerLabel setTextColor:[UIColor whiteColor]];
+        [timerLabel setAutoresizingMask:UIViewAutoresizingFlexibleRightMargin];
+        [timerLabel setText:NSLocalizedString(@"Tap to activate White Noise Sleep Timer", nil)];
+        [_tutorialView addSubview:timerLabel];
+        
+        UIImageView *settingsImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"settingsPointer.png"]];
+        [settingsImage setFrame:CGRectMake(_tutorialView.frame.size.width - settingsImage.image.size.width - 25, _tutorialView.frame.size.height - 65.0f, settingsImage.image.size.width, settingsImage.image.size.height)];
+        [settingsImage setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin];
+        [_tutorialView addSubview:settingsImage];
+        
+        UILabel *settingsLabel = [[UILabel alloc] initWithFrame:CGRectMake(_tutorialView.frame.size.width - 260.0f, settingsImage.frame.origin.y - 90, 240.0f, 130.0f)];
+        [settingsLabel setTextAlignment:NSTextAlignmentRight];
+        [settingsLabel setNumberOfLines:0];
+        [settingsLabel setFont:[UIFont fontWithName:TITLE_FONT size:16]];
+        [settingsLabel setBackgroundColor:[UIColor clearColor]];
+        [settingsLabel setTextColor:[UIColor whiteColor]];
+        [settingsLabel setAutoresizingMask:UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin];
+        [settingsLabel setText:NSLocalizedString(@"Tap on the settings icon to create alarms, edit your display or use SleepSmart features", nil)];
+        [_tutorialView addSubview:settingsLabel];
+        
+        UIImageView *sliderImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"swipePointer.png"]];
+        [sliderImage setFrame:CGRectMake(timerLabel.frame.size.width + timerLabel.frame.origin.x - 30, 10, sliderImage.image.size.width, sliderImage.image.size.height)];
+        [sliderImage setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin];
+        [_tutorialView addSubview:sliderImage];
+        
+        UILabel *slideLabel = [[UILabel alloc] initWithFrame:CGRectMake(sliderImage.frame.origin.x + sliderImage.frame.size.width - 60, timerLabel.frame.origin.y + 5, 190.0f, 80.0f)];
+        [slideLabel setTextAlignment:NSTextAlignmentLeft];
+        [slideLabel setFont:[UIFont fontWithName:TITLE_FONT size:16]];
+        [slideLabel setBackgroundColor:[UIColor clearColor]];
+        [slideLabel setTextColor:[UIColor whiteColor]];
+        [slideLabel setNumberOfLines:0];
+        [slideLabel setAdjustsLetterSpacingToFitWidth:YES];
+        [slideLabel setAdjustsFontSizeToFitWidth:YES];
+        [slideLabel setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin];
+        [slideLabel setText:NSLocalizedString(@"Adjust the brightness by swiping up and down", nil)];
+        [_tutorialView addSubview:slideLabel];
+        
+        UIImageView *alarmImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"alarmPointer.png"]];
+        [alarmImage setFrame:CGRectMake(25, _tutorialView.frame.size.height - 85.0f, alarmImage.image.size.width, alarmImage.image.size.height)];
+        [alarmImage setAutoresizingMask:UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin];
+        [_tutorialView addSubview:alarmImage];
+        
+        UILabel *alarmLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0, alarmImage.frame.origin.y - 20, 140.0f, 50.0f)];
+        [alarmLabel setTextAlignment:NSTextAlignmentLeft];
+        [alarmLabel setFont:[UIFont fontWithName:TITLE_FONT size:16]];
+        [alarmLabel setBackgroundColor:[UIColor clearColor]];
+        [alarmLabel setTextColor:[UIColor whiteColor]];
+        [alarmLabel setNumberOfLines:0];
+        [alarmLabel setAdjustsLetterSpacingToFitWidth:YES];
+        [alarmLabel setAdjustsFontSizeToFitWidth:YES];
+        [alarmLabel setAutoresizingMask:UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin];
+        [alarmLabel setText:NSLocalizedString(@"Quickly access your alarms", nil)];
+        [_tutorialView addSubview:alarmLabel];
+        
+        [self.mainView addSubview:_tutorialView];
+        
+        self.clockLabel.font = [UIFont fontWithName:@"Cochin-Bold" size:([JASettings showSeconds]) ? 87 : 110];
+        
+        [self layoutClockLabelForFrame:CGRectMake(0, 0, MAX(self.view.frame.size.width, self.view.frame.size.height), MIN(self.view.frame.size.width, self.view.frame.size.height))];
+        
+        [self layoutClockLabelForFrame:CGRectMake(60.0, 15.0, self.mainView.frame.size.width - 120.0, self.mainView.frame.size.height - 30.0)];
+        
+        
+    }
+    
+    
+    
 }
 
 - (IBAction)sleepButtonPressed:(id)sender {
@@ -326,7 +467,7 @@
     NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:[[soundFilename componentsSeparatedByString:@"."] objectAtIndex:0] ofType:[[soundFilename componentsSeparatedByString:@"."] objectAtIndex:1]];
     //NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:[[soundFilename componentsSeparatedByString:@"."] objectAtIndex:0] ofType:@".m4a.caf"];
     NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
-
+    
     NSError *err;
     AVAudioPlayer *player = [[AVAudioPlayer alloc] initWithContentsOfURL: fileURL
                                                                    error:&err];
@@ -336,25 +477,32 @@
     
     sleepTimeLeft = ([JASettings sleepLength] * 60);
     
-
+    
     
     self.aPlayer = player;
     self.aPlayer.delegate = self;
     self.aPlayer.volume = sleepVolume = 1.0f;
     [self.aPlayer setNumberOfLoops:-1];
+    
+    
+    
     [self.aPlayer play];
     
     sleepTimer = [[NSTimer alloc] initWithFireDate:[NSDate dateWithTimeInterval:([JASettings sleepLength] * 60) sinceDate:[NSDate date]] interval:0 target:self selector:@selector(stopSleepTimer) userInfo:nil repeats:NO];
     [[NSRunLoop mainRunLoop] addTimer:sleepTimer forMode:NSDefaultRunLoopMode];
-
+    
+    
+        
+        
+        
     
 }
 
 - (IBAction)alarmButtonPressed:(id)sender {
-
-//    [JASettings setAlarmsDisabled:![JASettings alarmsDisabled]];
-//    
-//    [self setAlarmIcon];
+    
+    //    [JASettings setAlarmsDisabled:![JASettings alarmsDisabled]];
+    //
+    //    [self setAlarmIcon];
     
     [self.tabBarController setSelectedIndex:0];
     [self settingsButtonPressed:nil];
@@ -366,7 +514,7 @@
     if (self.aPlayer.playing) {
         [self.aPlayer stop];
     }
-
+    
     sleepTimer = nil;
 }
 
@@ -432,6 +580,12 @@
         [self.clockLabel setTextColor:[JASettings clockColor]];
         [self.amPmLabel setTextColor:[JASettings clockColor]];
     }
+}
+
+- (void) dismissTutorial:(id)sender
+{
+    [_tutorialView removeFromSuperview];
+    _tutorialView = nil;
 }
 
 #pragma mark - Handle Alarms
@@ -540,15 +694,28 @@
 }
 
 #pragma mark - Handle Rotation
+- (NSUInteger) supportedInterfaceOrientations
+{
+    if (_tutorialView) {
+        return UIInterfaceOrientationMaskLandscapeLeft | UIInterfaceOrientationMaskLandscapeRight;
+    }
+    else {
+        return UIInterfaceOrientationMaskAll;
+    }
+}
+
 - (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
 {
+    if (_tutorialView) {
+        return UIInterfaceOrientationIsLandscape(toInterfaceOrientation);
+    }
     return YES;
 }
 
 - (void) willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
     if (UIInterfaceOrientationIsPortrait(toInterfaceOrientation)) {
-
+        
         self.clockLabel.font = [UIFont fontWithName:@"Cochin-Bold" size:([JASettings showSeconds]) ? 65 : 75];
         
         [self layoutClockLabelForFrame:CGRectMake(25.0, 50.0, self.mainView.frame.size.width - 50.0, self.mainView.frame.size.height - 100.0)];
@@ -593,9 +760,12 @@
     self.dateLabel.frame = dateFrame;
     //self.amPmLabel.frame = amFrame;
     self.amImageView.frame = amFrame;
-    self.amImageView.center = CGPointMake(self.amImageView.center.x, self.clockLabel.center.y);
-    CGRect totalFrame = CGRectMake(clockFrame.origin.x - (1.5 * amFrame.size.width), ([JASettings showDate]) ? clockFrame.origin.y - 5 : clockFrame.origin.y - 20, clockFrame.size.width + (amFrame.size.width * 3), dateFrame.origin.y + dateFrame.size.height - clockFrame.origin.y + 20);
-
+    self.amImageView.center = CGPointMake(self.amImageView.center.x - 4, self.clockLabel.center.y + 3);
+    
+    float bdWidth = (clockFrame.size.width + (amFrame.size.width * 3) > self.mainView.frame.size.width) ? self.mainView.frame.size.width - 10 : clockFrame.size.width + (amFrame.size.width * 3);
+    float bdX = (clockFrame.size.width + (amFrame.size.width * 3) > self.mainView.frame.size.width) ? 5 : clockFrame.origin.x - (1.5 * amFrame.size.width);
+    CGRect totalFrame = CGRectMake(bdX, ([JASettings showDate]) ? clockFrame.origin.y - 5 : clockFrame.origin.y - 20, bdWidth, dateFrame.origin.y + dateFrame.size.height - clockFrame.origin.y + 20);
+    
     
     _backdropImageview.frame = totalFrame;
     
@@ -664,7 +834,7 @@
             _musicPlayer.volume = _musicPlayer.volume + .01;
         else if (self.aPlayer.playing && self.aPlayer.volume < 1.0)
             self.aPlayer.volume = self.aPlayer.volume + .01;
-
+        
     }
 }
 
@@ -676,7 +846,7 @@
 
 - (void)clockDidStop:(MKClock *)clock
 {
-    //DO NOTHING    
+    //DO NOTHING
 }
 
 
@@ -753,9 +923,9 @@
 
 - (void) showAdBanner:(BOOL)show
 {
-
-    [UIView animateWithDuration:0.3 animations:^{
     
+    [UIView animateWithDuration:0.3 animations:^{
+        
         if (show) {
             self.mainView.frame = CGRectMake(self.mainView.frame.origin.x, self.mainView.frame.origin.y, self.mainView.frame.size.width, self.adBanner.frame.origin.y);
         }
@@ -772,6 +942,30 @@
     //weather request
     _weatherRequest = [[MKWeatherRequest alloc] initWithCoordinate:CLLocationCoordinate2DMake(38.906029,-77.043475) APIKey:WEATHER_API_KEY delegate:self];
     [_weatherRequest weatherForcast];
+}
+
+
+#pragma mark AudioSession handlers
+
+void RouteChangeListener(	void *                  inClientData,
+                         AudioSessionPropertyID	inID,
+                         UInt32                  inDataSize,
+                         const void *            inData)
+{
+	JAViewController* This = (__bridge JAViewController*)inClientData;
+	
+	if (inID == kAudioSessionProperty_AudioRouteChange) {
+		
+		CFDictionaryRef routeDict = (CFDictionaryRef)inData;
+		NSNumber* reasonValue = (NSNumber*)CFDictionaryGetValue(routeDict, CFSTR(kAudioSession_AudioRouteChangeKey_Reason));
+		
+		int reason = [reasonValue intValue];
+        
+		if (reason == kAudioSessionRouteChangeReason_OldDeviceUnavailable) {
+            
+			//[This pausePlaybackForPlayer:This.aPlayer];
+		}
+	}
 }
 
 @end

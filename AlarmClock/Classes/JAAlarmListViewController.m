@@ -8,6 +8,7 @@
 
 #import "JAAlarmListViewController.h"
 #import "JAAlarmSettingsController.h"
+#import "JASettings.h"
 
 @interface JAAlarmListViewController ()
 - (void) addAlarm;
@@ -138,6 +139,9 @@
         [whiteBG setImage:[UIImage imageNamed:@"alarmRowBG.png"]];
         cell.backgroundView = whiteBG;
         cell.detailTextLabel.backgroundColor = [UIColor clearColor];
+        
+        cell.textLabel.font = [UIFont fontWithName:CELL_TEXT_FONT size:15];
+        cell.detailTextLabel.font = [UIFont fontWithName:CELL_DETAIL_TEXT_FONT size:14];
         
     }
     
