@@ -1969,7 +1969,7 @@
 					"\"$(SRCROOT)/../Flurry iPhone SDK v4.1.0/Flurry\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0CC00310-B9B3-4E7B-B3A8-C2AB9717B8B4";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6230F9F0-35C9-442A-946F-37A935D67932";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -2030,6 +2030,7 @@
 		C9E6406716528B7500A388C6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AlarmClock/AlarmClock-Prefix.pch";
 				INFOPLIST_FILE = "AlarmClock/AlarmClock-Info.plist";
@@ -2038,6 +2039,7 @@
 					"\"$(SRCROOT)/../Flurry iPhone SDK v4.1.0/Flurry\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2045,6 +2047,7 @@
 		C9E6406816528B7500A388C6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Brooke Ginty";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AlarmClock/AlarmClock-Prefix.pch";
 				INFOPLIST_FILE = "AlarmClock/AlarmClock-Info.plist";
@@ -2053,6 +2056,7 @@
 					"\"$(SRCROOT)/../Flurry iPhone SDK v4.1.0/Flurry\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8DA142DC-853F-4BCA-9F87-B5ECE586090E";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
