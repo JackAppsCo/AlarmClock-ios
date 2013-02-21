@@ -22,7 +22,7 @@
 		</dict>
 	</dict>
 	<key>CFBundleIdentifier</key>
-	<string>com.jackapps.alarm</string>
+	<string>com.jackappsco.SleepSmart</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -39,7 +39,8 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Gotham-Black.ttf</string>
+		<string>HelveticaNeue-BoldCond.ttf</string>
+		<string>HelveticaNeue-Condensed.ttf</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>

@@ -106,7 +106,7 @@ static ClockManager *sharedInstance = nil;
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     
     //Set the snooze alarm for 10 minutes from now
-    NSDateComponents *timeComponents = [gregorian components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:[NSDate dateWithTimeIntervalSinceNow:(60 * [JASettings snoozeLength])]];
+    NSDateComponents *timeComponents = [gregorian components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:[NSDate dateWithTimeIntervalSinceNow:(60 * [JASettings snoozeLength])]];
     
     JAAlarm *newSnoozeAlarm = anAlarm;
     newSnoozeAlarm.timeComponents = timeComponents;

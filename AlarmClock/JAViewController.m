@@ -15,6 +15,7 @@
 #import "UIImage+fixOrientation.h"
 #import "JASleepSmartControllerViewController.h"
 #import <AudioToolbox/AudioToolbox.h>
+#import "Flurry.h"
 
 #define WEATHER_API_KEY @"c74edf0183141706121311"
 
@@ -76,6 +77,7 @@ void RouteChangeListener(	void *                  inClientData,
         
         //iad setup
         self.adBanner.requiredContentSizeIdentifiers = [NSSet setWithObjects:ADBannerContentSizeIdentifierPortrait, ADBannerContentSizeIdentifierLandscape, nil];
+        self.adBanner.currentContentSizeIdentifier = ADBannerContentSizeIdentifierLandscape;
         
         //init flags
         _shineEnabled = NO;
@@ -103,6 +105,14 @@ void RouteChangeListener(	void *                  inClientData,
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+ 
+    //check to see if we should show nag
+    if (([JASettings previousLaunchCount] == 1 || ([JASettings previousLaunchCount] > 0 && [JASettings previousLaunchCount] % 5 == 0)) &&
+        ![JASettings isPaid]) {
+        _showNag = YES;
+    }
+    else
+        _showNag = NO;
     
     //init alarmsOn
     _alarmsOn = YES;
@@ -150,7 +160,7 @@ void RouteChangeListener(	void *                  inClientData,
     
     //tab bar
     _tabBarController = [[UITabBarController alloc] init];
-    [_tabBarController setViewControllers:[NSArray arrayWithObjects:alarmNavController, displayNavController, sleepSmartNavController, settingsNavController, nil]];
+    [_tabBarController setViewControllers:[NSArray arrayWithObjects:displayNavController, alarmNavController, sleepSmartNavController, settingsNavController, nil]];
     
     
     //settings button
@@ -170,9 +180,9 @@ void RouteChangeListener(	void *                  inClientData,
     
     //setup clock label frame and font
     self.clockLabel.frame = CGRectMake(20, 50, self.view.frame.size.width - 40, self.view.frame.size.height - 100);
-    self.clockLabel.font = [UIFont fontWithName:@"Cochin-Bold" size:([JASettings showSeconds]) ? 55 : 85];
+    self.clockLabel.font = [UIFont fontWithName:@"HelveticaNeue-Condensed" size:([JASettings showSeconds]) ? 55 : 85];
     self.dateLabel.frame = CGRectMake(20, self.clockLabel.center.y + 40, self.view.frame.size.width - 40, 29);
-    self.dateLabel.font = [UIFont fontWithName:@"Cochin" size:23];
+    self.dateLabel.font = [UIFont fontWithName:@"HelveticaNeue-Condensed" size:23];
     
     //setup shine disbale button
     _shineDisableButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -195,8 +205,8 @@ void RouteChangeListener(	void *                  inClientData,
     [self.mainView insertSubview:_backdropImageview belowSubview:self.amPmLabel];
     
     //setup clock labels
-    self.clockLabel.font = [UIFont fontWithName:@"Cochin-Bold" size:([JASettings showSeconds]) ? 87 : 110];
-    [self layoutClockLabelForFrame:CGRectMake(15.0, 100.0, self.mainView.frame.size.width - 30.0, self.mainView.frame.size.height - 200.0)];
+    self.clockLabel.font = [UIFont fontWithName:@"HelveticaNeue-Condensed" size:([JASettings showSeconds]) ? 65 : 75];
+    [self layoutClockLabelForFrame:CGRectMake(25.0, 50.0, self.mainView.frame.size.width - 50.0, self.mainView.frame.size.height - 100.0)];
     
     //bring clock label to front
     [self.mainView bringSubviewToFront:self.clockLabel];
@@ -205,6 +215,9 @@ void RouteChangeListener(	void *                  inClientData,
     self.currentTempLabel.alpha = 0.0;
     self.lowTempLabel.alpha = 0.0;
     self.highTempLabel.alpha = 0.0;
+    
+    
+    
 }
 
 - (void) setAlarmIcon
@@ -250,6 +263,7 @@ void RouteChangeListener(	void *                  inClientData,
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
     
     //hide status
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
@@ -312,6 +326,7 @@ void RouteChangeListener(	void *                  inClientData,
     
     if ([JASettings showDate]) {
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setCalendar:[NSCalendar currentCalendar]];
         [dateFormatter setDateFormat:@"eee MMM dd, yyyy"];
         self.dateLabel.text = [dateFormatter stringFromDate:[NSDate date]];
     }
@@ -322,19 +337,13 @@ void RouteChangeListener(	void *                  inClientData,
     //setup the weather labels
     [self setupWeather];
     
-    //clock font size
-    if (self.mainView.frame.size.width <= 320) {
-        
-        self.clockLabel.font = [UIFont fontWithName:@"Cochin-Bold" size:([JASettings showSeconds]) ? 55 : 85];
-        
-        [self layoutClockLabelForFrame:CGRectMake(15.0, 100.0, self.mainView.frame.size.width - 30.0, self.mainView.frame.size.height - 200.0)];
-    }
-    else {
-        
-        self.clockLabel.font = [UIFont fontWithName:@"Cochin-Bold" size:([JASettings showSeconds]) ? 87 : 110];
-        
-        [self layoutClockLabelForFrame:CGRectMake(75.0, 25.0, self.mainView.frame.size.width - 150.0, self.mainView.frame.size.height - 50.0)];
-    }
+    
+    //clock label
+    self.clockLabel.font = [UIFont fontWithName:@"HelveticaNeue-Condensed" size:([JASettings showSeconds]) ? 65 : 75];
+    
+    [self layoutClockLabelForFrame:CGRectMake(25.0, 50.0, self.mainView.frame.size.width - 50.0, self.mainView.frame.size.height - 100.0)];
+    
+   
     
 }
 
@@ -350,10 +359,15 @@ void RouteChangeListener(	void *                  inClientData,
 {
     [super viewDidAppear:animated];
     
-    if ([JASettings previousLaunchCount] == 1 || ([JASettings previousLaunchCount] > 0 && [JASettings previousLaunchCount] % 10 == 0))
+    
+        
+    if (_showNag)
     {
-        UIAlertView *freeAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SleepSmart Premium\nJust Released!", nil) message:NSLocalizedString(@"Want MORE features, MORE sounds and NO ads? Then UPGRADE to SleepSmart Premium NOW!!!\n\n*******************************************\nSleepSmart Premium Upgrades Include:\n\n→ A unique “Rise & Shine” feature that emulates the rising sun.  Designed to trigger your natural body clock and trick your brain into thinking it’s morning, even if it is dark outside!\n→ Full access to ALL Classic Alarm sounds and Gentle Wake sounds!\n→ Full access to ALL White Noise Sleep Timer themes including Beach, Countryside, Waterfall and many more!\n→ Full access to ALL display backgrounds!\n\nGet it NOW! SleepSmart. LiveSmart.\n*******************************************", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"No Thanks", nil) otherButtonTitles:NSLocalizedString(@"Upgrade Me!", nil), nil];
+        [Flurry logEvent:@"Nag Screen Opened"];
+        UIAlertView *freeAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SleepSmart Pro Available NOW!", nil) message:NSLocalizedString(@"Upgrade for Extra Sounds, Extra Features and NO ADS!\n\n⇒ Full access to ALL Background Themes!\n⇒ Full access to ALL White Noise Sleep Timer Themes!\n⇒ Full access to ALL Gentle Rise and Alarm Sounds!\n⇒Unlock the “Rise & Shine” feature to emulate the sun!", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"No Thanks", nil) otherButtonTitles:NSLocalizedString(@"Upgrade Me!", nil), nil];
+        [freeAlert setTag:10];
         [freeAlert show];
+        _showNag = NO;
     }
     
     
@@ -361,9 +375,10 @@ void RouteChangeListener(	void *                  inClientData,
     if (_tutorialView) {
         
         //set the first launch key
-        //[[NSUserDefaults standardUserDefaults] setObject:@"no" forKey:@"isFirstLaunch"];
+        [[NSUserDefaults standardUserDefaults] setObject:@"no" forKey:@"isFirstLaunch"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
         
-        _tutorialView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, MAX(self.view.frame.size.width, self.view.frame.size.height), MIN(self.view.frame.size.width, self.view.frame.size.height))];
+        _tutorialView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, MIN(self.view.frame.size.width, self.view.frame.size.height), MAX(self.view.frame.size.width, self.view.frame.size.height))];
         [_tutorialView setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth];
         [_tutorialView setAutoresizesSubviews:YES];
         
@@ -395,7 +410,7 @@ void RouteChangeListener(	void *                  inClientData,
         [settingsImage setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin];
         [_tutorialView addSubview:settingsImage];
         
-        UILabel *settingsLabel = [[UILabel alloc] initWithFrame:CGRectMake(_tutorialView.frame.size.width - 260.0f, settingsImage.frame.origin.y - 90, 240.0f, 130.0f)];
+        UILabel *settingsLabel = [[UILabel alloc] initWithFrame:CGRectMake(_tutorialView.frame.size.width - 175.0f, settingsImage.frame.origin.y - 130, 160.0f, 170.0f)];
         [settingsLabel setTextAlignment:NSTextAlignmentRight];
         [settingsLabel setNumberOfLines:0];
         [settingsLabel setFont:[UIFont fontWithName:TITLE_FONT size:16]];
@@ -406,17 +421,16 @@ void RouteChangeListener(	void *                  inClientData,
         [_tutorialView addSubview:settingsLabel];
         
         UIImageView *sliderImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"swipePointer.png"]];
-        [sliderImage setFrame:CGRectMake(timerLabel.frame.size.width + timerLabel.frame.origin.x - 30, 10, sliderImage.image.size.width, sliderImage.image.size.height)];
+        [sliderImage setFrame:CGRectMake(20, 130, sliderImage.image.size.width, sliderImage.image.size.height)];
         [sliderImage setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin];
         [_tutorialView addSubview:sliderImage];
         
-        UILabel *slideLabel = [[UILabel alloc] initWithFrame:CGRectMake(sliderImage.frame.origin.x + sliderImage.frame.size.width - 60, timerLabel.frame.origin.y + 5, 190.0f, 80.0f)];
+        UILabel *slideLabel = [[UILabel alloc] initWithFrame:CGRectMake(sliderImage.frame.origin.x + sliderImage.frame.size.width - 60, sliderImage.frame.origin.y + 5, 165.0f, 80.0f)];
         [slideLabel setTextAlignment:NSTextAlignmentLeft];
         [slideLabel setFont:[UIFont fontWithName:TITLE_FONT size:16]];
         [slideLabel setBackgroundColor:[UIColor clearColor]];
         [slideLabel setTextColor:[UIColor whiteColor]];
         [slideLabel setNumberOfLines:0];
-        [slideLabel setAdjustsLetterSpacingToFitWidth:YES];
         [slideLabel setAdjustsFontSizeToFitWidth:YES];
         [slideLabel setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin];
         [slideLabel setText:NSLocalizedString(@"Adjust the brightness by swiping up and down", nil)];
@@ -427,13 +441,12 @@ void RouteChangeListener(	void *                  inClientData,
         [alarmImage setAutoresizingMask:UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin];
         [_tutorialView addSubview:alarmImage];
         
-        UILabel *alarmLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0, alarmImage.frame.origin.y - 20, 140.0f, 50.0f)];
+        UILabel *alarmLabel = [[UILabel alloc] initWithFrame:CGRectMake(15.0, alarmImage.frame.origin.y - 20, 140.0f, 50.0f)];
         [alarmLabel setTextAlignment:NSTextAlignmentLeft];
         [alarmLabel setFont:[UIFont fontWithName:TITLE_FONT size:16]];
         [alarmLabel setBackgroundColor:[UIColor clearColor]];
         [alarmLabel setTextColor:[UIColor whiteColor]];
         [alarmLabel setNumberOfLines:0];
-        [alarmLabel setAdjustsLetterSpacingToFitWidth:YES];
         [alarmLabel setAdjustsFontSizeToFitWidth:YES];
         [alarmLabel setAutoresizingMask:UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin];
         [alarmLabel setText:NSLocalizedString(@"Quickly access your alarms", nil)];
@@ -441,11 +454,12 @@ void RouteChangeListener(	void *                  inClientData,
         
         [self.mainView addSubview:_tutorialView];
         
-        self.clockLabel.font = [UIFont fontWithName:@"Cochin-Bold" size:([JASettings showSeconds]) ? 87 : 110];
+        self.clockLabel.font = [UIFont fontWithName:@"HelveticaNeue-Condensed" size:([JASettings showSeconds]) ? 87 : 110];
         
+        /*
         [self layoutClockLabelForFrame:CGRectMake(0, 0, MAX(self.view.frame.size.width, self.view.frame.size.height), MIN(self.view.frame.size.width, self.view.frame.size.height))];
         
-        [self layoutClockLabelForFrame:CGRectMake(60.0, 15.0, self.mainView.frame.size.width - 120.0, self.mainView.frame.size.height - 30.0)];
+        [self layoutClockLabelForFrame:CGRectMake(60.0, 15.0, self.mainView.frame.size.width - 120.0, self.mainView.frame.size.height - 30.0)];*/
         
         
     }
@@ -456,8 +470,11 @@ void RouteChangeListener(	void *                  inClientData,
 
 - (IBAction)sleepButtonPressed:(id)sender {
     
+    [Flurry logEvent:@"Sleep Sound Button Pressed"];
+    
     if (self.aPlayer.playing) {
         [self.aPlayer stop];
+        [sleepTimer invalidate];
         sleepTimer = nil;
         return;
     }
@@ -490,7 +507,7 @@ void RouteChangeListener(	void *                  inClientData,
     
     sleepTimer = [[NSTimer alloc] initWithFireDate:[NSDate dateWithTimeInterval:([JASettings sleepLength] * 60) sinceDate:[NSDate date]] interval:0 target:self selector:@selector(stopSleepTimer) userInfo:nil repeats:NO];
     [[NSRunLoop mainRunLoop] addTimer:sleepTimer forMode:NSDefaultRunLoopMode];
-    
+
     
         
         
@@ -500,21 +517,22 @@ void RouteChangeListener(	void *                  inClientData,
 
 - (IBAction)alarmButtonPressed:(id)sender {
     
-    //    [JASettings setAlarmsDisabled:![JASettings alarmsDisabled]];
-    //
-    //    [self setAlarmIcon];
+    [Flurry logEvent:@"Alarms Button Pressed"];
     
-    [self.tabBarController setSelectedIndex:0];
+    [self.tabBarController setSelectedIndex:1];
     [self settingsButtonPressed:nil];
     
 }
 
 - (void) stopSleepTimer
 {
+    
+    NSLog(@"TIMER STOPPED");
     if (self.aPlayer.playing) {
         [self.aPlayer stop];
     }
     
+    [sleepTimer invalidate];
     sleepTimer = nil;
 }
 
@@ -604,7 +622,7 @@ void RouteChangeListener(	void *                  inClientData,
     NSURL *fileURL;
     
     if (_currentAlarm.sound.collection) {
-        
+        /*
         if (!_musicPlayer) {
             _musicPlayer = [MPMusicPlayerController applicationMusicPlayer];
             [_musicPlayer setShuffleMode: MPMusicShuffleModeOff];
@@ -615,15 +633,33 @@ void RouteChangeListener(	void *                  inClientData,
         
         if (_currentAlarm.gradualSound) {
             _musicPlayer.volume = 0.0f;
+            
         }
         else {
-            _musicPlayer.volume = 1.0f;
+            //_musicPlayer.volume = 1.0f;
         }
         
         [_musicPlayer play];
+        */
         
+        fileURL = [[[_currentAlarm.sound.collection items] objectAtIndex:0] valueForProperty:MPMediaItemPropertyAssetURL];
+        NSError *err;
+        AVAudioPlayer *player = [[AVAudioPlayer alloc] initWithContentsOfURL: fileURL
+                                                                       error:&err];
         
+        if (err)
+            NSLog(@"ERR: %@", err);
         
+        self.aPlayer = player;
+        self.aPlayer.delegate = nil;
+        if (_currentAlarm.gradualSound) {
+            self.aPlayer.volume = 0.0f;
+        }
+        else {
+            self.aPlayer.volume = 1.0f;
+        }
+        [self.aPlayer setNumberOfLoops:-1];
+        [self.aPlayer play];
         
     }
     else {
@@ -696,8 +732,8 @@ void RouteChangeListener(	void *                  inClientData,
 #pragma mark - Handle Rotation
 - (NSUInteger) supportedInterfaceOrientations
 {
-    if (_tutorialView) {
-        return UIInterfaceOrientationMaskLandscapeLeft | UIInterfaceOrientationMaskLandscapeRight;
+    if (_tutorialView || self.presentingViewController) {
+        return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown;
     }
     else {
         return UIInterfaceOrientationMaskAll;
@@ -707,7 +743,7 @@ void RouteChangeListener(	void *                  inClientData,
 - (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
 {
     if (_tutorialView) {
-        return UIInterfaceOrientationIsLandscape(toInterfaceOrientation);
+        return UIInterfaceOrientationIsPortrait(toInterfaceOrientation);
     }
     return YES;
 }
@@ -716,7 +752,7 @@ void RouteChangeListener(	void *                  inClientData,
 {
     if (UIInterfaceOrientationIsPortrait(toInterfaceOrientation)) {
         
-        self.clockLabel.font = [UIFont fontWithName:@"Cochin-Bold" size:([JASettings showSeconds]) ? 65 : 75];
+        self.clockLabel.font = [UIFont fontWithName:@"HelveticaNeue-Condensed" size:([JASettings showSeconds]) ? 65 : 75];
         
         [self layoutClockLabelForFrame:CGRectMake(25.0, 50.0, self.mainView.frame.size.width - 50.0, self.mainView.frame.size.height - 100.0)];
         
@@ -725,7 +761,7 @@ void RouteChangeListener(	void *                  inClientData,
     
     if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
         
-        self.clockLabel.font = [UIFont fontWithName:@"Cochin-Bold" size:([JASettings showSeconds]) ? 87 : 110];
+        self.clockLabel.font = [UIFont fontWithName:@"HelveticaNeue-Condensed" size:([JASettings showSeconds]) ? 87 : 110];
         
         [self layoutClockLabelForFrame:CGRectMake(60.0, 15.0, self.mainView.frame.size.width - 120.0, self.mainView.frame.size.height - 30.0)];
         
@@ -760,7 +796,7 @@ void RouteChangeListener(	void *                  inClientData,
     self.dateLabel.frame = dateFrame;
     //self.amPmLabel.frame = amFrame;
     self.amImageView.frame = amFrame;
-    self.amImageView.center = CGPointMake(self.amImageView.center.x - 4, self.clockLabel.center.y + 3);
+    self.amImageView.center = CGPointMake(self.amImageView.center.x - 4, self.clockLabel.center.y-1);
     
     float bdWidth = (clockFrame.size.width + (amFrame.size.width * 3) > self.mainView.frame.size.width) ? self.mainView.frame.size.width - 10 : clockFrame.size.width + (amFrame.size.width * 3);
     float bdX = (clockFrame.size.width + (amFrame.size.width * 3) > self.mainView.frame.size.width) ? 5 : clockFrame.origin.x - (1.5 * amFrame.size.width);
@@ -817,9 +853,15 @@ void RouteChangeListener(	void *                  inClientData,
     }
     
     if (_shineEnabled) {
-        _shineDisableButton.alpha = _shineDisableButton.alpha + (1.0 / 1800.0);
-        [UIScreen mainScreen].brightness += ([UIScreen mainScreen].brightness < 1.0f) ?  + (1.0 / 1800.0) : 0.0;
-        _dimView.alpha -= (_dimView.alpha > 0.0f) ? (1.0 / 1800.0) : 0.0;
+        _shineDisableButton.alpha = _shineDisableButton.alpha + (1.0f / 1800.0f);
+        [UIScreen mainScreen].brightness += ([UIScreen mainScreen].brightness < 1.0f) ?  + (1.0f / 1800.0f) : 0.0f;
+        _dimView.alpha -= (_dimView.alpha > 0.0f) ? (1.0f / 1800.0f) : 0.0;
+        
+        
+        //just for testing
+        //_shineDisableButton.alpha = _shineDisableButton.alpha + (1.0 / 10.0);
+        //[UIScreen mainScreen].brightness += ([UIScreen mainScreen].brightness < 1.0f) ?  + (1.0 / 10.0) : 0.0;
+        //_dimView.alpha -= (_dimView.alpha > 0.0f) ? (1.0 / 10.0) : 0.0;
         
         if ([[[JASettings clockColorName] uppercaseString] isEqualToString:@"WHITE"]) {
             if (_shineDisableButton.alpha >= 0.5) {
@@ -879,6 +921,14 @@ void RouteChangeListener(	void *                  inClientData,
 
 #pragma mark - UIAlertViewDelegate
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    if ([alertView tag] == 10) {
+        if (buttonIndex == 1) {
+            [Flurry logEvent:@"App Store Opened"];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:NSLocalizedString(@"APPSTORE_URL_PAID", nil)]];
+        }
+        return;
+    }
     
     if (buttonIndex == 0) {
         //do nothing

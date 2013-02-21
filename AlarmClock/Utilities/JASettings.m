@@ -76,7 +76,7 @@ static JASettings *sharedInstance = nil;
 
 + (NSString *)backgroundImageName
 {
-    NSString *imageName = @"Default";
+    NSString *imageName = @"Coast";
     
     //check for bg image name
     if ([[NSUserDefaults standardUserDefaults] objectForKey:BG_NAME_KEY]) {
@@ -261,7 +261,7 @@ static JASettings *sharedInstance = nil;
 
 + (NSDictionary *)sleepSound
 {
-    NSDictionary * sound = [[NSDictionary alloc] initWithObjectsAndKeys:@"Beach", @"name", @"Beach.m4a", @"filename", nil];
+    NSDictionary * sound = [[NSDictionary alloc] initWithObjectsAndKeys:@"Ocean Waves", @"name", @"Ocean Waves.m4a", @"filename", nil];
     
     //check for bg image name
     if ([[NSUserDefaults standardUserDefaults] objectForKey:SLEEP_SOUND_KEY]) {
@@ -374,6 +374,10 @@ static JASettings *sharedInstance = nil;
 		}
 	}
 	return sharedInstance;
+}
+
++ (BOOL) isIOS6 {
+    return ([[[UIDevice currentDevice] systemVersion] rangeOfString:@"6"].location != NSNotFound);
 }
 
 + (UIImage*) filterImageNamed:(NSString*)imageName ofType:(NSString*)type darker:(BOOL)darker

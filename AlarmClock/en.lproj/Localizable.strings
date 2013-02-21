@@ -1,0 +1,198 @@
+/* 
+  Localizable.strings
+  AlarmClock
+
+  Created by Brian C. Singer on 12/9/12.
+  Copyright (c) 2012 JA. All rights reserved.
+*/
+
+//Other
+"Snooze" = "Snooze";
+
+//Nag Screen
+"SleepSmart Pro Available NOW!" = "SleepSmart Pro Available NOW!";
+"Upgrade for Extra Sounds, Extra Features and NO ADS!\n\n⇒ Full access to ALL Background Themes!\n⇒ Full access to ALL White Noise Sleep Timer Themes!\n⇒ Full access to ALL Gentle Rise and Alarm Sounds!\n⇒Unlock the “Rise & Shine” feature to emulate the sun!" = "Upgrade for Extra Sounds, Extra Features and NO ADS!\n\n⇒ Full access to ALL Background Themes!\n⇒ Full access to ALL White Noise Sleep Timer Themes!\n⇒ Full access to ALL Gentle Rise and Alarm Sounds!\n⇒Unlock the “Rise & Shine” feature to emulate the sun!";
+"Like What You See?\nDon’t Like That You Can’t Use It?" = "Like What You See?\nDon’t Like That You\nCan’t Use It?";
+"…Then UPGRADE to SleepSmart Pro!\n\n⇒ Full access to ALL Background Themes!\n⇒ Full access to ALL White Noise Sleep Timer Themes!\n⇒ Full access to ALL Gentle Rise and Alarm Sounds!\n⇒ Unlock the “Rise & Shine” feature to emulate the sun!" = "Then UPGRADE to SleepSmart Pro!\n⇒ Full access to ALL Background Themes!\n⇒ Full access to ALL White Noise Sleep Timer Themes!\n⇒ Full access to ALL Gentle Rise and Alarm Sounds!\n⇒ Unlock the “Rise & Shine” feature to emulate the sun!";
+"SleepSmart Premium\nJust Released!" = "SleepSmart Premium\nJust Released!";
+"Want MORE features, MORE sounds and NO ads? Then UPGRADE to SleepSmart Premium NOW!!!\n\n*******************************************\nSleepSmart Premium Upgrades Include:\n\n→ A unique “Rise & Shine” feature that emulates the rising sun.  Designed to trigger your natural body clock and trick your brain into thinking it’s morning, even if it is dark outside!\n→ Full access to ALL Classic Alarm sounds and Gentle Wake sounds!\n→ Full access to ALL White Noise Sleep Timer themes including Beach, Countryside, Waterfall and many more!\n→ Full access to ALL display backgrounds!\n\nGet it NOW! SleepSmart. LiveSmart.\n*******************************************" = "Want MORE features, MORE sounds and NO ads? Then UPGRADE to SleepSmart Premium NOW!!!\n\n*******************************************\nSleepSmart Premium Upgrades Include:\n\n→ A unique “Rise & Shine” feature that emulates the rising sun.  Designed to trigger your natural body clock and trick your brain into thinking it’s morning, even if it is dark outside!\n→ Full access to ALL Classic Alarm sounds and Gentle Wake sounds!\n→ Full access to ALL White Noise Sleep Timer themes including Beach, Countryside, Waterfall and many more!\n→ Full access to ALL display backgrounds!\n\nGet it NOW! SleepSmart. LiveSmart.\n*******************************************";
+
+
+
+//Home Screen
+"H" = "H";
+"L" = "L";
+"Tap to activate White Noise Sleep Timer" = "Tap to activate White Noise Sleep Timer";
+"Adjust the brightness by swiping up and down" = "Adjust the\nbrightness by swiping up and down";
+"Tap on the settings icon to create alarms, edit your display or use SleepSmart features" = "Tap on the settings icon to create alarms, edit your display or use SleepSmart features";
+"Quickly access your alarms" = "Quickly access your alarms";
+
+//Sleep Screen
+"Sleep Cycle" = "Sleep Cycle";
+"Bedtime" = "Bedtime";
+"Wake-Up Time" = "Wake-Up Time";
+"How to use SleepSmart’s Sleep Cycle Calculator" = "How to use SleepSmart’s Sleep Cycle Calculator";
+"To turn the White Noise Sleep Timer On/Off, return to your home screen and hit the ZZZ icon." = "To turn the White Noise Sleep Timer On/Off, return to your home screen and hit the ZZZ icon.";
+"Calculate using either:\n(1) your Wake-Up Time or\n(2) your Bedtime.\n\nSelect the appropriate tab, select a time and hit Create SleepSmart Alarm!" = "Calculate using either:\n(1) your Wake-Up Time or\n(2) your Bedtime.\n\nSelect the appropriate tab, select a time and hit Create SleepSmart Alarm!";
+"Create SleepSmart Alarm" = "Create SleepSmart Alarm";
+"To complete your sleep cycle, you should fall asleep at one of these times:" = "To complete your sleep cycle, you should fall asleep at one of these times:";
+"To complete your sleep cycle, you should wake-up at one of these times:" = "To complete your sleep cycle, you should wake-up at one of these times:";
+"Select a Time" = "Select a Time";
+"Sleep Cycle Calculator" = "Sleep Cycle Calculator";
+"SleepSmart Alarm" = "SleepSmart Alarm";
+"When you set an Alarm, make sure to turn on Rise & Shine to emulate the rising sun! This will gently adjust the brightness of your screen before your alarm goes off to act like the rising sun and naturally wake you up." = "When you set an Alarm, make sure to turn on Rise & Shine to emulate the rising sun! This will gently adjust the brightness of your screen before your alarm goes off to act like the rising sun and naturally wake you up.";
+"Rise & Shine Feature" = "Rise & Shine Feature";
+
+
+//Settings
+"Alarms" = "Alarms";
+"Display" = "Display";
+"Settings" = "Settings";
+"Sleep" = "Sleep";
+"Done" = "Done";
+
+//Misc Screen
+"Check out SleepSmart in the App Store: %@" = "Check out SleepSmart in the App Store: %@";
+"Check out <a href=\"%@\">SleepSmart</a> in the App Store" = "Check out <a href=\"%@\">SleepSmart</a> in the App Store";
+"Help & Information" = "Help & Information";
+"Auto-Lock" = "Auto-Lock";
+"Weather" = "Weather";
+"Misc" = "Misc";
+"Rise & Shine" = "Rise & Shine";
+"Scale" = "Scale";
+"Length" = "Length";
+"minutes" = "minutes";
+"Fahrenheit" = "Fahrenheit";
+"Celsius" = "Celsius";
+"Disable Auto-Lock" = "Disable Auto-Lock";
+"Whoops!" = "Whoops!";
+"In order to enable the Rise & Shine feature we'll have to disable auto-lock." = "In order to enable the Rise & Shine feature we'll have to disable auto-lock.";
+"If you don't keep auto-lock disabled the Rise & Shine feature will be disabled." = "If you don't keep auto-lock disabled the Rise & Shine feature will be disabled.";
+"Due to multitasking limitations set by Apple, SleepSmart MUST be running in the foreground for its features to work properly.  In order to do this, you must disable your phone’s auto-lock feature./n/nIf you forget to leave the app open, we’ve got your back.  SleepSmart provides a built-in background alarm that will play a default alarm sound when your alarm goes off.   This default alarm is limited to 30 seconds so MAKE SURE you keep SleepSmart running through the night!  Background alarms work only on iPhone 4 models and above." = "Due to multitasking limitations set by Apple, SleepSmart MUST be running in the foreground for its features to work properly.  In order to do this, you must disable your phone’s auto-lock feature.\n\nIf you forget to leave the app open, we’ve got your back.  SleepSmart provides a built-in background alarm that will play a default alarm sound when your alarm goes off.   This default alarm is limited to 30 seconds so MAKE SURE you keep SleepSmart running through the night!  Background alarms work only on iPhone 4 models and above.";
+"The Science Behind SleepSmart – Why Your Sleep Cycle Matters" = "The Science Behind SleepSmart – Why Your Sleep Cycle Matters";
+"Think that extra hour of sleep will make you feel more rested?  Think again.  Research has shown that waking up in the middle of your body’s natural sleep cycle can make you feel groggy, disoriented and is actually counterproductive to a full night’s sleep.  Waking your body up at the end of your natural sleep cycle, when your body and brain are already close to wakefulness, can provide you with the best night’s sleep and the most refreshing of mornings.\n\nThe average sleep cycle lasts approximately 90 minutes and a well-rested adult goes through approximately 4-6 cycles a night.  During these cycles your body enters four different stages: N1, transition to sleep (5 min); N2, light sleep (10-25 min); N3, deep sleep (40-60 min); and REM, dream sleep.  Each stage is vital in restoring your body and mind and plays a different role in preparing you for the day ahead.\n\nEven if you’ve enjoyed a full night’s sleep, getting out of bed can be difficult if your alarm goes off when you’re in the middle of deep sleep (stage N3).   If you want the best night’s sleep for an optimal morning, then set your alarm to wake up at the end of your natural sleep cycle.  Simply use SleepSmart’s Sleep Cycle Calculator and you’re on your way to a great night’s sleep!" = "Think that extra hour of sleep will make you feel more rested?  Think again.  Research has shown that waking up in the middle of your body’s natural sleep cycle can make you feel groggy, disoriented and is actually counterproductive to a full night’s sleep.  Waking your body up at the end of your natural sleep cycle, when your body and brain are already close to wakefulness, can provide you with the best night’s sleep and the most refreshing of mornings.\n\nThe average sleep cycle lasts approximately 90 minutes and a well-rested adult goes through approximately 4-6 cycles a night.  During these cycles your body enters four different stages: N1, transition to sleep (5 min); N2, light sleep (10-25 min); N3, deep sleep (40-60 min); and REM, dream sleep.  Each stage is vital in restoring your body and mind and plays a different role in preparing you for the day ahead.\n\nEven if you’ve enjoyed a full night’s sleep, getting out of bed can be difficult if your alarm goes off when you’re in the middle of deep sleep (stage N3).   If you want the best night’s sleep for an optimal morning, then set your alarm to wake up at the end of your natural sleep cycle.  Simply use SleepSmart’s Sleep Cycle Calculator and you’re on your way to a great night’s sleep!";
+"How Does the Rise & Shine Feature Help Wake Me Up?" = "How Does the Rise & Shine Feature Help Wake Me Up?";
+"Your brain responds to changes between light and dark to regulate your internal 24-hour sleep-wake cycle.  If it is dark outside when you get up, you probably find it hard to get out of bed.  Our unique and ingenious Rise & Shine feature turns your iPhone into a virtual sun! Simple turn on Rise & Shine and trick your brain into waking up, even if it’s dark outside!" = "Your brain responds to changes between light and dark to regulate your internal 24-hour sleep-wake cycle.  If it is dark outside when you get up, you probably find it hard to get out of bed.  Our unique and ingenious Rise & Shine feature turns your iPhone into a virtual sun! Simple turn on Rise & Shine and trick your brain into waking up, even if it’s dark outside!";
+"Tips For Using Your White Noise Sleep Timer" = "Tips For Using Your White Noise Sleep Timer";
+"Shutting your brain down at night can be difficult.  Using SleepSmart’s White Noise Sleep Timer can help.\n\nSleepSmart Premium includes 10 soothing themes to help lull you to sleep.  For best results, hook your iPhone into an audio source to improve the sound quality." = "Shutting your brain down at night can be difficult.  Using SleepSmart’s White Noise Sleep Timer can help.\n\nSleepSmart Premium includes 10 soothing themes to help lull you to sleep.  For best results, hook your iPhone into an audio source to improve the sound quality.";
+"Cancel" = "Cancel";
+"Ok" = "Ok";
+"Shake for Flashlight" = "Shake for Flashlight";
+"Adjust Brightness" = "Adjust Brightness";
+"Help & Information" = "Help & Information";
+"Snooze Length" = "Snooze Length";
+"Facebook" = "Facebook";
+"Twitter" = "Twitter";
+"Text Message" = "Text Message";
+"Email" = "Email";
+"APPSTORE_URL_FREE" = "https://itunes.apple.com/us/app/sleepsmart-free/id599428492?ls=1&mt=8";
+"APPSTORE_URL_PAID" = "https://itunes.apple.com/us/app/sleepsmart/id588597242?ls=1&mt=8";
+"Love SleepSmart?  We Love You Too!  Help Us Spread the Word!" = "Love SleepSmart?  We Love You Too!  Help Us Spread the Word!";
+"If you like what you've seen so far you should check out the paid version." = "If you like what you've seen so far you should check out the paid version.";
+"The Rise & Shine feature is only available in the paid application." = "The Rise & Shine feature is only available in the paid application.";
+
+//Disp Settings
+"Background Image" = "Background Image";
+"Show Backdrop" = "Show Backdrop";
+"Clock Text Color" = "Clock Text Color";
+"Show Seconds" = "Show Seconds";
+"Show Date" = "Show Date";
+"Create You Own" = "Create You Own";
+
+//Alarm Settings
+"Create Name" = "Create Name";
+"Time" = "Time";
+"Enabled" = "Enabled";
+"Repeat" = "Repeat";
+"Sound" = "Sound";
+"Gradual Alarm" = "Gradual Alarm";
+"Snooze (mins)" = "Snooze (mins)";
+"Save" = "Save";
+"Cancel" = "Cancel";
+
+//Repeat Settings
+"Never" = "Never";
+"Everyday" = "Everyday";
+"Weekdays" = "Weekdays";
+"Weekends" = "Weekends";
+"Monday" = "Monday";
+"Tuesday" = "Tuesday";
+"Wednesday" = "Wednesday";
+"Thursday" = "Thursday";
+"Friday" = "Friday";
+"Saturday" = "Saturday";
+"Sunday" = "Sunday";
+"Repeat" = "Repeat";
+"M" = "M";
+" T" = " T";
+" W" = " W";
+" Th" = " Th";
+" F" = " F";
+" S" = " S";
+" Su" = " Su";
+
+//Sound Selector
+"Choose From Library" = "Choose From Library";
+"Record A New Sound" = "Record A New Sound";
+"Sleep Cycle Calculator" = "Sleep Cycle Calculator";
+"White Noise Sleep Timer" = "White Noise Sleep Timer";
+"Timer Length" = "Timer Length";
+"SleepSmart" = "SleepSmart";
+"Sleep Sound" = "Sleep Sound";
+"This alarm is only available in the paid application." = "This alarm is only available in the paid application.";
+"Wanna Upgrade?" = "Wanna Upgrade?";
+"No Thanks" = "No Thanks";
+"Upgrade Me!" = "Upgrade Me!";
+"iPhone Music" = "iPhone Music";
+"Custom Alarms" = "Custom Alarms";
+"Alarm Sounds" = "Alarm Sounds";
+"Gentle Alarms" = "Gentle Alarms";
+
+//Sound Recorder
+"Sound Name" = "Sound Name";
+"Start Recording" = "Start Recording";
+"Save" = "Save";
+"Stop" = "Stop";
+"Ready" = "Ready";
+"Recording" = "Recording";
+"Stopped" = "Stopped";
+"Play" = "Play";
+"Re-Record" = "Re-Record";
+
+//------------ NEW WORDS ------------//
+
+//colors
+"Black" = "Black";
+"White" = "White";
+
+//backgrounds
+"Coast" = "Coast";
+"Chalkboard" = "Chalkboard";
+"Default" = "Default";
+"Field" = "Field";
+"Beach" = "Beach";
+"Canal" = "Canal";
+"Fall" = "Fall";
+"Drops" = "Drops";
+"Night Sky" = "Night Sky";
+
+//alarms
+"Alarm" = "Alarm";
+"Old School Clock" = "Old School Clock";
+"School Bell" = "School Bell";
+"British Ambulance" = "British Ambulance";
+"Air Raid" = "Air Raid";
+"Burglar Alarm" = "Burglar Alarm";
+"Siren" = "Siren";
+"Spaceship" = "Spaceship";
+"Techy" = "Techy";
+"Vibraphone" = "Vibraphone";
+"Chimes" = "Chimes";
+"Ethereal Piano" = "Ethereal Piano";
+"Harp" = "Harp";
+"Church Bell" = "Church Bell";
+"Song Bird" = "Song Bird";
+"Gentle Rise" = "Gentle Rise";
+"Rooster Call" = "Rooster Call";
+
+"Alarm" = "Alarm";

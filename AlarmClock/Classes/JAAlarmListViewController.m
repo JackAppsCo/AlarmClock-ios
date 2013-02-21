@@ -9,6 +9,7 @@
 #import "JAAlarmListViewController.h"
 #import "JAAlarmSettingsController.h"
 #import "JASettings.h"
+#import "Flurry.h"
 
 @interface JAAlarmListViewController ()
 - (void) addAlarm;
@@ -51,6 +52,8 @@
 {
     [super viewWillAppear:animated];
     
+    [Flurry logEvent:@"Alarm List Opened"];
+    
     _alarms = [JAAlarm savedAlarms];
     
     [self.tableView reloadData];
@@ -88,6 +91,9 @@
 
 - (void) addAlarm
 {
+    
+    [Flurry logEvent:@"Add Alarm Button Pressed"];
+    
     JAAlarmSettingsController *newAlarmController =[[JAAlarmSettingsController alloc] initWithAlarm:nil];
     UIBarButtonItem *closeButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonItemStyleDone target:self action:@selector(closeSettings)];
     [closeButton setTitle:@"Save"];

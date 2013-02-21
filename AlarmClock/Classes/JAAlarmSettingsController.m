@@ -9,6 +9,7 @@
 #import "JAAlarmSettingsController.h"
 #import "JARepeatTableViewController.h"
 #import "JASettings.h"
+#import "Flurry.h"
 
 @interface JAAlarmSettingsController ()
 - (void)saveAlarm:(id)sender;
@@ -40,7 +41,7 @@
             _alarm.gradualSound = YES;
             _alarm.repeatDays = [[NSArray alloc] init];
             _alarm.sound = [JASound defaultSound];
-            _alarm.name = @"Alarm";
+            _alarm.name = NSLocalizedString(@"Alarm", nil);
             _alarm.snoozeTime = [NSNumber numberWithInt:10];
             _alarm.lastFireDate = nil;
             _alarm.shineEnabled = NO;
@@ -95,7 +96,7 @@
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     [_datePicker setDate:[gregorian dateFromComponents:_alarm.timeComponents]];
     [_datePicker setDatePickerMode:UIDatePickerModeTime];
-    [_datePicker setAutoresizingMask:UIViewAutoresizingFlexibleTopMargin];
+    [_datePicker setAutoresizingMask:UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth];
     
     [_datePicker addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged];
     [_datePicker setFrame:CGRectOffset(_datePicker.frame, 0, self.view.frame.size.height - _datePicker.frame.size.height)];
@@ -119,13 +120,23 @@
     
 }
 
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [Flurry logEvent:@"Alarm Settings Opened"];
+}
+
 - (void)shineSwitchChanged:(id)sender
 {
     if (![JASettings isPaid]) {
         
         [self.shineSwitch setOn:NO];
         
-        UIAlertView *freeAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SleepSmart Premium Just Released!", nil) message:NSLocalizedString(@"Want MORE features, MORE sounds and NO ads? Then UPGRADE to SleepSmart Premium NOW!!!\n\n*******************************************\nSleepSmart Premium Upgrades Include:\n\n→ A unique “Rise & Shine” feature that emulates the rising sun.  Designed to trigger your natural body clock and trick your brain into thinking it’s morning, even if it is dark outside!\n→ Full access to ALL Classic Alarm sounds and Gentle Wake sounds!\n→ Full access to ALL White Noise Sleep Timer themes including Beach, Countryside, Waterfall and many more!\n→ Full access to ALL display backgrounds!\n\nGet it NOW! SleepSmart. LiveSmart.\n*******************************************", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"No Thanks", nil) otherButtonTitles:NSLocalizedString(@"Upgrade Me!", nil), nil];
+        [Flurry logEvent:@"Nag Screen Opened"];
+        
+        UIAlertView *freeAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Like What You See?\nDon’t Like That You Can’t Use It?", nil) message:NSLocalizedString(@"…Then UPGRADE to SleepSmart Pro!\n\n⇒ Full access to ALL Background Themes!\n⇒ Full access to ALL White Noise Sleep Timer Themes!\n⇒ Full access to ALL Gentle Rise and Alarm Sounds!\n⇒ Unlock the “Rise & Shine” feature to emulate the sun!", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"No Thanks", nil) otherButtonTitles:NSLocalizedString(@"Upgrade Me!", nil), nil];
+        [freeAlert setTag:10];
         [freeAlert show];
         
         return;
@@ -133,6 +144,7 @@
     }
     
     if ([self.shineSwitch isOn] && ![JASettings stayAwake]) {
+        
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Whoops!", nil) message:NSLocalizedString(@"In order to enable the Rise & Shine feature we'll have to disable auto-lock.", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitles:NSLocalizedString(@"Ok", nil), nil];
         [alert setTag:1];
         [alert show];
@@ -258,34 +270,42 @@
         case 0:
             cell.textLabel.text = NSLocalizedString(@"Create Name", nil);
             cell.accessoryView = self.nameField;
+            cell.detailTextLabel.text = @"";            
             break;
         case 1:
             cell.textLabel.text = NSLocalizedString(@"Time", nil);
             cell.detailTextLabel.text = [NSString stringWithFormat:@"%i:%02i%@", (_alarm.timeComponents.hour > 12) ? _alarm.timeComponents.hour - 12 : (_alarm.timeComponents.hour == 0) ? 12 : _alarm.timeComponents.hour, _alarm.timeComponents.minute, (_alarm.timeComponents.hour >= 12) ? @"pm" : @"am", nil];
+            cell.accessoryView = nil;
             break;
         case 2:
             cell.textLabel.text = NSLocalizedString(@"Enabled", nil);
             cell.accessoryView = self.enableSwitch;
+            cell.detailTextLabel.text = @"";
             break;
         case 3:
             cell.textLabel.text = NSLocalizedString(@"Repeat", nil);
             cell.detailTextLabel.text = [JAAlarm labelForDays:self.alarm.repeatDays];
+            cell.accessoryView = nil;
             break;
         case 4:
             cell.textLabel.text = NSLocalizedString(@"Sound", nil);
             cell.detailTextLabel.text = self.alarm.sound.name;
+            cell.accessoryView = nil;
             break;
         case 5:
             cell.textLabel.text = NSLocalizedString(@"Gradual Alarm", nil);
             cell.accessoryView = self.gradualSwitch;
+            cell.detailTextLabel.text = @"";
             break;
         case 6:
             cell.textLabel.text = NSLocalizedString(@"Rise & Shine", nil);
             cell.accessoryView = self.shineSwitch;
+            cell.detailTextLabel.text = @"";            
             break;
         case 7:
             cell.textLabel.text = NSLocalizedString(@"Snooze (mins)", nil);
             cell.accessoryView = self.snoozeField;
+            cell.detailTextLabel.text = @"";            
             break;
             
         default:
@@ -370,8 +390,9 @@
         case 6:
         {
             if (![JASettings isPaid]) {
-                
-                UIAlertView *freeAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SleepSmart Premium Just Released!", nil) message:NSLocalizedString(@"Want MORE features, MORE sounds and NO ads? Then UPGRADE to SleepSmart Premium NOW!!!\n\n*******************************************\nSleepSmart Premium Upgrades Include:\n\n→ A unique “Rise & Shine” feature that emulates the rising sun.  Designed to trigger your natural body clock and trick your brain into thinking it’s morning, even if it is dark outside!\n→ Full access to ALL Classic Alarm sounds and Gentle Wake sounds!\n→ Full access to ALL White Noise Sleep Timer themes including Beach, Countryside, Waterfall and many more!\n→ Full access to ALL display backgrounds!\n\nGet it NOW! SleepSmart. LiveSmart.\n*******************************************", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"No Thanks", nil) otherButtonTitles:NSLocalizedString(@"Upgrade Me!", nil), nil];
+                [Flurry logEvent:@"Nag Screen Opened"];
+                UIAlertView *freeAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Like What You See?\nDon’t Like That You Can’t Use It?", nil) message:NSLocalizedString(@"…Then UPGRADE to SleepSmart Pro!\n\n⇒ Full access to ALL Background Themes!\n⇒ Full access to ALL White Noise Sleep Timer Themes!\n⇒ Full access to ALL Gentle Rise and Alarm Sounds!\n⇒ Unlock the “Rise & Shine” feature to emulate the sun!", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"No Thanks", nil) otherButtonTitles:NSLocalizedString(@"Upgrade Me!", nil), nil];
+                [freeAlert setTag:10];
                 [freeAlert show];
                 
             }
@@ -423,6 +444,14 @@
 #pragma mark - UIAlertviewDelegate
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+    if ([alertView tag] == 10) {
+        if (buttonIndex == 1) {
+            [Flurry logEvent:@"App Store Opened"];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:NSLocalizedString(@"APPSTORE_URL_PAID", nil)]];
+        }
+        return;
+    }
+    
     if (buttonIndex == 0) {
         [self.shineSwitch setOn:NO];
     }

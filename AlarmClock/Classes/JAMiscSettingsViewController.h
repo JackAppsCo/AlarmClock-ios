@@ -12,6 +12,7 @@
 @interface JAMiscSettingsViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate, MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate>
 {
     int _selectedPicker, _selectedSound, _selectedTime;
+    UIView *_descView;
     
 }
 

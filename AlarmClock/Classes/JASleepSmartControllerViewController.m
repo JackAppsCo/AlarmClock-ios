@@ -11,6 +11,7 @@
 #import "JAAlarm.h"
 #import "JAAlarmSettingsController.h"
 #import "JAAppDelegate.h"
+#import "Flurry.h"
 
 @interface JASleepSmartControllerViewController ()
 - (void)shineSwitchChanged:(id)sender;
@@ -52,7 +53,7 @@
         //set picker and sound
         _selectedPicker = 0;
         _selectedSound = 0;
-        _selectedTime = [JASettings snoozeLength];
+        _selectedTime = [JASettings sleepLength];
         [self setTimeComponents:nil];
         
         //setup the dictionary from Settings.plist
@@ -70,8 +71,9 @@
         }
         
         //setup picker
-        [self setPickerView:[[UIPickerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 220)]];
+        [self setPickerView:[[UIPickerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, 320, 220)]];
         [self.view addSubview:self.pickerView];
+        //[self.pickerView setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
         [self.pickerView setDelegate:self];
         [self.pickerView setShowsSelectionIndicator:YES];
         [self.pickerView setDataSource:self];
@@ -86,7 +88,7 @@
         //-----------
         //sleep control
         [self setSleepWakeControl:[[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:NSLocalizedString(@"Wake-Up Time", nil), NSLocalizedString(@"Bedtime", nil), nil]]];
-        [self.sleepWakeControl setFrame:CGRectMake(15, 45, self.view.frame.size.width - 30, 40)];
+        [self.sleepWakeControl setFrame:CGRectMake(15, 30, self.view.frame.size.width - 30, 40)];
         [self.sleepWakeControl setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:CELL_DETAIL_TEXT_FONT size:14], UITextAttributeFont, nil] forState:UIControlStateNormal];
         [self.sleepWakeControl setSegmentedControlStyle:UISegmentedControlStyleBar];
         [self.sleepWakeControl setSelectedSegmentIndex:0];
@@ -105,8 +107,8 @@
         //create button
         [self setCreateButton:[UIButton buttonWithType:UIButtonTypeRoundedRect]];
         [self.createButton.titleLabel setFont:[UIFont fontWithName:CELL_TEXT_FONT size:16]];
+        [self.createButton setAutoresizingMask:UIViewAutoresizingFlexibleBottomMargin];
         [self.createButton setFrame:CGRectMake(15, 10, self.view.frame.size.width - 30, 45.0)];
-        [self.createButton setAutoresizingMask:UIViewAutoresizingFlexibleTopMargin];
         [self.createButton setTitle:NSLocalizedString(@"Create SleepSmart Alarm", nil) forState:UIControlStateNormal];
         [self.createButton setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
         [self.createButton setEnabled:NO];
@@ -117,7 +119,7 @@
         [self.sleepLabel setTextColor:[UIColor colorWithRed:45.0f/255.0f green:53.0f/255.0f blue:73.0f/255.0f alpha:1.0f]];
         [self.sleepLabel setNumberOfLines:0];
         [self.sleepLabel setAlpha:0.0];
-        [self.sleepLabel setFont:[UIFont fontWithName:CELL_DETAIL_TEXT_FONT size:15]];
+        [self.sleepLabel setFont:[UIFont fontWithName:CELL_DETAIL_TEXT_FONT size:13]];
         [self.sleepLabel setText:NSLocalizedString(@"To complete your sleep cycle, you should wake-up at one of these times:", nil)];
         
         //setup companies toolbar
@@ -179,6 +181,8 @@
 }
 - (void)viewDidAppear:(BOOL)animated
 {
+    [Flurry logEvent:@"Sleep Smart View Opened"];
+    
     //create tutorial view
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"isFirstSleepLaunch"] && [[[NSUserDefaults standardUserDefaults] objectForKey:@"isFirstSleepLaunch"] isEqualToString:@"no"]) {
         //do nothing
@@ -203,6 +207,8 @@
 {
     [self dismissViewControllerAnimated:NO completion:nil];
     [self dismissViewControllerAnimated:YES completion:nil];
+    
+    [Flurry logEvent:@"Sleep Smart Alarm Created"];
 }
 
 - (void)shineSwitchChanged:(id)sender
@@ -232,17 +238,37 @@
 
 - (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if (section == 1) {
-        return (self.timeComponents == nil) ? 130.0f : 200.0f;
+    NSString *labelString = @"";
+    if (section == 0) {
+        labelString = (section == 0) ? NSLocalizedString(@"White Noise Sleep Timer", nil) : NSLocalizedString(@"Rise & Shine", nil);
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, 25, self.view.frame.size.width - 30.0, 45.0f)];
+        [label setBackgroundColor:[UIColor clearColor]];
+        [label setFont:[UIFont fontWithName:TITLE_FONT size:17]];
+        [label setTextAlignment:NSTextAlignmentLeft];
+        [label setNumberOfLines:0];
+        [label setTextColor:[UIColor colorWithRed:59.0/255.0 green:67.0/255.0 blue:90.0/255.0 alpha:1.0]];
+        [label setShadowColor:[UIColor whiteColor]];
+        [label setShadowOffset:CGSizeMake(0, 1)];
+        [label setText:labelString];
+        [label sizeToFit];
+        return label.frame.size.height + 10;
     }
     
-    return 40.0;
+    
+    
+    if (section == 1) {
+        return (self.timeComponents == nil) ? 130.0f : 190.0f;
+    }
+    
+    return 0;
+    
+
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     if (section == 1 && self.timeComponents != nil) {
-        return 105.0f;
+        return 220.0f;
     }
     else if (section == 1) {
         return 20.0f;
@@ -268,20 +294,22 @@
 
     }
     else {
-        headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 30.0f)];
+        headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 5, self.tableView.frame.size.width, 45.0f)];
         [headerView setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
         
         labelString = (section == 0) ? NSLocalizedString(@"White Noise Sleep Timer", nil) : NSLocalizedString(@"Rise & Shine", nil);
     }
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, 10, self.view.frame.size.width - 30.0, 30.0f)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, self.view.frame.size.width - 30.0, 30.0f)];
     [label setBackgroundColor:[UIColor clearColor]];
     [label setFont:[UIFont fontWithName:TITLE_FONT size:17]];
     [label setTextAlignment:NSTextAlignmentLeft];
     [label setTextColor:[UIColor colorWithRed:59.0/255.0 green:67.0/255.0 blue:90.0/255.0 alpha:1.0]];
+    [label setNumberOfLines:0];
     [label setShadowColor:[UIColor whiteColor]];
     [label setShadowOffset:CGSizeMake(0, 1)];
     [label setText:labelString];
+    [label sizeToFit];
     [headerView addSubview:label];
     
     return headerView;
@@ -300,13 +328,14 @@
         [label1 setFont:[UIFont fontWithName:TITLE_FONT size:15]];
         [label1 setText:NSLocalizedString(@"Rise & Shine Feature", nil)];
         
-        UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 15.0f + self.createButton.frame.origin.y + self.createButton.frame.size.height + label1.frame.size.height, footerView.frame.size.width - 40.0, 100)];
+        UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 25.0f + self.createButton.frame.origin.y + self.createButton.frame.size.height + label1.frame.size.height, footerView.frame.size.width - 40.0, 100)];
         [label2 setBackgroundColor:[UIColor clearColor]];
         [label2 setNumberOfLines:0];
         [label2 setTextColor:[UIColor colorWithRed:45.0f/255.0f green:53.0f/255.0f blue:73.0f/255.0f alpha:1.0f]];
         [label2 setFont:[UIFont fontWithName:CELL_DETAIL_TEXT_FONT size:14]];
         [label2 setLineBreakMode:NSLineBreakByWordWrapping];   
-        [label2 setText:NSLocalizedString(@"When you set an Alarm, make sure to turn on Rise & Shine to emulate the rising sun!  This will gently adjust the brightness of your screen before your alarm goes off to naturally wake you up.", nil)];
+        [label2 setText:NSLocalizedString(@"When you set an Alarm, make sure to turn on Rise & Shine to emulate the rising sun! This will gently adjust the brightness of your screen before your alarm goes off to act like the rising sun and naturally wake you up.", nil)];
+        [label2 sizeToFit];
         
         [footerView addSubview:label1];
         [footerView addSubview:label2];
@@ -474,8 +503,8 @@
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         
         if (indexPath.section == 2 && ![JASettings isPaid]) {
-            
-            UIAlertView *freeAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SleepSmart Premium\nJust Released!", nil) message:NSLocalizedString(@"Want MORE features, MORE sounds and NO ads? Then UPGRADE to SleepSmart Premium NOW!!!\n\n*******************************************\nSleepSmart Premium Upgrades Include:\n\n→ A unique “Rise & Shine” feature that emulates the rising sun.  Designed to trigger your natural body clock and trick your brain into thinking it’s morning, even if it is dark outside!\n→ Full access to ALL Classic Alarm sounds and Gentle Wake sounds!\n→ Full access to ALL White Noise Sleep Timer themes including Beach, Countryside, Waterfall and many more!\n→ Full access to ALL display backgrounds!\n\nGet it NOW! SleepSmart. LiveSmart.\n*******************************************", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"No Thanks", nil) otherButtonTitles:NSLocalizedString(@"Upgrade Me!", nil), nil];
+            [Flurry logEvent:@"Nag Screen Opened"];
+            UIAlertView *freeAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Like What You See?\nDon’t Like That You Can’t Use It?", nil) message:NSLocalizedString(@"…Then UPGRADE to SleepSmart Pro!\n\n⇒ Full access to ALL Background Themes!\n⇒ Full access to ALL White Noise Sleep Timer Themes!\n⇒ Full access to ALL Gentle Rise and Alarm Sounds!\n⇒ Unlock the “Rise & Shine” feature to emulate the sun!", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"No Thanks", nil) otherButtonTitles:NSLocalizedString(@"Upgrade Me!", nil), nil];
             [freeAlert show];
             
         }
@@ -495,7 +524,7 @@
                      animations:^{
                          self.dateToolbar.frame = CGRectMake(0, self.view.frame.size.height - self.pickerView.frame.size.height - self.dateToolbar.frame.size.height, self.view.frame.size.width, self.dateToolbar.frame.size.height);
                          self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width, self.view.frame.size.height - self.pickerView.frame.size.height);
-                         self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+                         //self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
                          self.pickerView.frame = CGRectMake(0, self.view.frame.size.height - self.pickerView.frame.size.height, self.pickerView.frame.size.width, self.pickerView.frame.size.height);
                          
                      }
@@ -513,7 +542,7 @@
                          
                          self.dateToolbar.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.dateToolbar.frame.size.height);
                          self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width, self.view.frame.size.height);
-                         self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 95, 0);
+                         //self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 95, 0);
                          self.pickerView.frame = CGRectMake(0, self.view.frame.size.height, self.pickerView.frame.size.width, self.pickerView.frame.size.height);
                      }
                      completion:^(BOOL finished) {
@@ -551,6 +580,15 @@
 {
     if (_selectedPicker == 0) {
         
+        if (![JASettings isPaid] && row > 1) {
+            [Flurry logEvent:@"Nag Screen Opened"];
+            UIAlertView *freeAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Like What You See?\nDon’t Like That You Can’t Use It?", nil) message:NSLocalizedString(@"…Then UPGRADE to SleepSmart Pro!\n\n⇒ Full access to ALL Background Themes!\n⇒ Full access to ALL White Noise Sleep Timer Themes!\n⇒ Full access to ALL Gentle Rise and Alarm Sounds!\n⇒ Unlock the “Rise & Shine” feature to emulate the sun!", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"No Thanks", nil) otherButtonTitles:NSLocalizedString(@"Upgrade Me!", nil), nil];
+            [freeAlert show];
+            return;
+        }
+        
+        [Flurry logEvent:@"Sleep Sound Changed"];
+        
         [JASettings setSleepSound:[self.sounds objectAtIndex:row]];
         _selectedSound = row;
         
@@ -587,7 +625,10 @@
         
         _selectedTime = (row + 1) * 5;
         
-        [JASettings setSnoozeLength:_selectedTime];
+        
+        [JASettings setSleepLength:_selectedTime];
+        
+        [Flurry logEvent:@"Sleep Length Changed" withParameters:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:_selectedTime], @"Length", nil]];
         
     }
     
@@ -598,26 +639,12 @@
 #pragma mark - UIAlertviewDelegate
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (alertView.tag == 0) {
-        if (buttonIndex == 0) {
-            [self.shineSwitch setOn:NO];
-        }
-        else {
-            [self.shineSwitch setOn:YES];
-            
-            [JASettings setStayAwake:YES];
-            [JASettings setShine:YES];
-        }
+    
+    if (buttonIndex == 1) {
+        [Flurry logEvent:@"App Store Opened"];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:NSLocalizedString(@"APPSTORE_URL_PAID", nil)]];
     }
-    else {
-        if (buttonIndex == 1) {
-            
-            [self.shineSwitch setOn:NO];
-            
-            [JASettings setStayAwake:NO];
-            [JASettings setShine:NO];
-        }
-    }
+    
 }
 
 
@@ -677,7 +704,7 @@
     _alarm.snoozeTime = [NSNumber numberWithInt:10];
     _alarm.lastFireDate = nil;
     _alarm.enabledDate = [NSDate date];
-    _alarm.shineEnabled = YES;
+    _alarm.shineEnabled = NO;
     
     NSDate *alarmDate;
     if (self.sleepWakeControl.selectedSegmentIndex == 0) {
@@ -691,7 +718,7 @@
     
     //set time components
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDateComponents *timeComponents = [gregorian components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:alarmDate];
+    NSDateComponents *timeComponents = [gregorian components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:alarmDate];
     [timeComponents setSecond:0];
     _alarm.timeComponents = timeComponents;
     
@@ -759,6 +786,9 @@
 
 - (void)controlChanged:(id)sender
 {
+    
+    [Flurry logEvent:@"Bedtime/WakeUp Time Changed" withParameters:[NSDictionary dictionaryWithObjectsAndKeys:(self.sleepWakeControl.selectedSegmentIndex == 0) ? @"Wake By" : @"Sleep By", @"Wake or Sleep", nil]];
+    
     if (self.sleepWakeControl.selectedSegmentIndex == 0) {
         self.sleepLabel.text = NSLocalizedString(@"To complete your sleep cycle, you should fall asleep at one of these times:", nil);
         self.createButton.enabled = YES;

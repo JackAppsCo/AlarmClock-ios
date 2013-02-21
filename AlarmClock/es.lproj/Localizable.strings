@@ -1,0 +1,199 @@
+/*
+ Localizable.strings
+ AlarmClock
+ 
+ Created by Brian C. Singer on 12/9/12.
+ Copyright (c) 2012 JA. All rights reserved.
+ */
+
+//Other
+"Snooze" = "Siesta";
+
+//Nag Screen
+"SleepSmart Pro Available NOW!" = "¡SueñoInteligente Pro Disponible AHORA!";
+"Upgrade for Extra Sounds, Extra Features and NO ADS!\n\n⇒ Full access to ALL Background Themes!\n⇒ Full access to ALL White Noise Sleep Timer Themes!\n⇒ Full access to ALL Gentle Rise and Alarm Sounds!\n⇒Unlock the “Rise & Shine” feature to emulate the sun!" = "Compra el App para tener Sonidos Adicionales, Funciones Adicionales, ¡y NINGÚN ANUNCIO!\n\n⇒ ¡Acceso completo a TODAS las Imágenes de Fondo!\n⇒ ¡Acceso completo a TODOS los Temas de Sonido Blanco para el Temporizador de Sueño!\n⇒ ¡Acceso completo a TODOS los Sonidos de Alarma y a los Sonidos de Despertar Tranquilo!\n⇒ ¡Desbloquea la función 'Rise and Shine' para emular al sol!";
+"Like What You See?\nDon’t Like That You Can’t Use It?" =  "¿Te Gusta lo Que Ves?\n¿No Te Gusta Que No Puedes Usarlo?";
+"…Then UPGRADE to SleepSmart Pro!\n\n⇒ Full access to ALL Background Themes!\n⇒ Full access to ALL White Noise Sleep Timer Themes!\n⇒ Full access to ALL Gentle Rise and Alarm Sounds!\n⇒ Unlock the “Rise & Shine” feature to emulate the sun!" = "¡Entonces COMPRA SueñoInteligente Pro!\n\n⇒¡Acceso completo a TODAS las Imágenes de Fondo!\n⇒ ¡Acceso completo a TODOS los Temas de Sonido Blanco para el Temporizador de Sueño!\n⇒ ¡Acceso completo a TODOS los Sonidos de Alarma y a los Sonidos de Despertar Tranquilo!\n⇒ ¡Desbloquea la función 'Rise and Shine' para emular al sol!";
+"SleepSmart Pro Available NOW!" = "¡SueñoInteligente Pro Disponible AHORA!";
+"Upgrade for Extra Sounds, Extra Features and NO ADS!\n\n*******************************************\nS⇒ Full access to ALL Background Themes!\n⇒ Full access to ALL White Noise Sleep Timer Themes!\n⇒ Full access to ALL Gentle Rise and Alarm Sounds!\n⇒ Unlock the “Rise & Shine” feature to emulate the sun!\n*******************************************" = "Compra el App para obtener Sonidos Adicionales, Funciones Adicionales, ¡y NINGÚN ANUNCIO!\n\nADS!\n\n*******************************************\nS⇒ ¡Acceso completo a TODOS los Temas de Sonido Blanco para el Temporizador de Sueño!\n⇒ ¡Acceso completo a TODOS los Sonidos de Alarma y a los Sonidos de Despertar Tranquilo!\n⇒ ¡Desbloquea la función 'Rise and Shine' para emular al sol!";
+
+
+
+//Home Screen
+"H" = "H";
+"L" = "L";
+"Tap to activate White Noise Sleep Timer" = "Toca para Activar el Temporizador de Sueño con Sonido Blanco";
+"Adjust the brightness by swiping up and down" =  "Ajusta el brillo al deslizar tu dedo hacia arriba y abajo";
+"Tap on the settings icon to create alarms, edit your display or use SleepSmart features" =  "Toca en el ícono de funciones para crear alarmas, editar tu display o usar las funciones de SueñoInteligente";
+"Quickly access your alarms" =  "Ten acceso rápido a tus alarmas";
+
+//Sleep Screen
+"Sleep Cycle" =  "Ciclo de Sueño";
+"Bedtime" = "Hora de Ir a Dormir";
+"Wake-Up Time" = " Hora para Despertarse";
+"How to use SleepSmart’s Sleep Cycle Calculator" = "Cómo usar la Calculadora de SueñoInteligente para el Ciclo de Sueño";
+"To turn the White Noise Sleep Timer On/Off, return to your home screen and hit the ZZZ icon." = "Para Encender/Apagar el Temporizador de Sueño con Sonido Blanco, regrese a su pantalla de inicio y toque el ícono ZZZ.";
+"Calculate using either:\n(1) your Wake-Up Time or\n(2) your Bedtime.\n\nSelect the appropriate tab, select a time and hit Create SleepSmart Alarm!" = "Calcular usando:\n(1) su Hora Para Despertarse o\n(2) su Hora de Ir a Dormir.\n\n Seleccione la pestaña adecuada, seleccione la hora, ¡y toque Crear Alarma SueñoInteligente!";
+"Create SleepSmart Alarm" = "Crear Alarma SueñoInteligente";
+"To complete your sleep cycle, you should fall asleep at one of these times:" = "Para completar su ciclo de sueño, usted debe de dormirse en uno de estos tiempos:";
+"To complete your sleep cycle, you should wake-up at one of these times:" = "Para completar su ciclo de sueño, usted debe despertarse en uno de estos tiempos:";
+"Select a Time" = " Seleccionar una Hora";
+"Sleep Cycle Calculator" = "Calculadora del Ciclo de Sueño";
+"SleepSmart Alarm" = "Alarma SueñoInteligente";
+"When you set an Alarm, make sure to turn on Rise & Shine to emulate the rising sun! This will gently adjust the brightness of your screen before your alarm goes off to act like the rising sun and naturally wake you up." = "Cuando establezca una Alarma, ¡asegúrese de activar Rise and Shine para emular al sol naciente! Esto ajustará gentilmente el brillo de su pantalla antes de que suene la alarma para actuar como el sol naciente y despertarlo de manera natural.";
+"Rise & Shine Feature" = "Función Rise and Shine";
+
+
+//Settings
+"Alarms" = "Alarmas";
+"Display" = "Display";
+"Settings" = "Configuración";
+"Sleep" = "Dormir";
+"Done" = "Completado";
+
+//Misc Screen
+"Check out SleepSmart in the App Store: %@" = "Revisa SueñoInteligente en al App Store: %@";
+"Check out <a href=\"%@\">SleepSmart</a> in the App Store" = "Revisa <a href=\"%@\">SueñoInteligente</a>en la App Store ";
+"Help & Information" = "Ayuda e Información";
+"Auto-Lock" = "Auto-Bloquear";
+"Weather" = "Clima";
+"Misc" = "Misc";
+"Rise & Shine" = "Rise & Shine";
+"Scale" = "Escala";
+"Length" = "Duración";
+"minutes" = " minutos";
+"Fahrenheit" = " Fahrenheit";
+"Celsius" = "Celsius";
+"Disable Auto-Lock" = "Desactivar Auto-Bloquear";
+"Whoops!" = "¡Ups!";
+"In order to enable the Rise & Shine feature we'll have to disable auto-lock." = "Para poder habilitar la función Rise and  Shine tendremos que desactivar auto-bloquear.";
+"If you don't keep auto-lock disabled the Rise & Shine feature will be disabled." = "Si no mantiene auto-bloquear desactivado entonces la función Rise and Shine será desactivada.";
+"Due to multitasking limitations set by Apple, SleepSmart MUST be running in the foreground for its features to work properly.  In order to do this, you must disable your phone’s auto-lock feature./n/nIf you forget to leave the app open, we’ve got your back.  SleepSmart provides a built-in background alarm that will play a default alarm sound when your alarm goes off.   This default alarm is limited to 30 seconds so MAKE SURE you keep SleepSmart running through the night!  Background alarms work only on iPhone 4 models and above." = "Debido a los límites de multitareas establecidos por Apple, el app SueñoInteligente DEBE ESTAR CORRIENDO en la pantalla principal para que funcionen debidamente sus funciones. Para hacerlo, debes desactivar la función auto-bloquear de tu teléfono.\n\n Si lo olvidas y no dejas abierto el app, nosotros podemos ayudarte.  . SueñoInteligente cuenta con una alarma en segundo plano que sonará con un sonido default para alarma una vez que sea momento de activarla. Esta alarma default está limitada a 30 segundos así que, ¡ASEGÚRATE de mantener el app SueñoInteligente corriendo en primer plano durante la noche! Las alarmas en segundo plano funcionan solamente en el iPhone 4 y en modelos más nuevos.";
+"The Science Behind SleepSmart – Why Your Sleep Cycle Matters" = "La Ciencia Detrás de SueñoInteligente- Porque es Importante Su Ciclo de Sueño";
+"Think that extra hour of sleep will make you feel more rested?  Think again.  Research has shown that waking up in the middle of your body’s natural sleep cycle can make you feel groggy, disoriented and is actually counterproductive to a full night’s sleep.  Waking your body up at the end of your natural sleep cycle, when your body and brain are already close to wakefulness, can provide you with the best night’s sleep and the most refreshing of mornings.\n\nThe average sleep cycle lasts approximately 90 minutes and a well-rested adult goes through approximately 4-6 cycles a night.  During these cycles your body enters four different stages: N1, transition to sleep (5 min); N2, light sleep (10-25 min); N3, deep sleep (40-60 min); and REM, dream sleep.  Each stage is vital in restoring your body and mind and plays a different role in preparing you for the day ahead.\n\nEven if you’ve enjoyed a full night’s sleep, getting out of bed can be difficult if your alarm goes off when you’re in the middle of deep sleep (stage N3).   If you want the best night’s sleep for an optimal morning, then set your alarm to wake up at the end of your natural sleep cycle.  Simply use SleepSmart’s Sleep Cycle Calculator and you’re on your way to a great night’s sleep!" = "¿Piensa que dormir una hora extra le hará sentirse más relajado? Los estudios han mostrado que despertar en la mitad del ciclo de sueño natural de su cuerpo puede hacerle sentir mareado, desorientado y que en realidad resulta contraproducente al buscar dormir una noche completa. El despertar su cuerpo al final del ciclo de sueño natural de su cuerpo, cuando su cuerpo y cerebro están cerca de despertarse, puede brindarle de un mejor descanso y mañanas más refrescantes.\n\n El ciclo de sueño promedio dura aproximadamente 90 minutos y un adulto que descansa bien tiene de 4 a 6 ciclos por noche. Durante estos ciclos su cuerpo entra en cuatro etapas diferentes: N1, transición a dormir (5 minutos) N2, sueño ligero (10-25 minutos) N3, sueño profundo (40-60 minutos), y REM, los sueños en sí. Cada etapa es vital para restaurar su cuerpo y mente y juega un rol diferente al prepararlo para el día que tendrá.\n\n Aún cuando ha dormido una noche completa, el levantarse de la cama puede ser difícil cuando su alarma suena en la mitad del sueño profundo (etapa N3). Si usted quiere tener una muy buena noche para así comenzar con una mañana óptima, debe establecer su alarma para despertarse al final de su ciclo de sueño natural. ¡Simplemente use la Calculadora de Ciclo de Sueño de SueñoInteligente y estará en camino a tener una gran noche al dormir!";
+"How Does the Rise & Shine Feature Help Wake Me Up?" = "¿Cómo logra la Función Rise and Shine Ayudar a Despertarme?";
+"Your brain responds to changes between light and dark to regulate your internal 24-hour sleep-wake cycle.  If it is dark outside when you get up, you probably find it hard to get out of bed.  Our unique and ingenious Rise & Shine feature turns your iPhone into a virtual sun! Simple turn on Rise & Shine and trick your brain into waking up, even if it’s dark outside!" = "Su cerebro responde a los cambios entre la luz y la oscuridad para regular tu ciclo interno de 24 horas para dormir-despertar. Si está oscuro afuera cuando se levanta, probablemente será difícil levantarse de la cama. ¡Nuestro única e ingeniosa función Rise and Shine convierte a su iPhone en un sol virtual! Simplemente encienda Rise and Shine y engaña a tu cerebro para que se levante, ¡aun cuando afuera todavía está oscuro!";
+"Tips For Using Your White Noise Sleep Timer" = "Tips Para Usar Tu Temporizador de Sueño con Sonido Blanco";
+"Shutting your brain down at night can be difficult.  Using SleepSmart’s White Noise Sleep Timer can help.\n\nSleepSmart Premium includes 10 soothing themes to help lull you to sleep.  For best results, hook your iPhone into an audio source to improve the sound quality." = "Apagar su cerebro por las noches puede ser difícil. Usando el Temporizador de Sueño con Sonido Blanco de SueñoInteligente puede ayudar.\n\n SueñoInteligente Premium incluye 10 temas relajantes para ayudarle a dormir. Para mejores resultados, conecte su iPhone a una fuente de audio para mejorar la calidad del sonido.";
+"Cancel" = " Cancelar";
+"Ok" = "Ok";
+"Shake for Flashlight" = " Agitar para la Linterna";
+"Adjust Brightness" = "Ajustar el Brillo";
+"Help & Information" = "Ayuda e Información";
+"Snooze Length" = "Duración de la Función de Siesta";
+"Facebook" = "Facebook";
+"Twitter" = "Twitter";
+"Text Message" = "Mensaje de Texto";
+"Email" = "Email";
+"APPSTORE_URL_FREE" = "https://itunes.apple.com/us/app/sleepsmart-free/id599428492?ls=1&mt=8";
+"APPSTORE_URL_PAID" = "https://itunes.apple.com/us/app/sleepsmart/id588597242?ls=1&mt=8";
+"Love SleepSmart?  We Love You Too!  Help Us Spread the Word!" = "¿Te Encanta SueñoInteligente?  ¡Nosotros también te queremos! ¡Ayúdanos hablando de este App!";
+"If you like what you've seen so far you should check out the paid version." = "Si te gusta lo que has visto hasta ahora deberías de revisar la versión de paga.";
+"The Rise & Shine feature is only available in the paid application." = "LA función Rise and Shine solamente está disponible en la versión de paga de este app.";
+
+//Disp Settings
+"Background Image" = "Imagen de Fondo";
+"Show Backdrop" = "Mostrar Fondo";
+"Clock Text Color" = "Color del Texto del Reloj";
+"Show Seconds" = "Mostrar Segundos";
+"Show Date" = "Mostrar Fecha";
+"Create You Own" = "Crear Una Propia";
+
+//Alarm Settings
+"Create Name" = "Crear Nombre";
+"Time" = "Hora";
+"Enabled" = "Habilitado";
+"Repeat" = "Repetir";
+"Sound" = "Sonido";
+"Gradual Alarm" = "Alarma Gradual";
+"Snooze (mins)" = "Siesta (mins)";
+"Save" = "Guardar";
+"Cancel" = "Cancelar";
+
+//Repeat Settings
+"Never" = "Nunca";
+"Everyday" = "Todos los Días";
+"Weekdays" = "Días Entre Semana";
+"Weekends" = "Fines de Semana";
+"Monday" = "Lunes";
+"Tuesday" = "Martes";
+"Wednesday" = "Miércoles";
+"Thursday" = "Jueves";
+"Friday" = "Viernes";
+"Saturday" = " Sábado";
+"Sunday" = "Domingo";
+"Repeat" = " Repetir";
+"M" = " L";
+" T" = " M";
+" W" = " Mi";
+" Th" = " J";
+" F" = " V";
+" S" = " S";
+" Su" = " D";
+
+//Sound Selector
+"Choose From Library" = "Escoger de la Liberia";
+"Record A New Sound" = "Grabar un Sonido Nuevo";
+"Sleep Cycle Calculator" = "Calculadora del Ciclo de Sueño";
+"White Noise Sleep Timer" = "Temporizador de Sueño con Sonido Blanco";
+"Timer Length" = "Duración del Temporizador";
+"SleepSmart" = "SueñoInteligente";
+"Sleep Sound" = "Sonido para Sueño";
+"This alarm is only available in the paid application." = " Esta alarma solamente está disponible en la aplicación de paga.";
+"Wanna Upgrade?" = "¿Quiere Obtener la Versión de Paga?";
+"No Thanks" = "No Gracias";
+"Upgrade Me!" = "¡Obtén la Versión de Paga!";
+"iPhone Music" = "Música de iPhone";
+"Custom Alarms" = "Alarmas Personalizadas ";
+"Alarm Sounds" = "Sonidos para Alarma";
+"Gentle Alarms" = "Alarmas Ligeras";
+
+//Sound Recorder
+"Sound Name" = "Nombre del Sonido";
+"Start Recording" = "Comenzar a Grabar";
+"Save" = "Guardar";
+"Stop" = "Detener";
+"Ready" = "Listo";
+"Recording" = "Grabando";
+"Stopped" = "Detenido";
+"Play" = "Reproducir";
+"Re-Record" = "Re-grabar";
+
+
+//------------ NEW WORDS ------------//
+
+//colors
+"Black" = "Negro";
+"White" = "Blanco";
+
+//backgrounds
+"Coast" = "Costa";
+"Chalkboard" = "Pizarrón";
+"Default" = "Default";
+"Field" = "Campo";
+"Beach" = "Playa";
+"Canal" = "Canal";
+"Fall" = "Otoño";
+"Drops" = "Gotas";
+"Night Sky" = "Cielo de Noche";
+
+//alarms
+"Alarm" = "Alarma";
+"Old School Clock" = "Reloj Antiguo";
+"School Bell" = "Campana de Escuela";
+"British Ambulance" = "Ambulancia Británica ";
+"Air Raid" = "Bombardeo Aéreo";
+"Burglar Alarm" = "Alarma Contra Intrusos";
+"Siren" = "Sirena";
+"Spaceship" = "Nave espacial";
+"Techy" = "Tecnológico";
+"Vibraphone" = "Vibráfono";
+"Chimes" = "Campanas";
+"Ethereal Piano" = "Piano Etéreo";
+"Harp" = "Harpa";
+"Church Bell" = "Campana de Iglesia";
+"Song Bird" = "Aves Cantoras";
+"Gentle Rise" = "Despertar Gentil";
+"Rooster Call" = "Canto de Gallo";
+
+"Alarm" = "Alarma";

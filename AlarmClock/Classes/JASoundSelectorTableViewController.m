@@ -9,6 +9,7 @@
 #import "JASoundSelectorTableViewController.h"
 #import "VoiceRecordViewController.h"
 #import "JASettings.h"
+#import "Flurry.h"
 
 #define DOCUMENTS_FOLDER [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"]
 
@@ -64,6 +65,8 @@
 {
     [super viewWillAppear:animated];
     [self.tableView reloadData];
+    
+    [Flurry logEvent:@"Sound Selector Appeared"];
 }
 
 - (void) viewWillDisappear:(BOOL)animated
@@ -415,6 +418,9 @@
         
         if (indexPath.row == 0) {
             VoiceRecordViewController *recorder = [[VoiceRecordViewController alloc] initWithNibName:@"VoiceRecordViewController" bundle:[NSBundle mainBundle]];
+            
+            [Flurry logEvent:@"Alarm Recorder Opened"];
+            
             [self.navigationController pushViewController:recorder animated:YES];
             
             return;
@@ -437,7 +443,10 @@
             [self setSelectedSound:newSound];
         }
         else {
-            UIAlertView *freeAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SleepSmart Premium\nJust Released!", nil) message:NSLocalizedString(@"Want MORE features, MORE sounds and NO ads? Then UPGRADE to SleepSmart Premium NOW!!!\n\n*******************************************\nSleepSmart Premium Upgrades Include:\n\n→ A unique “Rise & Shine” feature that emulates the rising sun.  Designed to trigger your natural body clock and trick your brain into thinking it’s morning, even if it is dark outside!\n→ Full access to ALL Classic Alarm sounds and Gentle Wake sounds!\n→ Full access to ALL White Noise Sleep Timer themes including Beach, Countryside, Waterfall and many more!\n→ Full access to ALL display backgrounds!\n\nGet it NOW! SleepSmart. LiveSmart.\n*******************************************", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"No Thanks", nil) otherButtonTitles:NSLocalizedString(@"Upgrade Me!", nil), nil];
+            
+            [Flurry logEvent:@"Nag Screen Opened"];
+            
+            UIAlertView *freeAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Like What You See?\nDon’t Like That You Can’t Use It?", nil) message:NSLocalizedString(@"…Then UPGRADE to SleepSmart Pro!\n\n⇒ Full access to ALL Background Themes!\n⇒ Full access to ALL White Noise Sleep Timer Themes!\n⇒ Full access to ALL Gentle Rise and Alarm Sounds!\n⇒ Unlock the “Rise & Shine” feature to emulate the sun!", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"No Thanks", nil) otherButtonTitles:NSLocalizedString(@"Upgrade Me!", nil), nil];
             [freeAlert show];
             return;
         }
@@ -451,12 +460,14 @@
             [self setSelectedSound:newSound];
         }
         else {
-            UIAlertView *freeAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SleepSmart Premium\nJust Released!", nil) message:NSLocalizedString(@"Want MORE features, MORE sounds and NO ads? Then UPGRADE to SleepSmart Premium NOW!!!\n\n*******************************************\nSleepSmart Premium Upgrades Include:\n\n→ A unique “Rise & Shine” feature that emulates the rising sun.  Designed to trigger your natural body clock and trick your brain into thinking it’s morning, even if it is dark outside!\n→ Full access to ALL Classic Alarm sounds and Gentle Wake sounds!\n→ Full access to ALL White Noise Sleep Timer themes including Beach, Countryside, Waterfall and many more!\n→ Full access to ALL display backgrounds!\n\nGet it NOW! SleepSmart. LiveSmart.\n*******************************************", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"No Thanks", nil) otherButtonTitles:NSLocalizedString(@"Upgrade Me!", nil), nil];
+            [Flurry logEvent:@"Nag Screen Opened"];
+            UIAlertView *freeAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Like What You See?\nDon’t Like That You Can’t Use It?", nil) message:NSLocalizedString(@"…Then UPGRADE to SleepSmart Pro!\n\n⇒ Full access to ALL Background Themes!\n⇒ Full access to ALL White Noise Sleep Timer Themes!\n⇒ Full access to ALL Gentle Rise and Alarm Sounds!\n⇒ Unlock the “Rise & Shine” feature to emulate the sun!", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"No Thanks", nil) otherButtonTitles:NSLocalizedString(@"Upgrade Me!", nil), nil];
             [freeAlert show];
             return;
         }
     }
     else {
+        [Flurry logEvent:@"iPod Music Selector Opened"];
         [self showMediaPicker:nil];
     }
     
@@ -591,5 +602,15 @@
 	[[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleBlackOpaque animated:YES];
 }
 
+#pragma mark - UIAlertviewDelegate
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    
+    if (buttonIndex == 1) {
+        [Flurry logEvent:@"App Store Opened"];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:NSLocalizedString(@"APPSTORE_URL_PAID", nil)]];
+    }
+    
+}
 
 @end

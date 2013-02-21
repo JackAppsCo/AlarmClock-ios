@@ -39,7 +39,8 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Gotham-Black.ttf</string>
+		<string>HelveticaNeue-BoldCond.ttf</string>
+		<string>HelveticaNeue-Condensed.ttf</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>

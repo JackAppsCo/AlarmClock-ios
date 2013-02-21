@@ -9,6 +9,7 @@
 #import "JAClockSettingsViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "JASettings.h"
+#import "Flurry.h"
 
 @interface JAClockSettingsViewController ()
 - (void) secondsSwitchChanged:(id)sender;
@@ -32,7 +33,7 @@
         
         //Picker
         [self setPickerView:[[UIPickerView alloc] init]];
-        [self.pickerView setFrame:CGRectMake(0, self.view.frame.size.height, self.pickerView.frame.size.width, self.pickerView.frame.size.height - 50.0f)];
+        [self.pickerView setFrame:CGRectMake(0, self.view.frame.size.height, 320, self.pickerView.frame.size.height - 50.0f)];
         [self.pickerView setDataSource:self];
         [self.pickerView setDelegate:self];
         [self.pickerView setShowsSelectionIndicator:YES];
@@ -85,19 +86,23 @@
 {
     [super viewWillAppear:animated];
     
+    [Flurry logEvent:@"Display Settings Opened"];
+    
     if (_backgroundPicker) {
         
         float offset = _backgroundPicker.scrollView.contentOffset.x;
         int page = offset / _backgroundPicker.scrollView.frame.size.width;
         if (page >= _backgroundPicker.backgroundList.count) {
-            if (_backgroundPicker.customImageURL.length > 0) {
+            if ([JASettings isPaid] && _backgroundPicker.customImageURL.length > 0) {
                 [JASettings setBackgroundImage:_backgroundPicker.customImageURL];
                 [JASettings setBackgroundImageName:@"Custom"];
             }
         }
         else {
-            [JASettings setBackgroundImage:[[_backgroundPicker.backgroundList objectAtIndex:page] objectForKey:@"filename"]];
-            [JASettings setBackgroundImageName:[[_backgroundPicker.backgroundList objectAtIndex:page] objectForKey:@"name"]];
+            if ([JASettings isPaid] || (![JASettings isPaid] && [[[_backgroundPicker.backgroundList objectAtIndex:page] objectForKey:@"free"] boolValue])) {
+                [JASettings setBackgroundImage:[[_backgroundPicker.backgroundList objectAtIndex:page] objectForKey:@"filename"]];
+                [JASettings setBackgroundImageName:[[_backgroundPicker.backgroundList objectAtIndex:page] objectForKey:@"name"]];
+            }
         }
         
     }
@@ -116,6 +121,7 @@
     self.backdropImageview.image = [self.backdropImageview.image stretchableImageWithLeftCapWidth:35 topCapHeight:35];
     self.backdropImageview.hidden = ![JASettings showBackdrop];
 
+    [self.timeLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Condensed" size:80]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -126,6 +132,8 @@
 
 - (void) secondsSwitchChanged:(id)sender
 {
+    
+    [Flurry logEvent:@"Seconds Switch Toggled" withParameters:[NSDictionary dictionaryWithObjectsAndKeys:([(UISwitch*)sender isOn]) ? @"On" : @"Off", @"On or Off", nil]];
 
     [JASettings setShowSeconds:[(UISwitch*)sender isOn]];
     
@@ -143,6 +151,7 @@
 
 - (void) dateSwitchChanged:(id)sender
 {
+    [Flurry logEvent:@"Date Switch Toggled" withParameters:[NSDictionary dictionaryWithObjectsAndKeys:([(UISwitch*)sender isOn]) ? @"On" : @"Off", @"On or Off", nil]];
     
     [JASettings setShowDate:[(UISwitch*)sender isOn]];
     
@@ -150,6 +159,9 @@
 
 - (void) backdropSwitchChanged:(id)sender
 {
+    
+    [Flurry logEvent:@"Backdrop Switch Toggled" withParameters:[NSDictionary dictionaryWithObjectsAndKeys:([(UISwitch*)sender isOn]) ? @"On" : @"Off", @"On or Off", nil]];
+    
     [JASettings setShowBackdrop:[(UISwitch*)sender isOn]];
     self.backdropImageview.hidden = ![JASettings showBackdrop];    
 }
@@ -342,7 +354,7 @@
              
             }
             
-            
+            [Flurry logEvent:@"Background Picker Opened"];
             
             [self.navigationController pushViewController:_backgroundPicker animated:YES];
             

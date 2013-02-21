@@ -6,57 +6,75 @@
 	<array>
 		<dict>
 			<key>name</key>
-			<string>Chalkboard</string>
-			<key>filename</key>
-			<string>chalkboard.png</string>
-		</dict>
-		<dict>
-			<key>name</key>
 			<string>Coast</string>
 			<key>filename</key>
 			<string>rainbow.png</string>
+			<key>free</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>Field</string>
+			<string>Chalkboard</string>
 			<key>filename</key>
-			<string>wheat.png</string>
-		</dict>
-		<dict>
-			<key>name</key>
-			<string>Beach</string>
-			<key>filename</key>
-			<string>beach.png</string>
-		</dict>
-		<dict>
-			<key>name</key>
-			<string>Canal</string>
-			<key>filename</key>
-			<string>canal.png</string>
-		</dict>
-		<dict>
-			<key>name</key>
-			<string>Fall</string>
-			<key>filename</key>
-			<string>trees.png</string>
-		</dict>
-		<dict>
-			<key>name</key>
-			<string>Drops</string>
-			<key>filename</key>
-			<string>drops.png</string>
-		</dict>
-		<dict>
-			<key>name</key>
-			<string>Night Sky</string>
-			<key>filename</key>
-			<string>nightsky.png</string>
+			<string>chalkboard.png</string>
+			<key>free</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>name</key>
 			<string>Default</string>
 			<key>filename</key>
 			<string>BlackBG.png</string>
+			<key>free</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Field</string>
+			<key>filename</key>
+			<string>wheat.png</string>
+			<key>free</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Beach</string>
+			<key>filename</key>
+			<string>beach.png</string>
+			<key>free</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Canal</string>
+			<key>filename</key>
+			<string>canal.png</string>
+			<key>free</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Fall</string>
+			<key>filename</key>
+			<string>trees.png</string>
+			<key>free</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Drops</string>
+			<key>filename</key>
+			<string>drops.png</string>
+			<key>free</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Night Sky</string>
+			<key>filename</key>
+			<string>nightsky.png</string>
+			<key>free</key>
+			<false/>
 		</dict>
 	</array>
 </dict>

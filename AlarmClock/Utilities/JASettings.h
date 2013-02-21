@@ -21,7 +21,7 @@
 
 + (JASettings *)instance;
 + (UIImage*) filterImageNamed:(NSString*)imageName ofType:(NSString*)type darker:(BOOL)darker;
-
++ (BOOL) isIOS6;
 + (UIImage *)backgroundImage;
 + (void) setBackgroundImage:(NSString*)image;
 + (NSString *)backgroundImageName;

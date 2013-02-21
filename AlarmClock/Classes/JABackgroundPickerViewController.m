@@ -10,6 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "JASettings.h"
 #import "UIImage+fixOrientation.h"
+#import "Flurry.h"
 
 
 @interface JABackgroundPickerViewController ()
@@ -48,14 +49,25 @@
 }
 
 - (void) customImageTapped:(id)sender {
-    UIActionSheet *imageActionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take a photo", @"Camera roll", nil];
-    [imageActionSheet showInView:self.view];
+
+    if (![JASettings isPaid]) {
+        //show nag
+        [Flurry logEvent:@"Nag Screen Opened"];
+        UIAlertView *freeAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Like What You See?\nDon’t Like That You Can’t Use It?", nil) message:NSLocalizedString(@"…Then UPGRADE to SleepSmart Pro!\n\n⇒ Full access to ALL Background Themes!\n⇒ Full access to ALL White Noise Sleep Timer Themes!\n⇒ Full access to ALL Gentle Rise and Alarm Sounds!\n⇒ Unlock the “Rise & Shine” feature to emulate the sun!", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"No Thanks", nil) otherButtonTitles:NSLocalizedString(@"Upgrade Me!", nil), nil];
+        [freeAlert show];
+        
+        
+    }
+    else {
+        UIActionSheet *imageActionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take a photo", @"Camera roll", nil];
+        [imageActionSheet showInView:self.view];
+    }
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"Background";
+    self.title = NSLocalizedString(@"Background Image", nil);
     // Do any additional setup after loading the view from its nib.
     
    
@@ -78,9 +90,9 @@
         
         for (NSDictionary *thisBG in self.backgroundList) {
             
-            NSString *bgName = [thisBG objectForKey:@"name"];
+            NSString *bgName = NSLocalizedString([thisBG objectForKey:@"name"], nil);
             NSString *bgFilename = [thisBG objectForKey:@"filename"];
-            
+
             UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectInset(currentFrame, 5, 10)];
             [img setImage:[UIImage imageNamed:bgFilename]];
             //[img setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@Sample.png", [bgFilename stringByReplacingOccurrencesOfString:@".png" withString:@""], nil]]];
@@ -95,6 +107,12 @@
             [lbl setShadowOffset:CGSizeMake(0, 1)];
             [lbl setShadowColor:[UIColor darkTextColor]];
             [lbl setText:bgName];
+            
+            if (![JASettings isPaid] && ![[thisBG objectForKey:@"free"] boolValue]) {
+                [img.layer setBorderColor:[UIColor colorWithWhite:1.0 alpha:0.5].CGColor];
+                [img.layer setBorderWidth:img.frame.size.width];
+                [lbl setTextColor:[UIColor colorWithWhite:0.7 alpha:1.0]];
+            }
             
             UIButton *done = [UIButton buttonWithType:UIButtonTypeCustom];
             [done setFrame:CGRectInset(img.frame, 0, 0)];
@@ -124,20 +142,21 @@
         [self.customImage.layer setBorderColor:[UIColor whiteColor].CGColor];
         [self.customImage.layer setBorderWidth:3.0f];
         
+        self.customImageButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        CGRect btnFrame = CGRectInset(self.customImage.frame, 0, 25.0);
+        btnFrame.origin.y = 0;
+        [self.customImageButton setFrame:btnFrame];
+        
         //user custom if if found
         if (pngData) {
             [self.customImage setImage:[UIImage imageWithData:pngData]];
             [self setCustomImageURL:@"custom"];
+            [self.customImageButton addTarget:self action:@selector(doneButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         }
         else {
             [self.customImage setImage:[UIImage imageNamed:bgFilename]];
+            [self.customImageButton addTarget:self action:@selector(customImageTapped:) forControlEvents:UIControlEventTouchUpInside];
         }
-        
-        UIButton *done = [UIButton buttonWithType:UIButtonTypeCustom];
-        CGRect btnFrame = CGRectInset(self.customImage.frame, 0, 25.0);
-        btnFrame.origin.y = 0;
-        [done setFrame:btnFrame];
-        [done addTarget:self action:@selector(doneButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         
         UIButton *plusButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [plusButton setFrame:CGRectMake(self.customImage.frame.origin.x, self.customImage.frame.origin.y + self.customImage.frame.size.height - 50, self.customImage.frame.size.width, 50)];
@@ -156,7 +175,7 @@
         [lbl setBackgroundColor:[UIColor clearColor]];
         [lbl setTextAlignment:NSTextAlignmentCenter];
         [lbl setFont:[UIFont fontWithName:TITLE_FONT size:19.0f]];
-        [lbl setTextColor:[UIColor whiteColor]];
+        [lbl setTextColor:([JASettings isPaid]) ? [UIColor whiteColor] : [UIColor colorWithWhite:0.7 alpha:1.0]];
         [lbl setShadowOffset:CGSizeMake(0, 1)];
         [lbl setShadowColor:[UIColor darkTextColor]];
         [lbl setText:customName];
@@ -164,7 +183,7 @@
         [self.scrollView addSubview:self.customImage];
         [self.scrollView addSubview:lbl];
         [self.scrollView addSubview:plusButton];
-        [self.scrollView addSubview:done];
+        [self.scrollView addSubview:self.customImageButton];
         
 
         
@@ -208,6 +227,9 @@
     NSString *documentsPath = [paths objectAtIndex:0]; //Get the docs directory
     NSString *filePath = [documentsPath stringByAppendingPathComponent:@"customBG.png"]; //Add the file name
     [pngData writeToFile:filePath atomically:YES]; //Write the file
+    
+    [self.customImageButton removeTarget:self action:@selector(customImageTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [self.customImageButton addTarget:self action:@selector(doneButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     
     
 }
@@ -263,6 +285,32 @@
 }
 
 - (IBAction)doneButtonPressed:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    
+    float offset = self.scrollView.contentOffset.x;
+    int page = offset / self.scrollView.frame.size.width;
+
+    if (![JASettings isPaid] && ![[[self.backgroundList objectAtIndex:page] objectForKey:@"free"] boolValue]) {
+        //show nag
+        [Flurry logEvent:@"Nag Screen Opened"];
+        UIAlertView *freeAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Like What You See?\nDon’t Like That You Can’t Use It?", nil) message:NSLocalizedString(@"…Then UPGRADE to SleepSmart Pro!\n\n⇒ Full access to ALL Background Themes!\n⇒ Full access to ALL White Noise Sleep Timer Themes!\n⇒ Full access to ALL Gentle Rise and Alarm Sounds!\n⇒ Unlock the “Rise & Shine” feature to emulate the sun!", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"No Thanks", nil) otherButtonTitles:NSLocalizedString(@"Upgrade Me!", nil), nil];
+        [freeAlert show];
+        
+        
+    }
+    else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
+
+#pragma mark - UIAlertviewDelegate
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    
+    if (buttonIndex == 1) {
+        [Flurry logEvent:@"App Store Opened"];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:NSLocalizedString(@"APPSTORE_URL_PAID", nil)]];
+    }
+    
+}
+
 @end

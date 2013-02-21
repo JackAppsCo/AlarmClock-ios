@@ -20,8 +20,12 @@
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
-    self.title = @"Record"; 
-	lblStatusMsg.text = @"Ready";
+    self.nameField.placeholder = NSLocalizedString(@"Sound Name", nil);
+    [self.redoButton setTitle:NSLocalizedString(@"Re-Record", nil) forState:UIControlStateNormal];
+    [self.saveButton setTitle:NSLocalizedString(@"Save", nil) forState:UIControlStateNormal];
+    [self.startButton setTitle:NSLocalizedString(@"Start Recording", nil) forState:UIControlStateNormal];
+    self.title = NSLocalizedString(@"Record", nil);
+	lblStatusMsg.text = NSLocalizedString(@"Ready", nil);
 	progressView.progress = 0.0;
     _soundRecorded = NO;
     
@@ -83,20 +87,20 @@
                          
                          //update the rec button
                          if (recorder.isRecording) {
-                             [self.startButton setTitle:@"Stop" forState:UIControlStateNormal];
+                             [self.startButton setTitle:NSLocalizedString(@"Stop", nil) forState:UIControlStateNormal];
                              [self.startButton removeTarget:self action:@selector(startRecording) forControlEvents:UIControlEventTouchUpInside];
                              [self.startButton addTarget:self action:@selector(stopRecording) forControlEvents:UIControlEventTouchUpInside];
                          }
                          else if (_soundRecorded) {
-                             [self.startButton setTitle:@"Play" forState:UIControlStateNormal];
+                             [self.startButton setTitle:NSLocalizedString(@"Play", nil) forState:UIControlStateNormal];
                              [self.startButton removeTarget:self action:@selector(stopRecording) forControlEvents:UIControlEventTouchUpInside];
                              [self.startButton addTarget:self action:@selector(playSound) forControlEvents:UIControlEventTouchUpInside];
                          }
                          else {
-                             [self.startButton setTitle:@"Start Recording" forState:UIControlStateNormal];
+                             [self.startButton setTitle:NSLocalizedString(@"Start Recording", nil) forState:UIControlStateNormal];
                              [self.startButton removeTarget:self action:@selector(playSound) forControlEvents:UIControlEventTouchUpInside];
                              [self.startButton addTarget:self action:@selector(startRecording) forControlEvents:UIControlEventTouchUpInside];
-                             [lblStatusMsg setText:@"Ready"];
+                             [lblStatusMsg setText:NSLocalizedString(@"Ready", nil)];
                              [progressView setProgress:0.0f];
                          }
                          
@@ -225,7 +229,7 @@
 	// start recording
 	[recorder recordForDuration:(NSTimeInterval) 30];
 	
-	lblStatusMsg.text = @"Recording...";
+	lblStatusMsg.text = NSLocalizedString(@"Recording", nil);
 	progressView.progress = 0.0;
 	timer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(handleTimer) userInfo:nil repeats:YES];
     
@@ -238,7 +242,7 @@
 	
     //	if ([timer isValid])
     //        [timer invalidate];
-	lblStatusMsg.text = @"Stopped";
+	lblStatusMsg.text = NSLocalizedString(@"Stopped", nil);
 	progressView.progress = 1.0;
 	
 	//NSURL *url = [NSURL fileURLWithPath: recorderFilePath];

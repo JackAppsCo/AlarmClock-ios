@@ -1,0 +1,199 @@
+/*
+ Localizable.strings
+ AlarmClock
+ 
+ Created by Brian C. Singer on 12/9/12.
+ Copyright (c) 2012 JA. All rights reserved.
+ */
+
+//Other
+"Snooze" = "酣睡";
+
+//Nag Screen
+"SleepSmart Pro Available NOW!" = "智能睡眠专业版现在上市了!";
+"Upgrade for Extra Sounds, Extra Features and NO ADS!\n\n⇒ Full access to ALL Background Themes!\n⇒ Full access to ALL White Noise Sleep Timer Themes!\n⇒ Full access to ALL Gentle Rise and Alarm Sounds!\n⇒Unlock the “Rise & Shine” feature to emulate the sun!" ="升级得到额外的闹铃声音，额外的功能和没有广告！\n\n⇒ 完全访问所有的背景主题！\n⇒ 完全访问所有的白色噪音睡眠定时器！\n⇒ 完全访问所有的柔和起床和闹铃声音！\n⇒ 打开“起床&照耀”功能而仿真太阳！";
+"Like What You See?\nDon’t Like That You Can’t Use It?" = "象你看到的那样？\n不喜欢你不能用它？";
+"…Then UPGRADE to SleepSmart Pro!\n\n⇒ Full access to ALL Background Themes!\n⇒ Full access to ALL White Noise Sleep Timer Themes!\n⇒ Full access to ALL Gentle Rise and Alarm Sounds!\n⇒ Unlock the “Rise & Shine” feature to emulate the sun!" = "然后升级到智能睡眠专业版！\n\n⇒完全访问到所有的背景主题！\n\n⇒完全访问所有的白色噪音睡眠定时器主题！\n\n⇒完全访问所有柔和起床和闹钟声音！\n\n⇒打开“起床&照耀”功能而仿真太阳！";
+"SleepSmart Pro Available NOW!" = "智能睡眠专业版现在上市了！";
+"Upgrade for Extra Sounds, Extra Features and NO ADS!\n\n*******************************************\nS⇒ Full access to ALL Background Themes!\n⇒ Full access to ALL White Noise Sleep Timer Themes!\n⇒ Full access to ALL Gentle Rise and Alarm Sounds!\n⇒ Unlock the “Rise & Shine” feature to emulate the sun!\n*******************************************" = "升级得到额外的声音，额外的功能而且没有广告！\n\n完全访问所有的背景主题!\n⇒完全访问所有白色噪音睡眠定时器主题!\n⇒完全访问所有柔和起床和闹钟声音!\n⇒打开“起床&照耀”功能仿真太阳!";
+
+
+
+//Home Screen
+"H" = "H";
+"L" = "L";
+"Tap to activate White Noise Sleep Timer" = "轻敲激活白色噪音睡眠定时器";
+"Adjust the brightness by swiping up and down" = "通过滑动上下来调整亮度";
+"Tap on the settings icon to create alarms, edit your display or use SleepSmart features" = "轻敲设置标创建闹铃，编辑你的显示或用智能睡眠功能";
+"Quickly access your alarms" = "快速访问你的闹铃";
+
+//Sleep Screen
+"Sleep Cycle" = "睡眠周期";
+"Bedtime" = "睡眠时间";
+"Wake-Up Time" = "起床时间";
+"How to use SleepSmart’s Sleep Cycle Calculator" = "怎样使用智能睡眠”的睡眠周期计算器";
+"To turn the White Noise Sleep Timer On/Off, return to your home screen and hit the ZZZ icon." = "打开和关闭白色噪音睡眠定时器，回到你的主页屏幕和点击”ZZZ图标";
+"Calculate using either:\n(1) your Wake-Up Time or\n(2) your Bedtime.\n\nSelect the appropriate tab, select a time and hit Create SleepSmart Alarm!" = "计算用:\n或你的清醒计时器或\n(2)你的睡眠时间.\n\选择正确的标签，选择一个时间和点击创建智能睡眠闹钟!";
+"Create SleepSmart Alarm" = "创建智能睡眠闹钟";
+"To complete your sleep cycle, you should fall asleep at one of these times:" = "完成你的睡眠周期，你应该在这些时间里的一个时间段里入睡了:";
+"To complete your sleep cycle, you should wake-up at one of these times:" = "完成你的睡眠周期，你应该在这些时间里的一个时间里清醒了:";
+"Select a Time" = "选择一个时间";
+"Sleep Cycle Calculator" = "睡眠周期计算器";
+"SleepSmart Alarm" = "智能睡眠计算器";
+"When you set an Alarm, make sure to turn on Rise & Shine to emulate the rising sun! This will gently adjust the brightness of your screen before your alarm goes off to act like the rising sun and naturally wake you up." = "当你设置一个闹铃时，确信打开了起床&照耀而仿真太阳升起！在你的闹铃结束闹铃后就象升起的太阳和自然地把你叫醒前，这个将柔和地调整你屏幕的亮度.";
+"Rise & Shine Feature" = "起床&朝阳功能";
+
+
+//Settings
+"Alarms" = "闹钟";
+"Display" = "显示";
+"Settings" = "设置";
+"Sleep" = "睡眠";
+"Done" = "完成";
+
+//Misc Screen
+"Check out SleepSmart in the App Store: %@" = "在应用程序商店里付款购买智能睡眠: %@";
+"Check out <a href=\"%@\">SleepSmart</a> in the App Store" = "Check out <a href=\"%@\">智能睡眠t</a> 在应用商店里";
+"Help & Information" = "帮助 &信息";
+"Auto-Lock" = "自动上锁";
+"Weather" =  "天气";
+"Misc" =  "其他";
+"Rise & Shine" =  "起床 & 照耀";
+"Scale" = "范围";
+"Length" =  "长度";
+"minutes" =  "分钟";
+"Fahrenheit" = "华氏温标";
+"Celsius" =   "摄氏度";
+"Disable Auto-Lock" =  "关闭自动上锁";
+"Whoops!" =  "哎呀!";
+"In order to enable the Rise & Shine feature we'll have to disable auto-lock." = "为了启动起床&照耀功能，我们将不得不关闭自动上锁.";
+"If you don't keep auto-lock disabled the Rise & Shine feature will be disabled." = "如果你不保持自动上锁关闭，起床&照耀功能将无效.";
+"Due to multitasking limitations set by Apple, SleepSmart MUST be running in the foreground for its features to work properly.  In order to do this, you must disable your phone’s auto-lock feature./n/nIf you forget to leave the app open, we’ve got your back.  SleepSmart provides a built-in background alarm that will play a default alarm sound when your alarm goes off.   This default alarm is limited to 30 seconds so MAKE SURE you keep SleepSmart running through the night!  Background alarms work only on iPhone 4 models and above." =  "由于苹果设置了多功能限制，智能睡眠必须在一个前景中运行它的功能才能准确。为了能做到这点，你必须关闭你的电话自动上锁功能.\n\n如果你忘记打开应用，我们会把你叫回来的。智能睡眠提供一个内置的闹铃，当你的闹铃关掉了，它会闹默认的声音。这个默认的闹铃持续30秒，这样让你确保你的智能睡眠在晚间运行！背景闹铃仅在iPhone 4和新型号上运行";
+"The Science Behind SleepSmart – Why Your Sleep Cycle Matters" = "智能睡眠的后面就是科学-这就是为何与你的睡眠周期有关系";
+"Think that extra hour of sleep will make you feel more rested?  Think again.  Research has shown that waking up in the middle of your body’s natural sleep cycle can make you feel groggy, disoriented and is actually counterproductive to a full night’s sleep.  Waking your body up at the end of your natural sleep cycle, when your body and brain are already close to wakefulness, can provide you with the best night’s sleep and the most refreshing of mornings.\n\nThe average sleep cycle lasts approximately 90 minutes and a well-rested adult goes through approximately 4-6 cycles a night.  During these cycles your body enters four different stages: N1, transition to sleep (5 min); N2, light sleep (10-25 min); N3, deep sleep (40-60 min); and REM, dream sleep.  Each stage is vital in restoring your body and mind and plays a different role in preparing you for the day ahead.\n\nEven if you’ve enjoyed a full night’s sleep, getting out of bed can be difficult if your alarm goes off when you’re in the middle of deep sleep (stage N3).   If you want the best night’s sleep for an optimal morning, then set your alarm to wake up at the end of your natural sleep cycle.  Simply use SleepSmart’s Sleep Cycle Calculator and you’re on your way to a great night’s sleep!" = "想想你额外睡眠时间将让你有更多的休息吗再想想。调查显示在你身体自然睡眠周期里如果醒来会让你头昏眼花的，没有方向感并且是与你晚间所有的睡眠自然地事与愿反。在你自然睡眠的末期唤醒你的身体，当你的身体和大脑已经接近清醒，这可以给你提供一个最好的晚间睡眠，并且早上清爽.\n\n平均睡眠周期持续大概90分钟并且一个休息很好地成年人在一个晚上经历4-6个周期。在这些周期里，你的身体进入4个不同的状态：N1,转移到睡眠（5分钟）；N2，轻度睡眠（10-25分钟）；N3,深度睡眠（40-60分钟）；和保持，深度梦睡中。每个阶段在恢复你的身体和身心中很重要并且起着不同的作用帮你准备迎接新的一天.\n\n甚至你享受了整晚的睡眠，你起床时，但还在睡眠中（第三阶段）你的闹铃响了，你会觉得很困难起床。如果你想在早上有最佳状态在晚上有最好的睡眠，那么设置你的闹铃在你自然睡眠周期的尾部唤醒你。简单使用智能睡眠睡眠周期计算器，你就能达到你最佳夜间睡眠效果！";
+"How Does the Rise & Shine Feature Help Wake Me Up?" = "起床&照耀的功能是怎样把你唤醒的呢？";
+"Your brain responds to changes between light and dark to regulate your internal 24-hour sleep-wake cycle.  If it is dark outside when you get up, you probably find it hard to get out of bed.  Our unique and ingenious Rise & Shine feature turns your iPhone into a virtual sun! Simple turn on Rise & Shine and trick your brain into waking up, even if it’s dark outside!" = "你的大脑对那些亮光和黑暗做出反应而调控你内身24小时睡眠和清醒周期。如果外面是黑暗的，当你起床时，你或许发现比较困难起床。我们唯一和独创的起床&照耀功能打开你的 iPhone变为一个虚拟太阳！简单打开起床&照耀并哄骗你的大脑进入清醒状态，甚至如果外面还是很暗的！";
+"Tips For Using Your White Noise Sleep Timer" = "使用你的白色噪音睡眠定时器”的小技巧";
+"Shutting your brain down at night can be difficult.  Using SleepSmart’s White Noise Sleep Timer can help.\n\nSleepSmart Premium includes 10 soothing themes to help lull you to sleep.  For best results, hook your iPhone into an audio source to improve the sound quality." = "在晚间关闭你的大脑是困难的。使用智能睡眠的白色噪音睡眠定时器能帮助你.\n\n智能睡眠增值服务包括10个安慰主题帮你平静进入睡眠。其他最好的效果，把你的iPhone 插到一个音频源上提高声音质量。";
+"Cancel" = "取消";
+"Ok" = "好的";
+"Shake for Flashlight" = "摇晃闪灯";
+"Adjust Brightness" = "调解亮度";
+"Help & Information" = "帮助&信息";
+"Snooze Length" = "瞌睡长度";
+"Facebook" = "面书";
+"Twitter" = "微博客";
+"Text Message" = "短信";
+"Email" = "电子邮件";
+"APPSTORE_URL_FREE" = "https://itunes.apple.com/us/app/sleepsmart-free/id599428492?ls=1&mt=8";
+"APPSTORE_URL_PAID" = "https://itunes.apple.com/us/app/sleepsmart/id588597242?ls=1&mt=8";
+"Love SleepSmart?  We Love You Too!  Help Us Spread the Word!" = "喜欢智能睡眠吗？我们太喜欢你了！帮助我们转播世界!";
+"If you like what you've seen so far you should check out the paid version." = "如果你喜欢我们到目前看到的，你就应该买一个付款的版本。";
+"The Rise & Shine feature is only available in the paid application." = "起床&照耀的功能仅在付费应用程序中有效。";
+
+//Disp Settings
+"Background Image" = "背景图像";
+"Show Backdrop" = "显示背景";
+"Clock Text Color" = "闹钟字体颜色";
+"Show Seconds" = "显示秒";
+"Show Date" = "显示时间";
+"Create You Own" = "创建你自己的";
+
+//Alarm Settings
+"Create Name" = "创建姓名";
+"Time" = "时间";
+"Enabled" = "激活";
+"Repeat" = "重复";
+"Sound" = "声音";
+"Gradual Alarm" = "逐渐响铃";
+"Snooze (mins)" = "酣睡（时间）";
+"Save" = "保存";
+"Cancel" = "取消";
+
+//Repeat Settings
+"Never" = "从未";
+"Everyday" = "每天";
+"Weekdays" = "工作日";
+"Weekends" = "周末";
+"Monday" = "星期一";
+"Tuesday" = "星期二";
+"Wednesday" = "星期三";
+"Thursday" = "星期四";
+"Friday" = "星期五";
+"Saturday" = "星期六";
+"Sunday" = "星期日";
+"Repeat" = "重复";
+"M" = " 星期一";
+" T" = " 星期二";
+" W" = " 星期三";
+" Th" = " 星期四";
+" F" = " 星期；五";
+" S" = " 星期六";
+" Su" = " 星期六";
+
+//Sound Selector
+"Choose From Library" = "从图书馆中选择";
+"Record A New Sound" = "录一个新的声音";
+"Sleep Cycle Calculator" = "睡眠周期计算器";
+"White Noise Sleep Timer" = "白色噪音睡眠定时器";
+"Timer Length" = "定时器长度";
+"SleepSmart" = "智能睡眠";
+"Sleep Sound" = "睡眠声音";
+"This alarm is only available in the paid application." = "这个闹铃仅在付费应用中有效。";
+"Wanna Upgrade?" = "想升级吗？";
+"No Thanks" = "不，谢谢";
+"Upgrade Me!" = "升级我！";
+"iPhone Music" = "iPhone音乐";
+"Custom Alarms" = "传统闹铃";
+"Alarm Sounds" = "闹铃声音";
+"Gentle Alarms" = "柔和闹铃";
+
+//Sound Recorder
+"Sound Name" = "声音名字";
+"Start Recording" = "开始录音";
+"Save" = "保存";
+"Stop" = "停止";
+"Ready" = "准备好了";
+"Recording" = "录音";
+"Stopped" = "停止了";
+"Play" = "播放";
+"Re-Record" = "重新录音";
+
+
+//------------ NEW WORDS ------------//
+
+//colors
+"Black" = "黑色";
+"White" = "白色";
+
+//backgrounds
+"Coast" = "海岸";
+"Chalkboard" = "粉笔板";
+"Default" = "默认";
+"Field" = "领域";
+"Beach" = "沙滩";
+"Canal" = "运河";
+"Fall" = "落下";
+"Drops" = "落下";
+"Night Sky" = "夜间天空";
+
+//alarms
+"Alarm" = "闹铃";
+"Old School Clock" = "老的学校钟";
+"School Bell" = "学校铃";
+"British Ambulance" = "英国救护车";
+"Air Raid" = "空袭";
+"Burglar Alarm" = "防盗报警器";
+"Siren" = "汽笛";
+"Spaceship" = "太空船";
+"Techy" = "易怒";
+"Vibraphone" = "电颤琴";
+"Chimes" = "编钟";
+"Ethereal Piano" = "优雅的钢琴";
+"Harp" = "竖琴";
+"Church Bell" = "教堂铃";
+"Song Bird" = "音乐鸟";
+"Gentle Rise" = "温和的起床";
+"Rooster Call" = "鸡叫";
+
+"Alarm" = "闹铃";

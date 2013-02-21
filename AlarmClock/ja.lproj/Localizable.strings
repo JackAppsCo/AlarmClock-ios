@@ -1,0 +1,198 @@
+/* 
+  Localizable.strings
+  AlarmClock
+
+  Created by Brian C. Singer on 12/9/12.
+  Copyright (c) 2012 JA. All rights reserved.
+*/
+
+//Other
+"Snooze" = "スヌーズ";
+
+//Nag Screen
+"SleepSmart Pro Available NOW!" = "スリープスマート・プロが今すぐご利用可能です！";
+"Upgrade for Extra Sounds, Extra Features and NO ADS!\n\n⇒ Full access to ALL Background Themes!\n⇒ Full access to ALL White Noise Sleep Timer Themes!\n⇒ Full access to ALL Gentle Rise and Alarm Sounds!\n⇒Unlock the “Rise & Shine” feature to emulate the sun!" = "アップグレードして音と機能を追加、広告も無しに！\n\n⇒全ての背景に完全アクセス\n⇒全ての白色雑音スリープタイマーに完全アクセス\n⇒全ての優しくお目覚めに完全アクセス\n⇒「元気にお目覚め」機能を解除してバーチャル太陽を！";
+"Like What You See?\nDon’t Like That You Can’t Use It?" = "どんな具合です？\それ使ってみたいですか？";
+"Then UPGRADE to SleepSmart Pro!\n\n⇒ Full access to ALL Background Themes!\n⇒ Full access to ALL White Noise Sleep Timer Themes!\n⇒ Full access to ALL Gentle Rise and Alarm Sounds!\n⇒ Unlock the “Rise & Shine” feature to emulate the sun!" = "それではスリープスマートプロにアップグレードしましょう！\n\n\n⇒全ての背景に完全アクセス\n⇒全ての白色雑音スリープタイマーに完全アクセス\n⇒全ての優しくお目覚めに完全アクセス\n⇒「元気にお目覚め」機能を解除してバーチャル太陽を！";
+"SleepSmart Pro Available NOW!" = "スリープスマート・プロが今すぐご利用可能です！";
+"Upgrade for Extra Sounds, Extra Features and NO ADS!\n\n*******************************************\nS⇒ Full access to ALL Background Themes!\n⇒ Full access to ALL White Noise Sleep Timer Themes!\n⇒ Full access to ALL Gentle Rise and Alarm Sounds!\n⇒ Unlock the “Rise & Shine” feature to emulate the sun!\n*******************************************" = "アップグレードして音と機能を追加、広告も無しに！\n\n*******************************************\nS⇒全ての背景に完全アクセス\n⇒全ての白色雑音スリープタイマーに完全アクセス\n⇒全ての優しくお目覚めに完全アクセス\n⇒「元気にお目覚め」機能を解除してバーチャル太陽を！";
+
+
+
+//Home Screen
+"H" = "H";
+"L" = "L";
+"Tap to activate White Noise Sleep Timer" = "タップして白色雑音スリープタイマーをアクティブにします";
+"Adjust the brightness by swiping up and down" = "上下にスワイプして明るさを調整します";
+"Tap on the settings icon to create alarms, edit your display or use SleepSmart features" = "設定アイコンをタップしてアラームを作成し、画面編集やスリープスマート機能を使ってみましょう";
+"Quickly access your alarms" = "アラームにクイックアクセス";
+
+//Sleep Screen
+"Sleep Cycle" = "睡眠周期";
+"Bedtime" = "就寝時間";
+"Wake-Up Time" = "起床時間";
+"How to use SleepSmart’s Sleep Cycle Calculator" = "スリープスマートの睡眠周期計算機の使い方";
+"To turn the White Noise Sleep Timer On/Off, return to your home screen and hit the ZZZ icon." = "白色雑音スリープタイマーをON/OFFするには、ホーム画面に戻りZZZアイコンをタップします。";
+"Calculate using either:\n(1) your Wake-Up Time or\n(2) your Bedtime.\n\nSelect the appropriate tab, select a time and hit Create SleepSmart Alarm!" = "計算には次のいずれかを使用します：\n(1)起床時間、または\n(2)就寝時間。\n\n適切なタブを選択して、時間選択、スリープスマートアラーム作成をタップしましょう！";
+"Create SleepSmart Alarm" = "スリープスマートアラーム作成";
+"To complete your sleep cycle, you should fall asleep at one of these times:" = "あなたの睡眠周期を完了するには、これらのいずれかの時間の就寝が必要です：";
+"To complete your sleep cycle, you should wake-up at one of these times:" = "あなたの睡眠周期を完了するには、これらのいずれかの時間の起床が必要です：";
+"Select a Time" = "時間選択";
+"Sleep Cycle Calculator" = "睡眠周期計算機";
+"SleepSmart Alarm" = "スリープスマートアラーム";
+"When you set an Alarm, make sure to turn on Rise & Shine to emulate the rising sun! This will gently adjust the brightness of your screen before your alarm goes off to act like the rising sun and naturally wake you up." = "アラーム設定する時は、必ず元気にお目覚めをオンして日の出を再現させましょう！これによって画面の光は優しく調整され、設定アラームがオフする前に日の出のように動作して、自然な目覚めとなります。";
+"Rise & Shine Feature" = "元気にお目覚め機能";
+
+
+//Settings
+"Alarms" = "アラーム";
+"Display" = "表示";
+"Settings" = "設定";
+"Sleep" = "睡眠」：";
+"Done" = "完了";
+
+//Misc Screen
+"Check out SleepSmart in the App Store: %@" = " APPストアでスリープスマートをチェック: %@";
+"Check out <a href=\"%@\">SleepSmart</a> in the App Store" = "\%@\>スリープスマート</a> Appストアで";
+"Help & Information" = "ヘルプ＆インフォメーション";
+"Auto-Lock" = "オートロック";
+"Weather" = "天気";
+"Misc" = "ミスク";
+"Rise & Shine" = "元気にお目覚め";
+"Scale" = "スケール";
+"Length" = "長さ";
+"minutes" = "分";
+"Fahrenheit" = "華氏";
+"Celsius" = "摂氏";
+"Disable Auto-Lock" = "オートロック無効";
+"Whoops!" = "おーっと！";
+"In order to enable the Rise & Shine feature we'll have to disable auto-lock." = "元気にお目覚め機能を有効にするには、オートロックを無効にして下さい";
+"If you don't keep auto-lock disabled the Rise & Shine feature will be disabled." = "オートロックを無効にしないと、元気にお目覚め機能は無効になります。";
+"Due to multitasking limitations set by Apple, SleepSmart MUST be running in the foreground for its features to work properly.  In order to do this, you must disable your phone’s auto-lock feature./n/nIf you forget to leave the app open, we’ve got your back.  SleepSmart provides a built-in background alarm that will play a default alarm sound when your alarm goes off.   This default alarm is limited to 30 seconds so MAKE SURE you keep SleepSmart running through the night!  Background alarms work only on iPhone 4 models and above." = "アップル社が設定しているマルチタスク制限において、スリープスマート機能が正しく動作する為には、フォアグランドで実行されている必要があります。これを行うには、お使いの携帯電話のオートロック機能を無効にする必要があります。\n\nアプリを開いたままにするのを忘れると、バックグランドになります。スリープスマートは、アラームがオフになった時に、デフォルトのアラーム音を鳴らす内蔵バックグランドアラームを提供します。このデフォルトアラームは30秒に制限されていますので、必ず夜通しスリープスマートが実行されるようにして下さい！バックグランドアラームは、iPhone4以降の機種で動作します。";
+"The Science Behind SleepSmart – Why Your Sleep Cycle Matters" = "スリープスマートに隠された科学－何故睡眠周期が重要なのか";
+"Think that extra hour of sleep will make you feel more rested?  Think again.  Research has shown that waking up in the middle of your body’s natural sleep cycle can make you feel groggy, disoriented and is actually counterproductive to a full night’s sleep.  Waking your body up at the end of your natural sleep cycle, when your body and brain are already close to wakefulness, can provide you with the best night’s sleep and the most refreshing of mornings.\n\nThe average sleep cycle lasts approximately 90 minutes and a well-rested adult goes through approximately 4-6 cycles a night.  During these cycles your body enters four different stages: N1, transition to sleep (5 min); N2, light sleep (10-25 min); N3, deep sleep (40-60 min); and REM, dream sleep.  Each stage is vital in restoring your body and mind and plays a different role in preparing you for the day ahead.\n\nEven if you’ve enjoyed a full night’s sleep, getting out of bed can be difficult if your alarm goes off when you’re in the middle of deep sleep (stage N3).   If you want the best night’s sleep for an optimal morning, then set your alarm to wake up at the end of your natural sleep cycle.  Simply use SleepSmart’s Sleep Cycle Calculator and you’re on your way to a great night’s sleep!" = "長く眠れば、もっと休まるって感じるか考えてみて下さい。もう一度良く考えて。研究では、身体の自然な睡眠周期の途中で目を覚ますと、頭は混乱し、意識をもうろうとする気分にさせ、実際には一晩の睡眠が逆効果であることが示されています。身体と脳が既に覚醒状態に近づいている自然な睡眠周期の終わりの目覚めは、最高の夜間睡眠と最もさわやかな朝をもたらします。\n\nこの平均的な睡眠周期は約90分間続き、良く休まる大人の方では、一晩に約4〜6周期行われます。これらの周期の間、身体は4つの異なる段階に入ります。N1、睡眠状態に移行する（5分）; N2、軽い睡眠（10分から25分）；N3、深い睡眠（40分から60分）;そしてレム、夢を見る睡眠です。各段階は身体と心の回復には不可欠で、翌日に備える為の異なった役割を果たします。\n\nたとえ一晩全部の睡眠を楽しんだとしても、深い睡眠（N3段階）の途中でアラームが鳴り止むと、ベッドから起き上がるのは困難になります。最適な朝を迎える為の最高の夜間睡眠が必要な場合は、自然な睡眠周期の後に目を覚ますようにアラームを設定します。簡単に言うと、スリープスマートの睡眠周期計算機を使用すれば、素晴らしい夜間睡眠法が得られます！";
+"How Does the Rise & Shine Feature Help Wake Me Up?" = "元気にお目覚め機能は、どのように目覚めに役立つのですか？";
+"Your brain responds to changes between light and dark to regulate your internal 24-hour sleep-wake cycle.  If it is dark outside when you get up, you probably find it hard to get out of bed.  Our unique and ingenious Rise & Shine feature turns your iPhone into a virtual sun! Simple turn on Rise & Shine and trick your brain into waking up, even if it’s dark outside!" = "脳は、24時間の睡眠・起床周期を制御する光と闇の変化に反応します。起きた時に外が暗かったら、恐らくベッドから起き上がるのは困難でしょう。このユニークで独創的な元気にお目覚め機能は、あなたのIPhoneをバーチャル太陽へと変身させます！単純に元気にお目覚めをオンして、たとえ外が暗くても、脳を騙して目覚めましょう！";
+"Tips For Using Your White Noise Sleep Timer" = "白色雑音スリープタイマーを使うヒント";
+"Shutting your brain down at night can be difficult.  Using SleepSmart’s White Noise Sleep Timer can help.\n\nSleepSmart Premium includes 10 soothing themes to help lull you to sleep.  For best results, hook your iPhone into an audio source to improve the sound quality." = "夜間、脳を休ませるのは困難です。スリープスマートの白色雑音スリープタイマーの使用が役立ちます。\n\nスリープスマートプレミアムには10種類のスヌーズ音が含まれ、睡眠へと誘います。最も良い効果を得るには、あなたのIPhoneを音源につないで音質を向上させましょう。";
+"Cancel" = "キャンセル";
+"Ok" = "Ok";
+"Shake for Flashlight" = "懐中電灯として振る";
+"Adjust Brightness" = "光を調整する";
+"Help & Information" = "ヘルプ＆インフォメーション";
+"Snooze Length" = "スヌーズ長さ";
+"Facebook" = "Facebook";
+"Twitter" = "Twitter";
+"Text Message" = "テキストメッセージ";
+"Email" = "Eメール";
+"APPSTORE_URL_FREE" = "https://itunes.apple.com/us/app/sleepsmart-free/id599428492?ls=1&mt=8";
+"APPSTORE_URL_PAID" = "https://itunes.apple.com/us/app/sleepsmart/id588597242?ls=1&mt=8";
+"Love SleepSmart?  We Love You Too!  Help Us Spread the Word!" = "スリープスマートはお好きですか？我々もあなたが好きです！世界に広げましょう！";
+"If you like what you've seen so far you should check out the paid version." = "気に入って頂けたなら、有料版もチェックして下さい。";
+"The Rise & Shine feature is only available in the paid application." = "元気にお目覚め機能は、有料アプリのみでご利用可能です。";
+
+//Disp Settings
+"Background Image" = "背景画像」";
+"Show Backdrop" = "背景を表示";
+"Clock Text Color" = "時計テキストカラー";
+"Show Seconds" = "秒を表示";
+"Show Date" = "日付を表示";
+"Create You Own" = "新規作成";
+
+//Alarm Settings
+"Create Name" = "名前作成";
+"Time" = "時間";
+"Enabled" = "有効";
+"Repeat" = "繰り返し";
+"Sound" = "音";
+"Gradual Alarm" = "徐々にアラーム";
+"Snooze (mins)" = "スヌーズ（分）";
+"Save" = "保存";
+"Cancel" = "キャンセル";
+
+//Repeat Settings
+"Never" = "鳴らさない";
+"Everyday" = "毎日";
+"Weekdays" = "平日";
+"Weekends" = "週末";
+"Monday" = "月曜日";
+"Tuesday" = "火曜日";
+"Wednesday" = "水曜日";
+"Thursday" = "木曜日";
+"Friday" = "金曜日";
+"Saturday" = "土曜日";
+"Sunday" = "日曜日";
+"Repeat" = "繰り返し";
+"M" = "月";
+" T" = " 火";
+" W" = " 水";
+" Th" = " 木";
+" F" = " 金";
+" S" = " 土";
+" Su" = " 日";
+
+//Sound Selector
+"Choose From Library" = "ライブラリから選択";
+"Record A New Sound" = "新しい音を記録";
+"Sleep Cycle Calculator" = "睡眠周期計算機";
+"White Noise Sleep Timer" = "白色雑音スリープタイマー";
+"Timer Length" = "タイマー長さ";
+"SleepSmart" = "スリープスマート";
+"Sleep Sound" = "睡眠音";
+"This alarm is only available in the paid application." = "このアラームは有料アプリのみでご利用可能です";
+"Wanna Upgrade?" = "アップグレードしますか？";
+"No Thanks" = "いいえ、結構です";
+"Upgrade Me!" = "私をアップグレードして下さい！";
+"iPhone Music" = "IPhone音楽」";
+"Custom Alarms" = "カスタムアラーム";
+"Alarm Sounds" = "アラーム音";
+"Gentle Alarms" = "優しくアラーム";
+
+//Sound Recorder
+"Sound Name" = "音名";
+"Start Recording" = "録音開始";
+"Save" = "保存";
+"Stop" = "停止";
+"Ready" = "準備完了";
+"Recording" = "録音中";
+"Stopped" = "停止";
+"Play" = "再生";
+"Re-Record" = "再録音";
+
+//------------ NEW WORDS ------------//
+
+//colors
+"Black" = "黒";
+"White" = "白";
+
+//backgrounds
+"Coast" = "海岸";
+"Chalkboard" = "黒板";
+"Default" = "デフォルト";
+"Field" = "フィルールド";
+"Beach" = "ビーチ";
+"Canal" = "運河";
+"Fall" = "滝";
+"Drops" = "水滴";
+"Night Sky" = "夜空";
+
+//alarms
+"Alarm" = "アラーム";
+"Old School Clock" = "古い学校の時計";
+"School Bell" = "始業ベル";
+"British Ambulance" = "イギリスの救急車";
+"Air Raid" = "空襲";
+"Burglar Alarm" = "警報アラーム";
+"Siren" = "サイレン";
+"Spaceship" = "宇宙船";
+"Techy" = "テクノロジー";
+"Vibraphone" = "ビブラホン";
+"Chimes" = "チャイム";
+"Ethereal Piano" = "エーテルピアノ";
+"Harp" = "ハープ";
+"Church Bell" = "教会の鐘";
+"Song Bird" = "鳥のさえずり";
+"Gentle Rise" = "優しい日の出";
+"Rooster Call" = "コケコッコー";
+
+"Alarm" = "アラーム";

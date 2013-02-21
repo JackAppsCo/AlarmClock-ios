@@ -12,7 +12,13 @@
 #import "Flurry.h"
 #import "Appirater.h"
 
+#define kUniqueIDKey @"fm_uniqueID"
+
 @implementation UITabBarController (Rotation)
+
+void uncaughtExceptionHandler(NSException *exception) {
+    [Flurry logError:@"Uncaught" message:@"Crash!" exception:exception];
+}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -30,11 +36,27 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    //execption loggin
+    NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
+    
+    
     //increment launch count
     [JASettings increaseLaunchCount];
     
+    //get Unique ID
+    NSString *uID;
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:kUniqueIDKey]) {
+        uID = [[NSUserDefaults standardUserDefaults] objectForKey:kUniqueIDKey];
+    }
+    else {
+        uID = [[NSUUID UUID] UUIDString];
+        [[NSUserDefaults standardUserDefaults] setObject:uID forKey:kUniqueIDKey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    
     //call flurry
     [Flurry startSession:@"5TJ5GGNGYW7S6Z7W7CSW"];
+    [Flurry setUserID:uID];
     
     //capture brightness
     _initalBrightness = [UIScreen mainScreen].brightness;
@@ -198,7 +220,7 @@
                         localNotif.timeZone = [NSTimeZone defaultTimeZone];
                         localNotif.repeatInterval = NSWeekCalendarUnit;
                         localNotif.alertBody = thisAlarm.name;
-                        localNotif.alertAction = NSLocalizedString(@"Snooza", nil);
+                        
                         localNotif.soundName = thisAlarm.sound.soundFilename;
                         
                         NSDictionary *infoDict = [NSDictionary dictionaryWithObject:[NSKeyedArchiver archivedDataWithRootObject:thisAlarm] forKey:@"alarm"];
@@ -227,8 +249,8 @@
                     localNotif.timeZone = [NSTimeZone defaultTimeZone];
                     localNotif.alertBody = thisAlarm.name;
                     localNotif.repeatInterval = 0;
-                    localNotif.alertAction = NSLocalizedString(@"Snooze", nil);
-                    localNotif.soundName = thisAlarm.sound.soundFilename;
+                    
+                    localNotif.soundName = @"Background__Alarm__cut.m4a";
                     
                     NSDictionary *infoDict = [NSDictionary dictionaryWithObject:[NSKeyedArchiver archivedDataWithRootObject:thisAlarm] forKey:@"alarm"];
                     localNotif.userInfo = infoDict;
@@ -241,7 +263,7 @@
             }
         }
     }
-    
+    NSLog(@"%@", [ClockManager instance].snoozeAlarms);
     for (JAAlarm *thisAlarm in [ClockManager instance].snoozeAlarms) {
         if (thisAlarm.enabled) {
             if (thisAlarm.repeatDays.count != 0) {
@@ -287,7 +309,7 @@
                     localNotif.timeZone = [NSTimeZone defaultTimeZone];
                     localNotif.repeatInterval = NSWeekCalendarUnit;
                     localNotif.alertBody = thisAlarm.name;
-                    localNotif.alertAction = NSLocalizedString(@"Snooze", nil);
+                    
                     
                     
                     
@@ -310,16 +332,16 @@
                 NSDate *itemDate = [calendar dateFromComponents:dateComps];
                 
                 //increase the day if it's in the past
-                if ([itemDate compare:[NSDate date]] == NSOrderedAscending) {
+                if ([itemDate compare:[NSDate date]] != NSOrderedAscending) {
                     
                     UILocalNotification *localNotif = [[UILocalNotification alloc] init];
-                    if (localNotif == nil)
+                    if (localNotif == nil)	
                         return;
                     localNotif.fireDate = itemDate;
                     localNotif.timeZone = [NSTimeZone defaultTimeZone];
                     localNotif.alertBody = thisAlarm.name;
                     localNotif.repeatInterval = 0;
-                    localNotif.alertAction = NSLocalizedString(@"Snooze", nil);
+                    
                     localNotif.soundName = thisAlarm.sound.soundFilename;
                     
                     NSDictionary *infoDict = [NSDictionary dictionaryWithObject:[NSKeyedArchiver archivedDataWithRootObject:thisAlarm] forKey:@"alarm"];

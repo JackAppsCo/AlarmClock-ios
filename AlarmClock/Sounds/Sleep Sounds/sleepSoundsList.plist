@@ -14,6 +14,14 @@
 		</dict>
 		<dict>
 			<key>free</key>
+			<true/>
+			<key>name</key>
+			<string>Rainstorm</string>
+			<key>filename</key>
+			<string>Rainstorm.m4a</string>
+		</dict>
+		<dict>
+			<key>free</key>
 			<false/>
 			<key>name</key>
 			<string>Windy Day</string>
@@ -27,14 +35,6 @@
 			<false/>
 			<key>filename</key>
 			<string>Thunderstorm.m4a</string>
-		</dict>
-		<dict>
-			<key>free</key>
-			<false/>
-			<key>name</key>
-			<string>Rainstorm</string>
-			<key>filename</key>
-			<string>Rainstorm.m4a</string>
 		</dict>
 		<dict>
 			<key>free</key>
