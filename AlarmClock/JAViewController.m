@@ -621,26 +621,8 @@ void RouteChangeListener(	void *                  inClientData,
     //create the fileURL obejct
     NSURL *fileURL;
     
+    //from itunes collection
     if (_currentAlarm.sound.collection) {
-        /*
-        if (!_musicPlayer) {
-            _musicPlayer = [MPMusicPlayerController applicationMusicPlayer];
-            [_musicPlayer setShuffleMode: MPMusicShuffleModeOff];
-            [_musicPlayer setRepeatMode: MPMusicRepeatModeNone];
-        }
-        
-        [_musicPlayer setQueueWithItemCollection:_currentAlarm.sound.collection];
-        
-        if (_currentAlarm.gradualSound) {
-            _musicPlayer.volume = 0.0f;
-            
-        }
-        else {
-            //_musicPlayer.volume = 1.0f;
-        }
-        
-        [_musicPlayer play];
-        */
         
         fileURL = [[[_currentAlarm.sound.collection items] objectAtIndex:0] valueForProperty:MPMediaItemPropertyAssetURL];
         NSError *err;
@@ -662,6 +644,7 @@ void RouteChangeListener(	void *                  inClientData,
         [self.aPlayer play];
         
     }
+    //alarm or recording
     else {
         
         NSString *soundFilePath;
@@ -682,7 +665,24 @@ void RouteChangeListener(	void *                  inClientData,
         if (err)
             NSLog(@"ERR: %@", err);
         
+        err = nil;
+        
+        //set audio session properties
+        //[[AVAudioSession sharedInstance] setOutputDataSource:AVAudioSessionPortBuiltInSpeaker error:&err];
+        
+        
+        OSStatus errr = 0;
+        UInt32 audioRouteOverride = kAudioSessionOverrideAudioRoute_Speaker;
+        errr = AudioSessionSetProperty(kAudioSessionProperty_OverrideAudioRoute,sizeof(audioRouteOverride),&audioRouteOverride);
+        
+        
+        NSLog(@"!!! %@", [[AVAudioSession sharedInstance] outputDataSource]);
+        
+        if (errr)
+            NSLog(@"ERR: %@", err);
+        
         self.aPlayer = player;
+
         self.aPlayer.delegate = nil;
         if (_currentAlarm.gradualSound) {
             self.aPlayer.volume = 0.0f;
